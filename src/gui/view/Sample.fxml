@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
-	
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SampleController">
-	<!-- TODO Add Nodes -->
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="gui.controller.SampleController">
+   <center>
+      <AnchorPane prefHeight="523.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="523.0" prefWidth="600.0" style="-fx-background-color: #d2d2d2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text layoutX="253.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Area del centro" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="49.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu lateral" />
+         </children>
+      </AnchorPane>
+   </left>
+   <top>
+      <AnchorPane prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="65.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logo" />
+            <Text layoutX="465.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Componentes" />
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>
