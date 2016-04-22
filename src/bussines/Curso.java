@@ -5,7 +5,15 @@ import java.util.Map;
 
 public class Curso {
 
+	private Date anyo;
+	private Double creditos;
 	private Map<Integer,Cuatrimestre> listacuatrimestres; 
+	
+	public Curso(Date anyo, Double creditos) {
+		super();
+		this.anyo = anyo;
+		this.creditos = creditos;
+	}
 	
 	public Date getAnyo() {
 		return anyo;
@@ -19,8 +27,6 @@ public class Curso {
 	public void setCreditos(Double creditos) {
 		this.creditos = creditos;
 	}
-	private Date anyo;
-	private Double creditos;
 	
 	
 }

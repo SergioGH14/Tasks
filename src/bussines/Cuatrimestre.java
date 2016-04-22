@@ -4,8 +4,15 @@ import java.util.Map;
 
 public class Cuatrimestre {
 
+	private int cuatrimestre;
 	private Map<Integer, Asignatura> listaasignaturas;
 	
+	
+	public Cuatrimestre(int cuatrimestre) {
+		super();
+		this.cuatrimestre = cuatrimestre;
+	}
+
 	public int getCuatrimestre() {
 		return cuatrimestre;
 	}
@@ -14,6 +21,5 @@ public class Cuatrimestre {
 		this.cuatrimestre = cuatrimestre;
 	}
 
-	private int cuatrimestre;
 	
 }

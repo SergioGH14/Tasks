@@ -10,6 +10,13 @@ public class Usuario {
 	private String apellidos;
 	private String avatar;
 	private String fechanacimiento;
+	
+	public Usuario(String nombre, String apellidos, String avatar,String fechanacimiento) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.avatar = avatar;
+		this.fechanacimiento = fechanacimiento;
+	}
 	public String getNombre() {
 		return nombre;
 	}

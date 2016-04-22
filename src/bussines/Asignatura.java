@@ -3,8 +3,22 @@ package bussines;
 import java.util.Map;
 
 public class Asignatura {
+	
+	
+	private String titulo;
+	private Double creditos;
+	private int dificultad;
+	private boolean anual;
 
 	private Map<Integer, Actividad> listaactividades;
+	
+	public Asignatura(String titulo, Double creditos, int dificultad, boolean anual) {
+		super();
+		this.titulo = titulo;
+		this.creditos = creditos;
+		this.dificultad = dificultad;
+		this.anual = anual;
+	}
 	
 	public String getTitulo() {
 		return titulo;
@@ -30,9 +44,5 @@ public class Asignatura {
 	public void setAnual(boolean anual) {
 		this.anual = anual;
 	}
-	private String titulo;
-	private Double creditos;
-	private int dificultad;
-	private boolean anual;
 	
 }
