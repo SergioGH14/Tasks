@@ -8,7 +8,7 @@ public class Practicas extends Actividad {
 	private boolean recuperable;
 	
 	public Practicas(Asignatura asignatura, String titulo, String descripcion, Date fechafinalizacion,
-			         int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal, boolean grupal, boolean recuperable,boolean finalizada) {
+			         int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal,boolean finalizada, boolean grupal, boolean recuperable) {
 		
 		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, prioridadtotal, finalizada);
 		this.grupal = grupal;

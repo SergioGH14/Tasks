@@ -9,7 +9,7 @@ public abstract class Examen extends Actividad{
 	private boolean recuperable;
 	
 	public Examen(Asignatura asignatura, String titulo, String descripcion, Date fechafinalizacion,
-			         int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal, boolean grupal, boolean recuperable, boolean ultimo,boolean finalizada) {
+			         int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal,boolean finalizada, boolean recuperable, boolean ultimo) {
 		
 		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, prioridadtotal, finalizada);
 		this.setUltimo(ultimo);
