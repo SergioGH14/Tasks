@@ -22,16 +22,16 @@ import javafx.stage.Stage;
  * sustituyendo su contenido dependiendo de la Asigntara que den click para mostrar las actividades
  */
 
-public class MenuLateralAsignaturasController implements Initializable {
+public class MenuLateralController implements Initializable {
 	//Objetos básicos de paso entre pantallas: Stage y Controlador principal
 	private Stage primaryStage;
-	private BorderPanePrincipalController controladorPrincipal;
+	private MainController controladorPrincipal;
 	
 	//Etiquetas XML para identificar objetos en pantalla
 	//menú lateral
 	@FXML private ListView listViewAsignaturas;
 	
-	public void initStage(Stage stage, BorderPanePrincipalController controladorPrincipal){
+	public void initStage(Stage stage, MainController controladorPrincipal){
 		this.primaryStage = stage;
 		this.controladorPrincipal = controladorPrincipal;
 	}
