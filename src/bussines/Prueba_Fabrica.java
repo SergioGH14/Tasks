@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Scanner;
 
-import javafx.util.converter.LocalDateTimeStringConverter;
-
 public class Prueba_Fabrica {
 /*AVISO PARA NAVEGANTES esto es el main que he hecho yo SERGIO para probar el fabrica. 
  * Podemos usarlo tambien para probar la persistencia mas adelante
