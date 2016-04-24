@@ -11,11 +11,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /*
- * Clase principal que lanza la aplicación, la cual lanzará las demás pantallas de la aplicación
- * Lanza la pantalla con el border pane contenedor de el menú lateral.
+ * Clase principal que lanza la aplicacion, la cual lanzara las demas pantallas de la aplicacion
+ * Lanza la pantalla con el border pane contenedor de el menu lateral.
  * 
- * Esta clase comprobará al inicio si el usuario ya ha preconfigurado la aplicación para lanzar 
- * una pantalla ( la de las actividades ) u otra ( la de configuración de inicio )
+ * Esta clase comprobara al inicio si el usuario ya ha preconfigurado la aplicacion para lanzar 
+ * una pantalla ( la de las actividades ) u otra ( la de configuracion de inicio )
  * 
  */
 
@@ -31,13 +31,13 @@ public class MainController  extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle(Util.Constantes.ARDUM);
 			
-			//acceso al controlador de la pantalla de activiades con menú lateral
+			//acceso al controlador de la pantalla de activiades con menu lateral
 			//previo paso de datos antes de que se lanze la pantalla
 			MenuLateralController pantallaInicialActiviades = loader.<MenuLateralController>getController();
 			pantallaInicialActiviades.initStage(primaryStage, this);
 			
 			primaryStage.show();
-			
+			setBarraInferiorPrincipal(primaryStage);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -69,4 +69,21 @@ public class MainController  extends Application {
 	}
 	
 	
+	public void setBarraInferiorPrincipal(Stage primaryStage){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/BarraInferiorPrincipal.fxml"));
+			GridPane barraInferiorPrincipal = (GridPane)loader.load();
+			
+			if(root!=null){
+				root.setBottom(barraInferiorPrincipal);
+			}
+			
+			BarraInferiorPrincipalController barrainferiorprincipal = loader.<BarraInferiorPrincipalController>getController();
+			barrainferiorprincipal.initStage(primaryStage, this);
+			
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
+		}
+	}
 }

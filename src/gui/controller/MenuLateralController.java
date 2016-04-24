@@ -18,17 +18,17 @@ import javafx.stage.Stage;
 /*
  * author @kevin
  * 
- * Clase del controlador de la pantalla donde sale el menú lateral y el centro de la aplicación, el cual se irá
+ * Clase del controlador de la pantalla donde sale el menu lateral y el centro de la aplicacion, el cual se ira
  * sustituyendo su contenido dependiendo de la Asigntara que den click para mostrar las actividades
  */
 
 public class MenuLateralController implements Initializable {
-	//Objetos básicos de paso entre pantallas: Stage y Controlador principal
+	//Objetos basicos de paso entre pantallas: Stage y Controlador principal
 	private Stage primaryStage;
 	private MainController controladorPrincipal;
 	
 	//Etiquetas XML para identificar objetos en pantalla
-	//menú lateral
+	//menu lateral
 	@FXML private ListView listViewAsignaturas;
 	
 	public void initStage(Stage stage, MainController controladorPrincipal){
@@ -72,7 +72,9 @@ public class MenuLateralController implements Initializable {
 	}
 	
 	public void lanzarPantallaDeActividades(Asignatura asignaturaSeleccionada){
+		
 		controladorPrincipal.abrirPantallaActividades(primaryStage, asignaturaSeleccionada);
+		
 	}
 
 }
