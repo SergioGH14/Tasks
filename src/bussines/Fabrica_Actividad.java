@@ -1,9 +1,14 @@
 package bussines;
 
 import java.util.Date;
+import java.util.ArrayList;
+
+
+
+
 
 public class Fabrica_Actividad {
-	
+	 public static Fabrica_Actividad instance;
 	/*
 	 * CrearActividad devuelve una Actividad que será Practica o Clase o Examen dependiendo del entero tipo
 	 * 1 practica  
@@ -15,8 +20,12 @@ public class Fabrica_Actividad {
 	 * :)
 	 * */
 	
-	
-	public Fabrica_Actividad() {
+	 public static Fabrica_Actividad dameFabrica_Actividad() {
+		  if(instance == null){
+			  instance = new Fabrica_Actividad();
+		  }return instance;
+	  }
+	private Fabrica_Actividad() {
 		
 	}
 
@@ -28,10 +37,11 @@ public class Fabrica_Actividad {
 			int tiempoestimado, 
 			double porcentaje, 
 			int prioridadusuario, 
-			int prioridadtotal,
 			boolean finalizada,
-			boolean primero,
-			boolean segundo){
+			ArrayList<Boolean> especificaciones
+			//boolean primero,
+			//boolean segundo
+			){
 		switch(tipo){
 			
 		case 1:
@@ -43,10 +53,8 @@ public class Fabrica_Actividad {
 					tiempoestimado, 
 					porcentaje, 
 					prioridadusuario, 
-					prioridadtotal,
 					finalizada,
-					primero,
-					segundo);
+					especificaciones);
 			return practica;
 			
 		case 2:
@@ -58,9 +66,8 @@ public class Fabrica_Actividad {
 					tiempoestimado, 
 					porcentaje, 
 					prioridadusuario, 
-					prioridadtotal,
 					finalizada,
-					primero);
+					especificaciones);
 			return clase;
 			
 		case 3:
@@ -72,10 +79,8 @@ public class Fabrica_Actividad {
 					tiempoestimado, 
 					porcentaje, 
 					prioridadusuario, 
-					prioridadtotal,
 					finalizada,
-					primero,
-					segundo);
+					especificaciones);
 			return examen_concreto;
 			
 		default: return null;
@@ -86,12 +91,7 @@ public class Fabrica_Actividad {
 	}
 	
 	private Actividad crearPractica(Asignatura asignatura,String titulo, String descripcion,Date fechafinalizacion, int tiempoestimado, 
-			double porcentaje, int prioridadusuario, int prioridadtotal, boolean finalizada, boolean primero, boolean segundo){
-		
-		prioridadtotal= asignatura.getDificultad()+prioridadusuario+tiempoestimado+5;
-		
-		if(primero)prioridadtotal= prioridadtotal-5;
-		if(!segundo)prioridadtotal=prioridadtotal+14;
+			double porcentaje, int prioridadusuario,  boolean finalizada,ArrayList<Boolean> especificaciones){
 		
 		Practicas practica = new Practicas(asignatura,
 				titulo, 
@@ -100,19 +100,16 @@ public class Fabrica_Actividad {
 				tiempoestimado, 
 				porcentaje, 
 				prioridadusuario, 
-				prioridadtotal,
+				
 				finalizada,
-				primero,
-				segundo);
+				especificaciones.get(0),
+				especificaciones.get(1));
 		return practica;
 	}
 	
 	private Actividad crearClase(Asignatura asignatura,String titulo, String descripcion,Date fechafinalizacion, int tiempoestimado, 
-			double porcentaje, int prioridadusuario, int prioridadtotal, boolean finalizada, boolean primero ){
+			double porcentaje, int prioridadusuario, boolean finalizada ,ArrayList<Boolean> especificaciones){
 		
-		prioridadtotal= asignatura.getDificultad()+prioridadusuario+tiempoestimado;
-		
-		if(primero)prioridadtotal= prioridadtotal+10;
 		
 		Clase clase = new Clase(asignatura,
 				titulo, 
@@ -121,19 +118,15 @@ public class Fabrica_Actividad {
 				tiempoestimado, 
 				porcentaje, 
 				prioridadusuario, 
-				prioridadtotal,
+				
 				finalizada,
-				primero);
+				especificaciones.get(0));
 		return clase;
 	}
 
 	private Actividad crearExamen(Asignatura asignatura,String titulo, String descripcion,Date fechafinalizacion, int tiempoestimado, 
-			double porcentaje, int prioridadusuario, int prioridadtotal, boolean finalizada, boolean primero, boolean segundo){
+			double porcentaje, int prioridadusuario,   boolean finalizada,ArrayList<Boolean> especificaciones){
 		
-		prioridadtotal= asignatura.getDificultad()+prioridadusuario+tiempoestimado+10;
-		
-		if(primero)prioridadtotal= prioridadtotal+10;
-		if(!segundo)prioridadtotal=prioridadtotal+14;
 		
 		Examen_Concreto examen = new Examen_Concreto(asignatura,
 				titulo, 
@@ -142,10 +135,10 @@ public class Fabrica_Actividad {
 				tiempoestimado, 
 				porcentaje, 
 				prioridadusuario, 
-				prioridadtotal,
+				
 				finalizada,
-				primero,
-				segundo);
+				especificaciones.get(0),
+				especificaciones.get(1));
 		return examen;
 	}
 }

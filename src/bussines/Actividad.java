@@ -15,7 +15,7 @@ public abstract class Actividad {
 	private boolean finalizada;
 	
 	public Actividad(Asignatura asignatura, String titulo, String descripcion, Date fechafinalizacion,
-			int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal, boolean finalizada) {
+			int tiempoestimado, Double porcentaje, int prioridadusuario, boolean finalizada) {
 		super();
 		this.setAsignatura(asignatura);
 		this.titulo = titulo;
@@ -24,10 +24,15 @@ public abstract class Actividad {
 		this.tiempoestimado = tiempoestimado;
 		this.porcentaje = porcentaje;
 		this.prioridadusuario = prioridadusuario;
-		this.prioridadtotal = prioridadtotal;
+		this.prioridadtotal = establecerPrioridadTotal();
 		this.finalizada = finalizada;
+		
 	}
 
+	private int establecerPrioridadTotal(){
+		return -1;
+	}
+	
 	public String getTitulo() {
 		return titulo;
 	}

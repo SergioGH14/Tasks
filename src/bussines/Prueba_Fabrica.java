@@ -1,6 +1,6 @@
 package bussines;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -13,27 +13,31 @@ public class Prueba_Fabrica {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+			teclado = new Scanner(System.in);	
+			int dificultadAsignatura = 21;
+			int tiempoestimado= 15;
+			double porcentaje = 0.5;
+			ArrayList<Boolean> especificaciones = new ArrayList<Boolean>();
+			especificaciones.add(true);
+			especificaciones.add(true);
+			Date fecha = new Date();
 			
-		Asignatura CSD = new Asignatura("CSD", 6.0, 14, false);
+		Asignatura CSD = new Asignatura("CSD", 6.0, dificultadAsignatura, false);
 		
-		teclado = new Scanner(System.in);
+		
 		System.out.println("Crear nueva tarea de "+CSD.getTitulo()+" .");
-		
 		System.out.println("Introduce Titulo: ");
 		String Titulo = teclado.nextLine();
 		System.out.println("Introduce Descripcion: ");
 		String descripcion = teclado.nextLine();
-		Date fecha = new Date();
-		int tiempoestimado= 10;
-		double porcentaje = 0.5;
 		System.out.println("Introduce tu prioridad(10   20    30): ");
 		int prioridadusuario = teclado.nextInt();
 		System.out.println("Introduce tu tipo(1 practica   2 clase   3 examen): ");
 		int tipo = teclado.nextInt();
 		
-		Fabrica_Actividad constructora = new Fabrica_Actividad();
+		Fabrica_Actividad constructora = Fabrica_Actividad.dameFabrica_Actividad();
 		
-		Actividad actividad = constructora.crearActividad(tipo, CSD, Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario, 0, false, true, false);
+		Actividad actividad = constructora.crearActividad(tipo, CSD, Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario, false,especificaciones );
 		System.out.println("Has creado con exito una actividad de nombre "+actividad.getTitulo()+"\nCuya descripcion es la siguiente: "+actividad.getDescripcion()+"\ny mas importante, su prioridad total es "+actividad.getPrioridadtotal()+"");
 		
 	}
