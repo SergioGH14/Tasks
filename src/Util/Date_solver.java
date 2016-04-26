@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,7 +36,7 @@ public class Date_solver {
 	        return ahora; 
 	    }
 	    
-	    //devuelve en String la fecha pasada por parametros en formato dia, mes y año 
+	    //devuelve en String la fecha pasada por parametros en formato dia, mes y aï¿½o 
 	    public static String dateastring(Date d){
 	    	 SimpleDateFormat formateador = new SimpleDateFormat("dd:MM:yyyy");
 	    	 String f = formateador.format(d);

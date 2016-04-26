@@ -2,10 +2,10 @@ package bussines;
 
 import java.util.Date;
 
-import Util.Date_solver;
+import util.Date_solver;
 
 public class Notificacion {
-	//En las clases constantes se puede añadir imagenes para examen clases practicas
+	//En las clases constantes se puede aï¿½adir imagenes para examen clases practicas
 	private String titulo;
 	private String descripcion;
 	private int prioridad;

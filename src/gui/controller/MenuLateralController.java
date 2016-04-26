@@ -1,12 +1,14 @@
 package gui.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import com.sun.javafx.geom.Shape;
 
-import Util.Basics;
 import bussines.Asignatura;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,8 +24,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import util.Basics;
 
 
 /*
@@ -41,6 +46,7 @@ public class MenuLateralController implements Initializable {
 	//Etiquetas XML para identificar objetos en pantalla
 	//menu lateral
 	@FXML private ListView listViewAsignaturas;
+	@FXML private Text TextTituloGrado;
 	
 	public void initStage(Stage stage, MainController controladorPrincipal){
 		this.primaryStage = stage;
@@ -48,6 +54,7 @@ public class MenuLateralController implements Initializable {
 	}
 	
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -65,6 +72,10 @@ public class MenuLateralController implements Initializable {
 		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
 		listViewAsignaturas.setItems(loAsignaturas);
 		
+	    TextTituloGrado.setText("Ingeniería Informática");
+	    TextTituloGrado.setFont(Basics.generateFontById(9, 18));
+
+		
 		//celda a celda
 		listViewAsignaturas.setCellFactory(new Callback<ListView<Asignatura>, ListCell<Asignatura> >() {
 
@@ -77,10 +88,9 @@ public class MenuLateralController implements Initializable {
 					protected void updateItem(Asignatura a, boolean flag){
 						super.updateItem(a, flag);
 						
-						Rectangle rect = new Rectangle (100, 20);
 						if(a!=null){
 							setText(a.getTitulo());
-							setStyle("");
+							setFont(Basics.generateFontById(9, 90));
 							
 							Button button = new Button();
 							Circle circuloActividad = new Circle(1.5);
@@ -94,9 +104,7 @@ public class MenuLateralController implements Initializable {
 										        "-fx-background-insets: 0px; " +
 										        "-fx-padding: 5, 25, 5, 25;"+
 										        "-fx-border-color: #fff;"+
-										        "-fx-border-width: 0.5;"
-										        
-										);
+										        "-fx-border-width: 0.5;" );
 							setGraphic(button);
 																	
 						}
@@ -118,7 +126,6 @@ public class MenuLateralController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				if(listViewAsignaturas.getSelectionModel().getSelectedItem()!=null){
-					Asignatura aux = (Asignatura) listViewAsignaturas.getSelectionModel().getSelectedItem();
 					lanzarPantallaDeActividades(listaAsignaturas.get(listViewAsignaturas.getSelectionModel().getSelectedIndex()));
 				}
 			}
