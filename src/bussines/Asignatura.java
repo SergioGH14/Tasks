@@ -2,10 +2,14 @@ package bussines;
 
 import java.util.Map;
 
+import javafx.scene.paint.Color;
+
+
 public class Asignatura {
 	
 	
 	private String titulo;
+	private Color color; //atributo de prueba para list-cell
 	private Double creditos;
 	private int dificultad;
 	private boolean anual;
@@ -23,8 +27,14 @@ public class Asignatura {
 	public Asignatura(String titulo){
 		this.titulo = titulo;
 	}
-	//borrar despues de su uso
 	
+	public Asignatura(String titulo, Color red){
+		this.titulo = titulo;
+		this.color = red;
+	}
+	//borrar despues de su uso
+
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -51,9 +61,18 @@ public class Asignatura {
 	}
 	
 	
+	
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
 	//ToString de prueba, borrar despues de su uso.
 	public String toString(){
-		return "- "+titulo;
+		return "· "+titulo;
 	}
 	
 }

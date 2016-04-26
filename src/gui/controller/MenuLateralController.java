@@ -4,16 +4,27 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import com.sun.javafx.geom.Shape;
 
+import Util.Basics;
 import bussines.Asignatura;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
+import javafx.css.PseudoClass;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+
 
 /*
  * author @kevin
@@ -43,14 +54,59 @@ public class MenuLateralController implements Initializable {
 		//prueba para rellenar la lista de asignaturas y mostrarlas en pantalla
 		
 		List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
-		listaAsignaturas.add(new Asignatura("CSD"));
-		listaAsignaturas.add(new Asignatura("ETC"));
-		listaAsignaturas.add(new Asignatura("PSW"));
-		listaAsignaturas.add(new Asignatura("DDS"));
-		listaAsignaturas.add(new Asignatura("GPR"));
+		listaAsignaturas.add(new Asignatura("CSD", Color.CRIMSON));
+		listaAsignaturas.add(new Asignatura("ETC",Color.AQUAMARINE ));
+		listaAsignaturas.add(new Asignatura("PSW",Color.BLUEVIOLET));
+		listaAsignaturas.add(new Asignatura("DDS",Color.CADETBLUE));
+		listaAsignaturas.add(new Asignatura("GPR",Color.CORAL));
+		
+	
 		
 		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
 		listViewAsignaturas.setItems(loAsignaturas);
+		
+		//celda a celda
+		listViewAsignaturas.setCellFactory(new Callback<ListView<Asignatura>, ListCell<Asignatura> >() {
+
+			@Override
+			public ListCell<Asignatura> call(ListView<Asignatura> param) {
+				
+				ListCell<Asignatura> celda = new ListCell<Asignatura>(){
+					
+					@Override
+					protected void updateItem(Asignatura a, boolean flag){
+						super.updateItem(a, flag);
+						
+						Rectangle rect = new Rectangle (100, 20);
+						if(a!=null){
+							setText(a.getTitulo());
+							setStyle("");
+							
+							Button button = new Button();
+							Circle circuloActividad = new Circle(1.5);
+							button.setShape(circuloActividad);
+							button.setStyle("-fx-background-radius: 10em; " +
+										        "-fx-min-width: 10px; " +
+										        "-fx-min-height: 10px; " +
+										        "-fx-max-width: 10px; " +
+										        "-fx-max-height: 10px; " +
+										        "-fx-background-color: "+Basics.RGBToHex(a.getColor())+";" +
+										        "-fx-background-insets: 0px; " +
+										        "-fx-padding: 5, 25, 5, 25;"+
+										        "-fx-border-color: #fff;"+
+										        "-fx-border-width: 0.5;"
+										        
+										);
+							setGraphic(button);
+																	
+						}
+					}
+				};
+				
+				return celda;
+			}
+			
+		});
 
 		
 		/* Método escuchador de la lista para cuando se seleccione un elemento
@@ -62,6 +118,7 @@ public class MenuLateralController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				if(listViewAsignaturas.getSelectionModel().getSelectedItem()!=null){
+					Asignatura aux = (Asignatura) listViewAsignaturas.getSelectionModel().getSelectedItem();
 					lanzarPantallaDeActividades(listaAsignaturas.get(listViewAsignaturas.getSelectionModel().getSelectedIndex()));
 				}
 			}
