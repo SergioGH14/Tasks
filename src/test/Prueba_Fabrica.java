@@ -1,8 +1,12 @@
-package bussines;
+package test;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
+import bussines.Actividad;
+import bussines.Asignatura;
+import bussines.Fabrica_Actividad;
 
 public class Prueba_Fabrica {
 /*AVISO PARA NAVEGANTES esto es el main que he hecho yo SERGIO para probar el fabrica. 
