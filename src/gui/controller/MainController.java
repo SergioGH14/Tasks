@@ -39,6 +39,7 @@ public class MainController  extends Application {
 			pantallaInicialActiviades.initStage(primaryStage, this);
 			
 			primaryStage.show();
+			
 			setBarraInferiorPrincipal(primaryStage);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -69,7 +70,19 @@ public class MainController  extends Application {
 		}
 		
 	}
-	
+	public void userRegister(Stage primaryStage){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/Inicio_Usuario.fxml"));
+			GridPane initUser = (GridPane)loader.load();
+			
+			
+			InicioUsuarioController iniciousuario = loader.<InicioUsuarioController>getController();
+			iniciousuario.initStage(primaryStage, this);
+			
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
+		}}
 	
 	public void setBarraInferiorPrincipal(Stage primaryStage){
 		 try{

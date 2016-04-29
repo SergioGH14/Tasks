@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioUsuarioController">
+   <children>
+      <GridPane prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #f3f3f3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="150.0" />
+            <RowConstraints minHeight="10.0" prefHeight="150.0" />
+            <RowConstraints minHeight="10.0" prefHeight="150.0" />
+            <RowConstraints minHeight="0.0" prefHeight="150.0" />
+            <RowConstraints />
+         </rowConstraints>
+         <columnConstraints>
+            <ColumnConstraints minWidth="10.0" prefWidth="183.33333333" />
+            <ColumnConstraints minWidth="10.0" prefWidth="183.333333333" />
+            <ColumnConstraints minWidth="10.0" prefWidth="183.3333333" />
+         </columnConstraints>
+         <children>
+            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="100000.0" style="-fx-background-color: #ff7843;" GridPane.columnSpan="3" GridPane.valignment="TOP">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Calibri Light" size="19.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="107.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../../assets/logo_ardum.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+            <Pane maxHeight="-Infinity" prefHeight="10.0" prefWidth="550.0" style="-fx-background-color: #ff7843;" GridPane.columnSpan="3" GridPane.valignment="BOTTOM" />
+            <ImageView fitHeight="111.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../../assets/Student%20Male%20Filled.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sabemos que la vida de un Universitario es dura. Tenemos muchas tareas que hacer y no nos acordamos de todas." textAlignment="JUSTIFY" wrappingWidth="326.05078125" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Calibri Light" size="17.0" />
+               </font>
+            </Text>
+            <TextField prefHeight="21.0" prefWidth="133.0" promptText="... y tus Apellidos??" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="35.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="55.0" left="35.0" />
+               </GridPane.margin>
+            </Text>
+            <ImageView fitHeight="111.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../assets/Diploma%202-100.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="75.0" />
+               </GridPane.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="En Ardum vamos a ayudarte a que no se te olvide nada. Que lo quieras hacer ya es cosa tuya. " wrappingWidth="276.4843444824219" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Calibri Light" size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="75.0" />
+               </GridPane.margin>
+            </Text>
+            <TextField prefHeight="25.0" prefWidth="143.0" promptText="¿¿Como te llamabas..." GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="40.0" left="35.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField prefHeight="25.0" prefWidth="164.0" promptText="Blablabla@mail.moc" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="40.0" left="20.0" right="35.0" />
+               </GridPane.margin></TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="35.0" top="25.0" />
+               </GridPane.margin>
+            </Text>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Text layoutX="10.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡¡Enseñanos tu mejor cara!!" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="43.0" layoutY="123.0" mnemonicParsing="false" style="-fx-background-color: #f3f3f3;" text="Elegir imagen ..." />
+                  <ImageView fitHeight="74.0" fitWidth="73.0" layoutX="55.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/Login%20As%20User-96.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane blendMode="SOFT_LIGHT" maxHeight="550.0" maxWidth="10.0" prefHeight="185.0" prefWidth="2.0" style="-fx-background-color: black;" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.rowSpan="3" />
+            <Pane blendMode="SOFT_LIGHT" maxHeight="450.0" maxWidth="10.0" prefHeight="165.0" prefWidth="2.0" style="-fx-background-color: black;" GridPane.rowIndex="2" GridPane.rowSpan="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="20.0" top="23.0" />
+               </GridPane.margin>
+            </Text>
+            <Pane blendMode="SOFT_LIGHT" maxHeight="-Infinity" prefHeight="10.0" prefWidth="550.0" style="-fx-background-color: black;" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </Pane>
+            <Pane maxHeight="450.0" maxWidth="10.0" prefHeight="165.0" prefWidth="2.0" style="-fx-background-color: #ff7843;" GridPane.rowIndex="1" />
+            <Pane maxHeight="450.0" maxWidth="10.0" prefHeight="165.0" prefWidth="2.0" style="-fx-background-color: #ff7843;" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <DatePicker promptText="¿Cumpleaños?" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="20.0" right="35.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Nacimiento" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="55.0" left="20.0" />
+               </GridPane.margin>
+            </Text>
+            <ImageView fitHeight="75.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+               <image>
+                  <Image url="@../../../assets/Circled%20Right-104.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </ImageView>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
