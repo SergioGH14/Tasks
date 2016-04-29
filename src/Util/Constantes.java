@@ -3,6 +3,10 @@ package util;
 public class Constantes {
 	//nombre de la aplicación
 	public final static String ARDUM = "Ardum";
+	public static final String ATELIEROMEGA ="src/resources/fonts/AtelierOmega.ttf"; //10
+
+	//database name
+	public static final String DATABASE = "ardumBD";
 	
 	//fonts and id of fonts in switch
 	public static final String ROBOTOREGULAR ="src/resources/fonts/Roboto-Regular.ttf"; //1

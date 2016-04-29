@@ -47,6 +47,7 @@ public class MenuLateralController implements Initializable {
 	//menu lateral
 	@FXML private ListView listViewAsignaturas;
 	@FXML private Text TextTituloGrado;
+	@FXML private Text logoArdum;
 	
 	public void initStage(Stage stage, MainController controladorPrincipal){
 		this.primaryStage = stage;
@@ -73,7 +74,9 @@ public class MenuLateralController implements Initializable {
 		listViewAsignaturas.setItems(loAsignaturas);
 		
 	    TextTituloGrado.setText("Ingeniería Informática");
-	    TextTituloGrado.setFont(Basics.generateFontById(9, 18));
+	    TextTituloGrado.setFont(Basics.generateFontById(9, 14));
+	    
+	    logoArdum.setFont(Basics.generateFontById(23, 35));
 
 		
 		//celda a celda

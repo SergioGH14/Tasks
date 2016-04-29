@@ -35,6 +35,8 @@ public class Basics {
 				return Font.loadFont(new FileInputStream(new File(Constantes.ROBOTOSLABREGULAR)), size);
 			case 10:
 		    	return Font.loadFont(new FileInputStream(new File(Constantes.ROBOTOSLABTHIN)), size);
+			case 23:
+		    	return Font.loadFont(new FileInputStream(new File(Constantes.ATELIEROMEGA)), size);
 		    	  
 
 			}

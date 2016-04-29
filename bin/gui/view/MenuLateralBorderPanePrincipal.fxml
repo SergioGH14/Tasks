@@ -22,57 +22,17 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4" />
-         </children>
-      </GridPane>
-   </top>
-   <bottom>
-      <GridPane prefHeight="48.0" prefWidth="1167.0" style="-fx-background-color: #EFEFEF;" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="579.0" minWidth="10.0" prefWidth="257.89964294433594" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="966.0" minWidth="10.0" prefWidth="909.1003570556641" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <AnchorPane prefHeight="200.0" prefWidth="286.0" style="-fx-background-color: #f3f3f3;" />
-         </children>
-      </GridPane>
-   </bottom>
-   <left>
-      <GridPane maxWidth="286.0" prefHeight="538.0" prefWidth="255.0" style="-fx-background-color: #F3F3F3;" BorderPane.alignment="CENTER">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="101.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="101.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="258.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ListView fx:id="listViewAsignaturas" fixedCellSize="-3.0" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3;" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="16.0" right="12.0" />
-               </GridPane.margin></ListView>
-            <Text fx:id="TextTituloGrado" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de prueba" wrappingWidth="256.21875" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="16.0" />
-               </GridPane.margin>
+            <Text fx:id="logoArdum" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ardum" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
-                  <Font size="14.0" />
+                  <Font size="17.0" />
                </font>
             </Text>
          </children>
       </GridPane>
-   </left>
+   </top>
    <center>
       <GridPane style="-fx-background-color: #EFEFEF;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -99,4 +59,12 @@
         </rowConstraints>
       </GridPane>
    </right>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="TextTituloGrado" layoutX="7.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto grado" textAlignment="CENTER" wrappingWidth="185.09897708892822" />
+            <ListView fx:id="listViewAsignaturas" layoutY="214.0" prefHeight="291.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3;" />
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>
