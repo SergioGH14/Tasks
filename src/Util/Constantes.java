@@ -19,5 +19,22 @@ public class Constantes {
 	public static final String ROBOTOSLABLIGHT ="src/resources/fonts/RobotoSlab-Light.ttf"; //8
 	public static final String ROBOTOSLABREGULAR ="src/resources/fonts/RobotoSlab-Regular.ttf"; //9
 	public static final String ROBOTOSLABTHIN ="src/resources/fonts/RobotoSlab-Thin.ttf"; //10
+	
+	//Nombre secuencias de identificadores para tablas en bbdd
+	public static final String USUARIO_SQ = "PUBLIC.USUARIO_SQ";
+	public static final String UNIVERSIDAD_SQ = "PUBLIC.UNIVERSIDAD_SQ";
+	public static final String GRADO_SQ = "PUBLIC.GRADO_SQ";
+	public static final String CURSO_SQ = "PUBLIC.CURSO_SQ";
+	public static final String ASIGNATURA_SQ = "PUBLIC.ASIGNATURA_SQ";
+	public static final String CUATRIMESTRE_SQ = "PUBLIC.CUATRIMESTRE_SQ";
+	public static final String ACTIVIDAD_SQ = "PUBLIC.ACTIVIDAD_SQ";
+	public static final String PRACTICAS_SQ = "PUBLIC.PRACTICAS_SQ";
+	public static final String CLASE_SQ = "PUBLIC.CLASE_SQ";
+	public static final String EXAMEN_SQ = "PUBLIC.EXAMEN_SQ";
+	public static final String NOTIFICACION_SQ = "PUBLIC.NOTIFICACION_SQ";
+	public static final String EXAMEN_CLASE_SQ = "PUBLIC.EXAMEN_CLASE_SQ";
+	public static final String EXAMEN_POLIFORMAT_SQ = "PUBLIC.EXAMEN_POLIFORMAT_SQ";
+	public static final String EXAMEN_PRACTICA_SQ = "PUBLIC.EXAMEN_PRACTICA_SQ";
+
 
 }

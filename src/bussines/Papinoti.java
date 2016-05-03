@@ -3,7 +3,7 @@ package bussines;
 import java.util.Date;
 import java.util.List;
 
-import util.Date_solver;
+import util.Date_Solver;
 
 public class Papinoti {
 	
@@ -20,9 +20,9 @@ public class Papinoti {
 		
 		
 		
-		Notificacion a = new Notificacion(tituloAct+"en 14 dias", tituloAct, prioridadAct-20,Date_solver.restarFechasDias(fechaAct, 14) );
-		Notificacion b = new Notificacion(tituloAct+"en 7 dias", tituloAct, prioridadAct-10, Date_solver.restarFechasDias(fechaAct, 7));
-		Notificacion c = new Notificacion(tituloAct+" ma�ana", tituloAct, prioridadAct, Date_solver.restarFechasDias(fechaAct, 1) );
+		Notificacion a = new Notificacion(tituloAct+"en 14 dias", tituloAct, prioridadAct-20,Date_Solver.restarFechasDias(fechaAct, 14) );
+		Notificacion b = new Notificacion(tituloAct+"en 7 dias", tituloAct, prioridadAct-10, Date_Solver.restarFechasDias(fechaAct, 7));
+		Notificacion c = new Notificacion(tituloAct+" ma�ana", tituloAct, prioridadAct, Date_Solver.restarFechasDias(fechaAct, 1) );
 		
 		System.out.println(a.toString());
 		System.out.println(b.toString());

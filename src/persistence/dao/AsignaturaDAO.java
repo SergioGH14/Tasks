@@ -12,4 +12,7 @@ public interface AsignaturaDAO {
 	
 	public void crearAsignatura(AsignaturaDTO asignatura);
 
+	public void editarAsignatura(AsignaturaDTO asignatura);
+	
+	public int crearSecuencia(String nombreSecuencia);
 }

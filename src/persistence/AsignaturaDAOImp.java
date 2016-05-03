@@ -12,7 +12,7 @@ public class AsignaturaDAOImp implements AsignaturaDAO{
 	
 	public AsignaturaDAOImp(){
 		try{
-		connectionManager= new ConnectionManager(Constantes.DATABASE);
+			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, AsignaturaDAO: "+e.getLocalizedMessage());
 		}
@@ -34,7 +34,19 @@ public class AsignaturaDAOImp implements AsignaturaDAO{
 	public void crearAsignatura(AsignaturaDTO asignatura) {
 		// TODO Auto-generated method stub
 		
-	} 
-	
+	}
+
+	@Override
+	public void editarAsignatura(AsignaturaDTO asignatura) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int crearSecuencia(String nombreSecuencia) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

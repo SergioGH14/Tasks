@@ -2,7 +2,7 @@ package bussines;
 
 import java.util.Date;
 
-import util.Date_solver;
+import util.Date_Solver;
 
 public class Notificacion {
 	//En las clases constantes se puede a�adir imagenes para examen clases practicas
@@ -52,7 +52,7 @@ public class Notificacion {
 	//probar lo que imprime por consola 
 	public String toString(){
 		
-		String S = getTitulo()+" "+getPrioridad()+" "+getDescripcion()+""+Date_solver.dateastring(getFecha_notificacion());
+		String S = getTitulo()+" "+getPrioridad()+" "+getDescripcion()+""+Date_Solver.dateastring(getFecha_notificacion());
 		
 		return S;
 	}

@@ -1,0 +1,7 @@
+/*C2*/SET SCHEMA PUBLIC
+INSERT INTO USUARIO VALUES(20,NULL,'Jeremio                       ','ca\u00f1amas                                                     ','asdasd                                                                          ','2016-05-03','asd                                                                                                 ')
+ALTER SEQUENCE PUBLIC.USUARIO_SQ RESTART WITH 21
+COMMIT
+DISCONNECT
+/*C3*/SET SCHEMA PUBLIC
+DISCONNECT

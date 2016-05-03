@@ -2,6 +2,8 @@ package util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -53,5 +55,10 @@ public class Basics {
 	            (int)( color.getRed() * 255 ),
 	            (int)( color.getGreen() * 255 ),
 	            (int)( color.getBlue() * 255 ) );
+	}
+	
+	public static String fechaByDate(Date date){
+		return new SimpleDateFormat("dd/MM/yyyy").format( date ); 
+
 	}
 }
