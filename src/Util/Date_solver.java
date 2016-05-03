@@ -25,18 +25,16 @@ public class Date_Solver {
 	//devolviendolo a en formato date
 
 	public static Date restarFechasDias(Date fecha, int dias) {
-	        Calendar cal = new GregorianCalendar();
-	        cal.setTimeInMillis(fecha.getTime());
-	        cal.add(Calendar.DATE, -dias);
-	        return new Date(cal.getTimeInMillis());
-	    }
+	    Calendar cal = new GregorianCalendar();
+	    cal.setTimeInMillis(fecha.getTime());
+	    cal.add(Calendar.DATE, -dias);
+	    return new Date(cal.getTimeInMillis());
+	}
 	 
-	    //Devuelve la hora del sistema en formato date 
-	 
-	    public static Date getHoraActual() {
-	        Date ahora = new Date();
-	      
-	        return ahora; 
+	//Devuelve la hora del sistema en formato date 
+    public static Date getHoraActual() {
+        Date ahora = new Date();
+        return ahora; 
 	  }
 	    
     //devuelve en String la fecha pasada por parametros en formato dia, mes y a�o 

@@ -15,7 +15,6 @@ public class UsuarioDAOImp implements UsuarioDAO{
 	public UsuarioDAOImp (){
 		try{
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
-
 		}catch(Exception e){
 			System.err.println("Error en persistencia, UsuarioDAOImp: "+e.getLocalizedMessage());
 
@@ -38,8 +37,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 						usuario.getString("APELLIDOS"),
 						usuario.getString("AVATAR"),
 						Date_Solver.convertirDateSQLEnLocalDate( usuario.getDate("FECHA_NACIMIENTO")),
-						usuario.getString("EMAIL")
-							);
+						usuario.getString("EMAIL") );
 				//saber cuantos caracteres tiene un atributo
 				System.out.println("El usuario tiene de  nombre:" + user.getNombre()+" y contiene: " + user.getNombre().toCharArray().length + " caracteres");
 			}else
@@ -52,8 +50,21 @@ public class UsuarioDAOImp implements UsuarioDAO{
 	}
 
 	@Override
-	public void eliminarUsuario() {
-		// TODO Auto-generated method stub
+	public void eliminarUsuario(int id_usuario) {
+		try{
+			connectionManager.connect();
+			String str = "DELETE FROM USUARIO WHERE id_usuario="+ id_usuario ;
+			connectionManager.updateDB(str);
+			
+		
+			System.out.println("\nUsuario eliminado con éxito: ");
+			connectionManager.close();
+			
+			
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al eliminar el usuario: "+e.getLocalizedMessage() );
+		}
+	
 		
 	}
 
@@ -76,7 +87,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 	
 				usuario.setId_usuario(id);
 				connectionManager.updateDB(str);
-				System.out.println("Usuario creado con éxito: " + usuario);
+				System.out.println("\nUsuario creado con éxito: " + usuario);
 			}
 			connectionManager.close();
 			
@@ -87,7 +98,6 @@ public class UsuarioDAOImp implements UsuarioDAO{
 	}
 
 	
-	@Override
 	public int crearSecuencia(String nombreSecuencia){
 		try{
 		ResultSet sq = connectionManager.queryDB("CALL NEXT VALUE FOR " + nombreSecuencia);
@@ -104,14 +114,46 @@ public class UsuarioDAOImp implements UsuarioDAO{
 
 	@Override
 	public void editarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
+		try{
+			connectionManager.connect();
+			String str = "UPDATE USUARIO "+
+						 "SET id_universidad= "+usuario.getUniversidad()+", "+
+						 "SET nombre= '"+usuario.getNombre() +"', "+
+						 "SET apellidos= '"+usuario.getApellidos() +"', "+
+						 "SET avatar= '"+ usuario.getAvatar() +"', "+
+						 "SET fecha_nacimiento= '"+Date_Solver.convertirLocalDateEnSQL(usuario.getFechanacimiento())+"', "+
+						 "SET email= '"+usuario.getEmail()+"' "+
+						 " WHERE id_usuario=" + usuario.getId_usuario() +")";	
+			connectionManager.updateDB(str);
+			System.out.println("\nUsuario editado con éxito: " + usuario);
+			connectionManager.close();
+			
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al editar el usuario: "+e.getLocalizedMessage() );
+		}
 		
 	}
 
 	@Override
-	public void asociarUniversidadUsuario(int id_univerisdad) {
-		// TODO Auto-generated method stub
+	public Usuario asociarUniversidadUsuario(Usuario usuario, int id_univerisdad) {
+		try{
+			connectionManager.connect();
+			String str = "UPDATE USUARIO SET id_universidad="+ id_univerisdad +" where id_usuario="+ usuario.getId_usuario();
+			connectionManager.updateDB(str);
+			
+			Usuario auxiliar = usuario;
+			auxiliar.setUniversidad(id_univerisdad);
 		
+			System.out.println("\nUsuario con nueva universidad: " + auxiliar);
+			connectionManager.close();
+			
+			return auxiliar;
+			
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al editar el usuario y ponerle su universidad: "+e.getLocalizedMessage() );
+		}
+		
+		return null;
 	}
 
 }
