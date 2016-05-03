@@ -21,10 +21,12 @@ import javafx.stage.Stage;
 
 public class MainController  extends Application {
 	private BorderPane root;
+	private boolean user;
 	
 	@Override
 	public void start(Stage primaryStage) {
-		try {
+		try {user=false;
+			if(user==true){
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/MenuLateralBorderPanePrincipal.fxml"));
 			root = (BorderPane)loader.load();
 			Scene scene = new Scene(root);
@@ -40,7 +42,8 @@ public class MainController  extends Application {
 			
 			primaryStage.show();
 			
-			setBarraInferiorPrincipal(primaryStage);
+			setBarraInferiorPrincipal(primaryStage);}
+			else{userRoot(primaryStage);}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -70,20 +73,40 @@ public class MainController  extends Application {
 		}
 		
 	}
-	public void userRegister(Stage primaryStage){
+	public void userRoot(Stage secondaryStage){
 		 try{
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/Inicio_Usuario.fxml"));
-			GridPane initUser = (GridPane)loader.load();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/UsuarioRootLayout.fxml"));
+			BorderPane userRoot = (BorderPane)loader.load();
+			Scene scene = new Scene(userRoot);
+			secondaryStage.setScene(scene);
+			secondaryStage.setTitle(util.Constantes.ARDUM);
 			
+			UsuarioRootController userRootController = loader.<UsuarioRootController>getController();
+			userRootController.initStage(secondaryStage, this);
 			
-			InicioUsuarioController iniciousuario = loader.<InicioUsuarioController>getController();
-			iniciousuario.initStage(primaryStage, this);
-			
+			secondaryStage.show();
+			inicioUsuario(secondaryStage, userRoot);
 		} catch (IOException e){
 			// TODO Auto-generated catch block
 			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
 		}}
-	
+	public void inicioUsuario(Stage secondaryStage, BorderPane userRoot){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/InicioUsuario.fxml"));
+			GridPane initUser = (GridPane)loader.load();
+			
+			if(userRoot!=null){
+				userRoot.setCenter(initUser);
+			}
+			
+			InicioUsuarioController inicioU = loader.<InicioUsuarioController>getController();
+			inicioU.initStage(secondaryStage, this);
+			
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
+		}
+	}
 	public void setBarraInferiorPrincipal(Stage primaryStage){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/BarraInferiorPrincipal.fxml"));
