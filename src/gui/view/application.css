@@ -11,7 +11,7 @@
 }
 
 .list-cell:filled:selected:focused, .list-cell:filled:selected {
-	-fx-background-color: #fff;
+	-fx-background-color: #ffffff;
 	-fx-background-insets:  0;
 	-fx-text-fill: #303333;
 }
