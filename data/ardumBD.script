@@ -70,10 +70,10 @@ ALTER TABLE PUBLIC.EXAMEN ADD CONSTRAINT EXAMEN_EXAMEN_POLIFORMAT_FK FOREIGN KEY
 ALTER TABLE PUBLIC.EXAMEN ADD CONSTRAINT EXAMEN_EXAMEN_PRACTICAS_FK FOREIGN KEY(ID_EXAMEN_PRACTICAS) REFERENCES PUBLIC.EXAMEN_PRACTICAS(ID_EXAMEN_PRACTICAS)
 ALTER TABLE PUBLIC.GRADO ADD CONSTRAINT GRADO_UNIVERSIDAD_FK FOREIGN KEY(ID_UNIVERSIDAD) REFERENCES PUBLIC.UNIVERSIDAD(ID_UNIVERSIDAD)
 ALTER SEQUENCE SYSTEM_LOBS.LOB_ID RESTART WITH 1
-ALTER SEQUENCE PUBLIC.USUARIO_SQ RESTART WITH 20
-ALTER SEQUENCE PUBLIC.UNIVERSIDAD_SQ RESTART WITH 1
-ALTER SEQUENCE PUBLIC.GRADO_SQ RESTART WITH 1
-ALTER SEQUENCE PUBLIC.CURSO_SQ RESTART WITH 1
+ALTER SEQUENCE PUBLIC.USUARIO_SQ RESTART WITH 25
+ALTER SEQUENCE PUBLIC.UNIVERSIDAD_SQ RESTART WITH 6
+ALTER SEQUENCE PUBLIC.GRADO_SQ RESTART WITH 3
+ALTER SEQUENCE PUBLIC.CURSO_SQ RESTART WITH 2
 ALTER SEQUENCE PUBLIC.ASIGNATURA_SQ RESTART WITH 1
 ALTER SEQUENCE PUBLIC.CUATRIMESTRE_SQ RESTART WITH 1
 ALTER SEQUENCE PUBLIC.ACTIVIDAD_SQ RESTART WITH 1
@@ -94,6 +94,14 @@ GRANT DBA TO SA
 SET SCHEMA SYSTEM_LOBS
 INSERT INTO BLOCKS VALUES(0,2147483647,0)
 SET SCHEMA PUBLIC
+INSERT INTO CURSO VALUES(1,2,'2016-05-05',63.0E0)
+INSERT INTO GRADO VALUES(1,4,'Ingenier\u00eda Agronoma                                                        ','2016-05-05')
+INSERT INTO GRADO VALUES(2,5,'ETSINF                                                                     ','2016-05-05')
+INSERT INTO UNIVERSIDAD VALUES(1,'Universidad Polit\u00e9cnica                                                                             ','./logo_universidad.png                            ','Cam\u00ed de Vera                                                ')
+INSERT INTO UNIVERSIDAD VALUES(2,'Universidad de Valencia                                                                             ','./logo_universidad.png                            ','Avd. Tarongers                                              ')
+INSERT INTO UNIVERSIDAD VALUES(3,'Axel                                                                                                ','./logo_universidad.png                            ','Universitat polit\u00e9cnica de Valencia                         ')
+INSERT INTO UNIVERSIDAD VALUES(4,'Universitat polit\u00e9cnica de valencia                                                                 ','./logo_universidad.png                            ','Cam\u00ed de Vera                                                ')
+INSERT INTO UNIVERSIDAD VALUES(5,'Poli                                                                                                ','./logo_universidad.png                            ','C vera                                                      ')
 INSERT INTO USUARIO VALUES(1,NULL,'asdasd                        ','asd                                                         ','asd                                                                             ',NULL,'asd                                                                                                 ')
 INSERT INTO USUARIO VALUES(2,NULL,'asdasdasd                     ','asd                                                         ','s                                                                               ',NULL,'s                                                                                                   ')
 INSERT INTO USUARIO VALUES(3,NULL,'asdafadfsdfd                  ','fd                                                          ','fd                                                                              ',NULL,'d                                                                                                   ')
@@ -111,3 +119,8 @@ INSERT INTO USUARIO VALUES(16,NULL,'asdasd                        ','s          
 INSERT INTO USUARIO VALUES(17,NULL,'zrjio                         ','gmoes                                                       ','s                                                                               ','2016-05-03','s                                                                                                   ')
 INSERT INTO USUARIO VALUES(18,NULL,'definitivo                    ','def                                                         ','de                                                                              ','2016-05-03','f                                                                                                   ')
 INSERT INTO USUARIO VALUES(19,NULL,'asdasd                        ','asd                                                         ','asd                                                                             ','2016-05-03','asd                                                                                                 ')
+INSERT INTO USUARIO VALUES(20,NULL,'Jeremio                       ','ca\u00f1amas                                                     ','asdasd                                                                          ','2016-05-03','asd                                                                                                 ')
+INSERT INTO USUARIO VALUES(21,1,'Kevin                         ','Sotomayor                                                   ','foto.png                                                                        ','2016-05-04','pelmuss@gmail.com                                                                                   ')
+INSERT INTO USUARIO VALUES(22,2,'Yaiza Pardo                   ','Molina                                                      ','foto_.pn                                                                        ','2016-05-05','email@gmail.com                                                                                     ')
+INSERT INTO USUARIO VALUES(23,4,'Axel                          ','Asuero Fernandez                                            ','foto_axel.png                                                                   ','2016-05-05','axsufer@etsinf.upv.es                                                                               ')
+INSERT INTO USUARIO VALUES(24,5,'Kevin                         ','Sotomayor                                                   ','asdasd.png                                                                      ','2016-05-05','email@email.co                                                                                      ')

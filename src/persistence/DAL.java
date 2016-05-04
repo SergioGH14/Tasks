@@ -42,8 +42,8 @@ public class DAL {
 			}
 			
 			@Override
-			public void crearUsuario(Usuario usuario) {
-				 new UsuarioDAOImp().crearUsuario(usuario);		
+			public Usuario crearUsuario(Usuario usuario) {
+				 return new UsuarioDAOImp().crearUsuario(usuario);		
 			}
 
 			@Override
@@ -52,6 +52,71 @@ public class DAL {
 			}
 		};
 		
+		universidadDAO = new UniversidadDAO() {
+			
+			@Override
+			public Universidad obtenerInformacionDeUniversidad(int id_universidad) {
+				return new UniversidadDAOImp().obtenerInformacionDeUniversidad(id_universidad);
+			}
+			
+			@Override
+			public void eliminarUniversidad(int id_universidad) {
+				new UniversidadDAOImp().eliminarUniversidad(id_universidad);
+				
+			}
+			
+			@Override
+			public void editarUniversiad(Universidad universidad) {
+				new UniversidadDAOImp().editarUniversiad(universidad);
+			}
+			
+			@Override
+			public Universidad crearUniversidad(Universidad universidad) {
+				return new UniversidadDAOImp().crearUniversidad(universidad);
+				
+			}
+		};
+		
+		gradoDAO = new GradoDAO() {
+			
+			@Override
+			public Grado obtenerInformacionGrado(int id_grado) {
+				return new GradoDAOImp().obtenerInformacionGrado(id_grado);
+			}
+			
+			@Override
+			public void eliminarGrado(int id_grado) {
+				new GradoDAOImp().eliminarGrado(id_grado);
+			}
+			
+			@Override
+			public void editarGrado(Grado grado) {
+				new GradoDAOImp().editarGrado(grado);
+			}
+			
+			@Override
+			public Grado crearGrado(Grado grado) {
+				return new GradoDAOImp().crearGrado(grado);
+			}
+		};
+		
+		cursoDAO = new CursoDAO() {
+			
+			@Override
+			public Curso obtenerInformacionCurso(int id_curso) {
+				return new CursoDAOImp().obtenerInformacionCurso(id_curso);
+			}
+			
+			@Override
+			public void eliminarCurso(int id_curso) {
+				new CursoDAOImp().eliminarCurso(id_curso);
+			}
+			
+			@Override
+			public Curso crearCurso(Curso curso) {
+				return new CursoDAOImp().crearCurso(curso);
+			}
+		};
 		
 	}
 	
@@ -61,7 +126,38 @@ public class DAL {
 		}
 		return instance;
 	}
+	
+	
+	/* CURSO */
+	public Curso obtenerInformacionCurso(int id_curso) {
+		return cursoDAO.obtenerInformacionCurso(id_curso);
+	}
+	
+	public void eliminarCurso(int id_curso) {
+		cursoDAO.eliminarCurso(id_curso);
+	}
+	
+	public Curso crearCurso(Curso curso) {
+		return cursoDAO.crearCurso(curso);
+	}
 
+	/* GRADO */
+	public Grado obtenerInformacionGrado(int id_grado){
+		return gradoDAO.obtenerInformacionGrado(id_grado);
+	}
+	
+	public void eliminarGrado(int id_grado) {
+		gradoDAO.eliminarGrado(id_grado);
+	}
+	
+	public void editarGrado(Grado grado) {
+		gradoDAO.editarGrado(grado);
+	}
+	
+	public Grado crearGrado(Grado grado) {
+		return gradoDAO.crearGrado(grado);
+	}
+	
 	/* USUARIO */
 	public Usuario obtenerInformacionDeUsuario(int id_usuario){
 		return usuarioDAO.obtenerInformacionDeUsuario(id_usuario);
@@ -71,8 +167,8 @@ public class DAL {
 		usuarioDAO.eliminarUsuario(id_usuario);
 	}
 	
-	public void crearUsuario( Usuario usuario ){
-		usuarioDAO.crearUsuario(usuario);
+	public Usuario crearUsuario( Usuario usuario ){
+		return usuarioDAO.crearUsuario(usuario);
 	}
 	
 	public Usuario buscarUsuario(int id_usuario){
@@ -84,6 +180,23 @@ public class DAL {
 	}
 	/* FIN USUARIO */
 	
+	/* UNIVERSIDAD */
+	public Universidad crearUniversidad(Universidad universidad){
+		return universidadDAO.crearUniversidad(universidad);
+	}
+	
+	public Universidad obtenerInformacionDeUniversidad(int id_universidad){
+		return universidadDAO.obtenerInformacionDeUniversidad(id_universidad);
+	}
+	
+	public void eliminarUniversidad(int id_universidad){
+		universidadDAO.eliminarUniversidad(id_universidad);
+	}
+	
+	public void editarUniversidad(Universidad universidad){
+		universidadDAO.editarUniversiad(universidad);
+	}
+	/* FIN UNIVERSIDAD */
 	
 	
 	

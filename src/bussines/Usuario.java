@@ -7,7 +7,7 @@ public class Usuario {
 
 	private Map<Integer,Universidad> listauniversidades;
 	private int id_usuario;
-	private int universidad;
+	private Universidad universidad;
 	private String nombre;
 	private String apellidos;
 	private String avatar;
@@ -15,19 +15,7 @@ public class Usuario {
 	private String email;
 	
 
-	public Usuario(String nombre, String apellidos, String avatar,
-			LocalDateTime fechanacimiento, String email) {
-		super();
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.avatar = avatar;
-		this.fechanacimiento = fechanacimiento;
-		this.email = email;
-	}
-	
-	
-	
-	public Usuario(int id_usuario, int universidad, String nombre, String apellidos, String avatar,
+	public Usuario(int id_usuario, Universidad universidad, String nombre, String apellidos, String avatar,
 			LocalDateTime fechanacimiento, String email) {
 		super();
 		this.id_usuario = id_usuario;
@@ -39,19 +27,29 @@ public class Usuario {
 		this.email = email;
 	}
 
-
-
+	public Usuario(Universidad universidad, String nombre, String apellidos, String avatar,
+			LocalDateTime fechanacimiento, String email) {
+		super();
+		this.universidad = universidad;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.avatar = avatar;
+		this.fechanacimiento = fechanacimiento;
+		this.email = email;
+	}
+	
 	public int getId_usuario() {
 		return id_usuario;
 	}
 	public void setId_usuario(int id_usuario) {
 		this.id_usuario = id_usuario;
 	}
-	public int getUniversidad() {
+
+	public Universidad getUniversidad() {
 		return universidad;
 	}
 
-	public void setUniversidad(int universidad) {
+	public void setUniversidad(Universidad universidad) {
 		this.universidad = universidad;
 	}
 
@@ -91,8 +89,10 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", universidad=" + universidad + ", nombre=" + nombre
-				+ ", apellidos=" + apellidos + ", avatar=" + avatar + ", fechanacimiento=" + fechanacimiento + ", email ="+ email +" ]";
+				+ ", apellidos=" + apellidos + ", avatar=" + avatar + ", fechanacimiento=" + fechanacimiento
+				+ ", email=" + email + "]";
 	}
+
 	 
 	
 }

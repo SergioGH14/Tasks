@@ -1,7 +1,24 @@
-/*C2*/SET SCHEMA PUBLIC
-INSERT INTO USUARIO VALUES(20,NULL,'Jeremio                       ','ca\u00f1amas                                                     ','asdasd                                                                          ','2016-05-03','asd                                                                                                 ')
-ALTER SEQUENCE PUBLIC.USUARIO_SQ RESTART WITH 21
+/*C9*/SET SCHEMA PUBLIC
+INSERT INTO UNIVERSIDAD VALUES(6,'Polit\u00e9cnica                                                                                         ','./logo_universidad.png                            ','Cam\u00ed de Vera                                                ')
+ALTER SEQUENCE PUBLIC.UNIVERSIDAD_SQ RESTART WITH 7
 COMMIT
 DISCONNECT
-/*C3*/SET SCHEMA PUBLIC
+/*C10*/SET SCHEMA PUBLIC
+INSERT INTO USUARIO VALUES(25,6,'Kevin                         ','Sotomayor V                                                 ','foto.png                                                                        ','2016-05-05','email@email.com                                                                                     ')
+ALTER SEQUENCE PUBLIC.USUARIO_SQ RESTART WITH 26
+COMMIT
+DISCONNECT
+/*C11*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C12*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C13*/SET SCHEMA PUBLIC
+INSERT INTO GRADO VALUES(3,6,'Ingenier\u00eda Inform\u00e1tica                                                     ','2016-05-05')
+ALTER SEQUENCE PUBLIC.GRADO_SQ RESTART WITH 4
+COMMIT
+DISCONNECT
+/*C14*/SET SCHEMA PUBLIC
+INSERT INTO CURSO VALUES(2,3,'2016-05-05',63.0E0)
+ALTER SEQUENCE PUBLIC.CURSO_SQ RESTART WITH 3
+COMMIT
 DISCONNECT

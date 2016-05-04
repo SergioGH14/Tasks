@@ -9,7 +9,7 @@ public interface UniversidadDAO {
 	
 	public void eliminarUniversidad(int id_universidad);
 	
-	public void crearUniversidad(Universidad universidad);
+	public Universidad crearUniversidad(Universidad universidad);
 	
 	public void editarUniversiad(Universidad universidad);
 		

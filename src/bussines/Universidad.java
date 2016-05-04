@@ -12,7 +12,6 @@ public class Universidad {
 	private Map<Integer, Grado> listagrados;
 
 	public Universidad(String logo, String nombre, String direccion) {
-		
 		this.logo = logo;
 		this.nombre = nombre;
 		this.direccion = direccion;}
@@ -20,14 +19,11 @@ public class Universidad {
 	
 	
 	public Universidad(int id_universidad, String nombre, String logo, String direccion) {
-		
 		this.id_universidad = id_universidad;
 		this.logo = logo;
 		this.nombre = nombre;
 		this.direccion = direccion;
 	}
-
-
 
 	public String getLogo() {
 		return logo;
@@ -54,6 +50,14 @@ public class Universidad {
 
 	public void setId_universidad(int id_universidad) {
 		this.id_universidad = id_universidad;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Universidad [id_universidad=" + id_universidad + ", logo=" + logo + ", nombre=" + nombre
+				+ ", direccion=" + direccion + "]";
 	}
 	
 	}

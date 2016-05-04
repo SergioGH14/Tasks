@@ -44,8 +44,13 @@ public class Date_Solver {
     	 return f;
     }
     
+    //convertir localdate en localdatetime
+    public static LocalDateTime convertirLocalDateEnLocalDateTime(LocalDate localDate){
+    	return localDate.atStartOfDay();
+    }
+    
     //metodos usados para persistencia
-    public static LocalDateTime convertirDateSQLEnLocalDate(java.sql.Date date){
+    public static LocalDateTime convertirDateSQLEnLocalDateTime(java.sql.Date date){
     	DateTimeFormatter dTF = DateTimeFormatter.ofPattern("dd MMM uuuu");
     	String text = date.toLocalDate().format(dTF);
     	LocalDate localdt = LocalDate.parse(text, dTF);

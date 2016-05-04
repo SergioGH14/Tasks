@@ -3,10 +3,8 @@ package persistence;
 import java.sql.ResultSet;
 
 import bussines.Universidad;
-import bussines.Usuario;
 import persistence.dao.UniversidadDAO;
 import util.Constantes;
-import util.Date_Solver;
 
 public class UniversidadDAOImp implements UniversidadDAO{
 	
@@ -28,7 +26,7 @@ public class UniversidadDAOImp implements UniversidadDAO{
 		Universidad uni = null;
 		try{
 			connectionManager.connect();
-			ResultSet universidad = connectionManager.queryDB("SELECT * from UNIVERSIDAD where id_universidad = '"+id_universidad+"'");
+			ResultSet universidad = connectionManager.queryDB("SELECT * from UNIVERSIDAD where id_universidad = "+id_universidad);
 			connectionManager.close();
 		
 			if (universidad.next()){
@@ -36,44 +34,81 @@ public class UniversidadDAOImp implements UniversidadDAO{
 						universidad.getInt("ID_UNIVERSIDAD"),
 						universidad.getString("NOMBRE"),
 						universidad.getString("LOGO"),
-						universidad.getString("DIRECCION")
-							);
-				//saber cuantos caracteres tiene un atributo
-				System.out.println("El usuario tiene de  nombre:" + uni.getNombre()+" y contiene: " + uni.getNombre().toCharArray().length + " caracteres");
+						universidad.getString("DIRECCION") );
 			}else
 				return null;	
 			
 		}catch(Exception e){
-			System.err.println("Ha ocurrido un error al buscar al usuario: "+e.getLocalizedMessage() );
+			System.err.println("Ha ocurrido un error al buscar al la universidad: "+e.getLocalizedMessage() );
 		}
 		return uni;
 	}
 		
 	@Override
-	public void crearUniversidad(Universidad universidad) {
+	public Universidad crearUniversidad(Universidad universidad) {
 		try{
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.UNIVERSIDAD_SQ);
 				String str = "INSERT INTO UNIVERSIDAD (ID_UNIVERSIDAD, NOMBRE, LOGO, DIRECCION) " + 
 							 "VALUES ("+
-							 id+","+
-							 universidad.getNombre()+",'"+
+							 id+",'"+
+							 universidad.getNombre()+"','"+
 							 universidad.getLogo() +"','"+
-							 universidad.getDireccion() +"','"+
-							 
-							 ")";
+							 universidad.getDireccion() +"')";
 	
 				universidad.setId_universidad(id);
 				connectionManager.updateDB(str);
-				System.out.println("Usuario creado con éxito: " + universidad);
+				System.out.println("\nUniversidad creada con éxito: " + universidad);
 			
 			connectionManager.close();
 		}catch(	Exception e){
-			System.err.println("Ha ocurrido un error al crear el universidad: "+e.getLocalizedMessage() );
+			System.err.println("Ha ocurrido un error al crear la universidad: "+e.getLocalizedMessage() );
 		}
+		return universidad;
 	}
 	
-	public int crearSecuencia(String nombreSecuencia){
+
+	@Override
+	public void eliminarUniversidad(int id_universidad) {
+		try{
+			connectionManager.connect();
+			String str = "DELETE FROM UNIVERSIDAD WHERE id_universidad="+ id_universidad ;
+			connectionManager.updateDB(str);
+			
+		
+			System.out.println("\nUniversidad eliminada con éxito: ");
+			connectionManager.close();
+			
+			
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al eliminar el universidad: "+e.getLocalizedMessage() );
+		}
+		
+	}
+
+	@Override
+	public void editarUniversiad(Universidad universidad) {
+		try{
+			connectionManager.connect();
+			String str = "UPDATE UNIVERSIDAD "+
+						 "SET id_universidad= "+universidad.getId_universidad()+", "+
+						 "SET nombre= '"+universidad.getNombre()+"', "+
+						 "SET logo= '"+universidad.getLogo()+"', "+
+						 "SET direccion= '"+ universidad.getDireccion() +"' "+
+						 " WHERE id_universidad=" + universidad.getId_universidad() +")";
+			connectionManager.updateDB(str);
+			System.out.println("\nUniversidad editada con éxito: " + universidad);
+			connectionManager.close();
+
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al editar la universidad: "+e.getLocalizedMessage() );
+		}
+
+		
+	}
+	
+
+	private int crearSecuencia(String nombreSecuencia){
 		try{
 		ResultSet sq = connectionManager.queryDB("CALL NEXT VALUE FOR " + nombreSecuencia);
 
@@ -85,19 +120,6 @@ public class UniversidadDAOImp implements UniversidadDAO{
 		}
 		return -1;
 
-	}
-	
-
-	@Override
-	public void eliminarUniversidad(int id_universidad) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void editarUniversiad(Universidad universidad) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

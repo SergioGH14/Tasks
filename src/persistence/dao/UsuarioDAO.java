@@ -8,7 +8,7 @@ public interface UsuarioDAO {
 	
 	public void eliminarUsuario(int id_usuario);
 	
-	public void crearUsuario(Usuario usuario);
+	public Usuario crearUsuario(Usuario usuario);
 	
 	public void editarUsuario(Usuario usuario);
 		
