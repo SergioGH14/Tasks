@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-
-<GridPane prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #f3f3f3;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<GridPane prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioUniversidadGradoController">
    <rowConstraints>
       <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="157.0" />
       <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="243.0" />
@@ -20,7 +19,7 @@
       <ColumnConstraints minWidth="10.0" prefWidth="220.0" />
    </columnConstraints>
    <children>
-      <ImageView fitHeight="131.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+      <ImageView fitHeight="122.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
          <image>
             <Image url="@../../../assets/logo_upv%5B1%5D.png" />
          </image>
@@ -79,7 +78,7 @@
                   <Insets bottom="45.0" />
                </GridPane.margin>
             </Text>
-            <TextField promptText="Ej: Ingenieria Informática" GridPane.columnSpan="2">
+            <TextField fx:id="tfTituloGrado" promptText="Ej: Ingenieria Informática" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets left="5.0" />
                </GridPane.margin>
@@ -89,12 +88,12 @@
                   <Insets bottom="45.0" />
                </GridPane.margin>
             </Text>
-            <TextField layoutX="15.0" layoutY="31.0" promptText="Es probable que fuera hace años" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <TextField fx:id="tfAnyoGrado" layoutX="15.0" layoutY="31.0" promptText="Es probable que fuera hace años" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
-            <TextField layoutX="10.0" layoutY="98.0" promptText="Ej: 240" GridPane.rowIndex="2">
+            <TextField fx:id="tfCreditosTotales" layoutX="10.0" layoutY="98.0" promptText="Ej: 240" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
@@ -104,19 +103,19 @@
                   <Insets bottom="45.0" />
                </GridPane.margin>
             </Text>
-            <TextField layoutX="15.0" layoutY="197.0" promptText="Ej: 6" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="tfCreditosAprobados" layoutX="15.0" layoutY="197.0" promptText="Ej: 6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <opaqueInsets>
                   <Insets left="5.0" right="5.0" />
                </opaqueInsets>
             </TextField>
-            <Text layoutX="10.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creditos Totales" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text layoutX="10.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creditos Aprobados" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="45.0" />
                </GridPane.margin>
             </Text>
-            <ImageView fitHeight="75.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <ImageView fx:id="ivSiguiente" fitHeight="75.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../../../assets/Circled%20Right-104.png" />
+                  <Image url="@../../../assets/Right.png" />
                </image>
                <GridPane.margin>
                   <Insets bottom="15.0" />

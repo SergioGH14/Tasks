@@ -21,7 +21,7 @@
             <Font name="Calibri Light" size="17.0" />
          </font>
       </Text>
-      <TextField prefHeight="21.0" prefWidth="133.0" promptText="... y tus Apellidos??" GridPane.valignment="BOTTOM">
+      <TextField fx:id="tfApellidos" prefHeight="21.0" prefWidth="133.0" promptText="... y tus Apellidos??" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="20.0" left="35.0" right="20.0" />
          </GridPane.margin>
@@ -47,12 +47,12 @@
             <Insets bottom="75.0" />
          </GridPane.margin>
       </Text>
-      <TextField prefHeight="25.0" prefWidth="143.0" promptText="¿¿Como te llamabas...">
+      <TextField fx:id="tfNombre" prefHeight="25.0" prefWidth="143.0" promptText="¿¿Como te llamabas...">
          <GridPane.margin>
             <Insets bottom="40.0" left="35.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <TextField prefHeight="25.0" prefWidth="164.0" promptText="Blablabla@mail.moc" GridPane.columnIndex="2">
+      <TextField fx:id="tfEmail" prefHeight="25.0" prefWidth="164.0" promptText="Blablabla@mail.moc" GridPane.columnIndex="2">
          <GridPane.margin>
             <Insets bottom="40.0" left="20.0" right="35.0" />
          </GridPane.margin>
@@ -64,13 +64,8 @@
       </Text>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Text layoutX="9.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡¡Enseñanos tu mejor cara!!" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Button layoutX="43.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #f3f3f3;" text="Elegir imagen ..." />
-            <ImageView fitHeight="74.0" fitWidth="73.0" layoutX="56.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="btImagen" layoutX="46.0" layoutY="121.0" mnemonicParsing="false" style="-fx-background-color: #f3f3f3;" text="Elegir imagen ..." />
+            <ImageView fx:id="ivAvatar" fitHeight="107.0" fitWidth="118.0" layoutX="39.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/Login%20As%20User-96.png" />
                </image>
@@ -82,7 +77,7 @@
             <Insets left="20.0" top="15.0" />
          </GridPane.margin>
       </Text>
-      <DatePicker promptText="¿Cumpleaños?" GridPane.columnIndex="2" GridPane.valignment="BOTTOM">
+      <DatePicker fx:id="dpFechanacimiento" promptText="¿Cumpleaños?" GridPane.columnIndex="2" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="35.0" />
          </GridPane.margin>
@@ -92,9 +87,9 @@
             <Insets bottom="45.0" left="20.0" />
          </GridPane.margin>
       </Text>
-      <ImageView fitHeight="75.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <ImageView fx:id="ivSiguiente" fitHeight="75.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <image>
-            <Image url="@../../../assets/Circled%20Right-104.png" />
+            <Image url="@../../../assets/Right.png" />
          </image>
          <GridPane.margin>
             <Insets bottom="15.0" />

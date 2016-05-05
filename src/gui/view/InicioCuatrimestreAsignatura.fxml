@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioCuatrimestreAsignaturaController">
    <rowConstraints>
       <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="200.0" />
       <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="200.0" />
@@ -56,7 +56,7 @@
             <Insets bottom="15.0" />
          </GridPane.margin>
       </ImageView>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Primero de todo, confirmemos la estructura cuatrimestral de tu curso." wrappingWidth="241.009765625" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ya casi hemos acabado, ahora acabo de crear tu curso actual. Todas las acciones que hagas seran en referencia a él" wrappingWidth="241.009765625" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
@@ -66,19 +66,9 @@
             <Image url="@../../../assets/Calendar%2023.png" />
          </image>
          <GridPane.margin>
-            <Insets right="23.0" />
+            <Insets right="40.0" />
          </GridPane.margin>
       </ImageView>
-      <ComboBox prefWidth="150.0" promptText="Tipos de cursos" style="-fx-border-color: #ff7843;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-         <GridPane.margin>
-            <Insets bottom="10.0" />
-         </GridPane.margin>
-      </ComboBox>
-      <RadioButton mnemonicParsing="false" text="Tienes asignaturas Anuales" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-         <GridPane.margin>
-            <Insets bottom="15.0" />
-         </GridPane.margin>
-      </RadioButton>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Una vez aclarado esto puedes proceder a añadir todas las asignaturas que quieras aprobar." wrappingWidth="234.009765625" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="16.0" />
@@ -87,7 +77,7 @@
             <Insets left="20.0" top="30.0" />
          </GridPane.margin>
       </Text>
-      <ImageView fitHeight="100.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <ImageView fitHeight="91.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <image>
             <Image url="@../../../assets/Exam-100.png" />
          </image>

@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 public class MainController  extends Application {
 	private BorderPane root;
+	private BorderPane userRoot;
 	private boolean user;
 	
 	@Override
@@ -43,7 +44,7 @@ public class MainController  extends Application {
 			primaryStage.show();
 			
 			setBarraInferiorPrincipal(primaryStage);}
-			else{userRoot(primaryStage);}
+			else{inicioUserRoot(primaryStage);}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -73,10 +74,10 @@ public class MainController  extends Application {
 		}
 		
 	}
-	public void userRoot(Stage secondaryStage){
+	public void inicioUserRoot(Stage secondaryStage){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/UsuarioRootLayout.fxml"));
-			BorderPane userRoot = (BorderPane)loader.load();
+			userRoot = (BorderPane)loader.load();
 			Scene scene = new Scene(userRoot);
 			secondaryStage.setScene(scene);
 			secondaryStage.setTitle(util.Constantes.ARDUM);
@@ -85,12 +86,12 @@ public class MainController  extends Application {
 			userRootController.initStage(secondaryStage, this);
 			
 			secondaryStage.show();
-			inicioUsuario(secondaryStage, userRoot);
+			inicioUsuario(secondaryStage);
 		} catch (IOException e){
 			// TODO Auto-generated catch block
-			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
+			System.err.println("Error Root Layout Usuario " + e.getLocalizedMessage());
 		}}
-	public void inicioUsuario(Stage secondaryStage, BorderPane userRoot){
+	public void inicioUsuario(Stage secondaryStage){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/InicioUsuario.fxml"));
 			GridPane initUser = (GridPane)loader.load();
@@ -107,6 +108,51 @@ public class MainController  extends Application {
 			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
 		}
 	}
+	public void inicioUniversidadGrado(Stage secondaryStage){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/InicioUniversidadGrado.fxml"));
+			GridPane initUser = (GridPane)loader.load();
+			
+			if(userRoot!=null){
+				userRoot.setCenter(initUser);
+			}
+			
+			InicioUniversidadGradoController inicioU = loader.<InicioUniversidadGradoController>getController();
+			inicioU.initStage(secondaryStage, this);
+			
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());
+		}
+	}
+	public void inicioCuatrimestreAsignatura(Stage secondaryStage){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/InicioCuatrimestreAsignatura.fxml"));
+			GridPane initUser = (GridPane)loader.load();
+			
+			if(userRoot!=null){
+				userRoot.setCenter(initUser);
+			}
+			
+			InicioCuatrimestreAsignaturaController inicioU = loader.<InicioCuatrimestreAsignaturaController>getController();
+			inicioU.initStage(secondaryStage, this);
+			
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void setBarraInferiorPrincipal(Stage primaryStage){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/BarraInferiorPrincipal.fxml"));
