@@ -1,8 +1,11 @@
 package gui.controller;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import bussines.Curso;
 import bussines.Grado;
 import bussines.Universidad;
 import javafx.event.Event;
@@ -12,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import util.Date_Solver;
 
 public class InicioUniversidadGradoController  implements Initializable{
 	
@@ -33,12 +37,14 @@ public class InicioUniversidadGradoController  implements Initializable{
     
 	private Stage primaryStage;
 	private MainController controladorPrincipal;
+	private Universidad upv;
 	public  InicioUniversidadGradoController() {
 		// TODO Auto-generated constructor stub
 	}
-	public void initStage(Stage stage, MainController controladorPrincipal){
+	public void initStage(Stage stage, MainController controladorPrincipal,Universidad upv){
 		this.primaryStage = stage;
 		this.controladorPrincipal = controladorPrincipal;
+		this.upv = upv;
 		
 		}
 	
@@ -55,19 +61,23 @@ public class InicioUniversidadGradoController  implements Initializable{
 			public void handle(Event event) {
 				// ¿Comprobamos que todos los parametros son validos?
 				
-				//Creamos la universidad
-				Universidad upv = new Universidad("/Tasks/assets/logo_upv[1].png","Universitat Politecnica de Valencia", "Camino de Vera");
-				/*
-				Grado actual = new Grado(tfTituloGrado.getText(),tfAnyoGrado.getText());*/
+				System.out.println("Este es el año convertido supuestamente en una fecha -->"+Date_Solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
+				
+				Grado grado = new Grado(upv, tfTituloGrado.getText(),Date_Solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
 				
 				
 				
-				//Mandamos el Usuario a persistencia mediante fachada
+				Curso actual = new Curso(grado,
+						LocalDateTime.now(),
+						Double.parseDouble(tfCreditosTotales.getText()));
 				
 				
+				//Mandamos el Grado a persistencia mediante fachada
+				
+				/*VAMOS GERMANIO QUE TE ESTOY ESPERANDOOO!!*/
 				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
-				controladorPrincipal.inicioCuatrimestreAsignatura(primaryStage);
+				controladorPrincipal.inicioCuatrimestreAsignatura(primaryStage, actual);
 			}
 		});
 	}

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane maxHeight="400.0" maxWidth="580.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioUsuarioController">
+<GridPane maxHeight="400.0" maxWidth="580.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioUsuarioController">
    <children>
       <ImageView fitHeight="111.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <image>
@@ -64,12 +64,13 @@
       </Text>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Button fx:id="btImagen" layoutX="46.0" layoutY="121.0" mnemonicParsing="false" style="-fx-background-color: #f3f3f3;" text="Elegir imagen ..." />
-            <ImageView fx:id="ivAvatar" fitHeight="107.0" fitWidth="118.0" layoutX="39.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="46.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/Login%20As%20User-96.png" />
                </image>
             </ImageView>
+            <Button fx:id="btImagen" layoutX="43.0" layoutY="121.0" mnemonicParsing="false" style="-fx-background-color: #f3f3f3;" text="Elegir imagen ..." />
+            <Circle fx:id="cImage" fill="#1f93ff00" layoutX="92.0" layoutY="61.0" radius="56.0" stroke="#ffffff00" strokeType="INSIDE" />
          </children>
       </Pane>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico" GridPane.columnIndex="2" GridPane.valignment="TOP">

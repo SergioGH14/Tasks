@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.UsuarioRootController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.UsuarioRootController">
    <top>
       <GridPane maxHeight="140.0" prefHeight="140.0" style="-fx-background-color: #ff7843;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -31,7 +31,7 @@
       </GridPane>
    </top>
    <left>
-      <GridPane prefHeight="550.0" prefWidth="10.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="550.0" prefWidth="10.0" style="-fx-background-color: #EFEFEF;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -46,7 +46,7 @@
       </GridPane>
    </left>
    <right>
-      <GridPane prefHeight="550.0" prefWidth="10.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="550.0" prefWidth="10.0" style="-fx-background-color: #EFEFEF;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -61,6 +61,6 @@
       </GridPane>
    </right>
    <bottom>
-      <Pane prefHeight="10.0" prefWidth="550.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="10.0" prefWidth="550.0" style="-fx-background-color: #EFEFEF;" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

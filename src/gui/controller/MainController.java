@@ -3,6 +3,8 @@ package gui.controller;
 import java.io.IOException;
 
 import bussines.Asignatura;
+import bussines.Curso;
+import bussines.Universidad;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,12 +24,12 @@ import javafx.stage.Stage;
 public class MainController  extends Application {
 	private BorderPane root;
 	private BorderPane userRoot;
-	private boolean user;
+	private boolean user = false;
 	
 	@Override
 	public void start(Stage primaryStage) {
-		try {user=false;
-			if(user==true){
+		try {
+			if(user){
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/MenuLateralBorderPanePrincipal.fxml"));
 			root = (BorderPane)loader.load();
 			Scene scene = new Scene(root);
@@ -108,7 +110,7 @@ public class MainController  extends Application {
 			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
 		}
 	}
-	public void inicioUniversidadGrado(Stage secondaryStage){
+	public void inicioUniversidadGrado(Stage secondaryStage,Universidad upv){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/InicioUniversidadGrado.fxml"));
 			GridPane initUser = (GridPane)loader.load();
@@ -118,14 +120,14 @@ public class MainController  extends Application {
 			}
 			
 			InicioUniversidadGradoController inicioU = loader.<InicioUniversidadGradoController>getController();
-			inicioU.initStage(secondaryStage, this);
+			inicioU.initStage(secondaryStage, this, upv);
 			
 		} catch (IOException e){
 			// TODO Auto-generated catch block
 			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());
 		}
 	}
-	public void inicioCuatrimestreAsignatura(Stage secondaryStage){
+	public void inicioCuatrimestreAsignatura(Stage secondaryStage, Curso actual){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/InicioCuatrimestreAsignatura.fxml"));
 			GridPane initUser = (GridPane)loader.load();
@@ -135,7 +137,7 @@ public class MainController  extends Application {
 			}
 			
 			InicioCuatrimestreAsignaturaController inicioU = loader.<InicioCuatrimestreAsignaturaController>getController();
-			inicioU.initStage(secondaryStage, this);
+			inicioU.initStage(secondaryStage, this, actual);
 			
 		} catch (IOException e){
 			// TODO Auto-generated catch block
@@ -169,5 +171,14 @@ public class MainController  extends Application {
 			// TODO Auto-generated catch block
 			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
 		}
+	}
+	
+	public void tenemosUsuario(boolean modo){
+		//Aqui debe haber un metodo que llame a fachada y que diga si tenemos usuario o no
+		
+		//EL METODO FINAL NO TENDRA BOOLEAN COMO PARAMETRO
+		
+		//Mientras tanto cambiaremos el BOOLEAN para poner el modo
+		user = modo;;
 	}
 }

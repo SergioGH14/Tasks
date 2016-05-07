@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioCuatrimestreAsignaturaController">
+<GridPane prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioCuatrimestreAsignaturaController">
    <rowConstraints>
       <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="200.0" />
       <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="200.0" />
@@ -19,7 +19,7 @@
       <ColumnConstraints minWidth="10.0" prefWidth="220.0" />
    </columnConstraints>
    <children>
-      <ListView prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #ff7843;" GridPane.rowSpan="2">
+      <ListView fx:id="lvListaAsignaturas" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #ff7843;" GridPane.rowSpan="2">
          <GridPane.margin>
             <Insets bottom="65.0" left="5.0" top="75.0" />
          </GridPane.margin>
@@ -32,9 +32,9 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button mnemonicParsing="false" style="-fx-background-color: #f3f3f3;" text="Añadir Asignatura" textFill="#ff7843" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="btAnyadirAsignatura" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="33.0" prefWidth="164.0" style="-fx-background-color: White;" text="Añadir Asignatura" textAlignment="RIGHT" textFill="#ff7843" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="20.0" right="5.0" />
          </GridPane.margin>
          <font>
             <Font name="Calibri" size="17.0" />
@@ -45,10 +45,10 @@
             <Font name="Calibri Light" size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="18.0" left="40.0" />
+            <Insets bottom="18.0" left="23.0" />
          </GridPane.margin>
       </Text>
-      <ImageView fitHeight="52.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <ImageView fx:id="ivSiguiente" fitHeight="52.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <image>
             <Image url="@../../../assets/Right.png" />
          </image>

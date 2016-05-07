@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioUniversidadGradoController">
+<GridPane prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.InicioUniversidadGradoController">
    <rowConstraints>
       <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="157.0" />
       <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="243.0" />

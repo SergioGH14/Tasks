@@ -34,6 +34,7 @@ public class Date_Solver {
 	//Devuelve la hora del sistema en formato date 
     public static Date getHoraActual() {
         Date ahora = new Date();
+        System.out.println("Datesolver ahora-->"+ahora);
         return ahora; 
 	  }
 	    
@@ -61,6 +62,27 @@ public class Date_Solver {
     public static java.sql.Date convertirLocalDateEnSQL( LocalDateTime date) {
         return java.sql.Date.valueOf(date.toLocalDate());
     }
+  
+    //Añade al String año todo lo que necesita un LocalDateTime
+  		public static String getDateinString(String date){
+  			String res = date+"-09-10";
+  			res+="T00:00:00";//hour by default with only date
+  			return res;
+  		}
+  	//Convierte un String de forma yyyy (anyo) en localdatetime
+  		public static LocalDateTime setDateinLocaleDateTime(String date){
+  			LocalDateTime dateTime = null;
+  			try{
+  				date = getDateinString(date);
+  				
+  				dateTime= LocalDateTime.parse(date);
+  				
+  			}catch(Exception e){
+  				System.out.println("Ocurrió un error al obtener una fecha válida por el sistema");
+  			}
+  			return dateTime;
+  		
+  		}
     
     //fecha con formato:
     public static LocalDateTime formatLocalDateTime(LocalDateTime date){
