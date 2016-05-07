@@ -1,24 +1,29 @@
+/*C8*/SET SCHEMA PUBLIC
+INSERT INTO UNIVERSIDAD VALUES(7,'Polit\u00e9cnica','./logo_universidad.png','C/ Vera')
+ALTER SEQUENCE PUBLIC.UNIVERSIDAD_SQ RESTART WITH 8
+COMMIT
+DISCONNECT
 /*C9*/SET SCHEMA PUBLIC
-INSERT INTO UNIVERSIDAD VALUES(6,'Polit\u00e9cnica                                                                                         ','./logo_universidad.png                            ','Cam\u00ed de Vera                                                ')
-ALTER SEQUENCE PUBLIC.UNIVERSIDAD_SQ RESTART WITH 7
+INSERT INTO USUARIO VALUES(26,7,'Kevin','Sotomayor V.','asdsad.png','2016-05-05','email@gmail.com')
+ALTER SEQUENCE PUBLIC.USUARIO_SQ RESTART WITH 27
 COMMIT
 DISCONNECT
 /*C10*/SET SCHEMA PUBLIC
-INSERT INTO USUARIO VALUES(25,6,'Kevin                         ','Sotomayor V                                                 ','foto.png                                                                        ','2016-05-05','email@email.com                                                                                     ')
-ALTER SEQUENCE PUBLIC.USUARIO_SQ RESTART WITH 26
-COMMIT
 DISCONNECT
 /*C11*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C12*/SET SCHEMA PUBLIC
+DELETE FROM USUARIO WHERE ID_USUARIO=26
+INSERT INTO USUARIO VALUES(26,7,'Kevin','Sotomayor V.','asdsad.png','2016-05-05','email@gmail.com')
+COMMIT
 DISCONNECT
 /*C13*/SET SCHEMA PUBLIC
-INSERT INTO GRADO VALUES(3,6,'Ingenier\u00eda Inform\u00e1tica                                                     ','2016-05-05')
-ALTER SEQUENCE PUBLIC.GRADO_SQ RESTART WITH 4
+INSERT INTO GRADO VALUES(4,7,'Ingenieria informatica','2016-05-05')
+ALTER SEQUENCE PUBLIC.GRADO_SQ RESTART WITH 5
 COMMIT
 DISCONNECT
 /*C14*/SET SCHEMA PUBLIC
-INSERT INTO CURSO VALUES(2,3,'2016-05-05',63.0E0)
-ALTER SEQUENCE PUBLIC.CURSO_SQ RESTART WITH 3
+INSERT INTO CURSO VALUES(3,4,'2016-05-05',63.0E0)
+ALTER SEQUENCE PUBLIC.CURSO_SQ RESTART WITH 4
 COMMIT
 DISCONNECT

@@ -1,12 +1,12 @@
 package bussines;
 
-public class Examen_Poliformat extends Decorador {
+public class Examen_Poliformat extends Decorador_Examen {
 	
-	private Examen examen ;
+	private Actividad_Examen examen ;
 	private boolean reintentable;
 	
 
-	public Examen_Poliformat(Examen examen, boolean reintentable) {
+	public Examen_Poliformat(Actividad_Examen examen, boolean reintentable) {
 		super(examen);
 		// TODO Auto-generated constructor stub
 		this.examen=examen;
@@ -15,11 +15,11 @@ public class Examen_Poliformat extends Decorador {
 		
 	}
 
-	public Examen getExamen() {
+	public Actividad_Examen getExamen() {
 		return examen;
 	}
 
-	public void setExamen(Examen examen) {
+	public void setExamen(Actividad_Examen examen) {
 		this.examen = examen;
 	}
 

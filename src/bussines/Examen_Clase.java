@@ -1,12 +1,12 @@
 package bussines;
 
-public class Examen_Clase extends Decorador {
+public class Examen_Clase extends Decorador_Examen {
 
-	private Examen examen ;
+	private Actividad_Examen examen ;
 	private boolean apuntes;
 	private boolean grupal;
 	
-	public Examen_Clase(Examen examen,boolean apuntes,boolean grupal) {
+	public Examen_Clase(Actividad_Examen examen,boolean apuntes,boolean grupal) {
 		super(examen);
 		// TODO Auto-generated constructor stub
 		this.examen=examen;
@@ -16,11 +16,11 @@ public class Examen_Clase extends Decorador {
 		
 	}
 
-	public Examen getExamen() {
+	public Actividad_Examen getExamen() {
 		return examen;
 	}
 
-	public void setExamen(Examen examen) {
+	public void setExamen(Actividad_Examen examen) {
 		this.examen = examen;
 	}
 

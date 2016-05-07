@@ -1,10 +1,10 @@
 package bussines;
-public class Examen_Practicas extends Decorador {
+public class Examen_Practicas extends Decorador_Examen {
 	
-	private Examen examen ;
+	private Actividad_Examen examen ;
 	private boolean apuntes;
 	
-	public Examen_Practicas(Examen examen, boolean apuntes) {
+	public Examen_Practicas(Actividad_Examen examen, boolean apuntes) {
 		super(examen);
 		// TODO Auto-generated constructor stub
 		this.examen=examen;
@@ -13,11 +13,11 @@ public class Examen_Practicas extends Decorador {
 		
 	}
 
-	public Examen getExamen() {
+	public Actividad_Examen getExamen() {
 		return examen;
 	}
 
-	public void setExamen(Examen examen) {
+	public void setExamen(Actividad_Examen examen) {
 		this.examen = examen;
 	}
 

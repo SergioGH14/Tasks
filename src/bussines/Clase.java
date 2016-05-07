@@ -1,16 +1,18 @@
 package bussines;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Clase extends Actividad{
 
-
+	private int id_clase;
 	private boolean puntuable;
 	
-	public Clase(Asignatura asignatura, String titulo, String descripcion, Date fechafinalizacion,
-			         int tiempoestimado, Double porcentaje, int prioridadusuario,boolean finalizada, boolean puntuable) {
+	public Clase(Asignatura asignatura, String titulo, String descripcion,  LocalDateTime fechafinalizacion,
+			         int tiempoestimado, double porcentaje, int prioridadusuario,boolean finalizada, boolean puntuable) {
+		super(asignatura, titulo, descripcion, fechafinalizacion,
+				tiempoestimado, porcentaje, 
+				prioridadusuario, finalizada);
 		
-		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
 		this.setPuntuable(puntuable);
 		setPrioridadtotal(establecerPrioridadTotal());
 		

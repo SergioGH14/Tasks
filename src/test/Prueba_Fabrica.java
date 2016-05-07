@@ -1,5 +1,6 @@
 package test;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -24,9 +25,9 @@ public class Prueba_Fabrica {
 			ArrayList<Boolean> especificaciones = new ArrayList<Boolean>();
 			especificaciones.add(true);
 			especificaciones.add(true);
-			Date fecha = new Date();
+			LocalDateTime fecha = LocalDateTime.now();
 			
-		Asignatura CSD = new Asignatura("CSD", 6.0, dificultadAsignatura, false);
+		Asignatura CSD = new Asignatura("CSD");
 		
 		
 		System.out.println("Crear nueva tarea de "+CSD.getTitulo()+" .");

@@ -1,30 +1,47 @@
 package bussines;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class Actividad {
 
+	private int id_actividad;
 	private Asignatura asignatura;
 	private String titulo;
 	private String descripcion;
-	private Date fechafinalizacion;
-	private int tiempoestimado;
-	private Double porcentaje;
-	private int prioridadusuario;
-	private int prioridadtotal;
+	private LocalDateTime fechaFinalizacion;
+	private int tiempoEstimado;
+	private double porcentaje;
+	private int prioridadUsuario;
+	private int prioridadTotal;
 	private boolean finalizada;
 	
-	public Actividad(Asignatura asignatura, String titulo, String descripcion, Date fechafinalizacion,
-			int tiempoestimado, Double porcentaje, int prioridadusuario, boolean finalizada) {
-		super();
+	public Actividad(int id_actividad, Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
+			int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal, boolean finalizada) {
+		this.id_actividad = id_actividad;
+		this.asignatura = asignatura;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.fechaFinalizacion = fechafinalizacion;
+		this.tiempoEstimado = tiempoestimado;
+		this.porcentaje = porcentaje;
+		this.prioridadUsuario = prioridadusuario;
+		this.prioridadTotal = prioridadtotal;
+		this.finalizada = finalizada;
+	}
+
+	public Actividad(Asignatura asignatura, String titulo, String descripcion,
+			LocalDateTime fechafinalizacion,
+			int tiempoestimado, Double porcentaje, 
+			int prioridadusuario, boolean finalizada) {
+		
 		this.setAsignatura(asignatura);
 		this.titulo = titulo;
 		this.descripcion = descripcion;
-		this.fechafinalizacion = fechafinalizacion;
-		this.tiempoestimado = tiempoestimado;
+		this.fechaFinalizacion = fechafinalizacion;
+		this.tiempoEstimado = tiempoestimado;
 		this.porcentaje = porcentaje;
-		this.prioridadusuario = prioridadusuario;
-		this.prioridadtotal = establecerPrioridadTotal();
+		this.prioridadUsuario = prioridadusuario;
+		this.prioridadTotal = establecerPrioridadTotal();
 		this.finalizada = finalizada;
 		
 	}
@@ -32,48 +49,13 @@ public abstract class Actividad {
 	private int establecerPrioridadTotal(){
 		return -1;
 	}
-	
-	public String getTitulo() {
-		return titulo;
+
+	public int getId_actividad() {
+		return id_actividad;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	public Date getFechafinalizacion() {
-		return fechafinalizacion;
-	}
-	public void setFechafinalizacion(Date fechafinalizacion) {
-		this.fechafinalizacion = fechafinalizacion;
-	}
-	public int getTiempoestimado() {
-		return tiempoestimado;
-	}
-	public void setTiempoestimado(int tiempoestimado) {
-		this.tiempoestimado = tiempoestimado;
-	}
-	public Double getPorcentaje() {
-		return porcentaje;
-	}
-	public void setPorcentaje(Double porcentaje) {
-		this.porcentaje = porcentaje;
-	}
-	public int getPrioridadusuario() {
-		return prioridadusuario;
-	}
-	public void setPrioridadusuario(int prioridadusuario) {
-		this.prioridadusuario = prioridadusuario;
-	}
-	public int getPrioridadtotal() {
-		return prioridadtotal;
-	}
-	public void setPrioridadtotal(int prioridadtotal) {
-		this.prioridadtotal = prioridadtotal;
+
+	public void setId_actividad(int id_actividad) {
+		this.id_actividad = id_actividad;
 	}
 
 	public Asignatura getAsignatura() {
@@ -82,6 +64,62 @@ public abstract class Actividad {
 
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public LocalDateTime getFechafinalizacion() {
+		return fechaFinalizacion;
+	}
+
+	public void setFechafinalizacion(LocalDateTime fechafinalizacion) {
+		this.fechaFinalizacion = fechafinalizacion;
+	}
+
+	public int getTiempoestimado() {
+		return tiempoEstimado;
+	}
+
+	public void setTiempoestimado(int tiempoestimado) {
+		this.tiempoEstimado = tiempoestimado;
+	}
+
+	public Double getPorcentaje() {
+		return porcentaje;
+	}
+
+	public void setPorcentaje(Double porcentaje) {
+		this.porcentaje = porcentaje;
+	}
+
+	public int getPrioridadusuario() {
+		return prioridadUsuario;
+	}
+
+	public void setPrioridadusuario(int prioridadusuario) {
+		this.prioridadUsuario = prioridadusuario;
+	}
+
+	public int getPrioridadtotal() {
+		return prioridadTotal;
+	}
+
+	public void setPrioridadtotal(int prioridadtotal) {
+		this.prioridadTotal = prioridadtotal;
 	}
 
 	public boolean isFinalizada() {

@@ -1,6 +1,6 @@
 package bussines;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Fabrica_Actividad {
 	 public static Fabrica_Actividad instance;
 	/*
-	 * CrearActividad devuelve una Actividad que será Practica o Clase o Examen dependiendo del entero tipo
+	 * CrearActividad devuelve una Actividad que serï¿½ Practica o Clase o Examen dependiendo del entero tipo
 	 * 1 practica  
 	 * 2 clase
 	 * 3 examen
@@ -33,7 +33,7 @@ public class Fabrica_Actividad {
 			Asignatura asignatura,
 			String titulo, 
 			String descripcion, 
-			Date fechafinalizacion, 
+			LocalDateTime fechafinalizacion, 
 			int tiempoestimado, 
 			double porcentaje, 
 			int prioridadusuario, 
@@ -90,7 +90,7 @@ public class Fabrica_Actividad {
 		
 	}
 	
-	private Actividad crearPractica(Asignatura asignatura,String titulo, String descripcion,Date fechafinalizacion, int tiempoestimado, 
+	private Actividad crearPractica(Asignatura asignatura,String titulo, String descripcion,LocalDateTime fechafinalizacion, int tiempoestimado, 
 			double porcentaje, int prioridadusuario,  boolean finalizada,ArrayList<Boolean> especificaciones){
 		
 		Practicas practica = new Practicas(asignatura,
@@ -107,7 +107,7 @@ public class Fabrica_Actividad {
 		return practica;
 	}
 	
-	private Actividad crearClase(Asignatura asignatura,String titulo, String descripcion,Date fechafinalizacion, int tiempoestimado, 
+	private Actividad crearClase(Asignatura asignatura,String titulo, String descripcion,LocalDateTime fechafinalizacion, int tiempoestimado, 
 			double porcentaje, int prioridadusuario, boolean finalizada ,ArrayList<Boolean> especificaciones){
 		
 		
@@ -124,11 +124,11 @@ public class Fabrica_Actividad {
 		return clase;
 	}
 
-	private Actividad crearExamen(Asignatura asignatura,String titulo, String descripcion,Date fechafinalizacion, int tiempoestimado, 
+	private Actividad crearExamen(Asignatura asignatura,String titulo, String descripcion,LocalDateTime fechafinalizacion, int tiempoestimado, 
 			double porcentaje, int prioridadusuario,   boolean finalizada,ArrayList<Boolean> especificaciones){
 		
 		
-		Examen_Concreto examen = new Examen_Concreto(asignatura,
+		Examen examen = new Examen(asignatura,
 				titulo, 
 				descripcion, 
 				fechafinalizacion, 

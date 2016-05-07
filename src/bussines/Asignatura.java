@@ -7,22 +7,39 @@ import javafx.scene.paint.Color;
 
 public class Asignatura {
 	
-	
+	private int id_asignatura;
+	private Cuatrimestre cuatrimestre;
 	private String titulo;
-	private Color color; //atributo de prueba para list-cell
-	private Double creditos;
+	private double creditos;
 	private int dificultad;
 	private boolean anual;
+	private Color color; 
 
-	private Map<Integer, Actividad> listaactividades;
+	private Map<Integer, Actividad> listaActividades;
 	
-	public Asignatura(String titulo, Double creditos, int dificultad, boolean anual) {
+	public Asignatura(int id_asignatura, Cuatrimestre cuatrimestre, String titulo, double creditos, int dificultad,
+			boolean anual, Color color) {
+		super();
+		this.id_asignatura = id_asignatura;
+		this.cuatrimestre = cuatrimestre;
 		this.titulo = titulo;
 		this.creditos = creditos;
 		this.dificultad = dificultad;
 		this.anual = anual;
+		this.color = color;
 	}
-	
+
+	public Asignatura(Cuatrimestre cuatrimestre, String titulo, double creditos, int dificultad, boolean anual,
+			Color color) {
+		super();
+		this.cuatrimestre = cuatrimestre;
+		this.titulo = titulo;
+		this.creditos = creditos;
+		this.dificultad = dificultad;
+		this.anual = anual;
+		this.color = color;
+	}
+
 	//constructor de prueba para lista en menu lateral
 	public Asignatura(String titulo){
 		this.titulo = titulo;
@@ -61,7 +78,6 @@ public class Asignatura {
 	}
 	
 	
-	
 	public Color getColor() {
 		return color;
 	}
@@ -70,9 +86,11 @@ public class Asignatura {
 		this.color = color;
 	}
 
-	//ToString de prueba, borrar despues de su uso.
-	public String toString(){
-		return "· "+titulo;
+	@Override
+	public String toString() {
+		return "Asignatura [id_asignatura=" + id_asignatura + ", cuatrimestre=" + cuatrimestre + ", titulo=" + titulo
+				+ ", creditos=" + creditos + ", dificultad=" + dificultad + ", anual=" + anual + ", color=" + color
+				+ "]";
 	}
 	
 }
