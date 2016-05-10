@@ -1,5 +1,6 @@
 package bussines;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import util.Date_Solver;
@@ -9,9 +10,9 @@ public class Notificacion {
 	private String titulo;
 	private String descripcion;
 	private int prioridad;
-	private Date fecha_notificacion;
+	private LocalDateTime fecha_notificacion;
 	
-	public Notificacion(String titulo, String descripcion, int prioridad, Date fecha){
+	public Notificacion(String titulo, String descripcion, int prioridad, LocalDateTime fecha){
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.prioridad = prioridad;
@@ -42,17 +43,17 @@ public class Notificacion {
 		this.prioridad = prioridad;
 	}
 
-	public Date getFecha_notificacion() {
+	public LocalDateTime getFecha_notificacion() {
 		return fecha_notificacion;
 	}
 
-	public void setFecha_notificacion(Date fecha_notificacion) {
+	public void setFecha_notificacion(LocalDateTime fecha_notificacion) {
 		this.fecha_notificacion = fecha_notificacion;
 	}
 	//probar lo que imprime por consola 
 	public String toString(){
 		
-		String S = getTitulo()+" "+getPrioridad()+" "+getDescripcion()+""+Date_Solver.dateastring(getFecha_notificacion());
+		String S = getTitulo()+" "+getPrioridad()+" "+getDescripcion();
 		
 		return S;
 	}
