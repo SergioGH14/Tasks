@@ -36,7 +36,7 @@ public class MainController  extends Application {
 			scene.getStylesheets().add(getClass().getResource("/gui/view/application.css").toExternalForm());
 
 			primaryStage.setScene(scene);
-			primaryStage.setTitle(util.Constantes.ARDUM);
+			primaryStage.setTitle(Util.Constantes.ARDUM);
 			
 			//acceso al controlador de la pantalla de activiades con menu lateral
 			//previo paso de datos antes de que se lanze la pantalla
@@ -58,7 +58,7 @@ public class MainController  extends Application {
 	
 	//la pantalla de activiades siempre abre la misma, solo que con diferentes asignaturas que tendrán activiades diferentes
 	public void abrirPantallaActividades(Stage primaryStage, Asignatura asignatura){
-		primaryStage.setTitle(util.Constantes.ARDUM + " - " + asignatura.getTitulo());
+		primaryStage.setTitle(Util.Constantes.ARDUM + " - " + asignatura.getTitulo());
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/ListaActividades.fxml"));
 			GridPane pantallaListaActiviades = (GridPane)loader.load();
@@ -82,7 +82,7 @@ public class MainController  extends Application {
 			userRoot = (BorderPane)loader.load();
 			Scene scene = new Scene(userRoot);
 			secondaryStage.setScene(scene);
-			secondaryStage.setTitle(util.Constantes.ARDUM);
+			secondaryStage.setTitle(Util.Constantes.ARDUM);
 			
 			UsuarioRootController userRootController = loader.<UsuarioRootController>getController();
 			userRootController.initStage(secondaryStage, this);

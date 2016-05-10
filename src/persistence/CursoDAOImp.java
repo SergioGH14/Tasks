@@ -2,11 +2,11 @@ package persistence;
 
 import java.sql.ResultSet;
 
+import Util.Constantes;
+import Util.Date_Solver;
 import bussines.Curso;
 import bussines.Grado;
 import persistence.dao.CursoDAO;
-import util.Constantes;
-import util.Date_Solver;
 
 public class CursoDAOImp implements CursoDAO{
 

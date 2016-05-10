@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
+import Util.Date_Solver;
 import bussines.Universidad;
 import bussines.Usuario;
 import javafx.embed.swing.SwingFXUtils;
@@ -25,7 +26,6 @@ import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import util.Date_Solver;
 
 public class InicioUsuarioController implements Initializable{
 	

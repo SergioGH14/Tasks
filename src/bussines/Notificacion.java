@@ -3,7 +3,7 @@ package bussines;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-import util.Date_Solver;
+import Util.Date_Solver;
 
 public class Notificacion {
 	//En las clases constantes se puede a�adir imagenes para examen clases practicas

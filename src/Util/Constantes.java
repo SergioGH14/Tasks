@@ -1,4 +1,4 @@
-package util;
+package Util;
 
 public class Constantes {
 	//nombre de la aplicación
@@ -36,5 +36,34 @@ public class Constantes {
 	public static final String EXAMEN_POLIFORMAT_SQ = "PUBLIC.EXAMEN_POLIFORMAT_SQ";
 	public static final String EXAMEN_PRACTICA_SQ = "PUBLIC.EXAMEN_PRACTICA_SQ";
 
-
+	public static String descripcionExamen(){
+		String des = null;
+		int valor = (int) Math.round(Math.random()*2);
+		switch (valor) {
+		case 0: des = ""; break;
+		case 1: des = ""; break;
+		case 2:	des = ""; break;
+		}
+	return des;
+	}
+	public static String descripcionClase(){
+		String des = null;
+		int valor = (int) Math.round(Math.random()*2);
+		switch (valor) {
+		case 0: des = ""; break;
+		case 1: des = ""; break;
+		case 2:	des = ""; break;
+		}
+	return des;
+	}
+	public static String descripcionPracticas(){
+		String des = null;
+		int valor = (int) Math.round(Math.random()*2);
+		switch (valor) {
+		case 0: des = ""; break;
+		case 1: des = ""; break;
+		case 2:	des = ""; break;
+		}
+	return des;
+	}
 }

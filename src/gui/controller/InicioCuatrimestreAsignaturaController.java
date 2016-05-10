@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import Util.Basics;
 import bussines.Asignatura;
 import bussines.Curso;
 import bussines.Universidad;
@@ -23,7 +25,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import util.Basics;
 
 public class InicioCuatrimestreAsignaturaController implements Initializable{
 	

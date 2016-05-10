@@ -1,4 +1,4 @@
-package util;
+package Util;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -12,7 +12,6 @@ public class Date_Solver {
 	
 	//suma los dias a la fecha pasada por parametros 
 	//devolviendolo a en formato date
-
 	public static  Date sumarFechasDias(Date fecha, int dias) {
         Calendar cal = new GregorianCalendar();
         cal.setTimeInMillis(fecha.getTime());
@@ -20,10 +19,8 @@ public class Date_Solver {
         return new Date(cal.getTimeInMillis());
     }
 	
-	
     //resta  los dias a la fecha pasada por parametros 
 	//devolviendolo a en formato date
-
 	public static Date restarFechasDias(Date fecha, int dias) {
 	    Calendar cal = new GregorianCalendar();
 	    cal.setTimeInMillis(fecha.getTime());
@@ -31,6 +28,11 @@ public class Date_Solver {
 	    return new Date(cal.getTimeInMillis());
 	}
 	 
+	//restar los dias de un localDatetime
+	public static LocalDateTime restar(long dias, LocalDateTime fecha){ 
+		return  fecha.minusDays(dias);
+	}
+	
 	//Devuelve la hora del sistema en formato date 
     public static Date getHoraActual() {
         Date ahora = new Date();

@@ -3,6 +3,7 @@ package test;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
+import Util.Date_Solver;
 import bussines.Curso;
 import bussines.Grado;
 import bussines.Universidad;
@@ -11,7 +12,6 @@ import persistence.CursoDAOImp;
 import persistence.GradoDAOImp;
 import persistence.UniversidadDAOImp;
 import persistence.UsuarioDAOImp;
-import util.Date_Solver;
 
 public class Pruebas_Persistencia {
 	private static Scanner teclado;

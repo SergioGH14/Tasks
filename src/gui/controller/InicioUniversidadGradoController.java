@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import Util.Date_Solver;
 import bussines.Curso;
 import bussines.Grado;
 import bussines.Universidad;
@@ -15,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import util.Date_Solver;
 
 public class InicioUniversidadGradoController  implements Initializable{
 	

@@ -2,9 +2,9 @@ package persistence;
 
 import java.sql.ResultSet;
 
+import Util.Constantes;
 import bussines.Universidad;
 import persistence.dao.UniversidadDAO;
-import util.Constantes;
 
 public class UniversidadDAOImp implements UniversidadDAO{
 	

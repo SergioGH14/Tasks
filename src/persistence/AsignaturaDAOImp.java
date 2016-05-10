@@ -2,9 +2,9 @@ package persistence;
 
 import java.util.List;
 
+import Util.Constantes;
 import persistence.dao.AsignaturaDAO;
 import persistence.dto.AsignaturaDTO;
-import util.Constantes;
 
 public class AsignaturaDAOImp implements AsignaturaDAO{
 	
