@@ -86,6 +86,9 @@ public class Usuario {
 		this.email = email;
 	}
 
+	public String getNombreCompleto(){
+		return getNombre() + " " + getApellidos();
+	}
 	@Override
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", universidad=" + universidad + ", nombre=" + nombre

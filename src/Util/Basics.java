@@ -57,6 +57,10 @@ public class Basics {
 	            (int)( color.getBlue() * 255 ) );
 	}
 	
+	public static Color HexToColor(String hexaColor){
+		return Color.web(hexaColor);
+	}
+	
 	public static String fechaByDate(Date date){
 		return new SimpleDateFormat("dd/MM/yyyy").format( date ); 
 

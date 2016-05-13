@@ -9,6 +9,7 @@ import bussines.Universidad;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -36,6 +37,7 @@ public class MainController  extends Application {
 			scene.getStylesheets().add(getClass().getResource("/gui/view/application.css").toExternalForm());
 
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
 			primaryStage.setTitle(Util.Constantes.ARDUM);
 			
 			//acceso al controlador de la pantalla de activiades con menu lateral
@@ -46,7 +48,6 @@ public class MainController  extends Application {
 			primaryStage.show();
 			
 			//No barra inferior, no gain.
-			//setBarraInferiorPrincipal(primaryStage);
 			}
 			else{inicioUserRoot(primaryStage);}
 		} catch(Exception e) {
@@ -147,33 +148,28 @@ public class MainController  extends Application {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void setBarraInferiorPrincipal(Stage primaryStage){
-		 try{
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/BarraInferiorPrincipal.fxml"));
-			GridPane barraInferiorPrincipal = (GridPane)loader.load();
+	public void mostrarListaDeNotificaciones(Stage secondaryStage, boolean mostrar){
+		
+		try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/ListaNotificaciones.fxml"));
+			AnchorPane initUser = (AnchorPane)loader.load();
 			
-			if(root!=null){
-				root.setBottom(barraInferiorPrincipal);
+			if(root!=null && mostrar){
+				root.setRight(initUser);
+			}else if(root!=null){
+				root.setRight(null);
 			}
 			
-			BarraInferiorPrincipalController barrainferiorprincipal = loader.<BarraInferiorPrincipalController>getController();
-			barrainferiorprincipal.initStage(primaryStage, this);
+			ListaNotificacionesController listaNotificacionesController = loader.<ListaNotificacionesController>getController();
+			listaNotificacionesController.initStage(secondaryStage, this);
 			
 		} catch (IOException e){
 			// TODO Auto-generated catch block
-			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
+			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());
 		}
 	}
+
+	
 	
 	
 }

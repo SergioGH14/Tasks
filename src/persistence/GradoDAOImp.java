@@ -42,6 +42,7 @@ public class GradoDAOImp implements GradoDAO{
 	
 	@Override
 	public Grado crearGrado(Grado grado) {
+		Grado gradoAux = grado;
 		try{
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.GRADO_SQ);
@@ -53,7 +54,9 @@ public class GradoDAOImp implements GradoDAO{
 							 grado.getTitulacion() +"','"+
 							 Date_solver.convertirLocalDateEnSQL(grado.getAnyoinicio())+"')";
 
-				grado.setId_grado(id);
+				if(gradoAux!=null){
+					gradoAux.setId_grado(id);
+				}
 				connectionManager.updateDB(str);
 				System.out.println("\nGrado creado con éxito: " + grado);
 			}
@@ -62,7 +65,7 @@ public class GradoDAOImp implements GradoDAO{
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al crear el grado: "+e.getLocalizedMessage() );
 		}
-		return grado;
+		return gradoAux;
 
 	}
 

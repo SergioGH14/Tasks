@@ -48,6 +48,7 @@ public class CursoDAOImp implements CursoDAO{
 	
 	@Override
 	public Curso crearCurso(Curso curso) {
+		Curso cursoAux = curso;
 		try{
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.CURSO_SQ);
@@ -60,7 +61,9 @@ public class CursoDAOImp implements CursoDAO{
 							 curso.getCreditos()+""+
 							 ")";
 
-				curso.setId_curso(id);
+				if(cursoAux!=null){
+					cursoAux.setId_curso(id);
+				}
 				connectionManager.updateDB(str);
 				System.out.println("\nCurso creado con éxito: " + curso);
 			}
@@ -69,7 +72,7 @@ public class CursoDAOImp implements CursoDAO{
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al crear el curso: "+e.getLocalizedMessage() );
 		}
-		return curso;
+		return cursoAux;
 	}
 
 

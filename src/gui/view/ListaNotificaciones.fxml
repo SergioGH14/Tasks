@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="552.0" prefWidth="255.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.ListaNotificacionesController">
+   <children>
+      <Pane prefHeight="552.0" prefWidth="255.0" style="-fx-background-color: #FAFAFA;">
+         <children>
+            <Text fx:id="tvNoNotificaciones" fill="#c6c6c6" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No tienes notificaciones" textAlignment="CENTER" wrappingWidth="255.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

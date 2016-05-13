@@ -37,8 +37,6 @@ public class UsuarioDAOImp implements UsuarioDAO{
 						usuario.getString("AVATAR"),
 						Date_solver.convertirDateSQLEnLocalDateTime( usuario.getDate("FECHA_NACIMIENTO")),
 						usuario.getString("EMAIL") );
-				//saber cuantos caracteres tiene un atributo
-				//System.out.println("El usuario tiene de  nombre:" + user.getNombre()+" y contiene: " + user.getNombre().toCharArray().length + " caracteres");
 			}
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al buscar al usuario: "+e.getLocalizedMessage() );
@@ -67,6 +65,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 
 	@Override
 	public Usuario crearUsuario(Usuario usuario) {
+		Usuario userRes = usuario;
 		try{
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.USUARIO_SQ);
@@ -81,17 +80,18 @@ public class UsuarioDAOImp implements UsuarioDAO{
 							 Date_solver.convertirLocalDateEnSQL(usuario.getFechanacimiento())+"','"+
 							 usuario.getEmail()+"'"+
 							 ")";
-
-				usuario.setId_usuario(id);
+				if(userRes!=null)
+					userRes.setId_usuario(id);
+				
 				connectionManager.updateDB(str);
-				System.out.println("\nUsuario creado con éxito: " + usuario);
+				System.out.println("\nUsuario creado con éxito: " + userRes);
 			}
 			connectionManager.close();
 
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al crear el usuario: "+e.getLocalizedMessage() );
 		}
-		return usuario;
+		return userRes;
 
 	}
 

@@ -46,6 +46,7 @@ public class UniversidadDAOImp implements UniversidadDAO{
 		
 	@Override
 	public Universidad crearUniversidad(Universidad universidad) {
+		Universidad uniAux = universidad;
 		try{
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.UNIVERSIDAD_SQ);
@@ -56,7 +57,9 @@ public class UniversidadDAOImp implements UniversidadDAO{
 							 universidad.getLogo() +"','"+
 							 universidad.getDireccion() +"')";
 	
-				universidad.setId_universidad(id);
+				if(uniAux!=null){
+					uniAux.setId_universidad(id);
+				}
 				connectionManager.updateDB(str);
 				System.out.println("\nUniversidad creada con éxito: " + universidad);
 			
@@ -64,7 +67,7 @@ public class UniversidadDAOImp implements UniversidadDAO{
 		}catch(	Exception e){
 			System.err.println("Ha ocurrido un error al crear la universidad: "+e.getLocalizedMessage() );
 		}
-		return universidad;
+		return uniAux;
 	}
 	
 

@@ -2,17 +2,21 @@ package persistence.dao;
 
 import java.util.List;
 
+import bussines.Asignatura;
 import persistence.dto.AsignaturaDTO;
 
 public interface AsignaturaDAO {
 	
-	public AsignaturaDTO buscarAsignatura(String nombreAsignatura);
+	public Asignatura obtenerInformacionAsignatura(String nombreAsignatura);
 	
-	public List<AsignaturaDTO> obtenerAsignaturasPorCuatrimestre(int cuatrimestre);
+	public List<Asignatura> obtenerAsignaturasPorCuatrimestre(int cuatrimestre);
 	
-	public void crearAsignatura(AsignaturaDTO asignatura);
+	public Asignatura crearAsignatura(Asignatura asignatura);
 
-	public void editarAsignatura(AsignaturaDTO asignatura);
+	public void editarAsignatura(Asignatura asignatura);
 	
-	public int crearSecuencia(String nombreSecuencia);
+	public void eliminarAsignatura(int id_asignatura);
+	
+	public boolean existeAsignatura(String nombreAsignatura);
+	
 }

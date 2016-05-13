@@ -46,6 +46,7 @@ public class Prueba_Fabrica {
 		
 		ActividadDTO adto= new ActividadDTO( CSD.getId_asignatura(), Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario,false);
 		Actividad actividad = constructora.crearActividad(tipo,adto,especificaciones );
+		
 		System.out.println("Has creado con exito una actividad de nombre "+actividad.getTitulo()+"\nCuya descripcion es la siguiente: "+actividad.getDescripcion()+"\ny mas importante, su prioridad total es "+actividad.getPrioridadtotal()+"");
 		
 	}

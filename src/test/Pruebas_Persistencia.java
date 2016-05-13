@@ -1,9 +1,14 @@
 package test;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import Util.Basics;
 import Util.Date_solver;
+import bussines.Asignatura;
+import bussines.Cuatrimestre;
 import bussines.Curso;
 import bussines.Grado;
 import bussines.Universidad;
@@ -22,6 +27,8 @@ public class Pruebas_Persistencia {
 		LocalDateTime l = LocalDateTime.now();
 		
 		System.out.println("Existen usuario: " +  DAL.getInstance().existeUsuario()+"\n");
+		
+		System.out.println("Introduce el nombre de tu universidad: ");
 		String nombreuni = teclado.nextLine();
 		
 		System.out.println("Introduce la dirección de tu universidad: ");
@@ -85,7 +92,28 @@ public class Pruebas_Persistencia {
 		curso = cur.crearCurso(curso);
 		System.out.println("\n #### PRUEBAS DIRECTAS DE PERSISTENCIA ### \n" + " CURSO CREADO: " + curso);
 		
+		probarHastaAsignatura(curso);
+
 		
+	}
+
+	private static void probarHastaAsignatura(Curso curso) {
+		// TODO Auto-generated method stub
+		System.out.println("\nVamos a crear los cuatrimestres:");
+		DAL dal = DAL.getInstance();
+		List<Cuatrimestre> listaCuatrimestres = new ArrayList<Cuatrimestre>();
+		for(int i = 1; i<3; i++){
+			Cuatrimestre cuatri = dal.crearCuatrimestre(new Cuatrimestre(curso, i));
+			System.out.println("\n #### PRUEBAS DIRECTAS DE PERSISTENCIA ### \n CUATRIMESTRE CREADO: " + cuatri);
+			listaCuatrimestres.add(cuatri);
+
+		}
+		
+		Asignatura asignatura = dal.crearAsignatura( new Asignatura(listaCuatrimestres.get(0), "CSD 2", 66, 5, false, Basics.HexToColor("#c1c1c1")));
+		System.out.println("\n #### PRUEBAS DIRECTAS DE PERSISTENCIA ### \n ASIGNATURA CREADA: " + asignatura);
+		
+		
+
 	}
 		
 		

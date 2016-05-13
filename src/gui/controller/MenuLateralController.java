@@ -1,13 +1,19 @@
 package gui.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
+
+import org.controlsfx.control.PopOver;
 
 import com.sun.javafx.geom.Shape;
 
@@ -15,10 +21,13 @@ import Util.Basics;
 import bussines.Actividad;
 import bussines.Asignatura;
 import bussines.Clase;
+import bussines.Unidad_Logica;
+import bussines.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.css.PseudoClass;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,9 +35,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -48,15 +59,17 @@ public class MenuLateralController implements Initializable {
 	//Objetos basicos de paso entre pantallas: Stage y Controlador principal
 	private Stage primaryStage;
 	private MainController controladorPrincipal;
+	private Unidad_Logica fachada;
 	
 	//Etiquetas XML para identificar objetos en pantalla
 	//Barra TOP
 	@FXML private ImageView ivAvatar;
+    @FXML private Circle circleAvatar;
 	@FXML private Text tvNombreUsuario;
 	@FXML private Text logoArdum;
-	@FXML private ImageView ivNotificacion;
+	@FXML private ImageView ivNotificaciones;
+	@FXML private ImageView ivNotificacionTriangulo;
 	@FXML private ImageView ivConfiguracion;
-	@FXML private Text tvNotificaciones;
 
 	//Botones principales laterales
 	@FXML private Text tvBandeja;
@@ -68,9 +81,16 @@ public class MenuLateralController implements Initializable {
 	@FXML private Text tvParaDespues;
 	@FXML private HBox hbParaDespues;
 
+	@FXML private Text tvMensajeTodoOk;
+	
 	//menu lateral
 	@FXML private ListView listViewAsignaturas;
 	@FXML private Text TextTituloGrado;
+	
+	//boolean para mostrar o no la lista de notificaciones
+	private boolean mostrarNotificaciones;
+	
+	private Usuario usuario;
 	
 	public void initStage(Stage stage, MainController controladorPrincipal){
 		this.primaryStage = stage;
@@ -81,16 +101,37 @@ public class MenuLateralController implements Initializable {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		this.fachada = Unidad_Logica.getInstance();
+		this.usuario = fachada.informacionUsuario(1);
+		//
+		tvMensajeTodoOk.setFont(Basics.generateFontById(9, 23));
+		
 		//nombre de usuario y fuente
-		tvNombreUsuario.setText("Kevin Sotomayor V.");
-		tvNombreUsuario.setFont(Basics.generateFontById(1, 14));
+		if(usuario!=null){
+			tvNombreUsuario.setText(usuario.getNombreCompleto());
+			tvNombreUsuario.setFont(Basics.generateFontById(1, 14));
+			
+			//establecer imagen del item seleccionado en la pantalla de descripcion
+			BufferedImage bufferedImage = null;
+			try {
+				bufferedImage = ImageIO.read(new File(usuario.getAvatar()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally{
+				if(bufferedImage!=null){
+					Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+					ivAvatar.setImage(image);
+					circleAvatar.setFill(new ImagePattern(image));
+				}
+			}
+		}
 		
 		tvBandeja.setFont(Basics.generateFontById(3, 14));
 		hbBandeja.setOnMouseClicked(new EventHandler<Event>() {
 
 			@Override
 			public void handle(Event event) {
-				tvBandeja.setFont(Basics.generateFontById(2, 14));
+				tvBandeja.setFont(Basics.generateFontById(1, 14));
 				hbBandeja.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 				hbHoy.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
 				tvHoy.setFont(Basics.generateFontById(3, 14));
@@ -107,7 +148,7 @@ public class MenuLateralController implements Initializable {
 
 			@Override
 			public void handle(Event event) {
-				tvHoy.setFont(Basics.generateFontById(2, 14));
+				tvHoy.setFont(Basics.generateFontById(1, 14));
 				hbHoy.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 				hbBandeja.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
 				tvBandeja.setFont(Basics.generateFontById(3, 14));
@@ -124,7 +165,7 @@ public class MenuLateralController implements Initializable {
 
 			@Override
 			public void handle(Event event) {
-				tvParaDespues.setFont(Basics.generateFontById(2, 14));
+				tvParaDespues.setFont(Basics.generateFontById(1, 14));
 				hbParaDespues.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 				hbHoy.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
 				tvHoy.setFont(Basics.generateFontById(3, 14));
@@ -135,8 +176,21 @@ public class MenuLateralController implements Initializable {
 				
 			}
 		});
-		
-		tvNotificaciones.setFont(Basics.generateFontById(8, 14));
+				
+		ivNotificaciones.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				if(!mostrarNotificaciones){
+					mostrarNotificaciones = true;
+					lanzarPantallaDeNotificaciones(mostrarNotificaciones);
+				}else{
+					mostrarNotificaciones = false;
+					lanzarPantallaDeNotificaciones(mostrarNotificaciones);
+				}
+				ivNotificacionTriangulo.setVisible(mostrarNotificaciones);
+			}
+		});
 
 		//prueba para rellenar la lista de asignaturas y mostrarlas en pantalla
 		
@@ -158,8 +212,12 @@ public class MenuLateralController implements Initializable {
 		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
 		listViewAsignaturas.setItems(loAsignaturas);
 		
-	    TextTituloGrado.setText("Ingeniería Informática");
-	    TextTituloGrado.setFont(Basics.generateFontById(8, 16));
+		if(fachada.obtenerInformacionGrado(1)!=null){
+		    TextTituloGrado.setText(fachada.obtenerInformacionGrado(1).getTitulacion());
+		    TextTituloGrado.setFont(Basics.generateFontById(8, 16));
+		}
+	    
+        
 	    
 	    logoArdum.setFont(Basics.generateFontById(23, 35));
 
@@ -235,9 +293,10 @@ public class MenuLateralController implements Initializable {
 	}
 	
 	public void lanzarPantallaDeActividades(Asignatura asignaturaSeleccionada){
-		
 		controladorPrincipal.abrirPantallaActividades(primaryStage, asignaturaSeleccionada);
-		
+	}
+	public void lanzarPantallaDeNotificaciones(boolean mostrar){
+		controladorPrincipal.mostrarListaDeNotificaciones(primaryStage, mostrar);
 	}
 
 }

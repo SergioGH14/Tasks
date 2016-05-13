@@ -1,5 +1,7 @@
 package persistence;
 
+import java.util.List;
+
 import bussines.*;
 import persistence.dao.*;
 /*
@@ -125,6 +127,66 @@ public class DAL {
 			}
 		};
 		
+		cuatrimestreDAO = new CuatrimestreDAO() {
+			
+			@Override
+			public Cuatrimestre obtenerInformacionCuatrimestre(int id_cuatrimestre) {
+				return new CuatrimestreDAOImp().obtenerInformacionCuatrimestre(id_cuatrimestre);
+			}
+			
+			@Override
+			public void eliminarCuatrimestre(int id_cuatrimestre) {
+				new CuatrimestreDAOImp().eliminarCuatrimestre(id_cuatrimestre);
+				
+			}
+			
+			@Override
+			public void editarCuatrimestre(Cuatrimestre cuatrimestre) {
+				new CuatrimestreDAOImp().editarCuatrimestre(cuatrimestre);
+				
+			}
+			
+			@Override
+			public Cuatrimestre crearCuatrimestre(Cuatrimestre cuatrimestre) {
+				return new CuatrimestreDAOImp().crearCuatrimestre(cuatrimestre);
+			}
+		};
+		
+		asignaturaDAO = new AsignaturaDAO() {
+			
+			@Override
+			public Asignatura obtenerInformacionAsignatura(String nombreAsignatura) {
+				return new AsignaturaDAOImp().obtenerInformacionAsignatura(nombreAsignatura);
+			}
+			
+			@Override
+			public List<Asignatura> obtenerAsignaturasPorCuatrimestre(int cuatrimestre) {
+				return new AsignaturaDAOImp().obtenerAsignaturasPorCuatrimestre(cuatrimestre);
+			}
+			
+			@Override
+			public boolean existeAsignatura(String nombreAsignatura) {
+				return new AsignaturaDAOImp().existeAsignatura(nombreAsignatura);
+			}
+			
+			@Override
+			public void eliminarAsignatura(int id_asignatura) {
+				new AsignaturaDAOImp().eliminarAsignatura(id_asignatura);
+				
+			}
+			
+			@Override
+			public void editarAsignatura(Asignatura asignatura) {
+				new AsignaturaDAOImp().editarAsignatura(asignatura);
+				
+			}
+			
+			@Override
+			public Asignatura crearAsignatura(Asignatura asignatura) {
+				return new AsignaturaDAOImp().crearAsignatura(asignatura);
+			}
+		};
+		
 	}
 	
 	public static DAL getInstance(){
@@ -132,6 +194,47 @@ public class DAL {
 			instance = new DAL();
 		}
 		return instance;
+	}
+	/* ASIGNATURA */ 
+	public Asignatura obtenerInformacionAsignatura(String nombreAsignatura){
+		return asignaturaDAO.obtenerInformacionAsignatura(nombreAsignatura);
+	}
+	
+	public List<Asignatura> obtenerAsignaturasPorCuatrimestre(int cuatrimestre){
+		return asignaturaDAO.obtenerAsignaturasPorCuatrimestre(cuatrimestre);
+	}
+	
+	public Asignatura crearAsignatura(Asignatura asignatura){
+		return asignaturaDAO.crearAsignatura(asignatura);
+	}
+
+	public void editarAsignatura(Asignatura asignatura){
+		asignaturaDAO.editarAsignatura(asignatura);
+	}
+	
+	public void eliminarAsignatura(int id_asignatura){
+		asignaturaDAO.eliminarAsignatura(id_asignatura);
+	}
+	
+	public boolean existeAsignatura(String nombreAsignatura){
+		return asignaturaDAO.existeAsignatura(nombreAsignatura);
+	}
+	
+	/* CUATRIMESTRE */
+	public Cuatrimestre obtenerInformacionCuatrimestre(int id_cuatrimestre){
+		return cuatrimestreDAO.obtenerInformacionCuatrimestre(id_cuatrimestre);
+	}
+	
+	public void eliminarCuatrimestre(int id_cuatrimestre){
+		cuatrimestreDAO.eliminarCuatrimestre(id_cuatrimestre);
+	}
+	
+	public Cuatrimestre crearCuatrimestre(Cuatrimestre cuatrimestre){
+		return cuatrimestreDAO.crearCuatrimestre(cuatrimestre);
+	}
+	
+	public void editarCuatrimestre(Cuatrimestre cuatrimestre){
+		cuatrimestreDAO.editarCuatrimestre(cuatrimestre);
 	}
 	
 	
@@ -208,7 +311,5 @@ public class DAL {
 		universidadDAO.editarUniversiad(universidad);
 	}
 	/* FIN UNIVERSIDAD */
-	
-	
 	
 }

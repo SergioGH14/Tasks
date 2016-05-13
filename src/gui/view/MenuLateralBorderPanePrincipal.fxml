@@ -24,6 +24,18 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
+         <children>
+            <ImageView fitHeight="231.0" fitWidth="299.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../assets/cerveza_fill.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="tvMensajeTodoOk" fill="#e1e1e1" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Está todo hecho! Disfruta del día" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
       </GridPane>
    </center>
    <left>
@@ -31,7 +43,7 @@
          <children>
             <Text fx:id="TextTituloGrado" layoutX="7.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto grado" textAlignment="CENTER" wrappingWidth="185.09897708892822" />
             <ListView fx:id="listViewAsignaturas" layoutX="10.0" layoutY="207.0" prefHeight="291.0" prefWidth="186.0" style="-fx-background-color: #f3f3f3;" />
-            <VBox prefHeight="139.0" prefWidth="205.0">
+            <VBox prefHeight="139.0" prefWidth="205.0" AnchorPane.bottomAnchor="439.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="9.0">
                <children>
                   <HBox fx:id="hbBandeja" prefHeight="40.0" prefWidth="205.0">
                      <children>
@@ -124,14 +136,13 @@
                   <Image url="@../../../assets/conf_blanco.png" />
                </image>
             </ImageView>
+            <Circle fx:id="circleAvatar" fill="#ffffff00" layoutX="27.0" layoutY="23.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <ImageView fx:id="ivNotificacionTriangulo" fitHeight="13.0" fitWidth="24.0" layoutX="1073.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" translateY="1.0" visible="false">
+               <image>
+                  <Image url="@../../../assets/notificaciones_triangulo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </top>
-   <right>
-      <AnchorPane prefWidth="255.0" style="-fx-background-color: #FAFAFA;" BorderPane.alignment="CENTER">
-         <children>
-            <Text fx:id="tvNotificaciones" fill="#b5b1b1" layoutX="84.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notificaciones" />
-         </children>
-      </AnchorPane>
-   </right>
 </BorderPane>
