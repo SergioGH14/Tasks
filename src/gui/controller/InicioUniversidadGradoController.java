@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-import Util.Date_Solver;
+import Util.Date_solver;
 import bussines.Curso;
 import bussines.Grado;
 import bussines.Unidad_Logica;
@@ -62,9 +62,9 @@ public class InicioUniversidadGradoController  implements Initializable{
 			public void handle(Event event) {
 				// ¿Comprobamos que todos los parametros son validos?
 				
-				System.out.println("Este es el año convertido supuestamente en una fecha -->"+Date_Solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
+				System.out.println("Este es el año convertido supuestamente en una fecha -->"+Date_solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
 				
-				Grado grado = new Grado(upv, tfTituloGrado.getText(),Date_Solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
+				Grado grado = new Grado(upv, tfTituloGrado.getText(),Date_solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
 				
 				
 				

@@ -1,10 +1,10 @@
 package bussines;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
 
 import Util.Constantes;
-import Util.Date_Solver;
+import Util.Date_solver;
 
 public class Papinoti {
 	
@@ -19,15 +19,15 @@ public class Papinoti {
 		Notificacion a = new Notificacion(tituloAct+"en 14 dias",
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-20,
-										  Date_Solver.restar(14, fechaAct));
+										  Date_solver.restar(14, fechaAct));
 		Notificacion b = new Notificacion(tituloAct+"en 7 dias",
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-10,
-								          Date_Solver.restar(7, fechaAct));
+								          Date_solver.restar(7, fechaAct));
 		Notificacion c = new Notificacion(tituloAct+" ma�ana",
 				                          descripcionActividad(tipoActividad),
 				                          prioridadAct,
-				                          Date_Solver.restar(1, fechaAct) );
+				                          Date_solver.restar(1, fechaAct) );
 		
 	
 		noti.add(a);

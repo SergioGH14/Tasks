@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
-import Util.Date_Solver;
+import Util.Date_solver;
 import bussines.Unidad_Logica;
 import bussines.Universidad;
 import bussines.Usuario;

@@ -11,60 +11,127 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="634.0" prefWidth="1167.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.MenuLateralController">
-   <top>
-      <GridPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1167.0" style="-fx-background-color: #ff7843;" BorderPane.alignment="CENTER">
+<BorderPane prefHeight="634.0" prefWidth="1167.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.MenuLateralController">
+   <center>
+      <GridPane style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
+      </GridPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="552.0" prefWidth="205.0" style="-fx-background-color: #f3f3f3;" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="logoArdum" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ardum" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Text fx:id="TextTituloGrado" layoutX="7.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto grado" textAlignment="CENTER" wrappingWidth="185.09897708892822" />
+            <ListView fx:id="listViewAsignaturas" layoutX="10.0" layoutY="207.0" prefHeight="291.0" prefWidth="186.0" style="-fx-background-color: #f3f3f3;" />
+            <VBox prefHeight="139.0" prefWidth="205.0">
+               <children>
+                  <HBox fx:id="hbBandeja" prefHeight="40.0" prefWidth="205.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/bandeja_entrada.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="16.0" top="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text fx:id="tvBandeja" strokeType="OUTSIDE" strokeWidth="0.0" text="Bandeja de entrada">
+                           <HBox.margin>
+                              <Insets left="16.0" top="13.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hbHoy" prefHeight="40.0" prefWidth="205.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/hoy.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="16.0" top="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text fx:id="tvHoy" strokeType="OUTSIDE" strokeWidth="0.0" text="Hoy">
+                           <HBox.margin>
+                              <Insets left="16.0" top="13.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hbParaDespues" prefHeight="40.0" prefWidth="205.0">
+                     <children>
+                        <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/pa_despues.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="14.0" top="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text fx:id="tvParaDespues" strokeType="OUTSIDE" strokeWidth="0.0" text="Para después">
+                           <HBox.margin>
+                              <Insets left="14.0" top="13.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ImageView fx:id="ivAnyadirAsignatura" fitHeight="31.0" fitWidth="29.0" layoutX="85.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/anyadir_negro.png" />
+               </image>
+            </ImageView>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="8.0" />
+         </padding>
+      </AnchorPane>
+   </left>
+   <top>
+      <AnchorPane maxWidth="1167.0" minWidth="1167.0" prefHeight="48.0" prefWidth="1167.0" style="-fx-background-color: #ff7843;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="logoArdum" fill="WHITE" layoutX="549.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ardum">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
-         </children>
-      </GridPane>
-   </top>
-   <center>
-      <GridPane style="-fx-background-color: #EFEFEF;" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
-   </center>
-   <right>
-      <GridPane prefHeight="516.0" prefWidth="218.0" style="-fx-background-color: #EFEFEF;" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
-   </right>
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3;" BorderPane.alignment="CENTER">
-         <children>
-            <Text fx:id="TextTituloGrado" layoutX="7.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto grado" textAlignment="CENTER" wrappingWidth="185.09897708892822" />
-            <ListView fx:id="listViewAsignaturas" layoutY="214.0" prefHeight="291.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3;" />
+            <ImageView fx:id="ivAvatar" fitHeight="27.0" fitWidth="25.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="1126.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../../../assets/usuario_foto.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="tvNombreUsuario" fill="WHITE" layoutX="41.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de usuario" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="1098.78125" AnchorPane.topAnchor="15.0" />
+            <ImageView fx:id="ivNotificaciones" fitHeight="27.0" fitWidth="25.0" layoutX="1072.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="1072.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../../../assets/notificaciones.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ivConfiguracion" fitHeight="27.0" fitWidth="25.0" layoutX="1118.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="1118.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="11.0">
+               <image>
+                  <Image url="@../../../assets/conf_blanco.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-   </left>
+   </top>
+   <right>
+      <AnchorPane prefWidth="255.0" style="-fx-background-color: #FAFAFA;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="tvNotificaciones" fill="#b5b1b1" layoutX="84.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notificaciones" />
+         </children>
+      </AnchorPane>
+   </right>
 </BorderPane>

@@ -45,7 +45,9 @@ public class MainController  extends Application {
 			
 			primaryStage.show();
 			
-			setBarraInferiorPrincipal(primaryStage);}
+			//No barra inferior, no gain.
+			//setBarraInferiorPrincipal(primaryStage);
+			}
 			else{inicioUserRoot(primaryStage);}
 		} catch(Exception e) {
 			e.printStackTrace();

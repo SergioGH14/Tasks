@@ -3,7 +3,7 @@ package persistence;
 import java.sql.ResultSet;
 
 import Util.Constantes;
-import Util.Date_Solver;
+import Util.Date_solver;
 import bussines.Curso;
 import bussines.Grado;
 import persistence.dao.CursoDAO;
@@ -35,7 +35,7 @@ public class CursoDAOImp implements CursoDAO{
 				curso = new Curso(
 						curso_resultSet.getInt("ID_CURSO"),
 						new Grado(curso_resultSet.getInt("ID_GRADO")),
-						Date_Solver.convertirDateSQLEnLocalDateTime(curso_resultSet.getDate("ANYO")),
+						Date_solver.convertirDateSQLEnLocalDateTime(curso_resultSet.getDate("ANYO")),
 						curso_resultSet.getDouble("DIRECCION") );
 			}else
 				return curso;	
@@ -56,7 +56,7 @@ public class CursoDAOImp implements CursoDAO{
 							 "VALUES ("+
 							 id+",'"+
 							 curso.getGrado().getId_grado() +"','"+ 
-							 Date_Solver.convertirLocalDateEnSQL(curso.getAnyo())+"',"+
+							 Date_solver.convertirLocalDateEnSQL(curso.getAnyo())+"',"+
 							 curso.getCreditos()+""+
 							 ")";
 

@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Date_Solver {
+public class Date_solver {
 	
 	//suma los dias a la fecha pasada por parametros 
 	//devolviendolo a en formato date

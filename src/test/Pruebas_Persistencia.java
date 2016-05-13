@@ -3,12 +3,13 @@ package test;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-import Util.Date_Solver;
+import Util.Date_solver;
 import bussines.Curso;
 import bussines.Grado;
 import bussines.Universidad;
 import bussines.Usuario;
 import persistence.CursoDAOImp;
+import persistence.DAL;
 import persistence.GradoDAOImp;
 import persistence.UniversidadDAOImp;
 import persistence.UsuarioDAOImp;
@@ -20,7 +21,7 @@ public class Pruebas_Persistencia {
 		teclado = new Scanner(System.in);	
 		LocalDateTime l = LocalDateTime.now();
 		
-		System.out.println("Introduce Nombre de la universidad: ");
+		System.out.println("Existen usuario: " +  DAL.getInstance().existeUsuario()+"\n");
 		String nombreuni = teclado.nextLine();
 		
 		System.out.println("Introduce la dirección de tu universidad: ");
@@ -29,7 +30,6 @@ public class Pruebas_Persistencia {
 		Universidad universidad = new UniversidadDAOImp().crearUniversidad(new Universidad("./logo_universidad.png", nombreuni, direccionuni));
 		
 		System.out.println("\n #### PRUEBAS DIRECTAS DE PERSISTENCIA ### \n" + " La universidad creada es: " +universidad);
-		
 		
 		
 		System.out.println("Introduce Nombre de usuario: ");
@@ -45,14 +45,14 @@ public class Pruebas_Persistencia {
 		String email = teclado.nextLine();
 			
 		//usuario inicialmente con universidad previamente creada
-		Usuario user = new Usuario(universidad,nombre, apellidos, foto, Date_Solver.formatLocalDateTime(l) , email);
+		Usuario user = new Usuario(universidad,nombre, apellidos, foto, Date_solver.formatLocalDateTime(l) , email);
 		
 		System.out.println("¿Desea continuar para crear el usuario en persistencia? S/N");
 		String res = teclado.nextLine();
 		
 		if(res.equalsIgnoreCase("s")){
-			UsuarioDAOImp dao = new UsuarioDAOImp();
-			dao.crearUsuario(user);
+			DAL dal = DAL.getInstance();
+			dal.crearUsuario(user);
 			System.out.println("\n #### PRUEBAS DIRECTAS DE PERSISTENCIA ### \n" + " USUARIO CREADO CON ÉXITO");
 		}
 		
@@ -84,8 +84,9 @@ public class Pruebas_Persistencia {
 		
 		curso = cur.crearCurso(curso);
 		System.out.println("\n #### PRUEBAS DIRECTAS DE PERSISTENCIA ### \n" + " CURSO CREADO: " + curso);
-
+		
 		
 	}
-
+		
+		
 }

@@ -3,7 +3,7 @@ package persistence;
 import java.sql.ResultSet;
 
 import Util.Constantes;
-import Util.Date_Solver;
+import Util.Date_solver;
 import bussines.Grado;
 import persistence.dao.GradoDAO;
 
@@ -32,7 +32,7 @@ public class GradoDAOImp implements GradoDAO{
 						grado_resultset.getInt("ID_GRADO"),
 						new UniversidadDAOImp().obtenerInformacionDeUniversidad(grado_resultset.getInt("ID_UNIVERSIDAD")),
 						grado_resultset.getString("TITULACION"),
-						Date_Solver.convertirDateSQLEnLocalDateTime( grado_resultset.getDate("ANYO_INICIO")));
+						Date_solver.convertirDateSQLEnLocalDateTime( grado_resultset.getDate("ANYO_INICIO")));
 			}
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al buscar el grado: "+e.getLocalizedMessage() );
@@ -51,7 +51,7 @@ public class GradoDAOImp implements GradoDAO{
 							 id+","+
 							 grado.getUniversidad().getId_universidad()+",'"+
 							 grado.getTitulacion() +"','"+
-							 Date_Solver.convertirLocalDateEnSQL(grado.getAnyoinicio())+"')";
+							 Date_solver.convertirLocalDateEnSQL(grado.getAnyoinicio())+"')";
 
 				grado.setId_grado(id);
 				connectionManager.updateDB(str);
@@ -92,7 +92,7 @@ public class GradoDAOImp implements GradoDAO{
 						 "SET id_universidad= "+grado.getUniversidad().getId_universidad()+", "+
 						 "SET id_grado= '"+grado.getId_grado() +"', "+
 						 "SET titulacion= '"+grado.getTitulacion() +"', "+
-						 "SET anyo_inicio= '"+Date_Solver.convertirLocalDateEnSQL(grado.getAnyoinicio())+"' "+
+						 "SET anyo_inicio= '"+Date_solver.convertirLocalDateEnSQL(grado.getAnyoinicio())+"' "+
 						 " WHERE id_grado=" + grado.getId_grado() +")";
 			connectionManager.updateDB(str);
 			System.out.println("\nGrado editado con éxito: " + grado);

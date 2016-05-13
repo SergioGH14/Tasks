@@ -14,5 +14,5 @@ public interface UsuarioDAO {
 		
 	public Usuario asociarUniversidadUsuario(Usuario usuario, int id_univerisdad);
 
-
+	public boolean existeUsuario();
 }

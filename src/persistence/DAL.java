@@ -50,6 +50,13 @@ public class DAL {
 			public Usuario asociarUniversidadUsuario(Usuario usuario, int id_univerisdad) {
 				return new UsuarioDAOImp().asociarUniversidadUsuario(usuario, id_univerisdad);
 			}
+
+			@Override
+			public boolean existeUsuario() {
+				return new UsuarioDAOImp().existeUsuario();
+			}
+			
+			
 		};
 		
 		universidadDAO = new UniversidadDAO() {
@@ -177,6 +184,10 @@ public class DAL {
 	
 	public Usuario asociarUniversidadUsuario(Usuario usuario, int id_universidad){
 		return usuarioDAO.asociarUniversidadUsuario(usuario, id_universidad);
+	}
+	
+	public boolean existeUsuario(){
+		return usuarioDAO.existeUsuario();
 	}
 	/* FIN USUARIO */
 	

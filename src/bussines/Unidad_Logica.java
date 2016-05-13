@@ -96,8 +96,7 @@ public class Unidad_Logica {
 	}
 	
 	public boolean hayUsuario(){
-		if( dal.obtenerInformacionDeUsuario(1) == null){return false;}
-		else return true;
+		return dal.existeUsuario();
 	}
 	
 	public Usuario informacionUsuario(int id_usuario){

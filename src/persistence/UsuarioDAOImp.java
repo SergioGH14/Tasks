@@ -3,7 +3,7 @@ package persistence;
 import java.sql.ResultSet;
 
 import Util.Constantes;
-import Util.Date_Solver;
+import Util.Date_solver;
 import bussines.Usuario;
 import persistence.dao.UsuarioDAO;
 
@@ -35,7 +35,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 						usuario.getString("NOMBRE"),
 						usuario.getString("APELLIDOS"),
 						usuario.getString("AVATAR"),
-						Date_Solver.convertirDateSQLEnLocalDateTime( usuario.getDate("FECHA_NACIMIENTO")),
+						Date_solver.convertirDateSQLEnLocalDateTime( usuario.getDate("FECHA_NACIMIENTO")),
 						usuario.getString("EMAIL") );
 				//saber cuantos caracteres tiene un atributo
 				//System.out.println("El usuario tiene de  nombre:" + user.getNombre()+" y contiene: " + user.getNombre().toCharArray().length + " caracteres");
@@ -78,7 +78,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 							 usuario.getNombre() +"','"+
 							 usuario.getApellidos() +"','"+
 							 usuario.getAvatar() +"','"+
-							 Date_Solver.convertirLocalDateEnSQL(usuario.getFechanacimiento())+"','"+
+							 Date_solver.convertirLocalDateEnSQL(usuario.getFechanacimiento())+"','"+
 							 usuario.getEmail()+"'"+
 							 ")";
 
@@ -104,7 +104,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 						 "SET nombre= '"+usuario.getNombre() +"', "+
 						 "SET apellidos= '"+usuario.getApellidos() +"', "+
 						 "SET avatar= '"+ usuario.getAvatar() +"', "+
-						 "SET fecha_nacimiento= '"+Date_Solver.convertirLocalDateEnSQL(usuario.getFechanacimiento())+"', "+
+						 "SET fecha_nacimiento= '"+Date_solver.convertirLocalDateEnSQL(usuario.getFechanacimiento())+"', "+
 						 "SET email= '"+usuario.getEmail()+"' "+
 						 " WHERE id_usuario=" + usuario.getId_usuario() +")";
 			connectionManager.updateDB(str);
@@ -152,6 +152,27 @@ public class UsuarioDAOImp implements UsuarioDAO{
 		}
 		return -1;
 
+	}
+
+	@Override
+	public boolean existeUsuario() {
+		boolean existe = false;
+		try{
+			connectionManager.connect();
+			ResultSet usuario = connectionManager.queryDB("SELECT count(*) from USUARIO ");
+			connectionManager.close();
+
+			if (usuario.next()){
+				 int x= usuario.getInt(1);
+				 if(x>0){
+					 existe = true;
+				 }
+				 System.out.println("Existen: " + x + " usuarios");
+			}
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al buscar al usuario: "+e.getLocalizedMessage() );
+		}
+		return existe;
 	}
 
 }

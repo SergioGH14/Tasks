@@ -1,5 +1,6 @@
 package bussines;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javafx.scene.paint.Color;
@@ -27,6 +28,7 @@ public class Asignatura {
 		this.dificultad = dificultad;
 		this.anual = anual;
 		this.color = color;
+		this.listaActividades = new HashMap<Integer, Actividad>();
 	}
 
 	public Asignatura(Cuatrimestre cuatrimestre, String titulo, double creditos, int dificultad, boolean anual,
@@ -38,6 +40,7 @@ public class Asignatura {
 		this.dificultad = dificultad;
 		this.anual = anual;
 		this.color = color;
+		this.listaActividades = new HashMap<Integer, Actividad>();
 	}
 
 	//constructor de prueba para lista en menu lateral
@@ -76,6 +79,8 @@ public class Asignatura {
 	public Asignatura(String titulo, Color red){
 		this.titulo = titulo;
 		this.color = red;
+		this.listaActividades = new HashMap<Integer, Actividad>();
+
 	}
 	//borrar despues de su uso
 
@@ -112,6 +117,18 @@ public class Asignatura {
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+	
+	public Actividad obtenerActividad(int id_actividad){
+		return listaActividades.get(id_actividad);
+	}
+	
+	public void anyadirActividad(Actividad actividad){
+		listaActividades.put(actividad.getId_actividad(), actividad);
+	}
+	
+	public void borrarActividad(int id_actividad){
+		listaActividades.remove(id_actividad);
 	}
 
 	@Override

@@ -129,6 +129,15 @@ public abstract class Actividad {
 	public void setFinalizada(boolean finalizada) {
 		this.finalizada = finalizada;
 	}
+
+	@Override
+	public String toString() {
+		return "Actividad [id_actividad=" + id_actividad + ", asignatura=" + asignatura + ", titulo=" + titulo
+				+ ", descripcion=" + descripcion + ", fechaFinalizacion=" + fechaFinalizacion + ", tiempoEstimado="
+				+ tiempoEstimado + ", porcentaje=" + porcentaje + ", prioridadUsuario=" + prioridadUsuario
+				+ ", prioridadTotal=" + prioridadTotal + ", finalizada=" + finalizada + "]";
+	}
+	
 	
 }
 

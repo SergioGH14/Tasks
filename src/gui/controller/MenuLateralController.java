@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -11,7 +12,9 @@ import java.util.ResourceBundle;
 import com.sun.javafx.geom.Shape;
 
 import Util.Basics;
+import bussines.Actividad;
 import bussines.Asignatura;
+import bussines.Clase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
@@ -23,6 +26,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -45,10 +50,27 @@ public class MenuLateralController implements Initializable {
 	private MainController controladorPrincipal;
 	
 	//Etiquetas XML para identificar objetos en pantalla
+	//Barra TOP
+	@FXML private ImageView ivAvatar;
+	@FXML private Text tvNombreUsuario;
+	@FXML private Text logoArdum;
+	@FXML private ImageView ivNotificacion;
+	@FXML private ImageView ivConfiguracion;
+	@FXML private Text tvNotificaciones;
+
+	//Botones principales laterales
+	@FXML private Text tvBandeja;
+	@FXML private HBox hbBandeja;
+	
+	@FXML private Text tvHoy;
+	@FXML private HBox hbHoy;
+
+	@FXML private Text tvParaDespues;
+	@FXML private HBox hbParaDespues;
+
 	//menu lateral
 	@FXML private ListView listViewAsignaturas;
 	@FXML private Text TextTituloGrado;
-	@FXML private Text logoArdum;
 	
 	public void initStage(Stage stage, MainController controladorPrincipal){
 		this.primaryStage = stage;
@@ -59,7 +81,63 @@ public class MenuLateralController implements Initializable {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		//nombre de usuario y fuente
+		tvNombreUsuario.setText("Kevin Sotomayor V.");
+		tvNombreUsuario.setFont(Basics.generateFontById(1, 14));
+		
+		tvBandeja.setFont(Basics.generateFontById(3, 14));
+		hbBandeja.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				tvBandeja.setFont(Basics.generateFontById(2, 14));
+				hbBandeja.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+				hbHoy.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+				tvHoy.setFont(Basics.generateFontById(3, 14));
+				hbParaDespues.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+				tvParaDespues.setFont(Basics.generateFontById(3, 14));
+
+				//acciones al hacer click
+				
+			}
+		});
+		
+		tvHoy.setFont(Basics.generateFontById(3, 14));
+		hbHoy.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				tvHoy.setFont(Basics.generateFontById(2, 14));
+				hbHoy.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+				hbBandeja.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+				tvBandeja.setFont(Basics.generateFontById(3, 14));
+
+				hbParaDespues.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+				tvParaDespues.setFont(Basics.generateFontById(3, 14));
+				//acciones al hacer click
+				
+			}
+		});
+		
+		tvParaDespues.setFont(Basics.generateFontById(3, 14));
+		hbParaDespues.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				tvParaDespues.setFont(Basics.generateFontById(2, 14));
+				hbParaDespues.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+				hbHoy.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+				tvHoy.setFont(Basics.generateFontById(3, 14));
+				hbBandeja.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+				tvBandeja.setFont(Basics.generateFontById(3, 14));
+
+				//acciones al hacer click
+				
+			}
+		});
+		
+		tvNotificaciones.setFont(Basics.generateFontById(8, 14));
+
 		//prueba para rellenar la lista de asignaturas y mostrarlas en pantalla
 		
 		List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
@@ -69,13 +147,19 @@ public class MenuLateralController implements Initializable {
 		listaAsignaturas.add(new Asignatura("DDS",Color.CADETBLUE));
 		listaAsignaturas.add(new Asignatura("GPR",Color.CORAL));
 		
-	
+		Asignatura asignaturaPruebaConActividades = new Asignatura("PRB", Color.BLANCHEDALMOND);
+		
+		Actividad actPrueba = new Clase(1,asignaturaPruebaConActividades, "Actividad pendiente de hacer", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		actPrueba.setId_actividad(0);
+		
+		asignaturaPruebaConActividades.anyadirActividad(actPrueba);
+		listaAsignaturas.add(asignaturaPruebaConActividades);
 		
 		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
 		listViewAsignaturas.setItems(loAsignaturas);
 		
 	    TextTituloGrado.setText("Ingeniería Informática");
-	    TextTituloGrado.setFont(Basics.generateFontById(9, 14));
+	    TextTituloGrado.setFont(Basics.generateFontById(8, 16));
 	    
 	    logoArdum.setFont(Basics.generateFontById(23, 35));
 
@@ -94,7 +178,8 @@ public class MenuLateralController implements Initializable {
 						
 						if(a!=null){
 							setText(a.getTitulo());
-							setFont(Basics.generateFontById(9, 90));
+							setFont(Basics.generateFontById(3, 16));
+							setStyle("-fx-padding: 10 20 10 20;");
 							
 							Button button = new Button();
 							Circle circuloActividad = new Circle(1.5);
@@ -106,14 +191,24 @@ public class MenuLateralController implements Initializable {
 										        "-fx-max-height: 10px; " +
 										        "-fx-background-color: "+Basics.RGBToHex(a.getColor())+";" +
 										        "-fx-background-insets: 0px; " +
-										        "-fx-padding: 5, 25, 5, 25;"+
 										        "-fx-border-color: #fff;"+
+										        "-fx-padding: 1px;"+
+											    "-fx-border-insets: 1px;"+
+											    "-fx-background-insets: 1px;"+
 										        "-fx-border-width: 0.5;" );
 							setGraphic(button);
 																	
 						}
 					}
 				};
+				
+				celda.setOnMouseClicked(new EventHandler<Event>() {
+
+					@Override
+					public void handle(Event event) {
+						celda.setFont(Basics.generateFontById(2, 16));
+					}
+				});
 				
 				return celda;
 			}
