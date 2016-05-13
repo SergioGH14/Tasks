@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
 
 import Util.Date_Solver;
+import bussines.Unidad_Logica;
 import bussines.Universidad;
 import bussines.Usuario;
 import javafx.embed.swing.SwingFXUtils;
@@ -137,7 +138,9 @@ public class InicioUsuarioController implements Initializable{
 						dpFechanacimiento.getValue().atTime(0, 0),tfEmail.getText());
 				//Mandamos el Usuario y la universidad a persistencia mediante fachada
 				
-				/*JAJAJAJA*/
+				Unidad_Logica.getInstance().crearUniversidad(upv);
+				Unidad_Logica.getInstance().crearUsuario(user);
+				
 				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
 				controladorPrincipal.inicioUniversidadGrado(primaryStage,upv);

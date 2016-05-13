@@ -129,7 +129,6 @@ public class InicioCuatrimestreAsignaturaController implements Initializable{
 				/*C'MON EVERYBODY PUT IN THE AIR*/
 				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
-				controladorPrincipal.tenemosUsuario(true);
 				controladorPrincipal.start(primaryStage);
 			}
 		});

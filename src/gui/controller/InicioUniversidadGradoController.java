@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import Util.Date_Solver;
 import bussines.Curso;
 import bussines.Grado;
+import bussines.Unidad_Logica;
 import bussines.Universidad;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -74,7 +75,7 @@ public class InicioUniversidadGradoController  implements Initializable{
 				
 				//Mandamos el Grado a persistencia mediante fachada
 				
-				/*VAMOS GERMANIO QUE TE ESTOY ESPERANDOOO!!*/
+				Unidad_Logica.getInstance().crearGrado(grado);
 				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
 				controladorPrincipal.inicioCuatrimestreAsignatura(primaryStage, actual);

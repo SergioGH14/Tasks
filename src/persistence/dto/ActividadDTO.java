@@ -16,7 +16,7 @@ public class ActividadDTO {
 	private boolean finalizada;
 	
 	public ActividadDTO(int id_asignatura, String titulo, String descripcion, LocalDateTime fechaFinalizacion,
-			int tiempoEstimado, double porcentaje, int prioridadUsuario, int prioridadTotal, boolean finalizada) {
+			int tiempoEstimado, double porcentaje, int prioridadUsuario, boolean finalizada) {
 		super();
 		this.id_asignatura = id_asignatura;
 		this.titulo = titulo;
@@ -25,13 +25,12 @@ public class ActividadDTO {
 		this.tiempoEstimado = tiempoEstimado;
 		this.porcentaje = porcentaje;
 		this.prioridadUsuario = prioridadUsuario;
-		this.prioridadTotal = prioridadTotal;
 		this.finalizada = finalizada;
 	}
 
 	public ActividadDTO(int id_actividad, int id_asignatura, String titulo, String descripcion,
 			LocalDateTime fechaFinalizacion, int tiempoEstimado, double porcentaje, int prioridadUsuario,
-			int prioridadTotal, boolean finalizada) {
+			boolean finalizada) {
 		super();
 		this.id_actividad = id_actividad;
 		this.id_asignatura = id_asignatura;
@@ -41,7 +40,6 @@ public class ActividadDTO {
 		this.tiempoEstimado = tiempoEstimado;
 		this.porcentaje = porcentaje;
 		this.prioridadUsuario = prioridadUsuario;
-		this.prioridadTotal = prioridadTotal;
 		this.finalizada = finalizada;
 	}
 

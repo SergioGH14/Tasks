@@ -45,6 +45,34 @@ public class Asignatura {
 		this.titulo = titulo;
 	}
 	
+	public int getId_asignatura() {
+		return id_asignatura;
+	}
+
+	public void setId_asignatura(int id_asignatura) {
+		this.id_asignatura = id_asignatura;
+	}
+
+	public Cuatrimestre getCuatrimestre() {
+		return cuatrimestre;
+	}
+
+	public void setCuatrimestre(Cuatrimestre cuatrimestre) {
+		this.cuatrimestre = cuatrimestre;
+	}
+
+	public Map<Integer, Actividad> getListaActividades() {
+		return listaActividades;
+	}
+
+	public void setListaActividades(Map<Integer, Actividad> listaActividades) {
+		this.listaActividades = listaActividades;
+	}
+
+	public void setCreditos(double creditos) {
+		this.creditos = creditos;
+	}
+
 	public Asignatura(String titulo, Color red){
 		this.titulo = titulo;
 		this.color = red;

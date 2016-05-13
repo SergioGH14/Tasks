@@ -24,7 +24,7 @@ public class Papinoti {
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-10,
 								          Date_Solver.restar(7, fechaAct));
-		Notificacion c = new Notificacion(tituloAct+" mañana",
+		Notificacion c = new Notificacion(tituloAct+" maï¿½ana",
 				                          descripcionActividad(tipoActividad),
 				                          prioridadAct,
 				                          Date_Solver.restar(1, fechaAct) );

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import bussines.Asignatura;
 import bussines.Curso;
+import bussines.Unidad_Logica;
 import bussines.Universidad;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +25,11 @@ import javafx.stage.Stage;
 public class MainController  extends Application {
 	private BorderPane root;
 	private BorderPane userRoot;
-	private boolean user = false;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			if(user){
+			if(Unidad_Logica.getInstance().hayUsuario()){
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/MenuLateralBorderPanePrincipal.fxml"));
 			root = (BorderPane)loader.load();
 			Scene scene = new Scene(root);
@@ -173,12 +173,5 @@ public class MainController  extends Application {
 		}
 	}
 	
-	public void tenemosUsuario(boolean modo){
-		//Aqui debe haber un metodo que llame a fachada y que diga si tenemos usuario o no
-		
-		//EL METODO FINAL NO TENDRA BOOLEAN COMO PARAMETRO
-		
-		//Mientras tanto cambiaremos el BOOLEAN para poner el modo
-		user = modo;;
-	}
+	
 }

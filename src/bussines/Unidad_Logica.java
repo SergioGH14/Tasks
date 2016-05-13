@@ -8,16 +8,16 @@ import persistence.UniversidadDAOImp;
 
 public class Unidad_Logica {
 	
-	public static Unidad_Logica instancia; //singleton
-	public Usuario usuario;  //para el usuario en memoria
-	public Universidad universidad; //universidad en memoria 
-	public Grado grado; //grado en memoria
-	public Curso curso; //curso en memoria
-	public Map<Integer,Cuatrimestre> cuatrimestre;
-	public Map<Integer, Notificacion> notificaciones;
+	private static Unidad_Logica instancia; //singleton
+	private Usuario usuario;  //para el usuario en memoria
+	private Universidad universidad; //universidad en memoria 
+	private Grado grado; //grado en memoria
+	private Curso curso; //curso en memoria
+	private Map<Integer,Cuatrimestre> cuatrimestre;
+	private Map<Integer, Notificacion> notificaciones;
 	//public List<Actividad> actividades;
-	public Map<Integer, Asignatura> asignatura;
-	public DAL dal = DAL.getInstance();
+	private Map<Integer, Asignatura> asignatura;
+	private DAL dal = DAL.getInstance();
 	
 	//singleton
 	public static Unidad_Logica getInstance(){
@@ -26,13 +26,75 @@ public class Unidad_Logica {
 		}
 		return instancia;
 	}
+	//GETTERS Y SETTERS
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Universidad getUniversidad() {
+		return universidad;
+	}
+
+	public void setUniversidad(Universidad universidad) {
+		this.universidad = universidad;
+	}
+
+	public Grado getGrado() {
+		return grado;
+	}
+
+	public void setGrado(Grado grado) {
+		this.grado = grado;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public Map<Integer, Cuatrimestre> getCuatrimestre() {
+		return cuatrimestre;
+	}
+
+	public void setCuatrimestre(Map<Integer, Cuatrimestre> cuatrimestre) {
+		this.cuatrimestre = cuatrimestre;
+	}
+
+	public Map<Integer, Notificacion> getNotificaciones() {
+		return notificaciones;
+	}
+
+	public void setNotificaciones(Map<Integer, Notificacion> notificaciones) {
+		this.notificaciones = notificaciones;
+	}
+
+	public Map<Integer, Asignatura> getAsignatura() {
+		return asignatura;
+	}
+
+	public void setAsignatura(Map<Integer, Asignatura> asignatura) {
+		this.asignatura = asignatura;
+	}
+
+	public DAL getDal() {
+		return dal;
+	}
+
 	
-	//Usuario
+
+	//USUARIO
 	public Usuario crearUsuario(Usuario usuario){
 		this.usuario = usuario;
 		return dal.crearUsuario(usuario);
 	}
-	//metodo que comprueba si existe un usuario en la base de datos 
+	
 	public boolean hayUsuario(){
 		if( dal.obtenerInformacionDeUsuario(1) == null){return false;}
 		else return true;
@@ -55,7 +117,7 @@ public class Unidad_Logica {
 		
 	}
 
-	//Universiadad
+	//UNIVERSIDAD
 	public Universidad obtenerInformacionUniversidad(int id_universidad) {
 		return dal.obtenerInformacionDeUniversidad(id_universidad);
 	}
@@ -101,6 +163,10 @@ public class Unidad_Logica {
 	
 	public Grado crearGrado(Grado grado) {
 		return dal.crearGrado(grado);
+	}
+	//ASIGNATURA
+	public Asignatura informacionAsignatura(int id){
+		return null;
 	}
 	
 }

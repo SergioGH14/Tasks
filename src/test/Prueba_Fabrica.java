@@ -8,6 +8,7 @@ import java.util.Scanner;
 import bussines.Actividad;
 import bussines.Asignatura;
 import bussines.Fabrica_Actividad;
+import persistence.dto.ActividadDTO;
 
 public class Prueba_Fabrica {
 /*AVISO PARA NAVEGANTES esto es el main que he hecho yo SERGIO para probar el fabrica. 
@@ -28,6 +29,7 @@ public class Prueba_Fabrica {
 			LocalDateTime fecha = LocalDateTime.now();
 			
 		Asignatura CSD = new Asignatura("CSD");
+		CSD.setId_asignatura(0);
 		
 		
 		System.out.println("Crear nueva tarea de "+CSD.getTitulo()+" .");
@@ -40,9 +42,10 @@ public class Prueba_Fabrica {
 		System.out.println("Introduce tu tipo(1 practica   2 clase   3 examen): ");
 		int tipo = teclado.nextInt();
 		
-		Fabrica_Actividad constructora = Fabrica_Actividad.dameFabrica_Actividad();
+		Fabrica_Actividad constructora = Fabrica_Actividad.getInstance();
 		
-		Actividad actividad = constructora.crearActividad(tipo, CSD, Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario, false,especificaciones );
+		ActividadDTO adto= new ActividadDTO( CSD.getId_asignatura(), Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario,false);
+		Actividad actividad = constructora.crearActividad(tipo,adto,especificaciones );
 		System.out.println("Has creado con exito una actividad de nombre "+actividad.getTitulo()+"\nCuya descripcion es la siguiente: "+actividad.getDescripcion()+"\ny mas importante, su prioridad total es "+actividad.getPrioridadtotal()+"");
 		
 	}
