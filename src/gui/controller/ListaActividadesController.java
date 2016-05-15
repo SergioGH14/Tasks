@@ -60,8 +60,10 @@ public class ListaActividadesController implements Initializable{
 		olActividades = FXCollections.observableArrayList(listActividades);
 		System.out.println("Actividadessss: " + listActividades);
 
+		//estilo para las listas de actividades
+		lvActividades.getStylesheets().add(getClass().getResource("/gui/view/listaactividades.css").toExternalForm());
 		lvActividades.setItems(olActividades);
-
+		lvActividades.setCellFactory(c -> new ListCellFactoryActividades());
 	}
 
 

@@ -34,7 +34,6 @@ public class MainController  extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/MenuLateralBorderPanePrincipal.fxml"));
 			root = (BorderPane)loader.load();
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/gui/view/application.css").toExternalForm());
 
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);

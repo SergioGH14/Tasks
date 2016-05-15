@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<HBox fx:id="lciHBox" prefHeight="40.0" prefWidth="173.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Circle fx:id="lciColor" fill="#ff1f6b" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0">
+         <HBox.margin>
+            <Insets left="16.0" top="13.0" />
+         </HBox.margin>
+      </Circle>
+      <Text fx:id="lciTitulo" strokeType="OUTSIDE" strokeWidth="0.0" text="CSD">
+         <HBox.margin>
+            <Insets left="16.0" top="10.0" />
+         </HBox.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/mas_contenido.png" />
+         </image>
+         <HBox.margin>
+            <Insets right="10.0" top="11.0" />
+         </HBox.margin>
+      </ImageView>
+   </children>
+</HBox>

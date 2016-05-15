@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="lciHbox" cacheShape="false" centerShape="false" prefHeight="40.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <CheckBox fx:id="lciTituloActividad" mnemonicParsing="false" text="Hacer trabajo de DDS Patrones">
+         <HBox.margin>
+            <Insets left="16.0" top="11.0" />
+         </HBox.margin>
+      </CheckBox>
+      <Region prefHeight="40.0" prefWidth="156.0" HBox.hgrow="ALWAYS">
+         <HBox.margin>
+            <Insets left="75.0" />
+         </HBox.margin></Region>
+      <Text fx:id="lciFechaActividad" fill="#ff5350" strokeType="OUTSIDE" strokeWidth="0.0" text="23, abril 2016" textAlignment="RIGHT" wrappingWidth="105.21875">
+         <HBox.margin>
+            <Insets top="12.0" />
+         </HBox.margin>
+      </Text>
+      <ImageView fx:id="lciMenuContextual" fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/menu_contextual_actividades.png" />
+         </image>
+         <HBox.margin>
+            <Insets left="10.0" right="13.0" top="10.0" />
+         </HBox.margin>
+      </ImageView>
+   </children>
+</HBox>

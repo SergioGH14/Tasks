@@ -94,6 +94,10 @@ public class Date_solver {
     	return localdt.atStartOfDay();
     }
     
+    public static String obtenerFechaParaActividades(LocalDateTime date){
+    	DateTimeFormatter dTF = DateTimeFormatter.ofPattern("dd MMM uuuu");
+    	return dTF.format(date);
+    }
 }
 
  

@@ -42,7 +42,7 @@
       <AnchorPane prefHeight="552.0" prefWidth="205.0" style="-fx-background-color: #f3f3f3;" BorderPane.alignment="CENTER">
          <children>
             <Text fx:id="TextTituloGrado" layoutX="7.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto grado" textAlignment="CENTER" wrappingWidth="185.09897708892822" />
-            <ListView fx:id="listViewAsignaturas" layoutX="10.0" layoutY="207.0" prefHeight="291.0" prefWidth="186.0" style="-fx-background-color: #f3f3f3;" />
+            <ListView fx:id="listViewAsignaturas" cacheShape="false" centerShape="false" focusTraversable="false" layoutY="207.0" prefHeight="322.0" prefWidth="202.0" style="-fx-background-color: #f3f3f3;" />
             <VBox prefHeight="139.0" prefWidth="205.0" AnchorPane.bottomAnchor="439.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="9.0">
                <children>
                   <HBox fx:id="hbBandeja" prefHeight="40.0" prefWidth="205.0">

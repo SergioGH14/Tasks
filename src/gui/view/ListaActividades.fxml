@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -22,7 +23,7 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <ListView fx:id="lvActividades" layoutY="44.0" prefHeight="467.0" prefWidth="675.0" style="-fx-background-color: #fff;" />
+            <ListView fx:id="lvActividades" cacheShape="false" centerShape="false" focusTraversable="false" layoutY="44.0" prefHeight="467.0" prefWidth="675.0" style="-fx-background-color: #fff;" stylesheets="@listaactividades.css" />
          </children>
          <padding>
             <Insets bottom="8.0" left="16.0" right="16.0" />

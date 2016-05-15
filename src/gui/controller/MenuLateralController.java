@@ -31,6 +31,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
@@ -61,6 +62,9 @@ public class MenuLateralController implements Initializable {
 	private MainController controladorPrincipal;
 	private Unidad_Logica fachada;
 	
+	//pantalla principal si no hay tareas
+	@FXML private Text tvMensajeTodoOk;
+	
 	//Etiquetas XML para identificar objetos en pantalla
 	//Barra TOP
 	@FXML private ImageView ivAvatar;
@@ -74,18 +78,15 @@ public class MenuLateralController implements Initializable {
 	//Botones principales laterales
 	@FXML private Text tvBandeja;
 	@FXML private HBox hbBandeja;
-	
 	@FXML private Text tvHoy;
 	@FXML private HBox hbHoy;
-
 	@FXML private Text tvParaDespues;
 	@FXML private HBox hbParaDespues;
-
-	@FXML private Text tvMensajeTodoOk;
 	
 	//menu lateral
-	@FXML private ListView listViewAsignaturas;
 	@FXML private Text TextTituloGrado;
+	@FXML private ListView listViewAsignaturas;
+	@FXML private ImageView ivAnyadirAsignatura;
 	
 	//boolean para mostrar o no la lista de notificaciones
 	private boolean mostrarNotificaciones;
@@ -103,9 +104,69 @@ public class MenuLateralController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		this.fachada = Unidad_Logica.getInstance();
 		this.usuario = fachada.informacionUsuario(1);
-		//
-		tvMensajeTodoOk.setFont(Basics.generateFontById(9, 23));
 		
+		inicializarContenidoVisual();
+		
+		//prueba para rellenar la lista de asignaturas y mostrarlas en pantalla
+		List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
+		listaAsignaturas.add(new Asignatura("CSD", Color.CRIMSON));
+		listaAsignaturas.add(new Asignatura("ETC",Color.AQUAMARINE ));
+		listaAsignaturas.add(new Asignatura("PSW",Color.BLUEVIOLET));
+		listaAsignaturas.add(new Asignatura("DDS",Color.CADETBLUE));
+		listaAsignaturas.add(new Asignatura("GPR",Color.CORAL));
+		
+		Asignatura asignaturaPruebaConActividades = new Asignatura("MFI", Color.BLANCHEDALMOND);
+		
+		//Actividades de prueba
+		Actividad actPrueba1 = new Clase(1,asignaturaPruebaConActividades, "Avanzar con la presentación", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		actPrueba1.setId_actividad(1);
+		Actividad actPrueba2 = new Clase(2,asignaturaPruebaConActividades, "Hacer actividad de Poliformat", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		actPrueba2.setId_actividad(2);
+		Actividad actPrueba3 = new Clase(3,asignaturaPruebaConActividades, "Adelantar trabajo de la semana que viene", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		actPrueba3.setId_actividad(3);
+		Actividad actPrueba4 = new Clase(4,asignaturaPruebaConActividades, "Actividad pendiente de hacer del otro día", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		actPrueba4.setId_actividad(4);
+		
+		asignaturaPruebaConActividades.anyadirActividad(actPrueba1);
+		asignaturaPruebaConActividades.anyadirActividad(actPrueba2);
+		asignaturaPruebaConActividades.anyadirActividad(actPrueba3);
+		asignaturaPruebaConActividades.anyadirActividad(actPrueba4);
+
+		
+		listaAsignaturas.add(asignaturaPruebaConActividades);
+		
+		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
+		listViewAsignaturas.setItems(loAsignaturas);
+		
+		if(fachada.obtenerInformacionGrado(1)!=null){
+		    TextTituloGrado.setText(fachada.obtenerInformacionGrado(1).getTitulacion());
+		    TextTituloGrado.setFont(Basics.generateFontById(8, 16));
+		}
+		
+		//lista de asignaturas chetada + estilo en css
+		listViewAsignaturas.getStylesheets().add(getClass().getResource("/gui/view/application.css").toExternalForm());
+		listViewAsignaturas.setCellFactory(c-> new ListCellFactoryAsignaturas());
+
+		
+		/* Método escuchador de la lista para cuando se seleccione un elemento
+		 * se pueda lanzar la pantalla con las activiades correspondientes a esa asignatura
+		 */
+		listViewAsignaturas.setOnMouseClicked(new EventHandler<Event>(){
+
+			@Override
+			public void handle(Event event) {
+				if(listViewAsignaturas.getSelectionModel().getSelectedItem()!=null){
+					lanzarPantallaDeActividades(listaAsignaturas.get(listViewAsignaturas.getSelectionModel().getSelectedIndex()));
+				}
+			}
+			
+		});
+		
+		
+	}
+	public void inicializarContenidoVisual(){
+	    logoArdum.setFont(Basics.generateFontById(23, 35));
+
 		//nombre de usuario y fuente
 		if(usuario!=null){
 			tvNombreUsuario.setText(usuario.getNombreCompleto());
@@ -126,6 +187,7 @@ public class MenuLateralController implements Initializable {
 			}
 		}
 		
+		tvMensajeTodoOk.setFont(Basics.generateFontById(9, 23));
 		tvBandeja.setFont(Basics.generateFontById(3, 14));
 		hbBandeja.setOnMouseClicked(new EventHandler<Event>() {
 
@@ -192,104 +254,6 @@ public class MenuLateralController implements Initializable {
 			}
 		});
 
-		//prueba para rellenar la lista de asignaturas y mostrarlas en pantalla
-		
-		List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
-		listaAsignaturas.add(new Asignatura("CSD", Color.CRIMSON));
-		listaAsignaturas.add(new Asignatura("ETC",Color.AQUAMARINE ));
-		listaAsignaturas.add(new Asignatura("PSW",Color.BLUEVIOLET));
-		listaAsignaturas.add(new Asignatura("DDS",Color.CADETBLUE));
-		listaAsignaturas.add(new Asignatura("GPR",Color.CORAL));
-		
-		Asignatura asignaturaPruebaConActividades = new Asignatura("PRB", Color.BLANCHEDALMOND);
-		
-		Actividad actPrueba = new Clase(1,asignaturaPruebaConActividades, "Actividad pendiente de hacer", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
-		actPrueba.setId_actividad(0);
-		
-		asignaturaPruebaConActividades.anyadirActividad(actPrueba);
-		listaAsignaturas.add(asignaturaPruebaConActividades);
-		
-		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
-		listViewAsignaturas.setItems(loAsignaturas);
-		
-		if(fachada.obtenerInformacionGrado(1)!=null){
-		    TextTituloGrado.setText(fachada.obtenerInformacionGrado(1).getTitulacion());
-		    TextTituloGrado.setFont(Basics.generateFontById(8, 16));
-		}
-	    
-        
-	    
-	    logoArdum.setFont(Basics.generateFontById(23, 35));
-
-		
-		//celda a celda
-		listViewAsignaturas.setCellFactory(new Callback<ListView<Asignatura>, ListCell<Asignatura> >() {
-
-			@Override
-			public ListCell<Asignatura> call(ListView<Asignatura> param) {
-				
-				ListCell<Asignatura> celda = new ListCell<Asignatura>(){
-					
-					@Override
-					protected void updateItem(Asignatura a, boolean flag){
-						super.updateItem(a, flag);
-						
-						if(a!=null){
-							setText(a.getTitulo());
-							setFont(Basics.generateFontById(3, 16));
-							setStyle("-fx-padding: 10 20 10 20;");
-							
-							Button button = new Button();
-							Circle circuloActividad = new Circle(1.5);
-							button.setShape(circuloActividad);
-							button.setStyle("-fx-background-radius: 10em; " +
-										        "-fx-min-width: 10px; " +
-										        "-fx-min-height: 10px; " +
-										        "-fx-max-width: 10px; " +
-										        "-fx-max-height: 10px; " +
-										        "-fx-background-color: "+Basics.RGBToHex(a.getColor())+";" +
-										        "-fx-background-insets: 0px; " +
-										        "-fx-border-color: #fff;"+
-										        "-fx-padding: 1px;"+
-											    "-fx-border-insets: 1px;"+
-											    "-fx-background-insets: 1px;"+
-										        "-fx-border-width: 0.5;" );
-							setGraphic(button);
-																	
-						}
-					}
-				};
-				
-				celda.setOnMouseClicked(new EventHandler<Event>() {
-
-					@Override
-					public void handle(Event event) {
-						celda.setFont(Basics.generateFontById(2, 16));
-					}
-				});
-				
-				return celda;
-			}
-			
-		});
-
-		
-		/* Método escuchador de la lista para cuando se seleccione un elemento
-		 * se pueda lanzar la pantalla con las activiades correspondientes a esa asignatura
-		 */
-		
-		listViewAsignaturas.setOnMouseClicked(new EventHandler<Event>(){
-
-			@Override
-			public void handle(Event event) {
-				if(listViewAsignaturas.getSelectionModel().getSelectedItem()!=null){
-					lanzarPantallaDeActividades(listaAsignaturas.get(listViewAsignaturas.getSelectionModel().getSelectedIndex()));
-				}
-			}
-			
-		});
-		
-		
 	}
 	
 	public void lanzarPantallaDeActividades(Asignatura asignaturaSeleccionada){
