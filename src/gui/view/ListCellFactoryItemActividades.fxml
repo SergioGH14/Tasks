@@ -19,7 +19,7 @@
          <HBox.margin>
             <Insets left="75.0" />
          </HBox.margin></Region>
-      <Text fx:id="lciFechaActividad" fill="#ff5350" strokeType="OUTSIDE" strokeWidth="0.0" text="23, abril 2016" textAlignment="RIGHT" wrappingWidth="105.21875">
+      <Text fx:id="lciFechaActividad" fill="#ff7843" strokeType="OUTSIDE" strokeWidth="0.0" text="23, abril 2016" textAlignment="RIGHT" wrappingWidth="105.21875">
          <HBox.margin>
             <Insets top="12.0" />
          </HBox.margin>
