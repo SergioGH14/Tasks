@@ -9,11 +9,18 @@ import java.util.ResourceBundle;
 import Util.Basics;
 import bussines.Actividad;
 import bussines.Asignatura;
+import bussines.Estrategia_Ordenacion;
+import bussines.Estrategia_Ordenacion_BandejaEntrada;
+import bussines.Estrategia_Ordenacion_Hoy;
+import bussines.Estrategia_Ordenacion_ParaDespues;
+import bussines.Estrategia_Ordenacion_Prioridad;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -26,40 +33,66 @@ public class ListaActividadesController implements Initializable{
 	//Etiquetas XML para identificar objetos en pantalla
 	@FXML Text textNombreAsignatura;
 	
+	@FXML Pane pnTodoHecho; //pantalla que se muestra cuando todo está hecho
+	@FXML Text tvMensajeTodoOk;
+	@FXML ImageView ivLogoTodoHecho;
+	
 	//listas con actividades
 	@FXML ListView lvActividades;
 	private ObservableList<Actividad> olActividades;
-	private List<Actividad> listActividades;
 	
 	
-	public void initStage(Stage stage, MainController controladorPrincipal, Asignatura asignatura){
+	public void initStage(Stage stage, MainController controladorPrincipal, Asignatura asignatura, int tipoItemMenuSeleccionado){
 		this.primaryStage = stage;
 		this.controladorPrincipal = controladorPrincipal;
 		this.asignatura = asignatura;
-		
-		if(asignatura!=null){
-			textNombreAsignatura.setText("Actividades por hacer para "+asignatura.getTitulo());
-			textNombreAsignatura.setFont(Basics.generateFontById(3, 23));
-		}
-		
-		if(asignatura!=null && asignatura.getListaActividades()!=null){
-			iniciarPantallaListaDeActividades();
-		}else{
-			//futuro mensaje de que esta asignatura no tiene activiades asociadas.
-		}
+
+		iniciarPantallaListaDeActividades(tipoItemMenuSeleccionado);	
 		
 	}
 		
 	
-	private void iniciarPantallaListaDeActividades() {
-		this.listActividades = new ArrayList<>(asignatura.getListaActividades().size());
-		for(Integer id_actividad : asignatura.getListaActividades().keySet()){
-			listActividades.add(asignatura.obtenerActividad(id_actividad));
-			System.out.println("Actividad: " + asignatura.obtenerActividad(id_actividad));
-		}
-		olActividades = FXCollections.observableArrayList(listActividades);
-		System.out.println("Actividadessss: " + listActividades);
+	private void iniciarPantallaListaDeActividades(int tipoItemMenuSeleccionado) {
+		Estrategia_Ordenacion estrategiaOrdenacion = new Estrategia_Ordenacion();
+		textNombreAsignatura.setFont(Basics.generateFontById(3, 23));
 
+		switch(tipoItemMenuSeleccionado){
+		case 0:
+			if(asignatura!=null){
+				//rellenar la lista en pantalla con la que devuelve el patrón estrategia.
+				olActividades = FXCollections.observableArrayList(estrategiaOrdenacion.ordenar(new Estrategia_Ordenacion_Prioridad(asignatura)));
+			}
+			textNombreAsignatura.setText("Actividades por hacer para "+asignatura.getTitulo());
+			break;
+		case 1:
+			//metodo estrategia que devuelve actividades de bandeja de entrada
+			olActividades = FXCollections.observableArrayList(estrategiaOrdenacion.ordenar(new Estrategia_Ordenacion_BandejaEntrada()));
+			textNombreAsignatura.setText("Bandeja de Entrada");
+			break;
+		case 2:
+			//metodo estrategia que devuelve actividades de hoy
+			olActividades = FXCollections.observableArrayList(estrategiaOrdenacion.ordenar(new Estrategia_Ordenacion_Hoy()));
+			textNombreAsignatura.setText("Lo que tienes para hoy");
+			break;
+		case 3:
+			//metodo estrategia que devuelve actividades de para despues
+			olActividades = FXCollections.observableArrayList(estrategiaOrdenacion.ordenar(new Estrategia_Ordenacion_ParaDespues()));
+			textNombreAsignatura.setText("Ya lo harás después... ");
+			break;
+		}
+		
+		if(olActividades!=null && olActividades.isEmpty()){
+			//mostrar pantalla de todo hecho
+			pnTodoHecho.setVisible(true);
+			tvMensajeTodoOk.setFont(Basics.generateFontById(9, 23));
+			
+			/*
+			 * Aqui podriamos generar mensajes con logos aleatorios para que sea gracioso
+			 * 
+			 */
+
+		}
+		
 		//estilo para las listas de actividades
 		lvActividades.getStylesheets().add(getClass().getResource("/gui/view/listaactividades.css").toExternalForm());
 		lvActividades.setItems(olActividades);

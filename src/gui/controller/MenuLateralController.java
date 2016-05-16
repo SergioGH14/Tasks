@@ -143,11 +143,15 @@ public class MenuLateralController implements Initializable {
 		    TextTituloGrado.setFont(Basics.generateFontById(8, 16));
 		}
 		
+		
 		//lista de asignaturas chetada + estilo en css
 		listViewAsignaturas.getStylesheets().add(getClass().getResource("/gui/view/application.css").toExternalForm());
 		listViewAsignaturas.setCellFactory(c-> new ListCellFactoryAsignaturas());
 
-		
+		//inicialmente presentamos la lista de bandeja de entrada y seleccionamos ese elemento
+		tvBandeja.setFont(Basics.generateFontById(1, 14));
+		hbBandeja.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+				
 		/* Método escuchador de la lista para cuando se seleccione un elemento
 		 * se pueda lanzar la pantalla con las activiades correspondientes a esa asignatura
 		 */
@@ -156,7 +160,15 @@ public class MenuLateralController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				if(listViewAsignaturas.getSelectionModel().getSelectedItem()!=null){
-					lanzarPantallaDeActividades(listaAsignaturas.get(listViewAsignaturas.getSelectionModel().getSelectedIndex()));
+					//desseleccionar los otros elementos
+					hbBandeja.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+					hbHoy.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+					hbParaDespues.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+					tvBandeja.setFont(Basics.generateFontById(3, 14));
+					tvHoy.setFont(Basics.generateFontById(3, 14));
+					tvParaDespues.setFont(Basics.generateFontById(3, 14));
+
+					lanzarPantallaDeActividades(listaAsignaturas.get(listViewAsignaturas.getSelectionModel().getSelectedIndex()),0);
 				}
 			}
 			
@@ -187,7 +199,6 @@ public class MenuLateralController implements Initializable {
 			}
 		}
 		
-		tvMensajeTodoOk.setFont(Basics.generateFontById(9, 23));
 		tvBandeja.setFont(Basics.generateFontById(3, 14));
 		hbBandeja.setOnMouseClicked(new EventHandler<Event>() {
 
@@ -199,8 +210,11 @@ public class MenuLateralController implements Initializable {
 				tvHoy.setFont(Basics.generateFontById(3, 14));
 				hbParaDespues.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
 				tvParaDespues.setFont(Basics.generateFontById(3, 14));
-
+				listViewAsignaturas.getSelectionModel().select(null);
+				
 				//acciones al hacer click
+				lanzarPantallaDeActividades(null,1);
+
 				
 			}
 		});
@@ -214,10 +228,13 @@ public class MenuLateralController implements Initializable {
 				hbHoy.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 				hbBandeja.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
 				tvBandeja.setFont(Basics.generateFontById(3, 14));
-
+				listViewAsignaturas.getSelectionModel().select(null);
 				hbParaDespues.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
 				tvParaDespues.setFont(Basics.generateFontById(3, 14));
+				
 				//acciones al hacer click
+				lanzarPantallaDeActividades(null,2);
+
 				
 			}
 		});
@@ -233,8 +250,10 @@ public class MenuLateralController implements Initializable {
 				tvHoy.setFont(Basics.generateFontById(3, 14));
 				hbBandeja.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
 				tvBandeja.setFont(Basics.generateFontById(3, 14));
+				listViewAsignaturas.getSelectionModel().select(null);
 
 				//acciones al hacer click
+				lanzarPantallaDeActividades(null,3);
 				
 			}
 		});
@@ -256,9 +275,10 @@ public class MenuLateralController implements Initializable {
 
 	}
 	
-	public void lanzarPantallaDeActividades(Asignatura asignaturaSeleccionada){
-		controladorPrincipal.abrirPantallaActividades(primaryStage, asignaturaSeleccionada);
+	public void lanzarPantallaDeActividades(Asignatura asignaturaSeleccionada, int tipoItemMenu){
+		controladorPrincipal.abrirPantallaActividades(primaryStage, asignaturaSeleccionada,tipoItemMenu);
 	}
+	
 	public void lanzarPantallaDeNotificaciones(boolean mostrar){
 		controladorPrincipal.mostrarListaDeNotificaciones(primaryStage, mostrar);
 	}

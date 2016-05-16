@@ -44,6 +44,8 @@ public class MainController  extends Application {
 			MenuLateralController pantallaInicialActiviades = loader.<MenuLateralController>getController();
 			pantallaInicialActiviades.initStage(primaryStage, this);
 			
+			abrirPantallaActividades(primaryStage, null, 1);
+			
 			primaryStage.show();
 			
 			//No barra inferior, no gain.
@@ -59,25 +61,62 @@ public class MainController  extends Application {
 	}
 	
 	//la pantalla de activiades siempre abre la misma, solo que con diferentes asignaturas que tendrán activiades diferentes
-	public void abrirPantallaActividades(Stage primaryStage, Asignatura asignatura){
-		primaryStage.setTitle(Util.Constantes.ARDUM + " - " + asignatura.getTitulo());
+	/*
+	 * Tipos de item de menú lateral seleccionado:
+	 * 0.- Mostrar la pantalla de lista de la asignatura pasada por parámetros
+	 * 1.- Mostrar pantalla: Bandeja de entrada
+	 * 2.- Mostrar pantalla: Hoy
+	 * 3.- Mostrar pantalla: Para despues
+	 * 
+	 * dependiendo del tipo que pasas por parámetros y si la asignatura es null, irá al apartado concreto.
+	 */
+	public void abrirPantallaActividades(Stage primaryStage, Asignatura asignatura, int tipoItemMenuSeleccionado){
 		try {
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/ListaActividades.fxml"));
 			GridPane pantallaListaActiviades = (GridPane)loader.load();
 			
 			if(root!=null){
 				root.setCenter(pantallaListaActiviades);
-			}
 			
-			ListaActividadesController controladorPantalla = loader.<ListaActividadesController>getController();
-			controladorPantalla.initStage(primaryStage, this, asignatura);
+				if(asignatura!=null && tipoItemMenuSeleccionado==0 ){
+					primaryStage.setTitle(Util.Constantes.ARDUM + " - " + asignatura.getTitulo());
+					
+					ListaActividadesController controladorPantalla = loader.<ListaActividadesController>getController();
+					controladorPantalla.initStage(primaryStage, this, asignatura,tipoItemMenuSeleccionado);
+				}else{
+					String tituloAplicacion = "";
+					switch (tipoItemMenuSeleccionado) {
+					case 1:
+						tituloAplicacion = " - Bandeja de entrada de actividades por hacer";
+						break;
+					case 2:
+						tituloAplicacion = " - Lo que tienes para hoy";
+						break;
+					case 3:
+						tituloAplicacion = " - Lo que has dejado para después";
+						break;
+		
+					default:
+						break;
+					}
+					
+					ListaActividadesController controladorPantalla = loader.<ListaActividadesController>getController();
+					controladorPantalla.initStage(primaryStage, this, asignatura,tipoItemMenuSeleccionado);
+					primaryStage.setTitle(Util.Constantes.ARDUM + tituloAplicacion);
+		
+				}
+				
+			} 
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.err.println("Error al abrir la pantalla de activiades de una asignatura: " + e.getLocalizedMessage());
+			System.err.println("Error al abrir la pantalla de activiades de una asignatura o de item de menú: " + e.getLocalizedMessage());
 		}
 		
 	}
+	
+	
+	
 	public void inicioUserRoot(Stage secondaryStage){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/UsuarioRootLayout.fxml"));
