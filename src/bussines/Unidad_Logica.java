@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import persistence.DAL;
+import persistence.PracticasDAOImp;
 import persistence.UniversidadDAOImp;
 
 public class Unidad_Logica {
@@ -86,10 +87,110 @@ public class Unidad_Logica {
 	public DAL getDal() {
 		return dal;
 	}
+	/*FIN GETTER Y SETTER*/
+
+	/*ACTIVIDAD*/
+	/*FIN ACTIVIDAD*/
+	/*ASIGNATURA*/
+	public Asignatura obtenerInformacionAsignatura(String tituloAsignatura){
+		return dal.obtenerInformacionAsignatura(tituloAsignatura);
+		}
+	public Asignatura crearAsignatura(Asignatura asignatura){
+	return dal.crearAsignatura(asignatura);
+	}
+	
+	/*FIN ASIGNATURA*/
+	/*CLASE*/
+	/*FIN CLASE*/
+	/*CUATRIMESTRE*/
+	public Cuatrimestre obtenerInformacionCuatrimestre(int id_cuatrimestre){
+		return dal.obtenerInformacionCuatrimestre(id_cuatrimestre);
+	}
+	public Cuatrimestre crearCuatrimestre(Cuatrimestre cuatrimestre){
+		return dal.crearCuatrimestre(cuatrimestre);
+	}
+	/*FIN CUATRIMESTRE*/
+	/*CURSO*/ 
+	public Curso obtenerInformacionCurso(int id_curso) {
+		return dal.obtenerInformacionCurso(id_curso);
+	}
+	
+	public void eliminarCurso(int id_curso) {
+		dal.eliminarCurso(id_curso);
+	}
+	
+	public Curso crearCurso(Curso curso) {
+		return dal.crearCurso(curso);
+	}
+	/*FIN CURSO*/
+	/*EXAMENCLASE*/
+	/*FIN EXAMENCLASE*/
+	/*EXAMEN*/
+	/*FIN EXAMEN*/
+	/*EXAMENPOLIFORMAT*/
+	/*FIN EXAMENPOLIFOTMAT*/
+	/*EXAMENPRACTICAS*/
+	/*FIN EXAMENPRACTICAS*/
+	/*GRADO*/
+	public Grado obtenerInformacionGrado(int id_grado){
+		return dal.obtenerInformacionGrado(id_grado);
+	}
+	
+	public void eliminarGrado(int id_grado) {
+		dal.eliminarGrado(id_grado);
+	}
+	
+	public void editarGrado(Grado grado) {
+		dal.editarGrado(grado);
+	}
+	
+	public Grado crearGrado(Grado grado) {
+		return dal.crearGrado(grado);
+	}
+	/*FIN GRADO*/
+	/*NOTIFICACIONES*/
+	/*FIN NOTIFICACIONES*/
+	/*PRACTICAS*/
+	public Practicas obtenerInformacionDePracticas(int id_Practicas) {
+		return dal.obtenerInformacionDePracticas(id_Practicas);
+	}
+
+
+	public void eliminarPracticas(int id_Practicas) {
+		dal.eliminarPracticas(id_Practicas);
+		
+	}
+
+
+	public Practicas crearPracticas(Practicas Practicas) {
+	 return 	dal.crearPracticas(Practicas);
+	}
 
 	
+	public void editarPracticas(Practicas Practicas) {
+	  dal.editarPracticas(Practicas);
+		
+	}
+	/*FIN PRACTICAS*/
+	/*UNIVERSIDAD*/
+	public Universidad obtenerInformacionUniversidad(int id_universidad) {
+		return dal.obtenerInformacionDeUniversidad(id_universidad);
+	}
+	
+	public void eliminarUniversidad(int id_universidad) {
+		dal.eliminarUniversidad(id_universidad);
+	}
 
-	//USUARIO
+	public void editarUniversiad(Universidad universidad) {
+		dal.editarUniversidad(universidad);
+	}
+	
+	public Universidad crearUniversidad(Universidad universidad) {
+		return dal.crearUniversidad(universidad);
+		
+	}
+	/*FIN UNIVERSIDAD*/
+	/*USUARIO*/
 	public Usuario crearUsuario(Usuario usuario){
 		this.usuario = usuario;
 		return dal.crearUsuario(usuario);
@@ -108,77 +209,14 @@ public class Unidad_Logica {
 	}
 	
 	public void editarUsuario(Usuario usuario){
-		//dal.editarUsuario(usuario);
+		dal.editarUsuario(usuario);
 	}
 	
 	public Usuario asociarUniversidadUsuario(Usuario usuario, int id_universidad){
 	  return	dal.asociarUniversidadUsuario(usuario, id_universidad);
 		
 	}
-
-	//UNIVERSIDAD
-	public Universidad obtenerInformacionUniversidad(int id_universidad) {
-		return dal.obtenerInformacionDeUniversidad(id_universidad);
-	}
 	
-	public void eliminarUniversidad(int id_universidad) {
-		dal.eliminarUniversidad(id_universidad);
-	}
-
-	public void editarUniversiad(Universidad universidad) {
-		dal.editarUniversidad(universidad);
-	}
-	
-	public Universidad crearUniversidad(Universidad universidad) {
-		return dal.crearUniversidad(universidad);
-		
-	}
-
-	//CURSO 
-	public Curso obtenerInformacionCurso(int id_curso) {
-		return dal.obtenerInformacionCurso(id_curso);
-	}
-	
-	public void eliminarCurso(int id_curso) {
-		dal.eliminarCurso(id_curso);
-	}
-	
-	public Curso crearCurso(Curso curso) {
-		return dal.crearCurso(curso);
-	}
-
-	//GRADO
-	public Grado obtenerInformacionGrado(int id_grado){
-		return dal.obtenerInformacionGrado(id_grado);
-	}
-	
-	public void eliminarGrado(int id_grado) {
-		dal.eliminarGrado(id_grado);
-	}
-	
-	public void editarGrado(Grado grado) {
-		dal.editarGrado(grado);
-	}
-	
-	public Grado crearGrado(Grado grado) {
-		return dal.crearGrado(grado);
-	}
-	
-	//CUATRIMESTRE
-	public Cuatrimestre crearCuatrimestre(Cuatrimestre cuatrimestre){
-		return dal.crearCuatrimestre(cuatrimestre);
-	}
-	
-	//ASIGNATURA
-	
-	public Asignatura crearAsignatura(Asignatura asignatura){
-		
-		return dal.crearAsignatura(asignatura);
-	}
-	
-	public Asignatura informacionAsignatura(String nombreAsignatura){
-		return dal.obtenerInformacionAsignatura(nombreAsignatura);
-	}
+	/*FIN USUARIO*/
 	
 }
-
