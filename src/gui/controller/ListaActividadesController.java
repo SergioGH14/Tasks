@@ -1,5 +1,6 @@
 package gui.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +15,23 @@ import bussines.Estrategia_Ordenacion_BandejaEntrada;
 import bussines.Estrategia_Ordenacion_Hoy;
 import bussines.Estrategia_Ordenacion_ParaDespues;
 import bussines.Estrategia_Ordenacion_Prioridad;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class ListaActividadesController implements Initializable{
 	//Objetos básicos de paso entre pantallas: Stage y Controlador principal
@@ -52,6 +61,7 @@ public class ListaActividadesController implements Initializable{
 	}
 		
 	
+	@SuppressWarnings("unchecked")
 	private void iniciarPantallaListaDeActividades(int tipoItemMenuSeleccionado) {
 		Estrategia_Ordenacion estrategiaOrdenacion = new Estrategia_Ordenacion();
 		textNombreAsignatura.setFont(Basics.generateFontById(3, 23));
@@ -97,6 +107,51 @@ public class ListaActividadesController implements Initializable{
 		lvActividades.getStylesheets().add(getClass().getResource("/gui/view/listaactividades.css").toExternalForm());
 		lvActividades.setItems(olActividades);
 		lvActividades.setCellFactory(c -> new ListCellFactoryActividades());
+		
+		/*lvActividades.setCellFactory(new Callback<ListView<Asignatura>, ListCell<Actividad> >() {
+
+			@Override
+			public ListCell<Actividad> call(ListView<Asignatura> param) {
+				
+				ListCell<Actividad> celda = new ListCell<Actividad>(){
+					
+					@Override
+					protected void updateItem(Actividad actividad, boolean flag){
+						super.updateItem(actividad, flag);
+						if(actividad!=null){ 
+							
+
+							ListCellFactoryItemActividades controllerItem = new ListCellFactoryItemActividades();
+							FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/ListCellFactoryItemActividades.fxml"));
+							try {
+								loader.setController(controllerItem);
+								HBox hboxItemsAsignaturas = (HBox)loader.load();
+
+								controllerItem.setInformacion(actividad);
+								setGraphic(hboxItemsAsignaturas);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							
+						}		
+						
+					}
+				};
+				
+				celda.setOnMouseClicked(new EventHandler<Event>() {
+
+					@Override
+					public void handle(Event event) {
+						System.out.println("ha hecho click en el elemento: " + celda.getIndex());
+						olActividades.remove(celda.getIndex());
+					}
+				});
+				
+				return celda;
+			}
+			
+		});*/
+		
 	}
 
 

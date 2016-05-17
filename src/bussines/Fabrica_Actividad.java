@@ -74,7 +74,7 @@ public class Fabrica_Actividad {
 	private Actividad crearClase(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
 		
 		
-		Clase clase = new Clase(Unidad_Logica.getInstance().informacionAsignatura(actividaddto.getId_asignatura()),
+		Clase clase = new Clase(Unidad_Logica.getInstance().informacionAsignatura(actividaddto.getTitulo()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
 				actividaddto.getFechaFinalizacion(), 
@@ -90,7 +90,7 @@ public class Fabrica_Actividad {
 	private Actividad crearExamen(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
 		
 		
-		Examen examen = new Examen(Unidad_Logica.getInstance().informacionAsignatura(actividaddto.getId_asignatura()),
+		Examen examen = new Examen(Unidad_Logica.getInstance().informacionAsignatura(actividaddto.getTitulo()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
 				actividaddto.getFechaFinalizacion(), 

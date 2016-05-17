@@ -2,7 +2,7 @@ package bussines;
 
 public class Examen_Poliformat extends Decorador_Examen {
 	
-	private Actividad_Examen examen ;
+	private int id_examen_poliformat;
 	private boolean reintentable;
 	
 

@@ -112,7 +112,6 @@ public class Pruebas_Persistencia {
 		Asignatura asignatura = dal.crearAsignatura( new Asignatura(listaCuatrimestres.get(0), "CSD 2", 66, 5, false, Basics.HexToColor("#c1c1c1")));
 		System.out.println("\n #### PRUEBAS DIRECTAS DE PERSISTENCIA ### \n ASIGNATURA CREADA: " + asignatura);
 		
-		
 
 	}
 		

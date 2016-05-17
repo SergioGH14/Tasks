@@ -28,15 +28,15 @@ public class CursoDAOImp implements CursoDAO{
 		Curso curso = null;
 		try{
 			connectionManager.connect();
-			ResultSet curso_resultSet = connectionManager.queryDB("SELECT * from CURSO where id_curso = "+id_curso);
+			ResultSet curso_resultSet = connectionManager.queryDB("SELECT * from CURSO where id_curso = '"+id_curso+"'");
 			connectionManager.close();
 		
 			if (curso_resultSet.next()){
 				curso = new Curso(
 						curso_resultSet.getInt("ID_CURSO"),
-						new Grado(curso_resultSet.getInt("ID_GRADO")),
+						new GradoDAOImp().obtenerInformacionGrado(curso_resultSet.getInt("ID_GRADO")),
 						Date_solver.convertirDateSQLEnLocalDateTime(curso_resultSet.getDate("ANYO")),
-						curso_resultSet.getDouble("DIRECCION") );
+						curso_resultSet.getDouble("CREDITOS") );
 			}else
 				return curso;	
 			

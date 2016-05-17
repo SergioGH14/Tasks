@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import bussines.Actividad;
-import bussines.Asignatura;
-import bussines.Fabrica_Actividad;
+import bussines.*; 
+import javafx.scene.paint.Color;
+import persistence.DAL;
 import persistence.dto.ActividadDTO;
 
 public class Prueba_Fabrica {
@@ -28,9 +28,13 @@ public class Prueba_Fabrica {
 			especificaciones.add(true);
 			LocalDateTime fecha = LocalDateTime.now();
 			
-		Asignatura CSD = new Asignatura("CSD");
-		CSD.setId_asignatura(0);
+	
+	Cuatrimestre cuatrimestre = DAL.getInstance().obtenerInformacionCuatrimestre(3);
+		System.out.println(cuatrimestre);
 		
+		Asignatura CSD = new Asignatura(cuatrimestre, "PRUEBA", 0, 0, false, Color.ANTIQUEWHITE);
+		CSD = DAL.getInstance().crearAsignatura(CSD);
+		System.out.println(CSD);
 		
 		System.out.println("Crear nueva tarea de "+CSD.getTitulo()+" .");
 		System.out.println("Introduce Titulo: ");
@@ -44,11 +48,12 @@ public class Prueba_Fabrica {
 		
 		Fabrica_Actividad constructora = Fabrica_Actividad.getInstance();
 		
-		ActividadDTO adto= new ActividadDTO( CSD.getId_asignatura(), Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario,false);
+		ActividadDTO adto= new ActividadDTO( CSD.getTitulo(), Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario,false);
 		Actividad actividad = constructora.crearActividad(tipo,adto,especificaciones );
 		
 		System.out.println("Has creado con exito una actividad de nombre "+actividad.getTitulo()+"\nCuya descripcion es la siguiente: "+actividad.getDescripcion()+"\ny mas importante, su prioridad total es "+actividad.getPrioridadtotal()+"");
 		
+		//System.out.println("Asignatura 2: " + DAL.getInstance().obtenerInformacionAsignatura("PRUEBA"));
 	}
 
 }

@@ -7,7 +7,9 @@ import java.util.ResourceBundle;
 
 import Util.Basics;
 import bussines.Asignatura;
+import bussines.Cuatrimestre;
 import bussines.Curso;
+import bussines.Unidad_Logica;
 import bussines.Universidad;
 import bussines.Usuario;
 import javafx.collections.FXCollections;
@@ -125,8 +127,8 @@ public class InicioCuatrimestreAsignaturaController implements Initializable{
 			public void handle(Event event) {
 				
 				//Mandamos la lista de Asignaturas a fachada
-				
-				/*C'MON EVERYBODY PUT IN THE AIR*/
+				Cuatrimestre cuatrimestre = new Cuatrimestre(actual, 1);
+				cuatrimestre = Unidad_Logica.getInstance().crearCuatrimestre(cuatrimestre);
 				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
 				controladorPrincipal.start(primaryStage);

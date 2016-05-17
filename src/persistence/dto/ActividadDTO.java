@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class ActividadDTO {
 
 	private int id_actividad;
-	private int id_asignatura;
+	private String id_asignatura;
 	private String titulo;
 	private String descripcion;
 	private LocalDateTime fechaFinalizacion;
@@ -15,7 +15,7 @@ public class ActividadDTO {
 	private int prioridadTotal;
 	private boolean finalizada;
 	
-	public ActividadDTO(int id_asignatura, String titulo, String descripcion, LocalDateTime fechaFinalizacion,
+	public ActividadDTO(String id_asignatura, String titulo, String descripcion, LocalDateTime fechaFinalizacion,
 			int tiempoEstimado, double porcentaje, int prioridadUsuario, boolean finalizada) {
 		super();
 		this.id_asignatura = id_asignatura;
@@ -28,7 +28,7 @@ public class ActividadDTO {
 		this.finalizada = finalizada;
 	}
 
-	public ActividadDTO(int id_actividad, int id_asignatura, String titulo, String descripcion,
+	public ActividadDTO(int id_actividad, String id_asignatura, String titulo, String descripcion,
 			LocalDateTime fechaFinalizacion, int tiempoEstimado, double porcentaje, int prioridadUsuario,
 			boolean finalizada) {
 		super();
@@ -51,11 +51,11 @@ public class ActividadDTO {
 		this.id_actividad = id_actividad;
 	}
 
-	public int getId_asignatura() {
+	public String getId_asignatura() {
 		return id_asignatura;
 	}
 
-	public void setId_asignatura(int id_asignatura) {
+	public void setId_asignatura(String id_asignatura) {
 		this.id_asignatura = id_asignatura;
 	}
 

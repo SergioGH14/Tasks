@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class Practicas extends Actividad {
 
+	private int id_practicas;
 	private boolean grupal;
 	private boolean recuperable;
 	
@@ -19,6 +20,7 @@ public class Practicas extends Actividad {
 		}
 
 		private int establecerPrioridadTotal(){
+			System.out.println("pasa x aqui: " + getAsignatura());
 			int aux =getAsignatura().getDificultad()+getPrioridadusuario()+getTiempoestimado()+5;
 		
 			if(isGrupal())aux = aux+10;

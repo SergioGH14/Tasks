@@ -129,17 +129,19 @@ public class InicioUsuarioController implements Initializable{
 				
 				//Creamos la universidad
 				Universidad upv = new Universidad("/Tasks/assets/logo_upv[1].png","Universitat Politecnica de Valencia", "Camino de Vera");
-				
+				//Mandamos a la persistencia la universidad
+				upv = Unidad_Logica.getInstance().crearUniversidad(upv);
 				
 				//Creamos el Usuario
 				user = new Usuario(upv,tfNombre.getText(),
 						tfApellidos.getText(),
 						path,
 						dpFechanacimiento.getValue().atTime(0, 0),tfEmail.getText());
-				//Mandamos el Usuario y la universidad a persistencia mediante fachada
+				//Mandamos el Usuario a la  persistencia mediante fachada
+				user = 	Unidad_Logica.getInstance().crearUsuario(user);
+
 				
-				Unidad_Logica.getInstance().crearUniversidad(upv);
-				Unidad_Logica.getInstance().crearUsuario(user);
+				
 				
 				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla

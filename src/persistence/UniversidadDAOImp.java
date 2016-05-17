@@ -23,10 +23,10 @@ public class UniversidadDAOImp implements UniversidadDAO{
 
 	@Override
 	public Universidad obtenerInformacionDeUniversidad(int id_universidad) {
-		Universidad uni = null;
+		Universidad uni = null;	
 		try{
 			connectionManager.connect();
-			ResultSet universidad = connectionManager.queryDB("SELECT * from UNIVERSIDAD where id_universidad = "+id_universidad);
+			ResultSet universidad = connectionManager.queryDB("SELECT * from UNIVERSIDAD where id_universidad = '"+id_universidad+"'");
 			connectionManager.close();
 		
 			if (universidad.next()){

@@ -26,7 +26,7 @@ public class AsignaturaDAOImp implements AsignaturaDAO{
 		Asignatura asignatura = null;
 		try{
 			connectionManager.connect();
-			ResultSet asignaturaResultSet = connectionManager.queryDB("SELECT * from ASIGNATURA where titulo = '"+nombreAsignatura+"'");
+			ResultSet asignaturaResultSet = connectionManager.queryDB("SELECT * from ASIGNATURA where titulo = '"+nombreAsignatura.toUpperCase()+"'");
 			connectionManager.close();
 			
 			if(asignaturaResultSet.next()){

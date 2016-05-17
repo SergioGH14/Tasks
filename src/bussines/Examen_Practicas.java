@@ -1,7 +1,7 @@
 package bussines;
 public class Examen_Practicas extends Decorador_Examen {
 	
-	private Actividad_Examen examen ;
+	private int id_examen_practicas;
 	private boolean apuntes;
 	
 	public Examen_Practicas(Actividad_Examen examen, boolean apuntes) {

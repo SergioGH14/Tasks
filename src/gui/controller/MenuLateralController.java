@@ -118,13 +118,13 @@ public class MenuLateralController implements Initializable {
 		Asignatura asignaturaPruebaConActividades = new Asignatura("MFI", Color.BLANCHEDALMOND);
 		
 		//Actividades de prueba
-		Actividad actPrueba1 = new Clase(1,asignaturaPruebaConActividades, "Avanzar con la presentación", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		Actividad actPrueba1 = new Clase(1,asignaturaPruebaConActividades, "Avanzar con la presentación", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, false, false);
 		actPrueba1.setId_actividad(1);
-		Actividad actPrueba2 = new Clase(2,asignaturaPruebaConActividades, "Hacer actividad de Poliformat", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		Actividad actPrueba2 = new Clase(2,asignaturaPruebaConActividades, "Hacer actividad de Poliformat", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, false, false);
 		actPrueba2.setId_actividad(2);
-		Actividad actPrueba3 = new Clase(3,asignaturaPruebaConActividades, "Adelantar trabajo de la semana que viene", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		Actividad actPrueba3 = new Clase(3,asignaturaPruebaConActividades, "Adelantar trabajo de la semana que viene", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, false, false);
 		actPrueba3.setId_actividad(3);
-		Actividad actPrueba4 = new Clase(4,asignaturaPruebaConActividades, "Actividad pendiente de hacer del otro día", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		Actividad actPrueba4 = new Clase(4,asignaturaPruebaConActividades, "Actividad pendiente de hacer del otro día", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, false, false);
 		actPrueba4.setId_actividad(4);
 		
 		asignaturaPruebaConActividades.anyadirActividad(actPrueba1);

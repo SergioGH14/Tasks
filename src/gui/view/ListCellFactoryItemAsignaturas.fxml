@@ -15,7 +15,7 @@
             <Insets left="16.0" top="13.0" />
          </HBox.margin>
       </Circle>
-      <Text fx:id="lciTitulo" strokeType="OUTSIDE" strokeWidth="0.0" text="CSD">
+      <Text fx:id="lciTitulo" fill="#262b33" strokeType="OUTSIDE" strokeWidth="0.0" text="CSD">
          <HBox.margin>
             <Insets left="16.0" top="10.0" />
          </HBox.margin>

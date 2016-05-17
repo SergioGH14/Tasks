@@ -61,21 +61,18 @@ public class InicioUniversidadGradoController  implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// ¿Comprobamos que todos los parametros son validos?
-				
 				System.out.println("Este es el año convertido supuestamente en una fecha -->"+Date_solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
 				
-				Grado grado = new Grado(upv, tfTituloGrado.getText(),Date_solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
-				
-				
+				Grado grado = new Grado(upv, tfTituloGrado.getText(),Date_solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));	
+				//Mandamos el Grado a persistencia mediante fachada
+				grado = Unidad_Logica.getInstance().crearGrado(grado);
 				
 				Curso actual = new Curso(grado,
 						LocalDateTime.now(),
 						Double.parseDouble(tfCreditosTotales.getText()));
+				//Mandamos el Curso a persistencia
+				actual = Unidad_Logica.getInstance().crearCurso(actual );
 				
-				
-				//Mandamos el Grado a persistencia mediante fachada
-				
-				Unidad_Logica.getInstance().crearGrado(grado);
 				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
 				controladorPrincipal.inicioCuatrimestreAsignatura(primaryStage, actual);

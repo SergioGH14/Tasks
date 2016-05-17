@@ -163,9 +163,15 @@ public class Unidad_Logica {
 	public Grado crearGrado(Grado grado) {
 		return dal.crearGrado(grado);
 	}
+	
+	//CUATRIMESTRE
+	public Cuatrimestre crearCuatrimestre(Cuatrimestre cuatrimestre){
+		return dal.crearCuatrimestre(cuatrimestre);
+	}
+	
 	//ASIGNATURA
-	public Asignatura informacionAsignatura(int id){
-		return null;
+	public Asignatura informacionAsignatura(String nombreAsignatura){
+		return dal.obtenerInformacionAsignatura(nombreAsignatura);
 	}
 	
 }
