@@ -110,7 +110,15 @@ public class CrearAsignaturaController implements Initializable{
 			
 			}
 
-	  /*Pone opacidad a la dificultad seleccionada
+	  public Asignatura getAsignatura() {
+			return asignatura;
+		}
+
+		public void setAsignatura(Asignatura asignatura) {
+			this.asignatura = asignatura;
+		}
+
+	/*Pone opacidad a la dificultad seleccionada
 	   * 0 Facil
 	   * 1 Medio
 	   * 2 Dificl
@@ -235,7 +243,7 @@ public class CrearAsignaturaController implements Initializable{
 			public void handle(Event event) {
 				// Hacer el input valid antes
 				asignatura = new Asignatura(cuatri,tfNombre.getText(),0,dificultad,false,cpColorPicker.getValue());
-			//	asignatura =
+			    asignatura = Unidad_Logica.getInstance().crearAsignatura(asignatura);
 				primaryStage.close();
 			}
 		

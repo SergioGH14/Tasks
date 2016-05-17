@@ -51,6 +51,11 @@ public class InicioCuatrimestreAsignaturaController implements Initializable{
 		this.primaryStage = stage;
 		this.controladorPrincipal = controladorPrincipal;
 		this.actual = actual;
+		//Mandamos la lista de Asignaturas a fachada
+				for(int i = 1; i<4; i++){
+				Cuatrimestre cuatrimestre = new Cuatrimestre(actual, i);
+				cuatrimestre = Unidad_Logica.getInstance().crearCuatrimestre(cuatrimestre);
+				}
 		
 		}
 	
@@ -102,6 +107,9 @@ public class InicioCuatrimestreAsignaturaController implements Initializable{
 	} 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		
+		
 		// Inicializo el ObservableArrayList
 		
 		observableListAsignaturas = FXCollections.observableArrayList();
@@ -115,9 +123,8 @@ public class InicioCuatrimestreAsignaturaController implements Initializable{
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				
-				Asignatura pruebita = new Asignatura("CSO",Color.ALICEBLUE);
-				System.out.println(pruebita);
-				anyadirAsignatura(pruebita);
+				
+				anyadirAsignatura(controladorPrincipal.crearAsignatura());
 			}
 		});
 		
@@ -126,9 +133,7 @@ public class InicioCuatrimestreAsignaturaController implements Initializable{
 			@Override
 			public void handle(Event event) {
 				
-				//Mandamos la lista de Asignaturas a fachada
-				Cuatrimestre cuatrimestre = new Cuatrimestre(actual, 1);
-				cuatrimestre = Unidad_Logica.getInstance().crearCuatrimestre(cuatrimestre);
+				
 				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
 				controladorPrincipal.start(primaryStage);

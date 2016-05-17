@@ -170,6 +170,12 @@ public class Unidad_Logica {
 	}
 	
 	//ASIGNATURA
+	
+	public Asignatura crearAsignatura(Asignatura asignatura){
+		
+		return dal.crearAsignatura(asignatura);
+	}
+	
 	public Asignatura informacionAsignatura(String nombreAsignatura){
 		return dal.obtenerInformacionAsignatura(nombreAsignatura);
 	}

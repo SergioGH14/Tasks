@@ -47,6 +47,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import persistence.DAL;
 
 
 /*
@@ -103,13 +104,13 @@ public class MenuLateralController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.fachada = Unidad_Logica.getInstance();
-		this.usuario = fachada.informacionUsuario(1);
+		this.usuario = fachada.informacionUsuario(2);
 		
 		inicializarContenidoVisual();
 		
 		//prueba para rellenar la lista de asignaturas y mostrarlas en pantalla
 		List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
-		listaAsignaturas.add(new Asignatura("CSD", Color.CRIMSON));
+		/*listaAsignaturas.add(new Asignatura("CSD", Color.CRIMSON));
 		listaAsignaturas.add(new Asignatura("ETC",Color.AQUAMARINE ));
 		listaAsignaturas.add(new Asignatura("PSW",Color.BLUEVIOLET));
 		listaAsignaturas.add(new Asignatura("DDS",Color.CADETBLUE));
@@ -133,7 +134,8 @@ public class MenuLateralController implements Initializable {
 		asignaturaPruebaConActividades.anyadirActividad(actPrueba4);
 
 		
-		listaAsignaturas.add(asignaturaPruebaConActividades);
+		listaAsignaturas.add(asignaturaPruebaConActividades);*/
+		listaAsignaturas.addAll(DAL.getInstance().obtenerAsignaturasPorCuatrimestre(2));
 		
 		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
 		listViewAsignaturas.setItems(loAsignaturas);
@@ -178,7 +180,11 @@ public class MenuLateralController implements Initializable {
 
 			@Override
 			public void handle(Event event) {
-				controladorPrincipal.crearAsignatura();
+				listaAsignaturas.add(controladorPrincipal.crearAsignatura());
+				
+				loAsignaturas.clear();
+				loAsignaturas.addAll(listaAsignaturas);
+				
 				}
 			
 			

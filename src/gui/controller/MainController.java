@@ -190,7 +190,7 @@ public class MainController  extends Application {
 		}
 	}
 	
-	public void crearAsignatura(){
+	public Asignatura crearAsignatura(){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearAsignatura.fxml"));
 			BorderPane creador = (BorderPane)loader.load();
@@ -205,11 +205,14 @@ public class MainController  extends Application {
 			secondaryStage.setTitle(Util.Constantes.ARDUM);
 			CrearAsignaturaController creadorcontrolador = loader.<CrearAsignaturaController>getController();
 			creadorcontrolador.initStage(secondaryStage, this);
-			secondaryStage.show();
+			secondaryStage.showAndWait();
+			
+			return creadorcontrolador.getAsignatura();
 		} catch (IOException e){
 			// TODO Auto-generated catch block
 			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());
 		}
+		 return null;
 	}
 	
 	public void mostrarListaDeNotificaciones(Stage secondaryStage, boolean mostrar){
