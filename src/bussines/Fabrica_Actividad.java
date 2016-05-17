@@ -3,6 +3,7 @@ package bussines;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import persistence.PracticasDAOImp;
 import persistence.dto.ActividadDTO;
 
 
@@ -10,7 +11,7 @@ import persistence.dto.ActividadDTO;
 
 
 public class Fabrica_Actividad {
-	 public static Fabrica_Actividad instance;
+	 private static Fabrica_Actividad instance;
 	
 	 public static Fabrica_Actividad getInstance() {
 		  if(instance == null){
@@ -58,7 +59,7 @@ public class Fabrica_Actividad {
 	
 	private Actividad crearPractica(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
 		
-		Practicas practica = new Practicas(Unidad_Logica.getInstance().informacionAsignatura(actividaddto.getId_asignatura()),
+		Practicas practica = new Practicas(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getId_asignatura()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
 				actividaddto.getFechaFinalizacion(), 
@@ -68,13 +69,14 @@ public class Fabrica_Actividad {
 				actividaddto.isFinalizada(),
 				especificaciones.get(0),
 				especificaciones.get(1));
+		practica = Unidad_Logica.getInstance().crearPracticas(practica);
 		return practica;
 	}
 	
 	private Actividad crearClase(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
 		
 		
-		Clase clase = new Clase(Unidad_Logica.getInstance().informacionAsignatura(actividaddto.getTitulo()),
+		Clase clase = new Clase(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getTitulo()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
 				actividaddto.getFechaFinalizacion(), 
@@ -84,13 +86,14 @@ public class Fabrica_Actividad {
 				actividaddto.isFinalizada(),
 				
 				especificaciones.get(0));
+		
 		return clase;
 	}
 
 	private Actividad crearExamen(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
 		
 		
-		Examen examen = new Examen(Unidad_Logica.getInstance().informacionAsignatura(actividaddto.getTitulo()),
+		Examen examen = new Examen(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getTitulo()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
 				actividaddto.getFechaFinalizacion(), 

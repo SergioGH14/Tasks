@@ -29,9 +29,6 @@ public class DAL {
 	private DAL(){
 		
 		actividadDAO = new ActividadDAO(){
-			public Actividad obtenerInformacionDeactividad(int id_actividad){
-				return new ActividadDAOImp().obtenerInformacionDeActividad(id_actividad);
-			}
 
 			@Override
 			public void eliminarActividad(int id_actividad) {
@@ -53,8 +50,7 @@ public class DAL {
 
 			@Override
 			public Actividad obtenerInformacionDeActividad(int id_actividad) {
-				// TODO Auto-generated method stub
-				return null;
+				return new ActividadDAOImp().obtenerInformacionDeActividad(id_actividad);
 			}
 			
 			
@@ -410,6 +406,29 @@ public class DAL {
 		}
 		return instance;
 	}
+	
+	/*ACTIVIDAD*/
+	public Actividad obtenerInformacionDeActividad(int id_actividad){
+		return actividadDAO.obtenerInformacionDeActividad(id_actividad);
+	}
+
+	public void eliminarActividad(int id_actividad) {
+		actividadDAO.eliminarActividad(id_actividad);
+		
+	}
+
+	public Actividad crearActividad(Actividad actividad) {
+	
+		return  actividadDAO.crearActividad(actividad);
+	}
+
+	public void editarActividad(Actividad actividad) {
+		actividadDAO.editarActividad(actividad);
+		
+	}
+
+	 /*FIN ACTIVIDAD*/
+	
 	/* ASIGNATURA */ 
 	public Asignatura obtenerInformacionAsignatura(String nombreAsignatura){
 		return asignaturaDAO.obtenerInformacionAsignatura(nombreAsignatura);
@@ -434,6 +453,27 @@ public class DAL {
 	public boolean existeAsignatura(String nombreAsignatura){
 		return asignaturaDAO.existeAsignatura(nombreAsignatura);
 	}
+	/*FIN ASIGNATURA*/
+	
+	/*CLASE*/
+	public Clase obtenerInformacionDeClase(int id_clase) {
+		return claseDAO.obtenerInformacionDeClase(id_clase);
+	}
+
+	public void eliminarClase(int id_clase) {
+		claseDAO.eliminarClase(id_clase);
+		
+	}
+
+	public Clase crearClase(Clase clase) {
+		return claseDAO.crearClase(clase);
+	}
+	
+	public void editarClase(Clase clase) {
+		claseDAO.editarClase(clase);
+		
+	}
+	/*FIN CLASE*/
 	
 	/* CUATRIMESTRE */
 	public Cuatrimestre obtenerInformacionCuatrimestre(int id_cuatrimestre){
@@ -451,7 +491,7 @@ public class DAL {
 	public void editarCuatrimestre(Cuatrimestre cuatrimestre){
 		cuatrimestreDAO.editarCuatrimestre(cuatrimestre);
 	}
-	
+	/*FIN CUATRIMESTRE*/
 	
 	/* CURSO */
 	public Curso obtenerInformacionCurso(int id_curso) {
@@ -465,7 +505,88 @@ public class DAL {
 	public Curso crearCurso(Curso curso) {
 		return cursoDAO.crearCurso(curso);
 	}
+	/*FIN CURSO*/
+	
+	/*EXAMEN_CLASE*/
+	public Examen_Clase obtenerInformacionDeExamen_Clase(int id) {
+		return examenClaseDAO.obtenerInformacionDeExamen_Clase(id) ;
+	}
 
+	public void eliminarExamen_Clase(int id){
+		examenClaseDAO.eliminarExamen_Clase(id);
+		
+	}
+
+	public Examen_Clase crearExamen_Clase(Examen_Clase examenclase) {
+		return examenClaseDAO.crearExamen_Clase(examenclase) ;
+	}
+
+	public void editarExamen_Clase(Examen_Clase examenclase) {
+		examenClaseDAO.editarExamen_Clase(examenclase);
+		
+	}
+	/*FIN EXAMEN_CLASE*/
+	
+	/*EXAMEN*/
+	public Examen obtenerInformacionDeExamen(int id) {
+		return examenDAO.obtenerInformacionDeExamen(id);
+	}
+
+	public void eliminarExamen(int id) {
+		examenDAO.eliminarExamen(id);
+		
+	}
+
+	public Examen crearExamen(Examen examen) {
+	return examenDAO.crearExamen(examen);
+	}
+
+	public void editarExamen(Examen examen) {
+		examenDAO.editarExamen(examen);
+		
+	}
+	/*FIN EXAMEN*/
+	
+	/*EXAMEN_POLIFORMAT*/
+	public Examen_Poliformat obtenerInformacionDeExamenPoliformat(int id) {
+		return examenPoliformatDAO.obtenerInformacionDeExamenPoliformat(id);
+	}
+
+	public void eliminarExamenPoliformat(int id) {
+	  examenPoliformatDAO.eliminarExamenPoliformat(id);
+		
+	}
+
+	public Examen_Poliformat crearExamenPoliformat(Examen_Poliformat ExamenPoliformat) {
+		return examenPoliformatDAO.crearExamenPoliformat(ExamenPoliformat);
+	}
+
+	public void editarExamenPoliformat(Examen_Poliformat ExamenPoliformat) {
+		examenPoliformatDAO.editarExamenPoliformat(ExamenPoliformat);
+		
+	}
+	/*FIN EXAMEN_POLIFORMAT*/
+	
+	/*EXAMEN_PRACTICAS*/
+	public Examen_Practicas obtenerInformacionDeExamen_Practicas(int id) {
+		return examenPracticasDAO.obtenerInformacionDeExamen_Practicas(id);
+	}
+	
+	public void eliminarExamen_Practicas(int id) {
+		 examenPracticasDAO.eliminarExamen_Practicas(id);
+		
+	}
+
+	public void editarExamen_Practicas(Examen_Practicas examenPracticas) {
+		examenPracticasDAO.editarExamen_Practicas(examenPracticas);
+		
+	}
+	
+	public Examen_Practicas crearExamen_Practicas(Examen_Practicas examenPracticas) {
+		return examenPracticasDAO.crearExamen_Practicas(examenPracticas);
+	}
+	/*FIN EXAMEN_PRACTICAS*/
+	
 	/* GRADO */
 	public Grado obtenerInformacionGrado(int id_grado){
 		return gradoDAO.obtenerInformacionGrado(id_grado);
@@ -482,6 +603,46 @@ public class DAL {
 	public Grado crearGrado(Grado grado) {
 		return gradoDAO.crearGrado(grado);
 	}
+	/* FIN GRADO */
+	
+	/*NOTIFICACION*/
+	public Notificacion obtenerInformacionDeNotificacion(int id_Notificacion) {
+		return notificacionDAO.obtenerInformacionDeNotificacion(id_Notificacion);
+	}
+
+	public void eliminarNotificacion(int id_Notificacion) {
+		notificacionDAO.eliminarNotificacion(id_Notificacion);
+		
+	}
+
+	public Notificacion crearNotificacion(Notificacion notificacion) {
+		return notificacionDAO.crearNotificacion(notificacion);
+	}
+
+	public void editarNotificacion(Notificacion notificacion) {
+	  notificacionDAO.editarNotificacion(notificacion);
+	}
+	/*FIN NOTIFICACION*/
+	
+	/*PRACTICAS*/
+	public Practicas obtenerInformacionDePracticas(int id_Practicas) {
+		return practicasDAO.obtenerInformacionDePracticas(id_Practicas);
+	}
+
+	public void eliminarPracticas(int id_Practicas) {
+		practicasDAO.eliminarPracticas(id_Practicas);
+		
+	}
+
+	public Practicas crearPracticas(Practicas Practicas) {
+		return practicasDAO.crearPracticas(Practicas);
+	}
+
+	public void editarPracticas(Practicas Practicas) {
+	   practicasDAO.editarPracticas(Practicas);
+		
+	}
+	/*FIN PRACTICAS*/
 	
 	/* USUARIO */
 	public Usuario obtenerInformacionDeUsuario(int id_usuario){
@@ -506,6 +667,10 @@ public class DAL {
 	
 	public boolean existeUsuario(){
 		return usuarioDAO.existeUsuario();
+	}
+	
+	public void editarUsuario(Usuario usuario){
+		 usuarioDAO.editarUsuario(usuario);
 	}
 	/* FIN USUARIO */
 	

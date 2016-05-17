@@ -27,6 +27,16 @@ public class Practicas extends Actividad {
 			if(!isRecuperable())aux = aux+14;
 			return aux;
 		}
+		
+	
+	public int getId_practicas() {
+		return id_practicas;
+	}
+	
+	public void setId_practicas(int id_practicas) {
+		this.id_practicas = id_practicas;
+	}
+
 	public boolean isGrupal() {
 		return grupal;
 	}
