@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 
 import org.controlsfx.control.PopOver;
 
-import com.sun.javafx.geom.Shape;
+import javafx.collections.ListChangeListener;
 
 import Util.Basics;
 import bussines.Actividad;
@@ -24,6 +24,7 @@ import bussines.Clase;
 import bussines.Unidad_Logica;
 import bussines.Usuario;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.css.PseudoClass;
@@ -175,19 +176,15 @@ public class MenuLateralController implements Initializable {
 			}
 			
 		});
-		
+
+				
 		ivAnyadirAsignatura.setOnMouseClicked(new EventHandler<Event>(){
 
 			@Override
 			public void handle(Event event) {
-				listaAsignaturas.add(controladorPrincipal.crearAsignatura());
-				
-				loAsignaturas.clear();
-				loAsignaturas.addAll(listaAsignaturas);
-				
+				loAsignaturas.add(controladorPrincipal.crearAsignatura());
+				System.out.println("La lista tiene: "+loAsignaturas.size());
 				}
-			
-			
 		});
 	}
 	public void inicializarContenidoVisual(){

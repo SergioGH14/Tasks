@@ -27,6 +27,8 @@ public class ListCellFactoryAsignaturas extends ListCell<Asignatura>{
 				e.printStackTrace();
 			}
 			
+		}else{
+			setGraphic(null);
 		}
 		 
 	}
