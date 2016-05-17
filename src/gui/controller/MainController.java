@@ -9,6 +9,7 @@ import bussines.Universidad;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -36,6 +37,9 @@ public class MainController  extends Application {
 			Scene scene = new Scene(root);
 
 			primaryStage.setScene(scene);
+			primaryStage.setWidth(1167.0);
+			primaryStage.setHeight(666.0);
+			primaryStage.getIcons().add(new Image("file:assets/logo_ardum_a.png"));
 			primaryStage.setResizable(false);
 			primaryStage.setTitle(Util.Constantes.ARDUM);
 			
@@ -180,6 +184,28 @@ public class MainController  extends Application {
 			InicioCuatrimestreAsignaturaController inicioU = loader.<InicioCuatrimestreAsignaturaController>getController();
 			inicioU.initStage(secondaryStage, this, actual);
 			
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());
+		}
+	}
+	
+	public void crearAsignatura(){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearAsignatura.fxml"));
+			BorderPane creador = (BorderPane)loader.load();
+			
+			Stage secondaryStage = new Stage();
+			Scene scene = new Scene(creador);
+
+			secondaryStage.setScene(scene);
+			secondaryStage.setHeight(666.0);
+			secondaryStage.setWidth(535.0);
+			secondaryStage.setResizable(false);
+			secondaryStage.setTitle(Util.Constantes.ARDUM);
+			CrearAsignaturaController creadorcontrolador = loader.<CrearAsignaturaController>getController();
+			creadorcontrolador.initStage(secondaryStage, this);
+			secondaryStage.show();
 		} catch (IOException e){
 			// TODO Auto-generated catch block
 			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());

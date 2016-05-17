@@ -174,7 +174,15 @@ public class MenuLateralController implements Initializable {
 			
 		});
 		
-		
+		ivAnyadirAsignatura.setOnMouseClicked(new EventHandler<Event>(){
+
+			@Override
+			public void handle(Event event) {
+				controladorPrincipal.crearAsignatura();
+				}
+			
+			
+		});
 	}
 	public void inicializarContenidoVisual(){
 	    logoArdum.setFont(Basics.generateFontById(23, 35));
