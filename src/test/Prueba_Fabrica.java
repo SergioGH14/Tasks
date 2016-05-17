@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import bussines.*; 
 import javafx.scene.paint.Color;
+import persistence.ActividadDAOImp;
 import persistence.DAL;
 import persistence.dto.ActividadDTO;
 
@@ -29,7 +30,7 @@ public class Prueba_Fabrica {
 			LocalDateTime fecha = LocalDateTime.now();
 			
 	
-	Cuatrimestre cuatrimestre = DAL.getInstance().obtenerInformacionCuatrimestre(3);
+	    Cuatrimestre cuatrimestre = DAL.getInstance().obtenerInformacionCuatrimestre(3);
 		System.out.println(cuatrimestre);
 		
 		Asignatura CSD = new Asignatura(cuatrimestre, "PRUEBA", 0, 0, false, Color.ANTIQUEWHITE);
@@ -50,7 +51,11 @@ public class Prueba_Fabrica {
 		
 		ActividadDTO adto= new ActividadDTO( CSD.getTitulo(), Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario,false);
 		Actividad actividad = constructora.crearActividad(tipo,adto,especificaciones );
+		System.out.println("Actividad sin id: " + actividad);
 		
+		//actividad = new ActividadDAOImp().crearActividad(actividad);
+		System.out.println("Actividad CON id: " + actividad);
+
 		System.out.println("Has creado con exito una actividad de nombre "+actividad.getTitulo()+"\nCuya descripcion es la siguiente: "+actividad.getDescripcion()+"\ny mas importante, su prioridad total es "+actividad.getPrioridadtotal()+"");
 		
 		//System.out.println("Asignatura 2: " + DAL.getInstance().obtenerInformacionAsignatura("PRUEBA"));

@@ -92,10 +92,19 @@ public class Unidad_Logica {
 	/*ACTIVIDAD*/
 	/*FIN ACTIVIDAD*/
 	/*ASIGNATURA*/
+	public Asignatura obtenerInformacionAsignatura(String tituloAsignatura){
+		return dal.obtenerInformacionAsignatura(tituloAsignatura);
+	}
 	/*FIN ASIGNATURA*/
 	/*CLASE*/
 	/*FIN CLASE*/
 	/*CUATRIMESTRE*/
+	public Cuatrimestre obtenerInformacionCuatrimestre(int id_cuatrimestre){
+		return dal.obtenerInformacionCuatrimestre(id_cuatrimestre);
+	}
+	public Cuatrimestre crearCuatrimestre(Cuatrimestre cuatrimestre){
+		return dal.crearCuatrimestre(cuatrimestre);
+	}
 	/*FIN CUATRIMESTRE*/
 	/*CURSO*/ 
 	public Curso obtenerInformacionCurso(int id_curso) {
@@ -203,6 +212,7 @@ public class Unidad_Logica {
 	  return	dal.asociarUniversidadUsuario(usuario, id_universidad);
 		
 	}
+	
 	/*FIN USUARIO*/
 	
 }
