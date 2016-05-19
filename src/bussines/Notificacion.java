@@ -1,22 +1,57 @@
 package bussines;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import Util.Date_solver;
 
+
+
+
 public class Notificacion {
-	//En las clases constantes se puede a�adir imagenes para examen clases practicas
+	
+	private int id_notificacion;
+	private Actividad actividad;
 	private String titulo;
 	private String descripcion;
 	private int prioridad;
 	private LocalDateTime fecha_notificacion;
 	
-	public Notificacion(String titulo, String descripcion, int prioridad, LocalDateTime fecha){
+	public Notificacion(Actividad d,String titulo, String descripcion, int prioridad, LocalDateTime fecha){
+		actividad = d;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.prioridad = prioridad;
 		this.fecha_notificacion  = fecha;
+	}
+
+	public Notificacion(int id_notificacion, Actividad actividad,
+			String titulo, String descripcion, int prioridad,
+			LocalDateTime fecha_notificacion) {
+		
+		this.id_notificacion = id_notificacion;
+		this.actividad = actividad;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.prioridad = prioridad;
+		this.fecha_notificacion = fecha_notificacion;
+	}
+
+	public int getId_notificacion() {
+		return id_notificacion;
+	}
+
+
+
+	public void setId_notificacion(int id_notificacion) {
+		this.id_notificacion = id_notificacion;
+	}
+
+	public Actividad getActividad() {
+		return actividad;
+	}
+
+	public void setActividad(Actividad actividad) {
+		this.actividad = actividad;
 	}
 
 	public String getTitulo() {
@@ -53,7 +88,8 @@ public class Notificacion {
 	//probar lo que imprime por consola 
 	public String toString(){
 		
-		String S = getTitulo()+" "+getPrioridad()+" "+getDescripcion();
+		String S = getTitulo()+" "+getPrioridad()+" "+getDescripcion()+""+Date_solver.formatLocalDateTime(getFecha_notificacion())+""+getId_notificacion();
+				
 		
 		return S;
 	}

@@ -1,5 +1,7 @@
 package persistence.dao;
 
+import java.util.List;
+
 import bussines.Notificacion;
 
 public interface NotificacionDAO {
@@ -11,4 +13,6 @@ public interface NotificacionDAO {
 	public Notificacion crearNotificacion(Notificacion notificacion);
 	
 	public void editarNotificacion(Notificacion notificacion);
+	
+	public List<Notificacion> obtenerNotificacionesDeHoy ();
 }

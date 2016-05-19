@@ -98,6 +98,9 @@ public class Date_solver {
     	DateTimeFormatter dTF = DateTimeFormatter.ofPattern("dd MMM uuuu");
     	return dTF.format(date);
     }
+    public static LocalDateTime fechaDeHoy(){
+    	return LocalDateTime.now();
+    }
 }
 
  

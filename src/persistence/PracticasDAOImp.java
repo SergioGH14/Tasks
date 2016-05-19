@@ -3,6 +3,7 @@ package persistence;
 import java.sql.ResultSet;
 
 import Util.Constantes;
+import bussines.Actividad;
 import bussines.Practicas;
 import persistence.dao.PracticasDAO;
 
@@ -19,14 +20,52 @@ public class PracticasDAOImp implements PracticasDAO {
 	
 	@Override
 	public Practicas obtenerInformacionDePracticas(int id_Practicas) {
-		// TODO Auto-generated method stub
-		return null;
+		Practicas prac = null;
+		try{
+			connectionManager.connect();
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from PRACTICAS where id_practicas = '"+id_Practicas+"'");
+			connectionManager.close();
+
+		
+			if (practicasResultSet.next()){
+				Actividad acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
+				
+				prac = new Practicas(practicasResultSet.getInt("id_practicas"),
+							         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getAsignatura().getTitulo()),
+								     acti.getTitulo(),
+									 acti.getDescripcion(),
+									 acti.getFechafinalizacion(), 
+									 acti.getTiempoestimado(),
+									 acti.getPorcentaje(),
+									 acti.getPrioridadusuario(),
+									 acti.isFinalizada(),
+									 practicasResultSet.getBoolean("grupal"),
+									 practicasResultSet.getBoolean("recuperable"));
+			}
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al buscar el practicas: "+e.getLocalizedMessage() );
+		}
+		
+		return prac;
 	}
 
 	@Override
 	public void eliminarPracticas(int id_Practicas) {
-		// TODO Auto-generated method stub
+		Practicas prac = obtenerInformacionDePracticas(id_Practicas);
+		try{
+			connectionManager.connect();
+			String str = "DELETE FROM PRACTICAS WHERE id_practicas ="+ id_Practicas ;
+			connectionManager.updateDB(str);
+			
 
+			
+			connectionManager.close();
+
+
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al eliminar el Practicas: "+e.getLocalizedMessage() );
+		}
+		new ActividadDAOImp().eliminarActividad(prac.getId_actividad());
 	}
 
 	@Override

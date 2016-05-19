@@ -1,5 +1,7 @@
+
 package bussines;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +27,7 @@ public class Unidad_Logica {
 	private Curso curso; //curso en memoria
 	private Map<Integer,Cuatrimestre> cuatrimestre;
 	private Map<Integer, Notificacion> notificaciones;
-	//public List<Actividad> actividades;
+	public List<Actividad> actividades;
 	private Map<Integer, Asignatura> asignatura;
 	private DAL dal = DAL.getInstance();
 	
@@ -105,7 +107,13 @@ public class Unidad_Logica {
 	}
 
 	public Actividad crearActividad(Actividad actividad) {
-	   return dal.crearActividad(actividad);
+	  Actividad acti= dal.crearActividad(actividad);
+	   Iterator<Notificacion> it = Papinoti.crearNotificaciones(acti).iterator();
+	   while (it.hasNext()) {
+		  dal.crearNotificacion(  it.next());
+	   }
+	  
+	   return actividad;
 	}
 
 	public void editarActividad(Actividad actividad) {
@@ -313,6 +321,10 @@ public class Unidad_Logica {
 
 	public void editarNotificacion(Notificacion notificacion) {
 	  dal.editarNotificacion(notificacion);
+	}
+	
+	public List<Notificacion> notificacionesDeHoy(){
+		return dal.obtenerNotificacionesDeHoy();
 	}
 	/*FIN NOTIFICACIONES*/
 	/*PRACTICAS*/

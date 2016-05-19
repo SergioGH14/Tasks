@@ -1,6 +1,7 @@
 package bussines;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import Util.Constantes;
@@ -9,22 +10,22 @@ import Util.Date_solver;
 public class Papinoti {
 	
 	public static List<Notificacion> crearNotificaciones(Actividad d){
-		List <Notificacion> noti = null;
+		List <Notificacion> noti = new ArrayList<Notificacion>();;
 		LocalDateTime fechaAct = d.getFechafinalizacion();
 		int prioridadAct =  d.getPrioridadtotal();
 		String tituloAct =  d.getTitulo();
 		int tipoActividad = tipoActividad(d);
 		
 		
-		Notificacion a = new Notificacion(tituloAct+"en 14 dias",
+		Notificacion a = new Notificacion(d,tituloAct+" en 14 dias",
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-20,
 										  Date_solver.restar(14, fechaAct));
-		Notificacion b = new Notificacion(tituloAct+"en 7 dias",
+		Notificacion b = new Notificacion(d,tituloAct+" en 7 dias",
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-10,
 								          Date_solver.restar(7, fechaAct));
-		Notificacion c = new Notificacion(tituloAct+" maï¿½ana",
+		Notificacion c = new Notificacion(d,tituloAct+" mañana",
 				                          descripcionActividad(tipoActividad),
 				                          prioridadAct,
 				                          Date_solver.restar(1, fechaAct) );

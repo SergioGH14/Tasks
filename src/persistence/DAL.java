@@ -309,6 +309,10 @@ public class DAL {
 			  new NotificacionDAOImp().editarNotificacion(notificacion);
 			}
 			
+			@Override
+			public List<Notificacion> obtenerNotificacionesDeHoy (){
+				return new NotificacionDAOImp().obtenerNotificacionesDeHoy();
+			}
 		};
 		
 		practicasDAO = new PracticasDAO(){
@@ -621,6 +625,11 @@ public class DAL {
 
 	public void editarNotificacion(Notificacion notificacion) {
 	  notificacionDAO.editarNotificacion(notificacion);
+	  
+	}
+	
+	public List<Notificacion> obtenerNotificacionesDeHoy (){
+		return notificacionDAO.obtenerNotificacionesDeHoy();
 	}
 	/*FIN NOTIFICACION*/
 	
