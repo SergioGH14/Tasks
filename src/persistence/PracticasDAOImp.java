@@ -8,6 +8,7 @@ import bussines.Practicas;
 import persistence.dao.PracticasDAO;
 
 public class PracticasDAOImp implements PracticasDAO {
+	
 	protected ConnectionManager connectionManager;
 
 	public PracticasDAOImp(){
@@ -19,8 +20,7 @@ public class PracticasDAOImp implements PracticasDAO {
 	}
 	
 	@Override
-	public Practicas obtenerInformacionDePracticas(int id_Practicas) {
-		Practicas prac = null;
+	public Practicas obtenerInformacionDePracticas(int id_Practicas) {		Practicas prac = null;
 		try{
 			connectionManager.connect();
 			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from PRACTICAS where id_practicas = '"+id_Practicas+"'");
@@ -28,7 +28,7 @@ public class PracticasDAOImp implements PracticasDAO {
 
 		
 			if (practicasResultSet.next()){
-				Actividad acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
+				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
 				
 				prac = new Practicas(practicasResultSet.getInt("id_practicas"),
 							         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getAsignatura().getTitulo()),
@@ -100,10 +100,25 @@ public class PracticasDAOImp implements PracticasDAO {
 
 	@Override
 	public void editarPracticas(Practicas Practicas) {
-		// TODO Auto-generated method stub
+		try{
+			connectionManager.connect();
+			String str = "UPDATE PRACTICAS "+
+						 "SET id_practicas = "+Practicas.getId_practicas()+", "+
+						 "SET id_actividad = "+Practicas.getId_actividad()+", "+
+						 "SET grupal = "+Practicas.isGrupal()+", "+
+						 "SET recuperable ="+Practicas.isRecuperable()+
+						 " WHERE id_practicas =" +Practicas.getId_practicas()+")";
+			connectionManager.updateDB(str);
+			System.out.println("\nPracticas editado con éxito: " + Practicas);
+			connectionManager.close();
+
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al editar el practicas: "+e.getLocalizedMessage() );
+		}
 
 	}
-	private int crearSecuencia(String nombreSecuencia){
+	
+    private int crearSecuencia(String nombreSecuencia){
 		try{
 		ResultSet sq = connectionManager.queryDB("CALL NEXT VALUE FOR " + nombreSecuencia);
 
