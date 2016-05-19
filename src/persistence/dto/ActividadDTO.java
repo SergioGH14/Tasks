@@ -42,6 +42,22 @@ public class ActividadDTO {
 		this.prioridadUsuario = prioridadUsuario;
 		this.finalizada = finalizada;
 	}
+	
+	public ActividadDTO(int id_actividad, String id_asignatura, String titulo, String descripcion,
+			LocalDateTime fechaFinalizacion, int tiempoEstimado, double porcentaje, int prioridadUsuario, int  prioridadTotal,
+			boolean finalizada) {
+		super();
+		this.id_actividad = id_actividad;
+		this.id_asignatura = id_asignatura;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.fechaFinalizacion = fechaFinalizacion;
+		this.tiempoEstimado = tiempoEstimado;
+		this.porcentaje = porcentaje;
+		this.prioridadUsuario = prioridadUsuario;
+		this.prioridadTotal = prioridadTotal;
+		this.finalizada = finalizada;
+	}
 
 	public int getId_actividad() {
 		return id_actividad;
