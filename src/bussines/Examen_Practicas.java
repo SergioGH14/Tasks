@@ -1,16 +1,19 @@
 package bussines;
 public class Examen_Practicas extends Decorador_Examen {
 	
-	private int id_examen_practicas;
+	private Integer id_examen_practicas;
 	private boolean apuntes;
+	
+	public Examen_Practicas(Actividad_Examen examen) {
+		super(examen);
+		super.setPrioridadtotal(establecerPrioridadTotal());
+		
+	}
 	
 	public Examen_Practicas(Actividad_Examen examen, boolean apuntes) {
 		super(examen);
-		// TODO Auto-generated constructor stub
-		this.examen=examen;
 		this.apuntes = apuntes;
 		super.setPrioridadtotal(establecerPrioridadTotal());
-		
 	}
 
 	public Actividad_Examen getExamen() {
@@ -32,7 +35,22 @@ public class Examen_Practicas extends Decorador_Examen {
 	private int establecerPrioridadTotal(){
 		int aux = examen.getPrioridadtotal()-5;
 		if(isApuntes()) aux = aux-5;
+		//System.err.println("Prioridad de Examen_Practicas: " + aux);
 		return aux;
 		
 	}
+
+	public Integer getId_examen_practicas() {
+		return id_examen_practicas;
+	}
+
+	public void setId_examen_practicas(Integer id_examen_practicas) {
+		this.id_examen_practicas = id_examen_practicas;
+	}
+
+	@Override
+	public String toString() {
+		return "Examen_Practicas [id_examen_practicas=" + id_examen_practicas + ", apuntes=" + apuntes + "]";
+	}
+	
 }

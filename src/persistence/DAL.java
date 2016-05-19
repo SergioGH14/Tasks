@@ -200,7 +200,7 @@ public class DAL {
 			}
 
 			@Override
-			public Examen crearExamen(Examen examen) {
+			public Actividad_Examen crearExamen(Actividad_Examen examen) {
 			return new ExamenDAOImp().crearExamen(examen);
 			}
 
@@ -541,7 +541,7 @@ public class DAL {
 		
 	}
 
-	public Examen crearExamen(Examen examen) {
+	public Actividad_Examen crearExamen(Actividad_Examen examen) {
 	return examenDAO.crearExamen(examen);
 	}
 

@@ -6,12 +6,24 @@ public class Examen extends Actividad_Examen {
 	
 	private boolean ultimo;
 	private boolean recuperable;
-
+	
 	public Examen(Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
 			int tiempoestimado, Double porcentaje, int prioridadusuario,  boolean finalizada,
 			boolean recuperable, boolean ultimo) {
 		
 		 super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
+		 
+		 setPrioridadtotal(establecerPrioridadTotal());
+		 this.ultimo = ultimo;
+		 this.recuperable = recuperable;
+			
+    }
+	
+	public Examen(Integer id_examen, Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
+			int tiempoestimado, Double porcentaje, int prioridadusuario,  boolean finalizada,
+			boolean recuperable, boolean ultimo) {
+		
+		 super(id_examen,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
 		 
 		 setPrioridadtotal(establecerPrioridadTotal());
 		 this.ultimo = ultimo;
@@ -24,6 +36,7 @@ public class Examen extends Actividad_Examen {
 	
 		if(isUltimo())aux = aux+10;
 		if(!isRecuperable())aux = aux+14;
+		//System.err.println("Prioridad de examen: " + aux);
 		return aux;
     }
 
@@ -47,8 +60,6 @@ public class Examen extends Actividad_Examen {
 	public String toString() {
 		return "Examen [ultimo=" + ultimo + ", recuperable=" + recuperable + "]";
 	}
-	
-	
 		
 		
 }

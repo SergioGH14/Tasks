@@ -7,6 +7,7 @@ import Util.Basics;
 import bussines.Unidad_Logica;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -18,6 +19,19 @@ public class ListaNotificacionesController implements Initializable{
 
 	@FXML private Text tvNoNotificaciones;
 
+    @FXML
+    private Text tvDescripcion;
+
+    @FXML
+    private Text tvFecha;
+
+    @FXML
+    private Circle cColorAsignatura;
+
+    @FXML
+    private Text tvTituloAsignatura;
+
+    
 	public void initStage(Stage stage, MainController mainController) {
 		this.primaryStage = stage;
 		this.controladorPrincipal = controladorPrincipal;

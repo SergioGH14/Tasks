@@ -1,5 +1,6 @@
 package persistence.dao;
 
+import bussines.Actividad_Examen;
 import bussines.Examen;
 
 public interface ExamenDAO {
@@ -8,7 +9,7 @@ public interface ExamenDAO {
 	
 	public void eliminarExamen(int id);
 	
-	public Examen crearExamen(Examen examen);
+	public Actividad_Examen crearExamen(Actividad_Examen examen);
 	
 	public void editarExamen(Examen examen);
 }

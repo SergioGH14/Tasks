@@ -2,14 +2,16 @@ package bussines;
 
 public class Examen_Poliformat extends Decorador_Examen {
 	
-	private int id_examen_poliformat;
+	private Integer id_examen_poliformat;
 	private boolean reintentable;
 	
-
+	public Examen_Poliformat(Actividad_Examen examen) {
+		super(examen);
+		super.setPrioridadtotal(establecerPrioridadTotal());
+		
+	}
 	public Examen_Poliformat(Actividad_Examen examen, boolean reintentable) {
 		super(examen);
-		// TODO Auto-generated constructor stub
-		this.examen=examen;
 		this.reintentable = reintentable;
 		super.setPrioridadtotal(establecerPrioridadTotal());
 		
@@ -31,10 +33,18 @@ public class Examen_Poliformat extends Decorador_Examen {
 		this.reintentable = reintentable;
 	}
 
+	public Integer getId_examen_poliformat() {
+		return id_examen_poliformat;
+	}
+	public void setId_examen_poliformat(Integer id_examen_poliformat) {
+		this.id_examen_poliformat = id_examen_poliformat;
+	}
 	private int establecerPrioridadTotal(){
 		int aux = examen.getPrioridadtotal()-10;
 		if(isReintentable()) aux = aux-5;
+		//System.err.println("Prioridad de Examen_Poliformat " + aux);
 		return aux;
 		
 	}
+
 }
