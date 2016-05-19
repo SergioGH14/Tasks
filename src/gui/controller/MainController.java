@@ -2,6 +2,7 @@ package gui.controller;
 
 import java.io.IOException;
 
+import bussines.Actividad;
 import bussines.Asignatura;
 import bussines.Curso;
 import bussines.Unidad_Logica;
@@ -14,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import persistence.dto.ActividadDTO;
 
 /*
  * Clase principal que lanza la aplicacion, la cual lanzara las demas pantallas de la aplicacion
@@ -210,10 +212,62 @@ public class MainController  extends Application {
 			return creadorcontrolador.getAsignatura();
 		} catch (IOException e){
 			// TODO Auto-generated catch block
-			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());
+			System.err.println("Error al establecer la pantalla de crear Asignatura " + e.getLocalizedMessage());
 		}
 		 return null;
 	}
+	public Actividad crearActividad(Asignatura asignatura){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearActividad.fxml"));
+			BorderPane creador = (BorderPane)loader.load();
+			
+			Stage secondaryStage = new Stage();
+			Scene scene = new Scene(creador);
+
+			secondaryStage.setScene(scene);
+			secondaryStage.setHeight(531.0);
+			secondaryStage.setWidth(495.0);
+			secondaryStage.setResizable(false);
+			secondaryStage.setTitle(Util.Constantes.ARDUM);
+			CrearActividadController creadorcontrolador = loader.<CrearActividadController>getController();
+			creadorcontrolador.initStage(secondaryStage, this, asignatura);
+			secondaryStage.showAndWait();
+			
+			if(creadorcontrolador.getActividad() != null)
+			return crearActividadConcreta(secondaryStage, creadorcontrolador.getActividad());
+			else return null;
+		
+		 
+		 } catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la pantalla Actividad Generica " + e.getLocalizedMessage());
+		}
+		 return null;
+	}
+	
+	public Actividad crearActividadConcreta(Stage secondaryStage, ActividadDTO actividaddto){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearActividadConcreta.fxml"));
+			BorderPane creador = (BorderPane)loader.load();
+			Scene scene = new Scene(creador);
+
+			secondaryStage.setScene(scene);
+			secondaryStage.setHeight(531.0);
+			secondaryStage.setWidth(495.0);
+			secondaryStage.setResizable(false);
+			secondaryStage.setTitle(Util.Constantes.ARDUM);
+			CrearActividadConcretaController creadorcontrolador = loader.<CrearActividadConcretaController>getController();
+			creadorcontrolador.initStage(secondaryStage, this, actividaddto);
+			secondaryStage.showAndWait();
+			
+			return creadorcontrolador.getActividad();
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la segunda pantalla Actividad Concreta " + e.getLocalizedMessage());
+		}
+		 return null;
+	}
+	
 	
 	public void mostrarListaDeNotificaciones(Stage secondaryStage, boolean mostrar){
 		

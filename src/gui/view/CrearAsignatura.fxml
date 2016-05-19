@@ -23,21 +23,20 @@
                </font>
             </Text>
             <Circle fx:id="cColor" fill="#ff7843" layoutX="263.0" layoutY="170.0" radius="42.0" stroke="#00000081" strokeType="INSIDE" />
-            <ColorPicker fx:id="cpColorPicker" layoutX="222.0" layoutY="125.0" opacity="0.0" prefHeight="96.0" prefWidth="90.0" style="-fx-background-color: #ff7843;" />
          </children>
       </Pane>
    </top>
    <bottom>
       <Pane prefHeight="70.0" prefWidth="535.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="ivAceptar" fitHeight="50.0" fitWidth="50.0" layoutX="340.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivAceptar" fitHeight="50.0" fitWidth="50.0" layoutX="335.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../assets/Checkmark-512.png" />
+                  <Image url="@../../../assets/guardar.png" />
                </image>
             </ImageView>
             <ImageView fx:id="ivCancelar" fitHeight="50.0" fitWidth="50.0" layoutX="137.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../assets/Delete-512.png" />
+                  <Image url="@../../../assets/cancelar.png" />
                </image>
             </ImageView>
             <Line endX="250.0" layoutX="268.0" layoutY="7.0" startX="-250.0" strokeMiterLimit="50.0" strokeWidth="0.25" />
@@ -77,17 +76,17 @@
                   <Image url="@../../../assets/Bookmark-512.png" />
                </image>
             </ImageView>
-            <Text fill="#666666" layoutX="112.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A">
+            <Text fill="#262b33" layoutX="112.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A">
                <font>
                   <Font size="34.0" />
                </font>
             </Text>
-            <Text fill="#666666" layoutX="401.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="B">
+            <Text fill="#262b33" layoutX="401.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="B">
                <font>
                   <Font size="34.0" />
                </font>
             </Text>
-            <Text fill="#666666" layoutX="222.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anual">
+            <Text fill="#262b33" layoutX="222.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anual">
                <font>
                   <Font size="30.0" />
                </font>
@@ -112,6 +111,7 @@
             </RadioButton>
             <RadioButton fx:id="rbCuatriB" layoutX="389.0" layoutY="333.0" mnemonicParsing="false" opacity="0.0" prefHeight="72.0" prefWidth="47.0" toggleGroup="$tgCuatrimestre" />
             <RadioButton fx:id="rbCuatriAnual" layoutX="217.0" layoutY="338.0" mnemonicParsing="false" opacity="0.0" prefHeight="56.0" prefWidth="93.0" toggleGroup="$tgCuatrimestre" />
+            <ColorPicker fx:id="cpColorPicker" layoutX="215.0" layoutY="-43.0" opacity="0.0" prefHeight="87.0" prefWidth="100.0" style="-fx-background-color: #ff7843;" />
          </children>
       </Pane>
    </left>

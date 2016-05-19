@@ -9,6 +9,8 @@ public interface AsignaturaDAO {
 	
 	public Asignatura obtenerInformacionAsignatura(String nombreAsignatura);
 	
+	public Asignatura obtenerInformacionAsignatura(int id_asignatura);
+	
 	public List<Asignatura> obtenerAsignaturasPorCuatrimestre(int cuatrimestre);
 	
 	public Asignatura crearAsignatura(Asignatura asignatura);

@@ -95,6 +95,9 @@ public class MenuLateralController implements Initializable {
 	
 	private Usuario usuario;
 	
+	
+	//prueba de asignatura auxiliar clickada
+	Asignatura asignaturaAux;
 	public void initStage(Stage stage, MainController controladorPrincipal){
 		this.primaryStage = stage;
 		this.controladorPrincipal = controladorPrincipal;
@@ -105,7 +108,7 @@ public class MenuLateralController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.fachada = Unidad_Logica.getInstance();
-		this.usuario = fachada.informacionUsuario(2);
+		this.usuario = fachada.informacionUsuario(1);
 		
 		inicializarContenidoVisual();
 		
@@ -170,7 +173,7 @@ public class MenuLateralController implements Initializable {
 					tvBandeja.setFont(Basics.generateFontById(3, 14));
 					tvHoy.setFont(Basics.generateFontById(3, 14));
 					tvParaDespues.setFont(Basics.generateFontById(3, 14));
-
+					asignaturaAux = (Asignatura) listViewAsignaturas.getSelectionModel().getSelectedItem();
 					lanzarPantallaDeActividades(listaAsignaturas.get(listViewAsignaturas.getSelectionModel().getSelectedIndex()),0);
 				}
 			}
@@ -182,6 +185,8 @@ public class MenuLateralController implements Initializable {
 
 			@Override
 			public void handle(Event event) {
+				//ELIMINAR DESPUES DE ANYADIR EL BOTON DE CREAR ACTIVIDAD
+				//controladorPrincipal.crearActividad(asignaturaAux);
 				loAsignaturas.add(controladorPrincipal.crearAsignatura());
 				System.out.println("La lista tiene: "+loAsignaturas.size());
 				}

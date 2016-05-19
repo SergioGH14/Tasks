@@ -190,7 +190,7 @@ public class CrearAsignaturaController implements Initializable{
 		});
 		
 		cpColorPicker.setOnAction(t -> {
-		    cColor.setFill(cpColorPicker.getValue());   
+		    cColor.setFill(cpColorPicker.getValue().desaturate().brighter().brighter().brighter().brighter());  
 		    pFondo.setBackground(new Background(new BackgroundFill(Color.web(Basics.RGBToHex(cpColorPicker.getValue())), null, null)));
 		});
 		
