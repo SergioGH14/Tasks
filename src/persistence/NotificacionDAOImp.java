@@ -48,7 +48,7 @@ public class NotificacionDAOImp implements NotificacionDAO {
 					
 			
 		}catch(Exception e){
-			System.err.println("Ha ocurrido un error al buscar al la universidad: "+e.getLocalizedMessage() );
+			System.err.println("Ha ocurrido un error al buscar la notificacion: "+e.getLocalizedMessage() );
 		}
 		return notificacion;
 	
@@ -81,9 +81,10 @@ public class NotificacionDAOImp implements NotificacionDAO {
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.NOTIFICACION_SQ);
 			if(id>0){
-				String str = "INSERT INTO NOTIFICACION (ID_NOTIFICACION, ID_ACTIVIDAD, DESCRIPCION, FECHA_NOTIFICAR, PRIORIDAD) " +
+				String str = "INSERT INTO NOTIFICACION (ID_NOTIFICACION, ID_ACTIVIDAD,TITULO, DESCRIPCION, FECHA_NOTIFICAR, PRIORIDAD) " +
 							 "VALUES ("+id+","+
 							 			noti.getActividad().getId_actividad()+",'"+
+							 			noti.getTitulo()+"','"+
 							 			noti.getDescripcion()+"','"+
 							 			Date_solver.convertirLocalDateEnSQL(noti.getFecha_notificacion())+"',"+
 							 			noti.getPrioridad()+")";

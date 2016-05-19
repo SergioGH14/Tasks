@@ -1,0 +1,22 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.list-view {
+    -fx-padding: 5px;
+    -fx-background-color: darkred;
+}
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+	-fx-background-color:  #505050;
+	-fx-background-insets:  0;
+	-fx-text-fill: #303333;
+}
+
+.list-cell:empty{
+	-fx-padding: 5px ;
+	visibility:hidden;
+}
+
+.list-cell:odd { -fx-background-color:  #505050; /* 1 */ }
+.list-cell:even { -fx-background-color:  #505050; /* for information */ }
+.list-cell:filled:hover { 
+    -fx-background-color:  #505050; 
+    -fx-text-fill: #303333;
+}

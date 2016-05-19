@@ -3,6 +3,7 @@ package test;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import bussines.*; 
@@ -52,12 +53,15 @@ public class Prueba_Fabrica {
 		ActividadDTO adto= new ActividadDTO( CSD.getTitulo(), Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario,false);
 		Actividad actividad = constructora.crearActividad(tipo,adto,especificaciones );
 		System.out.println("Actividad sin id: " + actividad);
-		
+		Unidad_Logica.getInstance().crearActividad(actividad);
 		//actividad = new ActividadDAOImp().crearActividad(actividad);
 		System.out.println("Actividad CON id: " + actividad);
 
 		System.out.println("Has creado con exito una actividad de nombre "+actividad.getTitulo()+"\nCuya descripcion es la siguiente: "+actividad.getDescripcion()+"\ny mas importante, su prioridad total es "+actividad.getPrioridadtotal()+"");
-		
+		Iterator<Notificacion> it = Unidad_Logica.getInstance().notificacionesDeHoy().iterator();
+		while(it.hasNext()){
+			System.out.println(it.next().toString());
+		}
 		//System.out.println("Asignatura 2: " + DAL.getInstance().obtenerInformacionAsignatura("PRUEBA"));
 	}
 

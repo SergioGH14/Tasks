@@ -7,10 +7,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.layout.HBox?>
 
-
-<HBox prefHeight="40.0" prefWidth="255.0" style="-fx-background-color: #505050;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<HBox prefHeight="40.0" prefWidth="225.0" style="-fx-background-color: #505050;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fx:id="cColorAsignatura" fill="#71ffac" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+      <Circle fx:id="cColorAsignatura" fill="#71ffac" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
          <HBox.margin>
             <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
          </HBox.margin>
@@ -22,8 +21,8 @@
                   <Insets top="6.0" />
                </VBox.margin>
             </Text>
-            <Text fx:id="tvDescripcion" fill="#a1a1a1" strokeType="OUTSIDE" strokeWidth="0.0" text="descripcion notificacion de..." />
-            <Text fx:id="tvFecha" fill="#ff8a8a" strokeType="OUTSIDE" strokeWidth="0.0" text="03 marzo 2016">
+            <Text fx:id="tvDescripcion" fill="#b5afaf" strokeType="OUTSIDE" strokeWidth="0.0" text="descripcion notificacion de..." />
+            <Text fx:id="tvFecha" fill="#ff8989" strokeType="OUTSIDE" strokeWidth="0.0" text="03 marzo 2016">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

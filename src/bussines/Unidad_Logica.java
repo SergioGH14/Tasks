@@ -238,7 +238,7 @@ public class Unidad_Logica {
 		
 	}
 
-	public Examen crearExamen(Examen examen) {
+	public Actividad_Examen crearExamen(Examen examen) {
 	return dal.crearExamen(examen);
 	}
 
