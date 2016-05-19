@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import Util.Constantes;
 import bussines.Actividad;
 import bussines.Clase;
-import bussines.Practicas;
 import persistence.dao.ClaseDAO;
 
 public class ClaseDAOImp implements ClaseDAO {
@@ -71,18 +70,69 @@ public class ClaseDAOImp implements ClaseDAO {
 		new ActividadDAOImp().eliminarActividad(clas.getId_actividad());
 	}
 
-	
-
 	@Override
 	public Clase crearClase(Clase clase) {
 	
-		return null;
+		Clase clas= clase;
+		try{
+			connectionManager.connect();
+			int id = crearSecuencia(Constantes.CLASE_SQ);
+			if(id>0){
+				String str = "INSERT INTO CLASE (ID_CLASE, ID_ACTIVIDAD, PUNTUABLE) " +
+							 "VALUES ("
+							 +id+","
+							 +new ActividadDAOImp().crearActividad(clas).getId_actividad()+","
+							 +clas.isPuntuable()+","
+							
+							 +")";
+				
+				if(clas!=null)
+					clas.setId_clase(id);
+				
+				connectionManager.updateDB(str);
+				System.out.println("\nClase creadas con éxito: " + clas);
+			}
+			connectionManager.close();
+
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al crear la clase: "+e.getLocalizedMessage() );
+		}
+		
+		return clas;
 	}
 
 	@Override
 	public void editarClase(Clase clase) {
-		// TODO Auto-generated method stub
+		try{
+			connectionManager.connect();
+			String str = "UPDATE CLASE "+
+						 "SET id_practicas = "+clase.getId_clase()+", "+
+						 "SET id_actividad = "+clase.getId_actividad()+", "+
+						 "SET puntuable = "+clase.isPuntuable()+", "+
+						 " WHERE id_clase =" +clase.getId_clase()+")";
+			connectionManager.updateDB(str);
+			System.out.println("\nClase editado con exito: " + clase);
+			connectionManager.close();
+
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al editar el clase: "+e.getLocalizedMessage() );
+		}
 
 	}
+	
+	 private int crearSecuencia(String nombreSecuencia){
+			try{
+			ResultSet sq = connectionManager.queryDB("CALL NEXT VALUE FOR " + nombreSecuencia);
+
+			if (sq.next())
+				return sq.getInt(1);
+
+			}catch(Exception e){
+			   System.err.println("Ha ocurrido un error al generar la secuencia de id "+e.getLocalizedMessage());
+			}
+			return -1;
+
+		}
+
 
 }

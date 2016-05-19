@@ -22,9 +22,9 @@ protected ConnectionManager connectionManager;
 	}
 	
 	@Override
-	public ActividadDTO obtenerInformacionDeActividad(int id_actividad) {
-		ActividadDTO actividadAux = null;
-		try{
+	public Actividad obtenerInformacionDeActividad(int id_actividad) {
+		Actividad actividadAux = null;
+		/*try{
 			connectionManager.connect();
 			ResultSet actividadResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD where id_actividad = '"+id_actividad+"'");
 			connectionManager.close();
@@ -46,7 +46,7 @@ protected ConnectionManager connectionManager;
 			System.out.println("Actividad recuperada con éxito, id: " + actividadAux.getId_actividad());
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al buscar la actividad: "+e.getLocalizedMessage() );
-		}
+		}*/
 		return actividadAux;
 	}
 

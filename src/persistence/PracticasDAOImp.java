@@ -28,7 +28,7 @@ public class PracticasDAOImp implements PracticasDAO {
 
 		
 			if (practicasResultSet.next()){
-				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
+				Actividad acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
 				
 				prac = new Practicas(practicasResultSet.getInt("id_practicas"),
 							         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getAsignatura().getTitulo()),
