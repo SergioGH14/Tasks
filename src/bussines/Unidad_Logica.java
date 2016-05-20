@@ -17,6 +17,7 @@ import persistence.ExamenPracticasDAOImp;
 import persistence.NotificacionDAOImp;
 import persistence.PracticasDAOImp;
 import persistence.UniversidadDAOImp;
+import persistence.dto.ActividadDTO;
 
 public class Unidad_Logica {
 	
@@ -121,7 +122,7 @@ public class Unidad_Logica {
 		
 	}
 
-	public Actividad obtenerInformacionDeActividad(int id_actividad) {
+	public ActividadDTO obtenerInformacionDeActividad(int id_actividad) {
 		return dal.obtenerInformacionDeActividad(id_actividad);
 	}
 	/*FIN ACTIVIDAD*/

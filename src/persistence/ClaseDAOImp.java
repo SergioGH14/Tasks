@@ -6,6 +6,7 @@ import Util.Constantes;
 import bussines.Actividad;
 import bussines.Clase;
 import persistence.dao.ClaseDAO;
+import persistence.dto.ActividadDTO;
 
 public class ClaseDAOImp implements ClaseDAO {
 	
@@ -29,16 +30,16 @@ public class ClaseDAOImp implements ClaseDAO {
 
 		
 			if (claseResultSet.next()){
-				Actividad acti = new ActividadDAOImp().obtenerInformacionDeActividad(claseResultSet.getInt("id_actividad"));
+				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(claseResultSet.getInt("id_actividad"));
 				
 				clas = new Clase(claseResultSet.getInt("id_clase"),
-						         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getAsignatura().getTitulo()),
+						         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
 								 acti.getTitulo(),
 								 acti.getDescripcion(),
-								 acti.getFechafinalizacion(), 
-								 acti.getTiempoestimado(),
+								 acti.getFechaFinalizacion(), 
+								 acti.getTiempoEstimado(),
 								 acti.getPorcentaje(),
-								 acti.getPrioridadusuario(),
+								 acti.getPrioridadUsuario(),
 								 acti.isFinalizada(), 
 								 claseResultSet.getBoolean("puntuable"));
 			}

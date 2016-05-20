@@ -6,6 +6,7 @@ import Util.Constantes;
 import bussines.Actividad;
 import bussines.Practicas;
 import persistence.dao.PracticasDAO;
+import persistence.dto.ActividadDTO;
 
 public class PracticasDAOImp implements PracticasDAO {
 	
@@ -28,16 +29,16 @@ public class PracticasDAOImp implements PracticasDAO {
 
 		
 			if (practicasResultSet.next()){
-				Actividad acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
+				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
 				
 				prac = new Practicas(practicasResultSet.getInt("id_practicas"),
-							         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getAsignatura().getTitulo()),
+							         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
 								     acti.getTitulo(),
 									 acti.getDescripcion(),
-									 acti.getFechafinalizacion(), 
-									 acti.getTiempoestimado(),
+									 acti.getFechaFinalizacion(), 
+									 acti.getTiempoEstimado(),
 									 acti.getPorcentaje(),
-									 acti.getPrioridadusuario(),
+									 acti.getPrioridadUsuario(),
 									 acti.isFinalizada(),
 									 practicasResultSet.getBoolean("grupal"),
 									 practicasResultSet.getBoolean("recuperable"));

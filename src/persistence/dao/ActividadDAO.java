@@ -4,7 +4,7 @@ import bussines.Actividad;
 import persistence.dto.ActividadDTO;
 
 public interface ActividadDAO {
-	public Actividad obtenerInformacionDeActividad(int id_actividad);
+	public ActividadDTO obtenerInformacionDeActividad(int id_actividad);
 	
 	public void eliminarActividad(int id_actividad);
 	

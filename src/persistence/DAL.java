@@ -5,6 +5,7 @@ import java.util.List;
 
 import bussines.*;
 import persistence.dao.*;
+import persistence.dto.ActividadDTO;
 /*
  * Capa previa a persistencia,intermedia entre la fachada y la persistencia
  */
@@ -49,7 +50,7 @@ public class DAL {
 			}
 
 			@Override
-			public Actividad obtenerInformacionDeActividad(int id_actividad) {
+			public ActividadDTO obtenerInformacionDeActividad(int id_actividad) {
 				return new ActividadDAOImp().obtenerInformacionDeActividad(id_actividad);
 			}
 			
@@ -418,7 +419,7 @@ public class DAL {
 	}
 	
 	/*ACTIVIDAD*/
-	public Actividad obtenerInformacionDeActividad(int id_actividad){
+	public ActividadDTO obtenerInformacionDeActividad(int id_actividad){
 		return actividadDAO.obtenerInformacionDeActividad(id_actividad);
 	}
 

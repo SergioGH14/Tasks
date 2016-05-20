@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import Util.Basics;
 import Util.Date_solver;
+import bussines.Actividad;
 import bussines.Asignatura;
 import bussines.Cuatrimestre;
 import bussines.Curso;
@@ -23,7 +24,7 @@ public class Pruebas_Persistencia {
 	private static Scanner teclado;
 
 	public static void main(String[] args) {
-		teclado = new Scanner(System.in);	
+		/*teclado = new Scanner(System.in);	
 		LocalDateTime l = LocalDateTime.now();
 		
 		System.out.println("Existen usuario: " +  DAL.getInstance().existeUsuario()+"\n");
@@ -94,7 +95,10 @@ public class Pruebas_Persistencia {
 		
 		probarHastaAsignatura(curso);
 
-		
+		*/
+		System.out.println("VAMOS A RECUPERAR UNA ACTIVIDAD DE PRACTICAS");
+		Actividad practicas = DAL.getInstance().getInstance().obtenerInformacionDePracticas(1);
+		System.out.println("practica: " + practicas);
 	}
 
 	private static void probarHastaAsignatura(Curso curso) {
