@@ -89,6 +89,12 @@ public class DAL {
 			public Asignatura crearAsignatura(Asignatura asignatura) {
 				return new AsignaturaDAOImp().crearAsignatura(asignatura);
 			}
+
+			@Override
+			public Asignatura obtenerInformacionAsignatura(int id_asignatura) {
+				// TODO Auto-generated method stub
+				return null;
+			}
 		};
 		
 		claseDAO = new ClaseDAO(){

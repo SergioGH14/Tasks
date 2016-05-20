@@ -5,7 +5,9 @@ import java.sql.ResultSet;
 import Util.Constantes;
 import Util.Date_solver;
 import bussines.Actividad;
+import bussines.Cuatrimestre;
 import persistence.dao.ActividadDAO;
+import persistence.dto.ActividadDTO;
 
 public class ActividadDAOImp implements ActividadDAO {
 
@@ -21,8 +23,31 @@ protected ConnectionManager connectionManager;
 	
 	@Override
 	public Actividad obtenerInformacionDeActividad(int id_actividad) {
-		// TODO Auto-generated method stub
-		return null;
+		Actividad actividadAux = null;
+		/*try{
+			connectionManager.connect();
+			ResultSet actividadResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD where id_actividad = '"+id_actividad+"'");
+			connectionManager.close();
+
+			if (actividadResultSet.next()){
+				actividadAux = new ActividadDTO(
+						actividadResultSet.getInt("ID_ACTIVIDAD"),
+						new AsignaturaDAOImp().obtenerInformacionAsignatura(actividadResultSet.getInt("ID_ASIGNATURA")).getTitulo(),
+						actividadResultSet.getString("TITULO"),
+						actividadResultSet.getString("DESCRIPCION"),
+						Date_solver.convertirDateSQLEnLocalDateTime( actividadResultSet.getDate("FECHA_NACIMIENTO")),
+						actividadResultSet.getInt("TIEMPO_ESTIMADO"),
+						actividadResultSet.getDouble("PORCENTAJE"),
+						actividadResultSet.getInt("PRIORIDAD_U"),
+						actividadResultSet.getInt("PRIORIDAD_T"),
+						actividadResultSet.getBoolean("FINALIZADA")
+						);
+			}
+			System.out.println("Actividad recuperada con éxito, id: " + actividadAux.getId_actividad());
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al buscar la actividad: "+e.getLocalizedMessage() );
+		}*/
+		return actividadAux;
 	}
 
 	@Override

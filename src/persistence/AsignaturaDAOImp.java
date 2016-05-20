@@ -43,7 +43,28 @@ public class AsignaturaDAOImp implements AsignaturaDAO{
 		return asignatura;
 	}
 
+	@Override
+	public Asignatura obtenerInformacionAsignatura(int id_asignatura) {
+		Asignatura asignatura = null;
+		try{
+			connectionManager.connect();
+			ResultSet asignaturaResultSet = connectionManager.queryDB("SELECT * from ASIGNATURA where id_asignatura = '"+id_asignatura+"'");
+			connectionManager.close();
+			
+			if(asignaturaResultSet.next()){
+				asignatura = new Asignatura(asignaturaResultSet.getInt("ID_ASIGNATURA"), 
+											new CuatrimestreDAOImp().obtenerInformacionCuatrimestre(asignaturaResultSet.getInt("ID_CUATRIMESTRE")), 
+											asignaturaResultSet.getString("TITULO"), asignaturaResultSet.getDouble("CREDITOS"),
+											asignaturaResultSet.getInt("DIFICULTAD"), asignaturaResultSet.getBoolean("ANUAL"), 
+											Basics.HexToColor(asignaturaResultSet.getString("COLOR")));
+			}
 
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al buscar la asignatura: "+e.getLocalizedMessage() );
+		}
+		return asignatura;
+	}
+	
 	@Override
 	public List<Asignatura> obtenerAsignaturasPorCuatrimestre(int cuatrimestre) {
 		List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
@@ -175,5 +196,6 @@ public class AsignaturaDAOImp implements AsignaturaDAO{
 		return -1;
 
 	}
+
 
 }
