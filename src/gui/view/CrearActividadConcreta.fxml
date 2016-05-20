@@ -21,6 +21,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <Rectangle fx:id="rFondo" fill="DODGERBLUE" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="495.0" GridPane.columnSpan="2" GridPane.rowSpan="2" />
             <ImageView fitHeight="164.0" fitWidth="496.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.rowSpan="2">
                <image>
                   <Image url="@../../../assets/asignatura_degradado.png" />
@@ -35,10 +36,10 @@
       </GridPane>
    </top>
    <bottom>
-      <GridPane maxHeight="666.0" maxWidth="579.0" prefHeight="57.0" prefWidth="495.0" style="-fx-background-color: #f3f3f3;" BorderPane.alignment="CENTER">
+      <GridPane maxHeight="666.0" maxWidth="579.0" prefHeight="57.0" prefWidth="495.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="5.0" prefWidth="249.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="246.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="5.0" prefWidth="247.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="248.0" />
             <ColumnConstraints />
             <ColumnConstraints />
         </columnConstraints>
@@ -46,19 +47,31 @@
             <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="ivSiguiente" fitHeight="52.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="4" GridPane.halignment="CENTER">
+            <ImageView fx:id="ivSiguiente" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.halignment="LEFT">
                <image>
-                  <Image url="@../../../assets/Right.png" />
+                  <Image url="@../../../assets/guardar.png" />
                </image>
+               <GridPane.margin>
+                  <Insets bottom="3.0" left="15.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ImageView fx:id="ivCancelar" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../../assets/cancelar.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets right="15.0" />
+               </GridPane.margin>
             </ImageView>
          </children>
       </GridPane>
    </bottom>
    <center>
-      <GridPane maxWidth="579.0" prefHeight="396.0" prefWidth="242.0" BorderPane.alignment="CENTER_LEFT">
+      <GridPane maxWidth="699.0" prefHeight="396.0" prefWidth="699.0" BorderPane.alignment="CENTER_LEFT">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="37.0" minWidth="4.0" prefWidth="11.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.0" minWidth="10.0" prefWidth="65.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.0" minWidth="10.0" prefWidth="11.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -66,46 +79,73 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Examen" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="74.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Pane fx:id="pFondoCLase" opacity="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3;" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+            <Pane fx:id="pFondoPractica" opacity="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3;" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <ImageView fitHeight="66.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../../assets/Workstation-100.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="57.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../assets/Class-100.png" />
+               </image>
+            </ImageView>
+            <Line endX="25.0" startX="-25.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <Line endX="25.0" startX="-25.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <Pane fx:id="pFondoExamen" opacity="0.0" prefHeight="132.0" prefWidth="102.0" style="-fx-background-color: #f3f3f3;" GridPane.columnSpan="3" />
+            <ImageView fitHeight="62.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
                   <Image url="@../../../assets/Exam-100.png" />
                </image>
             </ImageView>
-            <Label text="Practicas" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <Label text="Clase" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="77.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <image>
-                  <Image url="@../../../assets/Happy%20Mac-100.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="76.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../assets/Classroom-100.png" />
-               </image>
-            </ImageView>
-            <Line endX="100.0" startX="-100.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Line endX="100.0" startX="-100.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Line endX="100.0" startX="-100.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Pane fx:id="pExamen" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" />
-            <Pane fx:id="pPracticas" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <Pane fx:id="pClase" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <Line endX="25.0" startX="-25.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Examen" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Clase" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Práctica" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Pane fx:id="pExamen" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <Pane fx:id="pPractica" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Pane fx:id="pClase" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>
+   <right>
+      <GridPane maxHeight="500.0" prefHeight="396.0" prefWidth="405.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="214.66668701171875" minHeight="10.0" prefHeight="195.66668701171875" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="224.0" minHeight="10.0" prefHeight="200.33331298828125" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Seleciona el tipo de actividad" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="entre estas tres" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </Text>
+         </children>
+      </GridPane>
+   </right>
 </BorderPane>

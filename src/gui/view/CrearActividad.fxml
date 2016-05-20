@@ -11,7 +11,7 @@
 
 <BorderPane prefHeight="531.0" prefWidth="495.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CrearActividadController">
    <center>
-      <GridPane maxHeight="666.0" maxWidth="579.0" prefHeight="461.0" prefWidth="495.0" style="-fx-background-color: #f3f3f3;" BorderPane.alignment="CENTER">
+      <GridPane maxHeight="666.0" maxWidth="579.0" prefHeight="461.0" prefWidth="495.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="5.0" prefWidth="50.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="198.0" />
@@ -61,7 +61,7 @@
                   <Insets />
                </GridPane.margin>
             </TextArea>
-            <DatePicker prefHeight="25.0" prefWidth="303.0" promptText="Cuando tiene que estar acabado" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <DatePicker fx:id="dpFechaFin" prefHeight="25.0" prefWidth="303.0" promptText="Cuando tiene que estar acabado" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -126,41 +126,47 @@
                   <Image url="@../../../assets/Right.png" />
                </image>
             </ImageView>
-            <Line fx:id="lPrioridadBaja" endX="10.0" startX="-10.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+            <Line fx:id="lPrioridadBaja" endX="10.0" opacity="0.0" startX="-10.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="8.0" left="19.0" />
                </GridPane.margin>
             </Line>
-            <Line fx:id="lPrioridadAlta" endX="10.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+            <Line fx:id="lPrioridadAlta" endX="10.0" opacity="0.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="8.0" right="20.0" />
                </GridPane.margin>
             </Line>
-            <Line fx:id="lPrioridadMedia" endX="10.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+            <Line fx:id="lPrioridadMedia" endX="10.0" opacity="0.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="8.0" />
                </GridPane.margin>
             </Line>
-            <Line fx:id="lTiempoAlto" endX="10.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+            <Line fx:id="lTiempoAlto" endX="10.0" opacity="0.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="15.0" right="12.0" />
                </GridPane.margin>
             </Line>
-            <Line fx:id="lTiempoMedio" endX="10.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+            <Line fx:id="lTiempoMedio" endX="10.0" opacity="0.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
             </Line>
-            <Line fx:id="lTiempoBajo" endX="10.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+            <Line fx:id="lTiempoBajo" endX="10.0" opacity="0.0" startX="-10.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="15.0" left="12.0" />
                </GridPane.margin>
             </Line>
+            <RadioButton fx:id="rbPrioridadAlta" mnemonicParsing="false" opacity="0.0" prefHeight="62.0" prefWidth="53.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <RadioButton fx:id="rbPrioridadBaja" mnemonicParsing="false" opacity="0.0" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <RadioButton fx:id="rbPrioridadMedia" mnemonicParsing="false" opacity="0.0" prefHeight="59.0" prefWidth="39.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <RadioButton fx:id="rbTiempoMedio" mnemonicParsing="false" opacity="0.0" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <RadioButton fx:id="rbTiempoBajo" mnemonicParsing="false" opacity="0.0" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <RadioButton fx:id="rbTiempoAlto" mnemonicParsing="false" opacity="0.0" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </center>
    <top>
-      <GridPane prefHeight="78.0" prefWidth="495.0" style="-fx-background-color: #ff7843;" BorderPane.alignment="CENTER">
+      <GridPane fx:id="gpFondo" prefHeight="78.0" prefWidth="495.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="247.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="248.0" />
@@ -170,6 +176,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <Rectangle fx:id="rFondo" arcWidth="5.0" fill="DODGERBLUE" height="78.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="495.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
             <ImageView fitHeight="164.0" fitWidth="496.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.rowSpan="2">
                <image>
                   <Image url="@../../../assets/asignatura_degradado.png" />

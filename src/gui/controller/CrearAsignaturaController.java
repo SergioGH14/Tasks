@@ -131,15 +131,15 @@ public class CrearAsignaturaController implements Initializable{
 		switch (valor) {
 		case 0:
 			lFacil.setOpacity(1);
-			dificultad=10;
+			dificultad=7;
 			break;
 		case 1:
 			lMedio.setOpacity(1);
-			dificultad=20;
+			dificultad=14;
 			break;
 		case 2:
 			lDificil.setOpacity(1);
-			dificultad=30;
+			dificultad=21;
 		default:
 			break;
 		}
@@ -190,7 +190,7 @@ public class CrearAsignaturaController implements Initializable{
 		});
 		
 		cpColorPicker.setOnAction(t -> {
-		    cColor.setFill(cpColorPicker.getValue().desaturate().brighter().brighter().brighter().brighter());  
+		    cColor.setFill(cpColorPicker.getValue());  
 		    pFondo.setBackground(new Background(new BackgroundFill(Color.web(Basics.RGBToHex(cpColorPicker.getValue())), null, null)));
 		});
 		

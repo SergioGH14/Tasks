@@ -154,7 +154,7 @@ public class MainController  extends Application {
 			
 		} catch (IOException e){
 			// TODO Auto-generated catch block
-			System.err.println("Error al establecer la barra inferior " + e.getLocalizedMessage());
+			System.err.println("Error al establecer la primera pantalla de Inicio " + e.getLocalizedMessage());
 		}
 	}
 	public void inicioUniversidadGrado(Stage secondaryStage,Universidad upv){
@@ -188,7 +188,7 @@ public class MainController  extends Application {
 			
 		} catch (IOException e){
 			// TODO Auto-generated catch block
-			System.err.println("Error al establecer la segunda pantalla del Inicio " + e.getLocalizedMessage());
+			System.err.println("Error al establecer la tercera pantalla del Inicio " + e.getLocalizedMessage());
 		}
 	}
 	
@@ -218,6 +218,7 @@ public class MainController  extends Application {
 	}
 	public Actividad crearActividad(Asignatura asignatura){
 		 try{
+			System.err.println(asignatura.getColor());
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearActividad.fxml"));
 			BorderPane creador = (BorderPane)loader.load();
 			
@@ -231,6 +232,7 @@ public class MainController  extends Application {
 			secondaryStage.setTitle(Util.Constantes.ARDUM);
 			CrearActividadController creadorcontrolador = loader.<CrearActividadController>getController();
 			creadorcontrolador.initStage(secondaryStage, this, asignatura);
+			
 			secondaryStage.showAndWait();
 			
 			if(creadorcontrolador.getActividad() != null)
@@ -241,6 +243,7 @@ public class MainController  extends Application {
 		 } catch (IOException e){
 			// TODO Auto-generated catch block
 			System.err.println("Error al establecer la pantalla Actividad Generica " + e.getLocalizedMessage());
+			System.err.println(e);
 		}
 		 return null;
 	}
@@ -257,7 +260,7 @@ public class MainController  extends Application {
 			secondaryStage.setResizable(false);
 			secondaryStage.setTitle(Util.Constantes.ARDUM);
 			CrearActividadConcretaController creadorcontrolador = loader.<CrearActividadConcretaController>getController();
-			creadorcontrolador.initStage(secondaryStage, this, actividaddto);
+			creadorcontrolador.initStage(secondaryStage, this, actividaddto, creador);
 			secondaryStage.showAndWait();
 			
 			return creadorcontrolador.getActividad();
@@ -266,6 +269,35 @@ public class MainController  extends Application {
 			System.err.println("Error al establecer la segunda pantalla Actividad Concreta " + e.getLocalizedMessage());
 		}
 		 return null;
+	}
+	public void crearActividadEspecifica(Stage secondaryStage, CrearActividadConcretaController contenedora,BorderPane contenedor, int indicador){
+		 try{
+			 switch (indicador) {
+			case 0:
+				
+				break;
+			case 1: //Practica
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearPractica.fxml"));
+				
+				BorderPane creaPractica = (BorderPane)loader.load();
+					
+				
+				contenedor.setRight(creaPractica);
+				
+				
+					CrearPracticaController creador = loader.<CrearPracticaController>getController();
+				creador.initStage(secondaryStage,this,contenedora);
+				break;
+
+			default:
+				break;
+			}
+			
+			secondaryStage.showAndWait();
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la pantalla con identificador"+indicador + e.getLocalizedMessage());
+		}
 	}
 	
 	
