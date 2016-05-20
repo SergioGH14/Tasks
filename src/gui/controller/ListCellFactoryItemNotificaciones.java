@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -22,7 +23,7 @@ import javafx.scene.text.Text;
 
 public class ListCellFactoryItemNotificaciones {
 	@FXML
-    private Text tvDescripcion;
+    private Label tvDescripcion;
 
     @FXML
     private Text tvFecha;
@@ -31,15 +32,16 @@ public class ListCellFactoryItemNotificaciones {
     private Circle cColorAsignatura;
 
     @FXML
-    private Text tvTituloAsignatura;
+    private Label tvTituloAsignatura;
     
-    public void setInformacion(Notificacion notificacion){
+    public void setInformacion(Notificacion notificacion){    	
     	tvTituloAsignatura.setText(notificacion.getTitulo());
     	tvTituloAsignatura.setFont(Basics.generateFontById(9, 13));
-    	tvDescripcion.setText(notificacion.getDescripcion());
+    	
+    	tvDescripcion.setText( notificacion.getDescripcion() );
     	tvDescripcion.setFont(Basics.generateFontById(3, 13));
     	//cColorAsignatura.setFill( notificacion.getActividad().getAsignatura().getColor() );
-    	tvFecha.setFont(Basics.generateFontById(3, 10));
+    	tvFecha.setFont(Basics.generateFontById(1, 10));
     	tvFecha.setText(Date_solver.obtenerFechaParaActividades(notificacion.getFecha_notificacion()));
     }
 

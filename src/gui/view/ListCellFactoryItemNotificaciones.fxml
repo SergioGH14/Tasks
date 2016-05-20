@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -7,24 +8,28 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox prefHeight="40.0" prefWidth="225.0" style="-fx-background-color: #505050;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox prefWidth="225.0" style="-fx-background-color: #505050;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fx:id="cColorAsignatura" fill="#71ffac" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+      <Circle fx:id="cColorAsignatura" fill="#71ffac" radius="11.0" stroke="BLACK" strokeWidth="0.0">
          <HBox.margin>
-            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+            <Insets bottom="16.0" left="16.0" right="16.0" top="7.0" />
          </HBox.margin>
       </Circle>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox prefWidth="100.0">
          <children>
-            <Text fx:id="tvTituloAsignatura" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo asignatura">
+            <Label fx:id="tvTituloAsignatura" text="Label" textFill="WHITE" wrapText="true">
                <VBox.margin>
-                  <Insets top="6.0" />
+                  <Insets top="3.0" />
                </VBox.margin>
-            </Text>
-            <Text fx:id="tvDescripcion" fill="#b5afaf" strokeType="OUTSIDE" strokeWidth="0.0" text="descripcion notificacion de..." />
+            </Label>
+            <Label fx:id="tvDescripcion" text="Label" textFill="#b5afaf" wrapText="true">
+               <VBox.margin>
+                  <Insets top="1.0" />
+               </VBox.margin>
+            </Label>
             <Text fx:id="tvFecha" fill="#ff8989" strokeType="OUTSIDE" strokeWidth="0.0" text="03 marzo 2016">
                <VBox.margin>
-                  <Insets />
+                  <Insets top="2.0" />
                </VBox.margin>
             </Text>
          </children>

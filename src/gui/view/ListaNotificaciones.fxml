@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="552.0" prefWidth="255.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.ListaNotificacionesController">
    <children>
       <ListView fx:id="lvNotificaciones" focusTraversable="false" prefHeight="552.0" prefWidth="255.0" style="-fx-background-color: #505050;" stylesheets="@listanotificaciones.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane fx:id="pnNoNotificaciones" prefHeight="552.0" prefWidth="255.0" style="-fx-background-color: #FAFAFA;" visible="false">
+      <Pane fx:id="pnNoNotificaciones" prefHeight="552.0" prefWidth="255.0" style="-fx-background-color: #505050;">
          <children>
             <Text fx:id="tvNoNotificaciones" fill="#c6c6c6" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No tienes notificaciones" textAlignment="CENTER" wrappingWidth="255.0" />
          </children>

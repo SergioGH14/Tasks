@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
@@ -25,6 +26,22 @@
                </font>
             </Text>
             <ListView fx:id="lvActividades" cacheShape="false" centerShape="false" focusTraversable="false" layoutY="44.0" prefHeight="467.0" prefWidth="675.0" style="-fx-background-color: #fff;" stylesheets="@listaactividades.css" />
+            <GridPane fx:id="gpAnyadirActividad" layoutX="615.0" layoutY="470.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Circle fill="#ff7843" layoutX="643.0" layoutY="498.0" radius="28.0" stroke="#ff7b00" strokeType="INSIDE" strokeWidth="0.0" />
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="626.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../../assets/anyadir_blanco.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
          </children>
          <padding>
             <Insets bottom="8.0" left="16.0" right="16.0" />
@@ -48,6 +65,22 @@
                   <Image url="@../../../assets/cerveza_fill.png" />
                </image>
             </ImageView>
+            <GridPane fx:id="gpAnyadirActividadNO" layoutX="326.0" layoutY="450.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Circle fill="#ff7843" layoutX="354.0" layoutY="478.0" radius="28.0" stroke="#ff7b00" strokeType="INSIDE" strokeWidth="0.0" />
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="337.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../../assets/anyadir_blanco.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
          </children>
       </Pane>
    </children>

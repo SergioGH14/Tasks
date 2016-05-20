@@ -27,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -45,6 +46,9 @@ public class ListaActividadesController implements Initializable{
 	@FXML Pane pnTodoHecho; //pantalla que se muestra cuando todo está hecho
 	@FXML Text tvMensajeTodoOk;
 	@FXML ImageView ivLogoTodoHecho;
+	
+	@FXML GridPane gpAnyadirActividad;
+	@FXML GridPane gpAnyadirActividadNO;
 	
 	//listas con actividades
 	@FXML ListView lvActividades;
@@ -107,57 +111,29 @@ public class ListaActividadesController implements Initializable{
 		lvActividades.getStylesheets().add(getClass().getResource("/gui/view/listaactividades.css").toExternalForm());
 		lvActividades.setItems(olActividades);
 		lvActividades.setCellFactory(c -> new ListCellFactoryActividades());
-		
-		/*lvActividades.setCellFactory(new Callback<ListView<Asignatura>, ListCell<Actividad> >() {
-
-			@Override
-			public ListCell<Actividad> call(ListView<Asignatura> param) {
-				
-				ListCell<Actividad> celda = new ListCell<Actividad>(){
-					
-					@Override
-					protected void updateItem(Actividad actividad, boolean flag){
-						super.updateItem(actividad, flag);
-						if(actividad!=null){ 
-							
-
-							ListCellFactoryItemActividades controllerItem = new ListCellFactoryItemActividades();
-							FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/ListCellFactoryItemActividades.fxml"));
-							try {
-								loader.setController(controllerItem);
-								HBox hboxItemsAsignaturas = (HBox)loader.load();
-
-								controllerItem.setInformacion(actividad);
-								setGraphic(hboxItemsAsignaturas);
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-							
-						}		
-						
-					}
-				};
-				
-				celda.setOnMouseClicked(new EventHandler<Event>() {
-
-					@Override
-					public void handle(Event event) {
-						System.out.println("ha hecho click en el elemento: " + celda.getIndex());
-						olActividades.remove(celda.getIndex());
-					}
-				});
-				
-				return celda;
-			}
-			
-		});*/
-		
 	}
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		gpAnyadirActividad.setOnMouseClicked(new EventHandler<Event>() {
 
+			@Override
+			public void handle(Event event) {
+				System.err.println("Añadiendo nueva tarea desde una lista con actividades");
+				
+			}
+		});
+
+		gpAnyadirActividadNO.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				System.err.println("Añadiendo nueva tarea desde una lista sin actividades");
+				
+			}
+		});
 	}
 
 }
