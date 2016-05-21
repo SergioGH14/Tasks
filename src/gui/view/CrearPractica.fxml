@@ -31,12 +31,12 @@
             </Text>
             <ImageView fx:id="ivGrupal" fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@../../../assets/Unchecked%20Checkbox-100.png" />
+                  <Image url="@../../../assets/unchecked_box.png" />
                </image>
             </ImageView>
             <ImageView fx:id="ivRecuperable" fitHeight="50.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@../../../assets/Unchecked%20Checkbox-100.png" />
+                  <Image url="@../../../assets/unchecked_box.png" />
                </image>
             </ImageView>
          </children>

@@ -15,8 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
 import bussines.Actividad;
 import bussines.Asignatura;
+import bussines.Fabrica_Actividad;
 import javafx.stage.Stage;
 import persistence.dto.ActividadDTO;
 
@@ -52,6 +55,14 @@ public class CrearActividadConcretaController implements Initializable{
     @FXML
     private Pane pClase;
 	
+    private int tipo;
+    
+    /*
+     * TIPO 1 PRACTICA
+     * TIPO 2 CLASE
+     * TIPO 3 EXAMEN
+     */
+    
     private List<Boolean> lista;
     
 	private Actividad actividad;
@@ -81,8 +92,11 @@ public class CrearActividadConcretaController implements Initializable{
 		lista.add(false);
 		lista.add(false);
 		
+		
+		
 		}
 	public List<Boolean> getLista() {
+		
 		return lista;
 	}
 	public void setLista(List<Boolean> lista) {
@@ -102,13 +116,30 @@ public class CrearActividadConcretaController implements Initializable{
 		// TODO Auto-generated method stub
 		pPractica.setOnMouseClicked(new EventHandler<Event>() {
 
+			
+			
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
+				tipo = 1;
+				lista.set(0, false);
+				lista.set(1, false);
 				pFondoPractica.setOpacity(1.0);
-				controladorPrincipal.crearActividadEspecifica(primaryStage, instancia,contenedor, 1);
+				controladorPrincipal.crearActividadEspecifica(primaryStage, instancia,contenedor, tipo);
 			}
 		});
+		
+	ivSiguiente.setOnMouseClicked(new EventHandler<Event>() {
+
+		@Override
+		public void handle(Event event) {
+			// TODO Auto-generated method stub
+			actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
+			System.out.println(actividad);
+			primaryStage.close();
+			
+		}
+	});
 	}
 
 }

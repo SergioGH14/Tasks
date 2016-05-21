@@ -273,30 +273,29 @@ public class MainController  extends Application {
 	public void crearActividadEspecifica(Stage secondaryStage, CrearActividadConcretaController contenedora,BorderPane contenedor, int indicador){
 		 try{
 			 switch (indicador) {
-			case 0:
 				
-				break;
 			case 1: //Practica
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearPractica.fxml"));
 				
 				BorderPane creaPractica = (BorderPane)loader.load();
 					
 				
-				contenedor.setRight(creaPractica);
+				
 				
 				
 					CrearPracticaController creador = loader.<CrearPracticaController>getController();
 				creador.initStage(secondaryStage,this,contenedora);
+				contenedor.setRight(creaPractica);
 				break;
 
 			default:
 				break;
 			}
 			
-			secondaryStage.showAndWait();
+			
 		} catch (IOException e){
 			// TODO Auto-generated catch block
-			System.err.println("Error al establecer la pantalla con identificador"+indicador + e.getLocalizedMessage());
+			System.err.println("Error al establecer la pantalla con identificador"+indicador + e.getLocalizedMessage()+e.getMessage()+e.getCause());
 		}
 	}
 	

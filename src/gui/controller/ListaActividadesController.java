@@ -15,6 +15,7 @@ import bussines.Estrategia_Ordenacion_BandejaEntrada;
 import bussines.Estrategia_Ordenacion_Hoy;
 import bussines.Estrategia_Ordenacion_ParaDespues;
 import bussines.Estrategia_Ordenacion_Prioridad;
+import bussines.Unidad_Logica;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -121,7 +122,7 @@ public class ListaActividadesController implements Initializable{
 
 			@Override
 			public void handle(Event event) {
-				System.err.println("Añadiendo nueva tarea desde una lista con actividades");
+				controladorPrincipal.crearActividad(asignatura);
 				
 			}
 		});
@@ -130,8 +131,7 @@ public class ListaActividadesController implements Initializable{
 
 			@Override
 			public void handle(Event event) {
-				System.err.println("Añadiendo nueva tarea desde una lista sin actividades");
-				
+				controladorPrincipal.crearActividad(asignatura);
 			}
 		});
 	}

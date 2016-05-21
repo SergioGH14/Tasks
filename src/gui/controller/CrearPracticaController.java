@@ -1,19 +1,28 @@
 package gui.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
 
+
 public class CrearPracticaController implements Initializable{
+
 
     @FXML
     private ImageView ivRecuperable;
@@ -35,14 +44,30 @@ public class CrearPracticaController implements Initializable{
 	 public void initStage(Stage stage, MainController controladorPrincipal, CrearActividadConcretaController contenedora){
 			this.primaryStage = stage;
 			this.controladorPrincipal = controladorPrincipal;
+			this.contenedora = contenedora;
 			}
-	private CrearPracticaController() {
+	public CrearPracticaController() {
 		// TODO Auto-generated constructor stub
 	}
 	public static CrearPracticaController getInstancia() {
 		if(instancia == null)instancia = new CrearPracticaController()  ;
 		return instancia;
 	}
+	public Image cargarImagen(String ruta){
+		BufferedImage bufferedImage = null;
+		try {
+			bufferedImage = ImageIO.read(new File(ruta));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			if(bufferedImage!=null){
+				Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+				return image;
+			}
+			return null;
+		}
+	}
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -53,8 +78,8 @@ public class CrearPracticaController implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
-				if(!contenedora.getLista().get(1))ivRecuperable.setImage(new Image("/Tasks/assets/Checked Checkbox 2-100 (1).png"));
-				else ivRecuperable.setImage(new Image("/Tasks/assets/Unchecked Checkbox-100.png"));
+				if(contenedora.getLista().get(1)==false )ivRecuperable.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/checked_checkbox.png"));
+				else ivRecuperable.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/unchecked_box.png"));
 				contenedora.getLista().set(1, !contenedora.getLista().get(1));
 			}
 		});
@@ -63,8 +88,8 @@ public class CrearPracticaController implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
-				if(!contenedora.getLista().get(0))ivGrupal.setImage(new Image("/Tasks/assets/Checked Checkbox 2-100 (1).png"));
-				else ivGrupal.setImage(new Image("/Tasks/assets/Unchecked Checkbox-100.png"));
+				if(!contenedora.getLista().get(0))ivGrupal.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/checked_checkbox.png"));
+				else ivGrupal.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/unchecked_box.png"));
 				contenedora.getLista().set(0, !contenedora.getLista().get(0));
 			}
 		});
