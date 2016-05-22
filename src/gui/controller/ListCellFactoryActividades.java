@@ -26,6 +26,8 @@ public class ListCellFactoryActividades extends ListCell<Actividad>{
 				e.printStackTrace();
 			}
 			
+		}else{
+			setGraphic(null);
 		}
 		 
 	}

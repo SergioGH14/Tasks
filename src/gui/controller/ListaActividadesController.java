@@ -60,7 +60,16 @@ public class ListaActividadesController implements Initializable{
 		this.primaryStage = stage;
 		this.controladorPrincipal = controladorPrincipal;
 		this.asignatura = asignatura;
-
+		
+		//bandeja, hoy, para despues es una recopilacion de actividades y desde alli no se podran crear
+		if(asignatura!=null){
+			gpAnyadirActividad.setVisible(true);
+			gpAnyadirActividadNO.setVisible(true);
+		}else{
+			gpAnyadirActividad.setVisible(false);
+			gpAnyadirActividadNO.setVisible(false);
+		}
+		
 		iniciarPantallaListaDeActividades(tipoItemMenuSeleccionado);	
 		
 	}
@@ -96,34 +105,28 @@ public class ListaActividadesController implements Initializable{
 			break;
 		}
 		
-		if(olActividades!=null && olActividades.isEmpty()){
-			//mostrar pantalla de todo hecho
-			pnTodoHecho.setVisible(true);
-			tvMensajeTodoOk.setFont(Basics.generateFontById(9, 23));
-			
-			/*
-			 * Aqui podriamos generar mensajes con logos aleatorios para que sea gracioso
-			 * 
-			 */
-
-		}
-		
 		//estilo para las listas de actividades
 		lvActividades.getStylesheets().add(getClass().getResource("/gui/view/listaactividades.css").toExternalForm());
 		lvActividades.setItems(olActividades);
 		lvActividades.setCellFactory(c -> new ListCellFactoryActividades());
+		
+		actualizarListas();
+		
 	}
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
 		gpAnyadirActividad.setOnMouseClicked(new EventHandler<Event>() {
 
 			@Override
 			public void handle(Event event) {
-				controladorPrincipal.crearActividad(asignatura);
-				
+					Actividad actividad = controladorPrincipal.crearActividad(asignatura);
+					if(actividad!=null){
+						olActividades.add(actividad);
+						actualizarListas();
+					}
+
 			}
 		});
 
@@ -131,9 +134,31 @@ public class ListaActividadesController implements Initializable{
 
 			@Override
 			public void handle(Event event) {
-				controladorPrincipal.crearActividad(asignatura);
+				Actividad actividad = controladorPrincipal.crearActividad(asignatura);
+				if(actividad!=null){
+					olActividades.add(actividad);
+					actualizarListas();
+				}
 			}
 		});
+	}
+	
+	private void actualizarListas(){
+		if(olActividades!=null && olActividades.isEmpty()){
+			//mostrar pantalla de todo hecho
+			pnTodoHecho.setVisible(true);
+			lvActividades.setVisible(false);
+			tvMensajeTodoOk.setFont(Basics.generateFontById(9, 23));
+			
+			/*
+			 * Aqui podriamos generar mensajes con logos aleatorios para que sea gracioso
+			 * 
+			 */
+
+		}else{
+			pnTodoHecho.setVisible(false);
+			lvActividades.setVisible(true);
+		}
 	}
 
 }
