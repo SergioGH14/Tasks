@@ -16,7 +16,7 @@ public class Estrategia_Ordenacion_ParaDespues implements Estrategia_Ordenacion_
 		List<Actividad> listaprueba = new ArrayList<Actividad>();
 		Asignatura asignaturaPruebaConActividades = new Asignatura("ASIGNATURA PRUEBA", Color.BLUEVIOLET);
 
-		Actividad actPrueba1 = new Clase(1,asignaturaPruebaConActividades, "Prueba de ordnacion Para despues", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true, false);
+		Actividad actPrueba1 = new Clase(1,asignaturaPruebaConActividades, "Prueba de ordnacion Para despues", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true,false, false);
 		actPrueba1.setId_actividad(1);
 		listaprueba.add(actPrueba1);
 		return listaprueba;

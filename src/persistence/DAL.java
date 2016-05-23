@@ -53,6 +53,11 @@ public class DAL {
 			public ActividadDTO obtenerInformacionDeActividad(int id_actividad) {
 				return new ActividadDAOImp().obtenerInformacionDeActividad(id_actividad);
 			}
+
+			@Override
+			public ActividadDTO obtenerInformacionDeActividadExamen(int id_actividad_examen) {
+				return new ActividadDAOImp().obtenerInformacionDeActividadExamen(id_actividad_examen);
+			}
 			
 		};
 		

@@ -44,6 +44,7 @@ public class PracticasDAOImp implements PracticasDAO {
 									 acti.getPorcentaje(),
 									 acti.getPrioridadUsuario(),
 									 acti.isFinalizada(),
+									 acti.isPara_despues(),
 									 practicasResultSet.getBoolean("grupal"),
 									 practicasResultSet.getBoolean("recuperable"));
 			}
@@ -158,6 +159,7 @@ public class PracticasDAOImp implements PracticasDAO {
 						 acti.getPorcentaje(),
 						 acti.getPrioridadUsuario(),
 						 acti.isFinalizada(),
+						 acti.isPara_despues(),
 						 practicasResultSet.getBoolean("grupal"),
 						 practicasResultSet.getBoolean("recuperable") ) );
 			}
@@ -189,6 +191,7 @@ public class PracticasDAOImp implements PracticasDAO {
 						 acti.getPorcentaje(),
 						 acti.getPrioridadUsuario(),
 						 acti.isFinalizada(),
+						 acti.isPara_despues(),
 						 practicasResultSet.getBoolean("grupal"),
 						 practicasResultSet.getBoolean("recuperable") ) );
 			}
@@ -220,6 +223,7 @@ public class PracticasDAOImp implements PracticasDAO {
 						 acti.getPorcentaje(),
 						 acti.getPrioridadUsuario(),
 						 acti.isFinalizada(),
+						 acti.isPara_despues(),
 						 practicasResultSet.getBoolean("grupal"),
 						 practicasResultSet.getBoolean("recuperable") ) );
 			}
@@ -250,6 +254,7 @@ public class PracticasDAOImp implements PracticasDAO {
 						 acti.getPorcentaje(),
 						 acti.getPrioridadUsuario(),
 						 acti.isFinalizada(),
+						 acti.isPara_despues(),
 						 practicasResultSet.getBoolean("grupal"),
 						 practicasResultSet.getBoolean("recuperable") ) );
 			}

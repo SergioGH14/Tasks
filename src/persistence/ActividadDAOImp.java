@@ -55,6 +55,37 @@ protected ConnectionManager connectionManager;
 		}
 		return actividadAux;
 	}
+	
+
+	@Override
+	public ActividadDTO obtenerInformacionDeActividadExamen(int id_actividad_examen) {
+		ActividadDTO actividadAux = null;
+		try{
+			connectionManager.connect();
+			ResultSet actividadResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A , EXAMEN E where A.id_actividad=E.id_actividad AND E.id_examen = '"+id_actividad_examen+"'");
+			connectionManager.close();
+
+			if (actividadResultSet.next()){
+				actividadAux = new ActividadDTO(
+						actividadResultSet.getInt("ID_ACTIVIDAD"),
+						new AsignaturaDAOImp().obtenerInformacionAsignatura(actividadResultSet.getInt("ID_ASIGNATURA")).getTitulo(),
+						actividadResultSet.getString("TITULO"),
+						actividadResultSet.getString("DESCRIPCION"),
+						Date_solver.convertirDateSQLEnLocalDateTime( actividadResultSet.getDate("FECHA_FINALIZACION")),
+						actividadResultSet.getInt("TIEMPO_ESTIMADO"),
+						actividadResultSet.getDouble("PORCENTAJE"),
+						actividadResultSet.getInt("PRIORIDAD_U"),
+						actividadResultSet.getInt("PRIORIDAD_T"),
+						actividadResultSet.getBoolean("FINALIZADA"),
+						actividadResultSet.getBoolean("PARA_DESPUES")
+						);
+			}
+			System.out.println("Actividad_Examen recuperada con éxito, id: " + actividadAux.getId_actividad());
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al buscar la actividad_examen: "+e.getLocalizedMessage() );
+		}
+		return actividadAux;
+	}
 
 	@Override
 	public void eliminarActividad(int id_actividad) {

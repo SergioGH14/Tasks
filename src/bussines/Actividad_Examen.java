@@ -7,14 +7,14 @@ public abstract class Actividad_Examen extends Actividad{
 	private Integer id_examen;
 	
 	public Actividad_Examen(Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
-			int tiempoestimado, Double porcentaje, int prioridadusuario, boolean finalizada) {
-		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
+			int tiempoestimado, Double porcentaje, int prioridadusuario, boolean finalizada, boolean para_despues ) {
+		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada, para_despues);
 
 	}
 	
-	public Actividad_Examen(Integer id_examen, Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
-			int tiempoestimado, Double porcentaje, int prioridadusuario, boolean finalizada) {
-		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
+	public Actividad_Examen(Integer id_examen, int id_actividad, Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
+			int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal,boolean finalizada, boolean para_despues) {
+		super(id_actividad,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadtotal,prioridadusuario, finalizada, para_despues);
 		this.setId_examen(id_examen);
 	}
 	

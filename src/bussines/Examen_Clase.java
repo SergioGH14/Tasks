@@ -20,6 +20,15 @@ public class Examen_Clase extends Decorador_Examen {
 		
 	}
 	
+	public Examen_Clase(Integer id_examen_clase,Actividad_Examen examen,boolean apuntes,boolean grupal) {
+		super(examen);
+		this.id_examen_clase = id_examen_clase;
+		this.apuntes = apuntes;
+		this.grupal=grupal;
+		super.setPrioridadtotal(establecerPrioridadTotal());
+		
+	}
+	
 	public Actividad_Examen getExamen() {
 		return examen;
 	}

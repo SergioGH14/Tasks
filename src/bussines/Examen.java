@@ -8,10 +8,10 @@ public class Examen extends Actividad_Examen {
 	private boolean recuperable;
 	
 	public Examen(Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
-			int tiempoestimado, Double porcentaje, int prioridadusuario,  boolean finalizada,
+			int tiempoestimado, Double porcentaje, int prioridadusuario,  boolean finalizada, boolean para_despues,
 			boolean recuperable, boolean ultimo) {
 		
-		 super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
+		 super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada, para_despues);
 		 
 		 setPrioridadtotal(establecerPrioridadTotal());
 		 this.ultimo = ultimo;
@@ -19,11 +19,11 @@ public class Examen extends Actividad_Examen {
 			
     }
 	
-	public Examen(Integer id_examen, Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
-			int tiempoestimado, Double porcentaje, int prioridadusuario,  boolean finalizada,
+	public Examen(Integer id_examen, int id_actividad, Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
+			int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal ,boolean finalizada, boolean para_despues,
 			boolean recuperable, boolean ultimo) {
 		
-		 super(id_examen,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
+		 super(id_examen,id_actividad,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario,prioridadtotal, finalizada,para_despues);
 		 
 		 setPrioridadtotal(establecerPrioridadTotal());
 		 this.ultimo = ultimo;

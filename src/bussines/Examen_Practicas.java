@@ -15,6 +15,13 @@ public class Examen_Practicas extends Decorador_Examen {
 		this.apuntes = apuntes;
 		super.setPrioridadtotal(establecerPrioridadTotal());
 	}
+	
+	public Examen_Practicas(Integer id_examen_practicas, Actividad_Examen examen, boolean apuntes) {
+		super(examen);
+		this.id_examen_practicas = id_examen_practicas;
+		this.apuntes = apuntes;
+		super.setPrioridadtotal(establecerPrioridadTotal());
+	}
 
 	public Actividad_Examen getExamen() {
 		return examen;

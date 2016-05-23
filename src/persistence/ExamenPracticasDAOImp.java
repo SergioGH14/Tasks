@@ -23,8 +23,26 @@ public class ExamenPracticasDAOImp implements ExamenPracticasDAO {
 	}
 	
 	@Override
-	public Examen_Practicas obtenerInformacionDeExamen_Practicas(int id) {
+	public Examen_Practicas obtenerInformacionDeExamen_Practicas(int id_examen_concreto) {
 		Examen_Practicas examen_practicas = null;
+		
+		try{
+			connectionManager.connect();
+			ResultSet examen_practicas_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN_PRACTICAS WHERE id_examen='"+ id_examen_concreto+"'");
+			connectionManager.close();
+			Examen examenaux = new ExamenDAOImp().obtenerInformacionDeExamen(id_examen_concreto);
+			if(examen_practicas_resultset.next()){
+				examen_practicas = new Examen_Practicas(examen_practicas_resultset.getInt("ID_EXAMEN_PRACTICAS"),
+						examenaux,
+						examen_practicas_resultset.getBoolean("APUNTES"));
+				
+				examen_practicas.setId_actividad(examenaux.getId_actividad());
+				examen_practicas.setId_examen(examenaux.getId_examen());
+				examen_practicas.setPrioridadTotal(examenaux.getPrioridadtotal());
+			}
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al buscar el examen_practicas: "+e.getLocalizedMessage() );
+		}
 				
 		return examen_practicas;
 	}

@@ -12,6 +12,7 @@ import bussines.Examen_Clase;
 import bussines.Examen_Poliformat;
 import bussines.Examen_Practicas;
 import persistence.dao.ExamenDAO;
+import persistence.dto.ActividadDTO;
 
 public class ExamenDAOImp implements ExamenDAO {
 	protected ConnectionManager connectionManager;
@@ -26,8 +27,38 @@ public class ExamenDAOImp implements ExamenDAO {
 	
 	@Override
 	public Examen obtenerInformacionDeExamen(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Examen examen = null;
+		try{
+			connectionManager.connect();
+			ResultSet examen_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN WHERE id_examen='"+ id+"'");
+			connectionManager.close();
+			
+			if(examen_resultset.next()){
+				ActividadDTO actividad = new ActividadDAOImp().obtenerInformacionDeActividadExamen(id);
+				System.err.println("DTO: "+actividad);
+				if(actividad!=null)
+					examen = new Examen(examen_resultset.getInt("ID_EXAMEN"),
+							actividad.getId_actividad(),
+							new AsignaturaDAOImp().obtenerInformacionAsignatura(actividad.getId_asignatura()),
+							actividad.getTitulo(),
+							actividad.getDescripcion(),
+							actividad.getFechaFinalizacion(), 
+							actividad.getTiempoEstimado(),
+							actividad.getPorcentaje(), 
+							actividad.getPrioridadUsuario(),
+							actividad.getPrioridadTotal(),
+							actividad.isFinalizada(),
+							actividad.isPara_despues(),
+							examen_resultset.getBoolean("ULTIMO"),
+							examen_resultset.getBoolean("RECUPERABLE"));
+				else
+					System.err.println("ActividadDTO en obtenerExamen ha dado null");
+			}
+			System.out.println("Examen recuperado de bbdd id_act: " + examen.getId_actividad() + " id_exa: "+examen.getId_examen()) ;
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al crear el examen de base de datos: "+e.getLocalizedMessage() );
+		}		
+		return examen;
 	}
 
 	@Override

@@ -9,9 +9,9 @@ public class Practicas extends Actividad {
 	private boolean recuperable;
 	
 	public Practicas(int id,	Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
-			         int tiempoestimado, Double porcentaje, int prioridadusuario,boolean finalizada, boolean grupal, boolean recuperable ) {
+			         int tiempoestimado, Double porcentaje, int prioridadusuario,boolean finalizada, boolean para_despues, boolean grupal, boolean recuperable ) {
 		
-		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
+		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada, para_despues);
 		this.grupal = grupal;
 		this.recuperable = recuperable;
 		 setPrioridadtotal(establecerPrioridadTotal());
@@ -19,9 +19,9 @@ public class Practicas extends Actividad {
 			
 		}
 	public Practicas(	Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
-	         int tiempoestimado, Double porcentaje, int prioridadusuario,boolean finalizada, boolean grupal, boolean recuperable ) {
+	         int tiempoestimado, Double porcentaje, int prioridadusuario,boolean finalizada, boolean para_despues, boolean grupal, boolean recuperable ) {
 
-		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada);
+		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada, para_despues);
 		this.grupal = grupal;
 		this.recuperable = recuperable;
 		setPrioridadtotal(establecerPrioridadTotal());

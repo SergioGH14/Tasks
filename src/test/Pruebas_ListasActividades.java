@@ -9,7 +9,7 @@ import persistence.DAL;
 public class Pruebas_ListasActividades {
 	
 	public static void main(String args[]){
-		probarListaActividades();
+		//probarListaActividades();
 	}
 
 	private static void probarListaActividades() {
@@ -22,4 +22,7 @@ public class Pruebas_ListasActividades {
 		}
 	}
 
+	private static void probarListaActividadesDecorador(){
+		
+	}
 }

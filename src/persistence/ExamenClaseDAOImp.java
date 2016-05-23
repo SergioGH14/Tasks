@@ -7,7 +7,9 @@ import Util.Constantes;
 import bussines.Actividad;
 import bussines.Actividad_Examen;
 import bussines.Asignatura;
+import bussines.Examen;
 import bussines.Examen_Clase;
+import bussines.Examen_Poliformat;
 import bussines.Examen_Practicas;
 import persistence.dao.ExamenClaseDAO;
 
@@ -22,9 +24,29 @@ public class ExamenClaseDAOImp implements ExamenClaseDAO {
 		}
 	}
 	@Override
-	public Examen_Clase obtenerInformacionDeExamen_Clase(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Examen_Clase obtenerInformacionDeExamen_Clase(int id_examen_concreto) {
+		Examen_Clase examen_clase = null;		
+		try{
+			connectionManager.connect();
+			ResultSet examen_clase_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN_CLASE WHERE id_examen='"+ id_examen_concreto+"'");
+			connectionManager.close();
+			Examen examenaux= new ExamenDAOImp().obtenerInformacionDeExamen(id_examen_concreto);
+			System.err.println("Examen clase con id: " + examenaux.getId_examen() + " id_act: " + examenaux.getId_actividad());
+
+			if(examen_clase_resultset.next() && examenaux!=null){
+				examen_clase = new Examen_Clase(examen_clase_resultset.getInt("ID_EXAMEN_CLASE"),
+						examenaux,
+						examen_clase_resultset.getBoolean("GRUPAL"),
+						examen_clase_resultset.getBoolean("APUNTES"));
+				examen_clase.setId_actividad(examenaux.getId_actividad());
+				examen_clase.setId_examen(examenaux.getId_examen());
+				examen_clase.setPrioridadTotal(examenaux.getPrioridadTotal());
+			}
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al buscar el examen_clase: "+e.getLocalizedMessage() );
+		}
+		System.err.println("Antes de devolver el examen decorado por clase : " + examen_clase);
+		return examen_clase;
 	}
 
 	@Override

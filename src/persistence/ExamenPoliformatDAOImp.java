@@ -24,9 +24,26 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 	}
 	
 	@Override
-	public Examen_Poliformat obtenerInformacionDeExamenPoliformat(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Examen_Poliformat obtenerInformacionDeExamenPoliformat(int id_examen_concreto) {
+		Examen_Poliformat examen_poli = null;		
+		try{
+			connectionManager.connect();
+			ResultSet examen_practicas_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN_POLIFORMAT WHERE id_examen='"+ id_examen_concreto+"'");
+			connectionManager.close();
+			Examen examenaux = new ExamenDAOImp().obtenerInformacionDeExamen(id_examen_concreto);
+			if(examen_practicas_resultset.next()){
+				examen_poli = new Examen_Poliformat(examen_practicas_resultset.getInt("ID_EXAMEN_POLIFORMAT"),
+						examenaux,
+						examen_practicas_resultset.getBoolean("REINTENTABLE"));
+				
+				examen_poli.setId_actividad(examenaux.getId_actividad());
+				examen_poli.setId_examen(examenaux.getId_examen());
+				examen_poli.setPrioridadtotal(examenaux.getPrioridadtotal());
+			}
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al buscar el examen_poliformat: "+e.getLocalizedMessage() );
+		}
+		return examen_poli;
 	}
 
 	@Override

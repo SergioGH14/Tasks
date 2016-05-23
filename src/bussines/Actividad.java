@@ -34,7 +34,7 @@ public abstract class Actividad {
 	public Actividad(Asignatura asignatura, String titulo, String descripcion,
 			LocalDateTime fechafinalizacion,
 			int tiempoestimado, Double porcentaje, 
-			int prioridadusuario, boolean finalizada) {
+			int prioridadusuario, boolean finalizada, boolean para_despues) {
 		
 		this.setAsignatura(asignatura);
 		this.titulo = titulo;

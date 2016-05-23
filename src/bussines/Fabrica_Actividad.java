@@ -1,14 +1,7 @@
 package bussines;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-
-import persistence.PracticasDAOImp;
 import persistence.dto.ActividadDTO;
-
-
-
-
 
 public class Fabrica_Actividad {
 	 private static Fabrica_Actividad instance;
@@ -67,6 +60,7 @@ public class Fabrica_Actividad {
 				actividaddto.getPorcentaje(), 
 				actividaddto.getPrioridadTotal(), 
 				actividaddto.isFinalizada(),
+				actividaddto.isPara_despues(),
 				especificaciones.get(0),
 				especificaciones.get(1));
 		practica = Unidad_Logica.getInstance().crearPracticas(practica);
@@ -84,6 +78,7 @@ public class Fabrica_Actividad {
 				actividaddto.getPorcentaje(), 
 				actividaddto.getPrioridadTotal(), 
 				actividaddto.isFinalizada(),
+				actividaddto.isPara_despues(),
 				
 				especificaciones.get(0));
 		clase = Unidad_Logica.getInstance().crearClase(clase);
@@ -101,6 +96,7 @@ public class Fabrica_Actividad {
 				actividaddto.getPorcentaje(), 
 				actividaddto.getPrioridadTotal(), 
 				actividaddto.isFinalizada(),
+				actividaddto.isPara_despues(),
 				especificaciones.get(0),
 				especificaciones.get(1));
 		return examen;

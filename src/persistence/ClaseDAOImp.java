@@ -42,7 +42,8 @@ public class ClaseDAOImp implements ClaseDAO {
 								 acti.getTiempoEstimado(),
 								 acti.getPorcentaje(),
 								 acti.getPrioridadUsuario(),
-								 acti.isFinalizada(), 
+								 acti.isFinalizada(),
+								 acti.isPara_despues(), 
 								 claseResultSet.getBoolean("puntuable"));
 			}
 		}catch(Exception e){
