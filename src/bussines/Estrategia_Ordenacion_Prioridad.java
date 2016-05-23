@@ -8,9 +8,8 @@ public class Estrategia_Ordenacion_Prioridad implements Estrategia_Ordenacion_Ac
 	
 	public Estrategia_Ordenacion_Prioridad(Asignatura asignatura) {
 		this.listaActividades = new ArrayList<Actividad>();
-		for(Integer id_actividad : asignatura.getListaActividades().keySet()){
-			this.listaActividades.add(asignatura.obtenerActividad(id_actividad));
-		}
+		this.listaActividades.addAll(Unidad_Logica.getInstance().practicasDeAsignatura(asignatura));
+		
 
 	}
 

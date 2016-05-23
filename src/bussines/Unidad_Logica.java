@@ -403,4 +403,12 @@ public class Unidad_Logica {
 		}
 		return new Estrategia_Ordenacion().ordenar(estrategia);
 	}
+	
+	//actividades de hoy de
+	public List<Actividad> practicasDeHoy(){
+		return dal.obtenerPracticasHoy();
+	}
+	public List<Actividad> practicasDeAsignatura(Asignatura asignatura){
+		return dal.obtenerPracticasDeAsignatura(asignatura);
+	}
 }

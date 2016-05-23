@@ -18,7 +18,7 @@ public class Estrategia_Ordenacion_Hoy implements Estrategia_Ordenacion_Activida
 		
 		//pruebas:
 		List<Actividad> lista = new ArrayList<Actividad>();
-		lista.addAll(dal.getInstance().obtenerPracticasHoy());
+		lista.addAll(Unidad_Logica.getInstance().practicasDeHoy());
 	//	lista.addAll(dal.getInstance().obtenerClasesHoy());
 		
 		 return lista;
