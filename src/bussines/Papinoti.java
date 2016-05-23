@@ -4,28 +4,32 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import Util.Basics;
 import Util.Constantes;
 import Util.Date_solver;
 
 public class Papinoti {
 	
-	public static List<Notificacion> crearNotificaciones(Actividad d){
+	public static List<Notificacion> crearNotificaciones(Actividad actividad){
 		List <Notificacion> noti = new ArrayList<Notificacion>();;
-		LocalDateTime fechaAct = d.getFechafinalizacion();
-		int prioridadAct =  d.getPrioridadtotal();
-		String tituloAct =  d.getTitulo();
-		int tipoActividad = tipoActividad(d);
+		LocalDateTime fechaAct = actividad.getFechafinalizacion();
+		int prioridadAct =  actividad.getPrioridadtotal();
+		String tituloAct =  actividad.getTitulo();
+		int tipoActividad = tipoActividad(actividad);
 		
 		
-		Notificacion a = new Notificacion(d,tituloAct+" en 14 dias",
+		Notificacion a = new Notificacion(actividad.getId_actividad(),tituloAct+" en 14 dias",
+										  Basics.RGBToHex(actividad.getAsignatura().getColor()),
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-20,
 										  Date_solver.restar(14, fechaAct));
-		Notificacion b = new Notificacion(d,tituloAct+" en 7 dias",
+		Notificacion b = new Notificacion(actividad.getId_actividad(),tituloAct+" en 7 dias",
+										Basics.RGBToHex(actividad.getAsignatura().getColor()),
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-10,
 								          Date_solver.restar(7, fechaAct));
-		Notificacion c = new Notificacion(d,tituloAct+" mañana",
+		Notificacion c = new Notificacion(actividad.getId_actividad(),tituloAct+" maÃ±ana",
+										Basics.RGBToHex(actividad.getAsignatura().getColor()),
 				                          descripcionActividad(tipoActividad),
 				                          prioridadAct,
 				                          Date_solver.restar(1, fechaAct) );

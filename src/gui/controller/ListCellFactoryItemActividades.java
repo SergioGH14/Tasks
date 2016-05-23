@@ -1,6 +1,7 @@
 package gui.controller;
 
 import Util.Date_solver;
+import Util.Tipos;
 import bussines.Actividad;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -8,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -28,11 +30,16 @@ public class ListCellFactoryItemActividades {
     @FXML
     private HBox lciHbox;
     
+    @FXML
+    private Label lbTipo;
+    
     public void setInformacion(Actividad actividad){
  
     	lciTituloActividad.setSelected(actividad.isFinalizada());
     	lciTituloActividad.setText(actividad.getTitulo());
     	lciFechaActividad.setText( Date_solver.obtenerFechaParaActividades(actividad.getFechafinalizacion()) );
+    	lbTipo.setText(Tipos.obtainString(actividad));
+    	lbTipo.setTextFill(actividad.getAsignatura().getColor());
     	
     	lciMenuContextual.setOnMouseClicked(new EventHandler<MouseEvent>() {
 

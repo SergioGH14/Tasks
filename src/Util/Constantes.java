@@ -40,9 +40,9 @@ public class Constantes {
 		String des = null;
 		int valor = (int) Math.round(Math.random()*2);
 		switch (valor) {
-		case 0: des = "Está pa' mirarselo eh?!..."; break;
-		case 1: des = "Bueno, está pa' una cervecitas y fuera"; break;
-		case 2:	des = "Ya es hora de que vayas estudiando... ¿No?"; break;
+		case 0: des = "Esta pa' mirarselo eh?!..."; break;
+		case 1: des = "Bueno, esta pa' una cervecitas y fuera"; break;
+		case 2:	des = "Ya es hora de que vayas estudiando... No?"; break;
 		}
 	return des;
 	}
@@ -51,8 +51,8 @@ public class Constantes {
 		int valor = (int) Math.round(Math.random()*2);
 		switch (valor) {
 		case 0: des = "Acuerdate de lo de clase que cuenta para nota!!!"; break;
-		case 1: des = "Bueno, puede que tampoco sea tan importante, o ¿qué?"; break;
-		case 2:	des = "Va, ya me lo pasará un coleguita jeje..."; break;
+		case 1: des = "Bueno, puede que tampoco sea tan importante, o que?"; break;
+		case 2:	des = "Va, ya me lo pasara algun coleguita jeje..."; break;
 		}
 	return des;
 	}
@@ -60,9 +60,9 @@ public class Constantes {
 		String des = null;
 		int valor = (int) Math.round(Math.random()*2);
 		switch (valor) {
-		case 0: des = "Lo puedes hacer en la clase de prácticas, vamo a calmarno..."; break;
-		case 1: des = "Es que esto tampoco contaba mucho ¿No?"; break;
-		case 2:	des = "Bueno, es prácticas... Ya lo harás jeje"; break;
+		case 0: des = "Lo puedes hacer en la clase de practicas, vamo a calmarno..."; break;
+		case 1: des = "Es que esto tampoco contaba mucho... No?"; break;
+		case 2:	des = "Bueno, es practicas... Ya lo haras jeje"; break;
 		}
 	return des;
 	}

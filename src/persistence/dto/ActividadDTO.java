@@ -14,6 +14,7 @@ public class ActividadDTO {
 	private int prioridadUsuario;
 	private int prioridadTotal;
 	private boolean finalizada;
+	private boolean para_despues;
 	
 	public ActividadDTO(String id_asignatura, String titulo, String descripcion, LocalDateTime fechaFinalizacion,
 			int tiempoEstimado, double porcentaje, int prioridadUsuario, boolean finalizada) {
@@ -45,7 +46,7 @@ public class ActividadDTO {
 	
 	public ActividadDTO(int id_actividad, String id_asignatura, String titulo, String descripcion,
 			LocalDateTime fechaFinalizacion, int tiempoEstimado, double porcentaje, int prioridadUsuario, int  prioridadTotal,
-			boolean finalizada) {
+			boolean finalizada, boolean para_despues) {
 		super();
 		this.id_actividad = id_actividad;
 		this.id_asignatura = id_asignatura;
@@ -57,6 +58,7 @@ public class ActividadDTO {
 		this.prioridadUsuario = prioridadUsuario;
 		this.prioridadTotal = prioridadTotal;
 		this.finalizada = finalizada;
+		this.para_despues = para_despues;
 	}
 
 	public int getId_actividad() {
@@ -137,6 +139,14 @@ public class ActividadDTO {
 
 	public void setFinalizada(boolean finalizada) {
 		this.finalizada = finalizada;
+	}
+
+	public boolean isPara_despues() {
+		return para_despues;
+	}
+
+	public void setPara_despues(boolean para_despues) {
+		this.para_despues = para_despues;
 	}
 
 	@Override

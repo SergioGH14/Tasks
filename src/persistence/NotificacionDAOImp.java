@@ -21,7 +21,7 @@ public class NotificacionDAOImp implements NotificacionDAO {
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 
 		}catch(Exception e){
-			System.err.println("Error en persistencia, CursoDAOImp: "+e.getLocalizedMessage());
+			System.err.println("Error en persistencia, NOTIFICACIONDAOIMP: "+e.getLocalizedMessage());
 
 		}
 
@@ -38,8 +38,9 @@ public class NotificacionDAOImp implements NotificacionDAO {
 			if (notificacion_resultSet.next()){
 				notificacion = new Notificacion(
 						notificacion_resultSet.getInt("ID_NOTIFICACION"),
-				        new ActividadDAOImp().obtenerInformacionDeActividad(notificacion_resultSet.getInt("ID_ACTIVIDAD")),
+				        notificacion_resultSet.getInt("ID_ACTIVIDAD"),
 				        notificacion_resultSet.getString("TITULO"),
+				        notificacion_resultSet.getString("COLOR"),
 						notificacion_resultSet.getString("DESCRIPCION"),
 						notificacion_resultSet.getInt("PRIORIDAD") ,
 						Date_solver.convertirDateSQLEnLocalDateTime(notificacion_resultSet.getDate("FECHA_NOTIFICAR"))
@@ -81,10 +82,11 @@ public class NotificacionDAOImp implements NotificacionDAO {
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.NOTIFICACION_SQ);
 			if(id>0){
-				String str = "INSERT INTO NOTIFICACION (ID_NOTIFICACION, ID_ACTIVIDAD,TITULO, DESCRIPCION, FECHA_NOTIFICAR, PRIORIDAD) " +
+				String str = "INSERT INTO NOTIFICACION (ID_NOTIFICACION, ID_ACTIVIDAD,TITULO,COLOR,DESCRIPCION, FECHA_NOTIFICAR, PRIORIDAD) " +
 							 "VALUES ("+id+","+
-							 			noti.getActividad().getId_actividad()+",'"+
+							 			noti.getId_actividad()+",'"+
 							 			noti.getTitulo()+"','"+
+							 			noti.getColor() + "','"+
 							 			noti.getDescripcion()+"','"+
 							 			Date_solver.convertirLocalDateEnSQL(noti.getFecha_notificacion())+"',"+
 							 			noti.getPrioridad()+")";
@@ -109,7 +111,9 @@ public class NotificacionDAOImp implements NotificacionDAO {
 			connectionManager.connect();
 			String str = "UPDATE USUARIO "+
 						 "SET id_notificacion= "+notificacion.getId_notificacion()+", "+
-						 "SET id_actividad= "+notificacion.getActividad().getId_actividad()+", "+
+						 "SET id_actividad= "+notificacion.getId_actividad()+", "+
+						 "SET titulo= '"+notificacion.getTitulo()+"',"+ 
+						 "SET color= '"+notificacion.getColor()+"',"+ 
 						 "SET descripcion= '"+notificacion.getDescripcion() +"', "+
 						 "SET fecha_notificar= '"+ Date_solver.convertirLocalDateEnSQL(notificacion.getFecha_notificacion())+"', "+
 						 "SET prioridad= "+notificacion.getPrioridad()+")";
@@ -148,8 +152,9 @@ public class NotificacionDAOImp implements NotificacionDAO {
 			System.out.println("consulta realizada con exito");
 			while(notificacionResultSet.next()){
 				listanotificaciones.add(new Notificacion(notificacionResultSet.getInt("ID_NOTIFICACION"),
-														 new ActividadDAOImp().obtenerInformacionDeActividad(notificacionResultSet.getInt("ID_ACTIVIDAD")),
+														 notificacionResultSet.getInt("ID_ACTIVIDAD"),
 														 notificacionResultSet.getString("TITULO"),
+														 notificacionResultSet.getString("COLOR"),
 												     	 notificacionResultSet.getString("DESCRIPCION"),
 													     notificacionResultSet.getInt("PRIORIDAD"),
 													     Date_solver.convertirDateSQLEnLocalDateTime(notificacionResultSet.getDate("FECHA_NOTIFICAR"))));

@@ -1,5 +1,9 @@
 package persistence.dao;
 
+import java.util.List;
+
+import bussines.Actividad;
+import bussines.Asignatura;
 import bussines.Practicas;
 
 public interface PracticasDAO {
@@ -11,5 +15,12 @@ public interface PracticasDAO {
 	public Practicas crearPracticas(Practicas Practicas);
 	
 	public void editarPracticas(Practicas Practicas);
+	
+	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura);
 
+	public List<Actividad> obtenerTodasActividades();
+		
+	public List<Actividad> obtenerActividadesHoy();
+	
+	public List<Actividad> obtenerActividadesParaDespues();
 }

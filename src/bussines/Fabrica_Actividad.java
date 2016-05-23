@@ -86,7 +86,7 @@ public class Fabrica_Actividad {
 				actividaddto.isFinalizada(),
 				
 				especificaciones.get(0));
-		
+		clase = Unidad_Logica.getInstance().crearClase(clase);
 		return clase;
 	}
 
@@ -101,7 +101,6 @@ public class Fabrica_Actividad {
 				actividaddto.getPorcentaje(), 
 				actividaddto.getPrioridadTotal(), 
 				actividaddto.isFinalizada(),
-				
 				especificaciones.get(0),
 				especificaciones.get(1));
 		return examen;

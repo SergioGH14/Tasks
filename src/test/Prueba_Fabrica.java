@@ -53,7 +53,6 @@ public class Prueba_Fabrica {
 		ActividadDTO adto= new ActividadDTO( CSD.getTitulo(), Titulo, descripcion, fecha, tiempoestimado, porcentaje, prioridadusuario,false);
 		Actividad actividad = constructora.crearActividad(tipo,adto,especificaciones );
 		System.out.println("Actividad sin id: " + actividad);
-		Unidad_Logica.getInstance().crearActividad(actividad);
 		//actividad = new ActividadDAOImp().crearActividad(actividad);
 		System.out.println("Actividad CON id: " + actividad);
 

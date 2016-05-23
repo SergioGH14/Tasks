@@ -77,30 +77,29 @@ public class ListaActividadesController implements Initializable{
 	
 	@SuppressWarnings("unchecked")
 	private void iniciarPantallaListaDeActividades(int tipoItemMenuSeleccionado) {
-		Estrategia_Ordenacion estrategiaOrdenacion = new Estrategia_Ordenacion();
 		textNombreAsignatura.setFont(Basics.generateFontById(3, 23));
 
 		switch(tipoItemMenuSeleccionado){
 		case 0:
 			if(asignatura!=null){
 				//rellenar la lista en pantalla con la que devuelve el patrón estrategia.
-				olActividades = FXCollections.observableArrayList(estrategiaOrdenacion.ordenar(new Estrategia_Ordenacion_Prioridad(asignatura)));
+				olActividades = FXCollections.observableArrayList(Unidad_Logica.getInstance().ordenar(new Estrategia_Ordenacion_Prioridad(asignatura)));
 			}
 			textNombreAsignatura.setText("Actividades por hacer para "+asignatura.getTitulo());
 			break;
 		case 1:
 			//metodo estrategia que devuelve actividades de bandeja de entrada
-			olActividades = FXCollections.observableArrayList(estrategiaOrdenacion.ordenar(new Estrategia_Ordenacion_BandejaEntrada()));
+			olActividades = FXCollections.observableArrayList(Unidad_Logica.getInstance().ordenar(new Estrategia_Ordenacion_BandejaEntrada()));
 			textNombreAsignatura.setText("Bandeja de Entrada");
 			break;
 		case 2:
 			//metodo estrategia que devuelve actividades de hoy
-			olActividades = FXCollections.observableArrayList(estrategiaOrdenacion.ordenar(new Estrategia_Ordenacion_Hoy()));
+			olActividades = FXCollections.observableArrayList(Unidad_Logica.getInstance().ordenar(new Estrategia_Ordenacion_Hoy()));
 			textNombreAsignatura.setText("Lo que tienes para hoy");
 			break;
 		case 3:
 			//metodo estrategia que devuelve actividades de para despues
-			olActividades = FXCollections.observableArrayList(estrategiaOrdenacion.ordenar(new Estrategia_Ordenacion_ParaDespues()));
+			olActividades = FXCollections.observableArrayList(Unidad_Logica.getInstance().ordenar(new Estrategia_Ordenacion_ParaDespues()));
 			textNombreAsignatura.setText("Ya lo harás después... ");
 			break;
 		}

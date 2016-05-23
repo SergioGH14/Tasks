@@ -10,26 +10,30 @@ import Util.Date_solver;
 public class Notificacion {
 	
 	private int id_notificacion;
-	private Actividad actividad;
+	private int id_actividad;
+	private String color;
 	private String titulo;
 	private String descripcion;
 	private int prioridad;
 	private LocalDateTime fecha_notificacion;
 	
-	public Notificacion(Actividad d,String titulo, String descripcion, int prioridad, LocalDateTime fecha){
-		actividad = d;
+	public Notificacion(int id_actividad,String titulo, String color, 
+			String descripcion, int prioridad, LocalDateTime fecha){
+		this.id_actividad = id_actividad;
 		this.titulo = titulo;
+		this.color = color;
 		this.descripcion = descripcion;
 		this.prioridad = prioridad;
 		this.fecha_notificacion  = fecha;
 	}
 
-	public Notificacion(int id_notificacion, Actividad actividad,
-			String titulo, String descripcion, int prioridad,
+	public Notificacion(int id_notificacion, int actividad,
+			String titulo, String color, String descripcion, int prioridad,
 			LocalDateTime fecha_notificacion) {
 		
 		this.id_notificacion = id_notificacion;
-		this.actividad = actividad;
+		this.id_actividad = actividad;
+		this.color = color;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.prioridad = prioridad;
@@ -40,18 +44,8 @@ public class Notificacion {
 		return id_notificacion;
 	}
 
-
-
 	public void setId_notificacion(int id_notificacion) {
 		this.id_notificacion = id_notificacion;
-	}
-
-	public Actividad getActividad() {
-		return actividad;
-	}
-
-	public void setActividad(Actividad actividad) {
-		this.actividad = actividad;
 	}
 
 	public String getTitulo() {
@@ -85,6 +79,23 @@ public class Notificacion {
 	public void setFecha_notificacion(LocalDateTime fecha_notificacion) {
 		this.fecha_notificacion = fecha_notificacion;
 	}
+	
+	public int getId_actividad() {
+		return id_actividad;
+	}
+
+	public void setId_actividad(int id_actividad) {
+		this.id_actividad = id_actividad;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 	//probar lo que imprime por consola 
 	public String toString(){
 		

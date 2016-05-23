@@ -30,6 +30,7 @@ public class Unidad_Logica {
 	private Map<Integer, Notificacion> notificaciones;
 	public List<Actividad> actividades;
 	private Map<Integer, Asignatura> asignatura;
+	private Estrategia_Ordenacion estrategiaOrdenacion;
 	private DAL dal = DAL.getInstance();
 	
 	//singleton
@@ -96,25 +97,12 @@ public class Unidad_Logica {
 		this.asignatura = asignatura;
 	}
 
-	public DAL getDal() {
-		return dal;
-	}
 	/*FIN GETTER Y SETTER*/
 
 	/*ACTIVIDAD*/
 	public void eliminarActividad(int id_actividad) {
 	  dal.eliminarActividad(id_actividad);
 		
-	}
-
-	public Actividad crearActividad(Actividad actividad) {
-	  Actividad acti= dal.crearActividad(actividad);
-	   Iterator<Notificacion> it = Papinoti.crearNotificaciones(acti).iterator();
-	   while (it.hasNext()) {
-		  dal.crearNotificacion(  it.next());
-	   }
-	  
-	   return actividad;
 	}
 
 	public void editarActividad(Actividad actividad) {
@@ -166,7 +154,9 @@ public class Unidad_Logica {
 	}
 
 	public Clase crearClase(Clase clase) {
-		return dal.crearClase(clase);
+		Clase claseAux = dal.crearClase(clase);
+		generarNotificacion(claseAux);
+		return claseAux;
 	}
 
 	public void editarClase(Clase clase) {
@@ -341,7 +331,9 @@ public class Unidad_Logica {
 
 
 	public Practicas crearPracticas(Practicas Practicas) {
-	 return 	dal.crearPracticas(Practicas);
+		Practicas practica = dal.crearPracticas(Practicas);
+		generarNotificacion(practica);
+		return practica;
 	}
 
 	
@@ -397,4 +389,18 @@ public class Unidad_Logica {
 	}
 	/*FIN USUARIO*/
 	
+	private void generarNotificacion(Actividad acti){
+		Iterator<Notificacion> it = Papinoti.crearNotificaciones(acti).iterator();
+		   while (it.hasNext()) {
+			  dal.crearNotificacion(  it.next());
+		   }  
+	}
+	
+	//Patron estrategia
+	public List<Actividad> ordenar(Estrategia_Ordenacion_Actividades estrategia){
+		if(estrategiaOrdenacion!=null){
+			return estrategiaOrdenacion.ordenar(estrategia);
+		}
+		return new Estrategia_Ordenacion().ordenar(estrategia);
+	}
 }

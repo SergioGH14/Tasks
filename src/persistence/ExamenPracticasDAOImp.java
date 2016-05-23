@@ -1,9 +1,12 @@
 package persistence;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 import Util.Constantes;
+import bussines.Actividad;
 import bussines.Actividad_Examen;
+import bussines.Asignatura;
 import bussines.Examen;
 import bussines.Examen_Practicas;
 import persistence.dao.ExamenPracticasDAO;
@@ -21,8 +24,9 @@ public class ExamenPracticasDAOImp implements ExamenPracticasDAO {
 	
 	@Override
 	public Examen_Practicas obtenerInformacionDeExamen_Practicas(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Examen_Practicas examen_practicas = null;
+				
+		return examen_practicas;
 	}
 
 	@Override
@@ -81,5 +85,29 @@ public class ExamenPracticasDAOImp implements ExamenPracticasDAO {
 		}
 		return -1;
 
+	}
+
+	@Override
+	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Actividad> obtenerTodasActividades() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Actividad> obtenerActividadesHoy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Actividad> obtenerActividadesParaDespues() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

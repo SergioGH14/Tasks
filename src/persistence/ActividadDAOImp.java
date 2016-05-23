@@ -1,10 +1,15 @@
 package persistence;
 
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import Util.Basics;
 import Util.Constantes;
 import Util.Date_solver;
 import bussines.Actividad;
+import bussines.Asignatura;
 import bussines.Cuatrimestre;
 import persistence.dao.ActividadDAO;
 import persistence.dto.ActividadDTO;
@@ -40,7 +45,8 @@ protected ConnectionManager connectionManager;
 						actividadResultSet.getDouble("PORCENTAJE"),
 						actividadResultSet.getInt("PRIORIDAD_U"),
 						actividadResultSet.getInt("PRIORIDAD_T"),
-						actividadResultSet.getBoolean("FINALIZADA")
+						actividadResultSet.getBoolean("FINALIZADA"),
+						actividadResultSet.getBoolean("PARA_DESPUES")
 						);
 			}
 			System.out.println("Actividad recuperada con éxito, id: " + actividadAux.getId_actividad());
@@ -65,7 +71,7 @@ protected ConnectionManager connectionManager;
 			if(id>0){
 				String str = "INSERT INTO ACTIVIDAD (ID_ACTIVIDAD, ID_ASIGNATURA, TITULO,"
 						+ " DESCRIPCION, FECHA_FINALIZACION, FINALIZADA, "
-						+ "TIEMPO_ESTIMADO, PORCENTAJE, PRIORIDAD_U, PRIORIDAD_T)"
+						+ "TIEMPO_ESTIMADO, PORCENTAJE, PRIORIDAD_U, PRIORIDAD_T, PARA_DESPUES)"
 						
 						+" VALUES ("
 						+id+","
@@ -77,7 +83,8 @@ protected ConnectionManager connectionManager;
 						+actividad.getTiempoestimado()+","
 						+actividad.getPorcentaje()+","
 						+actividad.getPrioridadusuario()+","
-						+actividad.getPrioridadtotal()
+						+actividad.getPrioridadtotal()+","
+						+actividad.isPara_despues()
 						+")";
 						
 				if(actAux!=null)

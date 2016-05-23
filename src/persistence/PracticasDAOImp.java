@@ -1,9 +1,13 @@
 package persistence;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import Util.Constantes;
+import Util.Date_solver;
 import bussines.Actividad;
+import bussines.Asignatura;
 import bussines.Practicas;
 import persistence.dao.PracticasDAO;
 import persistence.dto.ActividadDTO;
@@ -132,5 +136,127 @@ public class PracticasDAOImp implements PracticasDAO {
 		return -1;
 
 	}
+
+
+	@Override
+	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
+		List<Actividad> listaActividades = new ArrayList<Actividad>();
+		try{
+			connectionManager.connect();
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = P.id_actividad");
+			connectionManager.close();
+			
+			while(practicasResultSet.next()){
+				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
+
+				listaActividades.add( new Practicas(practicasResultSet.getInt("id_practicas"),
+				         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
+					     acti.getTitulo(),
+						 acti.getDescripcion(),
+						 acti.getFechaFinalizacion(), 
+						 acti.getTiempoEstimado(),
+						 acti.getPorcentaje(),
+						 acti.getPrioridadUsuario(),
+						 acti.isFinalizada(),
+						 practicasResultSet.getBoolean("grupal"),
+						 practicasResultSet.getBoolean("recuperable") ) );
+			}
+			
+		}catch (Exception e){
+			System.err.println("\nError al recuperar las activdades-practicas de la asignatura :" + asignatura + " -> "  + e.getLocalizedMessage());
+		}
+
+		return listaActividades;
+	}
+
+	@Override
+	public List<Actividad> obtenerTodasActividades() {
+		List<Actividad> listaActividades = new ArrayList<Actividad>();
+		try{
+			connectionManager.connect();
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad");
+			connectionManager.close();
+			
+			while(practicasResultSet.next()){
+				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
+
+				listaActividades.add( new Practicas(practicasResultSet.getInt("id_practicas"),
+				         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
+					     acti.getTitulo(),
+						 acti.getDescripcion(),
+						 acti.getFechaFinalizacion(), 
+						 acti.getTiempoEstimado(),
+						 acti.getPorcentaje(),
+						 acti.getPrioridadUsuario(),
+						 acti.isFinalizada(),
+						 practicasResultSet.getBoolean("grupal"),
+						 practicasResultSet.getBoolean("recuperable") ) );
+			}
+			
+		}catch (Exception e){
+			System.err.println("\nError al recuperar las todas activdades-practicas -> "  + e.getLocalizedMessage());
+		}
+
+		return listaActividades;
+	}
+
+	@Override
+	public List<Actividad> obtenerActividadesHoy() {
+		List<Actividad> listaActividades = new ArrayList<Actividad>();
+		try{
+			connectionManager.connect();
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "'");
+			connectionManager.close();
+			
+			while(practicasResultSet.next()){
+				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
+
+				listaActividades.add( new Practicas(practicasResultSet.getInt("id_practicas"),
+				         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
+					     acti.getTitulo(),
+						 acti.getDescripcion(),
+						 acti.getFechaFinalizacion(), 
+						 acti.getTiempoEstimado(),
+						 acti.getPorcentaje(),
+						 acti.getPrioridadUsuario(),
+						 acti.isFinalizada(),
+						 practicasResultSet.getBoolean("grupal"),
+						 practicasResultSet.getBoolean("recuperable") ) );
+			}
+			
+		}catch (Exception e){
+			System.err.println("\nError al recuperar las todas activdades-practicas -> "  + e.getLocalizedMessage());
+		}
+		return listaActividades;
+	}
+
+	@Override
+	public List<Actividad> obtenerActividadesParaDespues() {
+		List<Actividad> listaActividades = new ArrayList<Actividad>();
+		try{
+			connectionManager.connect();
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND para_despues = 'TRUE' ");
+			connectionManager.close();
+			
+			while(practicasResultSet.next()){
+				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
+
+				listaActividades.add( new Practicas(practicasResultSet.getInt("id_practicas"),
+				         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
+					     acti.getTitulo(),
+						 acti.getDescripcion(),
+						 acti.getFechaFinalizacion(), 
+						 acti.getTiempoEstimado(),
+						 acti.getPorcentaje(),
+						 acti.getPrioridadUsuario(),
+						 acti.isFinalizada(),
+						 practicasResultSet.getBoolean("grupal"),
+						 practicasResultSet.getBoolean("recuperable") ) );
+			}
+			
+		}catch (Exception e){
+			System.err.println("\nError al recuperar las todas activdades-practicas -> "  + e.getLocalizedMessage());
+		}
+		return listaActividades;	}
 
 }

@@ -11,4 +11,5 @@ public interface ActividadDAO {
 	public Actividad crearActividad(Actividad actividad);
 	
 	public void editarActividad(Actividad actividad);
+	
 }

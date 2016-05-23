@@ -54,7 +54,6 @@ public class DAL {
 				return new ActividadDAOImp().obtenerInformacionDeActividad(id_actividad);
 			}
 			
-			
 		};
 		
 	    asignaturaDAO = new AsignaturaDAO() {
@@ -93,8 +92,7 @@ public class DAL {
 
 			@Override
 			public Asignatura obtenerInformacionAsignatura(int id_asignatura) {
-				// TODO Auto-generated method stub
-				return null;
+				return new AsignaturaDAOImp().obtenerInformacionAsignatura(id_asignatura);
 			}
 		};
 		
@@ -120,6 +118,30 @@ public class DAL {
 			public void editarClase(Clase clase) {
 				new ClaseDAOImp().editarClase(clase);
 				
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerTodasActividades() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesHoy() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesParaDespues() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 			
 		};
@@ -191,6 +213,30 @@ public class DAL {
 				
 			}
 
+			@Override
+			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerTodasActividades() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesHoy() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesParaDespues() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
 		};
 		
 		examenDAO = new ExamenDAO(){
@@ -215,6 +261,30 @@ public class DAL {
 			public void editarExamen(Examen examen) {
 				new ExamenDAOImp().editarExamen(examen);
 				
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerTodasActividades() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesHoy() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesParaDespues() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 			
 		};
@@ -242,6 +312,30 @@ public class DAL {
 				new ExamenPoliformatDAOImp().editarExamenPoliformat(ExamenPoliformat);
 				
 			}
+
+			@Override
+			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerTodasActividades() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesHoy() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesParaDespues() {
+				// TODO Auto-generated method stub
+				return null;
+			}
 			
 		};
 
@@ -267,6 +361,30 @@ public class DAL {
 			@Override
 			public Examen_Practicas crearExamen_Practicas(Examen_Practicas examenPracticas) {
 				return new ExamenPracticasDAOImp().crearExamen_Practicas(examenPracticas);
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerTodasActividades() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesHoy() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesParaDespues() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 		};
 		
@@ -344,6 +462,26 @@ public class DAL {
 			public void editarPracticas(Practicas Practicas) {
 			   new PracticasDAOImp().editarPracticas(Practicas);
 				
+			}
+
+			@Override
+			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura){
+				return new PracticasDAOImp().obtenerActividadesDeAsignatura(asignatura);
+			}
+			
+			@Override
+			public List<Actividad> obtenerTodasActividades(){
+				return new PracticasDAOImp().obtenerTodasActividades();
+			}
+			
+			@Override
+			public List<Actividad> obtenerActividadesHoy(){
+				return new PracticasDAOImp().obtenerActividadesHoy();
+			}
+			
+			@Override
+			public List<Actividad> obtenerActividadesParaDespues(){
+				return new PracticasDAOImp().obtenerActividadesParaDespues();
 			}
 			
 		};
@@ -463,6 +601,10 @@ public class DAL {
 	
 	public boolean existeAsignatura(String nombreAsignatura){
 		return asignaturaDAO.existeAsignatura(nombreAsignatura);
+	}
+	
+	public Asignatura obtenerInformacionAsignatura(int id_asignatura) {
+		return asignaturaDAO.obtenerInformacionAsignatura(id_asignatura);
 	}
 	/*FIN ASIGNATURA*/
 	
@@ -657,6 +799,22 @@ public class DAL {
 	public void editarPracticas(Practicas Practicas) {
 	   practicasDAO.editarPracticas(Practicas);
 		
+	}
+	
+	public List<Actividad> obtenerPracticasDeAsignatura(Asignatura asignatura){
+		return practicasDAO.obtenerActividadesDeAsignatura(asignatura);
+	}
+
+	public List<Actividad> obtenerTodasPracticas(){
+		return practicasDAO.obtenerTodasActividades();
+	}
+		
+	public List<Actividad> obtenerPracticasHoy(){
+		return practicasDAO.obtenerActividadesHoy();
+	}
+	
+	public List<Actividad> obtenerPracticasParaDespues(){
+		return practicasDAO.obtenerActividadesParaDespues();
 	}
 	/*FIN PRACTICAS*/
 	

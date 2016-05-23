@@ -10,18 +10,27 @@
 
 <HBox fx:id="lciHbox" cacheShape="false" centerShape="false" prefHeight="40.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <CheckBox fx:id="lciTituloActividad" mnemonicParsing="false" text="Hacer trabajo de DDS Patrones" textFill="#262b33">
-         <HBox.margin>
-            <Insets left="16.0" top="11.0" />
-         </HBox.margin>
-      </CheckBox>
+      <VBox>
+         <children>
+            <CheckBox fx:id="lciTituloActividad" mnemonicParsing="false" text="Hacer trabajo de DDS Patrones" textFill="#262b33">
+               <VBox.margin>
+                  <Insets left="12.0" right="12.0" top="6.0" />
+               </VBox.margin>
+            </CheckBox>
+            <Label fx:id="lbTipo" cacheShape="false" focusTraversable="false" textFill="#cf53cc">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="37.0" top="4.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
       <Region prefHeight="40.0" prefWidth="156.0" HBox.hgrow="ALWAYS">
          <HBox.margin>
             <Insets left="75.0" />
          </HBox.margin></Region>
       <Text fx:id="lciFechaActividad" fill="#ff7843" strokeType="OUTSIDE" strokeWidth="0.0" text="23, abril 2016" textAlignment="RIGHT" wrappingWidth="105.21875">
          <HBox.margin>
-            <Insets top="12.0" />
+            <Insets top="8.0" />
          </HBox.margin>
       </Text>
       <ImageView fx:id="lciMenuContextual" fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
@@ -29,7 +38,7 @@
             <Image url="@../../../assets/menu_contextual_actividades.png" />
          </image>
          <HBox.margin>
-            <Insets left="10.0" right="13.0" top="10.0" />
+            <Insets left="10.0" right="13.0" top="7.0" />
          </HBox.margin>
       </ImageView>
    </children>

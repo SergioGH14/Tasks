@@ -14,9 +14,10 @@ public abstract class Actividad {
 	private int prioridadUsuario;
 	private int prioridadTotal;
 	private boolean finalizada;
+	private boolean para_despues;
 	
 	public Actividad(int id_actividad, Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
-			int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal, boolean finalizada) {
+			int tiempoestimado, Double porcentaje, int prioridadusuario, int prioridadtotal, boolean finalizada, boolean para_despues) {
 		this.id_actividad = id_actividad;
 		this.asignatura = asignatura;
 		this.titulo = titulo;
@@ -27,6 +28,7 @@ public abstract class Actividad {
 		this.prioridadUsuario = prioridadusuario;
 		this.prioridadTotal = prioridadtotal;
 		this.finalizada = finalizada;
+		this.para_despues = para_despues;
 	}
 
 	public Actividad(Asignatura asignatura, String titulo, String descripcion,
@@ -128,6 +130,51 @@ public abstract class Actividad {
 
 	public void setFinalizada(boolean finalizada) {
 		this.finalizada = finalizada;
+	}
+	
+
+	public LocalDateTime getFechaFinalizacion() {
+		return fechaFinalizacion;
+	}
+
+	public void setFechaFinalizacion(LocalDateTime fechaFinalizacion) {
+		this.fechaFinalizacion = fechaFinalizacion;
+	}
+
+	public int getTiempoEstimado() {
+		return tiempoEstimado;
+	}
+
+	public void setTiempoEstimado(int tiempoEstimado) {
+		this.tiempoEstimado = tiempoEstimado;
+	}
+
+	public int getPrioridadUsuario() {
+		return prioridadUsuario;
+	}
+
+	public void setPrioridadUsuario(int prioridadUsuario) {
+		this.prioridadUsuario = prioridadUsuario;
+	}
+
+	public int getPrioridadTotal() {
+		return prioridadTotal;
+	}
+
+	public void setPrioridadTotal(int prioridadTotal) {
+		this.prioridadTotal = prioridadTotal;
+	}
+
+	public boolean isPara_despues() {
+		return para_despues;
+	}
+
+	public void setPara_despues(boolean para_despues) {
+		this.para_despues = para_despues;
+	}
+
+	public void setPorcentaje(double porcentaje) {
+		this.porcentaje = porcentaje;
 	}
 
 	@Override
