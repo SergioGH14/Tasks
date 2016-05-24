@@ -6,15 +6,46 @@ import java.util.List;
 
 public class Estrategia_Ordenacion_BandejaEntrada implements Estrategia_Ordenacion_Actividades{
 
+	private List<Actividad> listaActividades;
+	
 	@Override
 	public List<Actividad> ordenar() {
-	    List<Actividad> lista = new ArrayList<Actividad>();
-		lista.addAll(Unidad_Logica.getInstance().listaDeTodasLasPracticas());
-		lista.addAll(Unidad_Logica.getInstance().listaDeTodasLasClases());
-		lista.addAll(Unidad_Logica.getInstance().listaDeTodosExamenes());
+	  
+	 listaActividades = Unidad_Logica.getInstance().listaDeTodasLasActividades();
+	 quicksort(listaActividades,0,listaActividades.lastIndexOf(listaActividades)+1);	
+	 return listaActividades;
 		
-		//operaciones de ordenacion para esta lista de la bandeja de entrada, por definir.
-		return lista;
+	}
+
+
+	public void  quicksort(List<Actividad> listaActividades,int x , int y){
+		
+		int posizq = x;
+		int posder = y;
+		Actividad pivote = listaActividades.get(x);
+		Actividad aux;
+	
+		
+		while (posizq < posder){
+			while(listaActividades.get(posizq).getPrioridadTotal()<= pivote.getPrioridadTotal() && posizq < posder){posizq++;}
+			while(listaActividades.get(posder).getPrioridadTotal() > pivote.getPrioridadTotal()){posder --;}
+			if(posizq<posder){
+				aux = listaActividades.get(posizq);
+				listaActividades.set(posizq, listaActividades.get(posder));
+				listaActividades.set(posder, aux);
+				
+			}
+			
+		}	
+		listaActividades.set(x, listaActividades.get(posder));
+		listaActividades.set(posder, pivote);
+		
+		 if(x<posder-1)
+		      quicksort(listaActividades,posizq,posder-1); 
+		   if(posizq+1 <y)
+		      quicksort(listaActividades,posizq+1,posder);		
+		
+		
 	}
 
 }
