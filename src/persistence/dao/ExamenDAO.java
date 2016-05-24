@@ -9,7 +9,9 @@ import bussines.Examen;
 
 public interface ExamenDAO {
     
-	public Examen obtenerInformacionDeExamen(int id);
+	public Actividad_Examen obtenerInformacionDeExamen(int id_examen_concreto);
+	
+	public Actividad_Examen obtenerInformacionDeExamenSinDecoracion(int id_examen_concreto);
 	
 	public void eliminarExamen(int id);
 	

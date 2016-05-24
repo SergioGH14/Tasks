@@ -6,6 +6,7 @@ import java.util.Scanner;
 import bussines.*;
 import persistence.DAL;
 import persistence.ExamenClaseDAOImp;
+import persistence.ExamenPoliformatDAOImp;
 import persistence.ExamenPracticasDAOImp;
 
 public class Pruebas_Decorador {
@@ -19,7 +20,7 @@ public class Pruebas_Decorador {
 		Asignatura asignatura = DAL.getInstance().obtenerInformacionAsignatura("ETC");
 		System.out.println("Asignatura: " + asignatura);
 		
-		Actividad examen = new Examen(asignatura, " Examen POLIFORMAT PRACTICAS de ETC para decorar de poliformat y de practicas a la vez ", "Descripcion de examen de dsm", l, 0, 22.0, 10, false, true, false, false);
+		Actividad examen = new Examen(asignatura, " Examen SOLO CLASE de ETC para decorar de poliformat y de practicas a la vez ", "Descripcion de examen de dsm", l, 0, 22.0, 10, false, true, false, false);
 		System.err.println("Examen : "  + examen.getPrioridadtotal());
 		
 		Examen examen2 = (Examen) examen;
@@ -65,16 +66,35 @@ public class Pruebas_Decorador {
 
 		
 		System.out.println("##### VAMOS A PERSISTENCIA A BUSCAR LOS DECORADOS ####### " );
-		
+		/*Actividad_Examen exa = new Examen_Clase(examen2);
+		exa = Unidad_Logica.getInstance().crearExamen(exa);
+		System.err.println("CREADO: " + exa.getId_examen());*/
+		Asignatura asignaturaPruebaConActividades = Unidad_Logica.getInstance().obtenerInformacionAsignatura("ALG");
+		Actividad actPrueba1 = new Clase(asignaturaPruebaConActividades, "Prueba de ordnacion Para despues", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true,true, true);
+		actPrueba1 = Unidad_Logica.getInstance().crearClase((Clase)actPrueba1);
+
+		System.out.println("Creada: " + actPrueba1);
 		//Siempre se busca con el id_examen no el del examen que decora
-		Examen_Practicas exa = new ExamenPracticasDAOImp().obtenerInformacionDeExamen_Practicas(3);
+		/*Examen_Practicas exa = new ExamenPracticasDAOImp().obtenerInformacionDeExamen_Practicas(3);
 
 		Examen_Clase exa_clase = new ExamenClaseDAOImp().obtenerInformacionDeExamen_Clase(2);
 
 		System.out.println("Examen practicas encontrado: " + exa.getId_actividad() + "\ny con mas detalle: " + exa.getExamen() + "\n" + exa.getTitulo());
 
 		System.out.println("Examen clase encontrado: " + exa_clase.getId_actividad() + "\ny con mas detalle: " + exa_clase.getExamen() + "\n" + exa_clase.getTitulo());
+		*/
+		
+		//System.out.println("Buscamos examen poliformat..... ");
+		//Examen_Poliformat a= new ExamenPoliformatDAOImp().obtenerInformacionDeExamenPoliformat(4);
+		//Actividad_Examen a = Unidad_Logica.getInstance().obtenerInformacionDeExamen(4);
 
+		//System.err.println("Examen poliformat encontrado" + a.getDescripcion()+"," + a.getId_actividad() +","+ a.getId_examen());
+		
+		
+		/*System.out.println("Vamos a borrar desde persistencia un examen-poliformat-practica");
+
+		DAL.getInstance().eliminarExamen(3);
+		System.out.println("Eliminado!");*/
 	}
 	
 }

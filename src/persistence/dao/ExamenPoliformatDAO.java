@@ -15,11 +15,4 @@ public interface ExamenPoliformatDAO {
 	
 	public void editarExamenPoliformat(Examen_Poliformat ExamenPoliformat);
 	
-	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura);
-
-	public List<Actividad> obtenerTodasActividades();
-		
-	public List<Actividad> obtenerActividadesHoy();
-	
-	public List<Actividad> obtenerActividadesParaDespues();
 }

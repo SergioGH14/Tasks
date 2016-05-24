@@ -1,9 +1,11 @@
 package persistence;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import Util.Constantes;
+import Util.Date_solver;
 import bussines.Actividad;
 import bussines.Asignatura;
 import bussines.Clase;
@@ -11,9 +13,9 @@ import persistence.dao.ClaseDAO;
 import persistence.dto.ActividadDTO;
 
 public class ClaseDAOImp implements ClaseDAO {
-	
+
 	protected ConnectionManager connectionManager;
-	
+
 	public ClaseDAOImp(){
 		try{
 			connectionManager = new ConnectionManager(Constantes.DATABASE);
@@ -27,32 +29,32 @@ public class ClaseDAOImp implements ClaseDAO {
 		Clase clas = null;
 		try{
 			connectionManager.connect();
-			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from CLASE where id_practicas = '"+id_clase+"'");
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from CLASE where id_clase = '"+id_clase+"'");
 			connectionManager.close();
 
-		
+
 			if (claseResultSet.next()){
 				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(claseResultSet.getInt("id_actividad"));
-				
+
 				clas = new Clase(claseResultSet.getInt("id_clase"),
+								acti.getId_actividad(),
 						         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
 								 acti.getTitulo(),
 								 acti.getDescripcion(),
-								 acti.getFechaFinalizacion(), 
+								 acti.getFechaFinalizacion(),
 								 acti.getTiempoEstimado(),
 								 acti.getPorcentaje(),
 								 acti.getPrioridadUsuario(),
+								 acti.getPrioridadTotal(),
 								 acti.isFinalizada(),
-								 acti.isPara_despues(), 
+								 acti.isPara_despues(),
 								 claseResultSet.getBoolean("puntuable"));
 			}
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al buscar el practicas: "+e.getLocalizedMessage() );
 		}
-		
 		return clas;
 
-		
 	}
 
 	@Override
@@ -60,23 +62,20 @@ public class ClaseDAOImp implements ClaseDAO {
 		Clase clas = obtenerInformacionDeClase(id_clase);
 		try{
 			connectionManager.connect();
-			String str = "DELETE FROM PRACTICAS WHERE id_clase ="+ id_clase ;
+			String str = "DELETE FROM CLASE WHERE id_clase ='"+ id_clase +"'";
 			connectionManager.updateDB(str);
-			
-
-			
 			connectionManager.close();
 
 
 		}catch(Exception e){
-			System.err.println("Ha ocurrido un error al eliminar el Practicas: "+e.getLocalizedMessage() );
+			System.err.println("Ha ocurrido un error al eliminar Clase: "+e.getLocalizedMessage() );
 		}
 		new ActividadDAOImp().eliminarActividad(clas.getId_actividad());
 	}
 
 	@Override
 	public Clase crearClase(Clase clase) {
-	
+
 		Clase clas= clase;
 		try{
 			connectionManager.connect();
@@ -86,13 +85,12 @@ public class ClaseDAOImp implements ClaseDAO {
 							 "VALUES ("
 							 +id+","
 							 +new ActividadDAOImp().crearActividad(clas).getId_actividad()+","
-							 +clas.isPuntuable()+","
-							
+							 +clas.isPuntuable()
 							 +")";
-				
+
 				if(clas!=null)
 					clas.setId_clase(id);
-				
+
 				connectionManager.updateDB(str);
 				System.out.println("\nClase creadas con éxito: " + clas);
 			}
@@ -101,7 +99,7 @@ public class ClaseDAOImp implements ClaseDAO {
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al crear la clase: "+e.getLocalizedMessage() );
 		}
-		
+
 		return clas;
 	}
 
@@ -123,7 +121,7 @@ public class ClaseDAOImp implements ClaseDAO {
 		}
 
 	}
-	
+
 	 private int crearSecuencia(String nombreSecuencia){
 			try{
 			ResultSet sq = connectionManager.queryDB("CALL NEXT VALUE FOR " + nombreSecuencia);
@@ -140,26 +138,80 @@ public class ClaseDAOImp implements ClaseDAO {
 
 	@Override
 	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Actividad> listaActividades = new ArrayList<Actividad>();
+		try{
+			connectionManager.connect();
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = C.id_actividad");
+			connectionManager.close();
+
+			while(claseResultSet.next()){
+				Clase clase = obtenerInformacionDeClase(claseResultSet.getInt("id_clase"));
+				listaActividades.add( clase );
+			}
+
+		}catch (Exception e){
+			System.err.println("\nError al recuperar las activdades-clase de la asignatura :" + asignatura + " -> "  + e.getLocalizedMessage());
+		}
+
+		return listaActividades;
 	}
 
 	@Override
 	public List<Actividad> obtenerTodasActividades() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Actividad> listaActividades = new ArrayList<Actividad>();
+		try{
+			connectionManager.connect();
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C where A.id_actividad = C.id_actividad");
+			connectionManager.close();
+
+			while(claseResultSet.next()){
+				Clase clase = obtenerInformacionDeClase(claseResultSet.getInt("id_clase"));
+				listaActividades.add( clase );
+			}
+
+		}catch (Exception e){
+			System.err.println("\nError al recuperar las activdades-clase -> "  + e.getLocalizedMessage());
+		}
+
+		return listaActividades;
 	}
 
 	@Override
 	public List<Actividad> obtenerActividadesHoy() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Actividad> listaActividades = new ArrayList<Actividad>();
+		try{
+			connectionManager.connect();
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C WHERE A.id_actividad = C.id_actividad AND A.fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "'");
+			connectionManager.close();
+
+			while(claseResultSet.next()){
+				Clase clase = obtenerInformacionDeClase(claseResultSet.getInt("id_clase"));
+				listaActividades.add( clase );
+			}
+
+		}catch (Exception e){
+			System.err.println("\nError al recuperar las todas activdades-clase -> "  + e.getLocalizedMessage());
+		}
+		return listaActividades;
 	}
 
 	@Override
 	public List<Actividad> obtenerActividadesParaDespues() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Actividad> listaActividades = new ArrayList<Actividad>();
+		try{
+			connectionManager.connect();
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C WHERE A.id_actividad = C.id_actividad AND A.para_despues = TRUE ");
+			connectionManager.close();
+
+			while(claseResultSet.next()){
+				Clase clase = obtenerInformacionDeClase(claseResultSet.getInt("id_clase"));
+				listaActividades.add( clase );
+			}
+
+		}catch (Exception e){
+			System.err.println("\nError al recuperar las todas activdades-clase -> "  + e.getLocalizedMessage());
+		}
+		return listaActividades;
 	}
 
 

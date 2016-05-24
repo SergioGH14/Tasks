@@ -13,7 +13,7 @@ import persistence.dao.PracticasDAO;
 import persistence.dto.ActividadDTO;
 
 public class PracticasDAOImp implements PracticasDAO {
-	
+
 	protected ConnectionManager connectionManager;
 
 	public PracticasDAOImp(){
@@ -23,26 +23,29 @@ public class PracticasDAOImp implements PracticasDAO {
 			System.err.println("Error en persistencia, PracticasDAOImp: "+e.getLocalizedMessage());
 		}
 	}
-	
+
 	@Override
-	public Practicas obtenerInformacionDePracticas(int id_Practicas) {		Practicas prac = null;
+	public Practicas obtenerInformacionDePracticas(int id_Practicas) {		
+		Practicas prac = null;
 		try{
 			connectionManager.connect();
 			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from PRACTICAS where id_practicas = '"+id_Practicas+"'");
 			connectionManager.close();
 
-		
+
 			if (practicasResultSet.next()){
 				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
-				
+
 				prac = new Practicas(practicasResultSet.getInt("id_practicas"),
+									 practicasResultSet.getInt("id_actividad"),
 							         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
 								     acti.getTitulo(),
 									 acti.getDescripcion(),
-									 acti.getFechaFinalizacion(), 
+									 acti.getFechaFinalizacion(),
 									 acti.getTiempoEstimado(),
 									 acti.getPorcentaje(),
 									 acti.getPrioridadUsuario(),
+									 acti.getPrioridadTotal(),
 									 acti.isFinalizada(),
 									 acti.isPara_despues(),
 									 practicasResultSet.getBoolean("grupal"),
@@ -51,7 +54,7 @@ public class PracticasDAOImp implements PracticasDAO {
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al buscar el practicas: "+e.getLocalizedMessage() );
 		}
-		
+
 		return prac;
 	}
 
@@ -60,16 +63,11 @@ public class PracticasDAOImp implements PracticasDAO {
 		Practicas prac = obtenerInformacionDePracticas(id_Practicas);
 		try{
 			connectionManager.connect();
-			String str = "DELETE FROM PRACTICAS WHERE id_practicas ="+ id_Practicas ;
+			String str = "DELETE FROM PRACTICAS WHERE id_practicas ='"+ id_Practicas +"'";
 			connectionManager.updateDB(str);
-			
-
-			
 			connectionManager.close();
-
-
 		}catch(Exception e){
-			System.err.println("Ha ocurrido un error al eliminar el Practicas: "+e.getLocalizedMessage() );
+			System.err.println("Ha ocurrido un error al eliminar la Practica: "+e.getLocalizedMessage() );
 		}
 		new ActividadDAOImp().eliminarActividad(prac.getId_actividad());
 	}
@@ -88,10 +86,10 @@ public class PracticasDAOImp implements PracticasDAO {
 							 +practicas.isGrupal()+","
 							 +practicas.isRecuperable()
 							 +")";
-				
+
 				if(practicasAux!=null)
 					practicasAux.setId_practicas(id);
-				
+
 				connectionManager.updateDB(str);
 				System.out.println("\nPracticas creadas con éxito: " + practicasAux);
 			}
@@ -100,7 +98,7 @@ public class PracticasDAOImp implements PracticasDAO {
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al crear la práctica: "+e.getLocalizedMessage() );
 		}
-		
+
 		return practicasAux;
 	}
 
@@ -123,7 +121,7 @@ public class PracticasDAOImp implements PracticasDAO {
 		}
 
 	}
-	
+
     private int crearSecuencia(String nombreSecuencia){
 		try{
 		ResultSet sq = connectionManager.queryDB("CALL NEXT VALUE FOR " + nombreSecuencia);
@@ -146,24 +144,12 @@ public class PracticasDAOImp implements PracticasDAO {
 			connectionManager.connect();
 			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = P.id_actividad");
 			connectionManager.close();
-			
-			while(practicasResultSet.next()){
-				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
 
-				listaActividades.add( new Practicas(practicasResultSet.getInt("id_practicas"),
-				         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
-					     acti.getTitulo(),
-						 acti.getDescripcion(),
-						 acti.getFechaFinalizacion(), 
-						 acti.getTiempoEstimado(),
-						 acti.getPorcentaje(),
-						 acti.getPrioridadUsuario(),
-						 acti.isFinalizada(),
-						 acti.isPara_despues(),
-						 practicasResultSet.getBoolean("grupal"),
-						 practicasResultSet.getBoolean("recuperable") ) );
+			while(practicasResultSet.next()){
+				Practicas practica = obtenerInformacionDePracticas(practicasResultSet.getInt("id_practicas"));
+				listaActividades.add( practica );
 			}
-			
+
 		}catch (Exception e){
 			System.err.println("\nError al recuperar las activdades-practicas de la asignatura :" + asignatura + " -> "  + e.getLocalizedMessage());
 		}
@@ -178,24 +164,12 @@ public class PracticasDAOImp implements PracticasDAO {
 			connectionManager.connect();
 			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad");
 			connectionManager.close();
-			
-			while(practicasResultSet.next()){
-				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
 
-				listaActividades.add( new Practicas(practicasResultSet.getInt("id_practicas"),
-				         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
-					     acti.getTitulo(),
-						 acti.getDescripcion(),
-						 acti.getFechaFinalizacion(), 
-						 acti.getTiempoEstimado(),
-						 acti.getPorcentaje(),
-						 acti.getPrioridadUsuario(),
-						 acti.isFinalizada(),
-						 acti.isPara_despues(),
-						 practicasResultSet.getBoolean("grupal"),
-						 practicasResultSet.getBoolean("recuperable") ) );
+			while(practicasResultSet.next()){
+				Practicas practica = obtenerInformacionDePracticas(practicasResultSet.getInt("id_practicas"));
+				listaActividades.add( practica );
 			}
-			
+
 		}catch (Exception e){
 			System.err.println("\nError al recuperar las todas activdades-practicas -> "  + e.getLocalizedMessage());
 		}
@@ -208,26 +182,14 @@ public class PracticasDAOImp implements PracticasDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "'");
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND A.fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "'");
 			connectionManager.close();
-			
-			while(practicasResultSet.next()){
-				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
 
-				listaActividades.add( new Practicas(practicasResultSet.getInt("id_practicas"),
-				         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
-					     acti.getTitulo(),
-						 acti.getDescripcion(),
-						 acti.getFechaFinalizacion(), 
-						 acti.getTiempoEstimado(),
-						 acti.getPorcentaje(),
-						 acti.getPrioridadUsuario(),
-						 acti.isFinalizada(),
-						 acti.isPara_despues(),
-						 practicasResultSet.getBoolean("grupal"),
-						 practicasResultSet.getBoolean("recuperable") ) );
+			while(practicasResultSet.next()){
+				Practicas practica = obtenerInformacionDePracticas(practicasResultSet.getInt("id_practicas"));
+				listaActividades.add( practica );
 			}
-			
+
 		}catch (Exception e){
 			System.err.println("\nError al recuperar las todas activdades-practicas -> "  + e.getLocalizedMessage());
 		}
@@ -239,29 +201,18 @@ public class PracticasDAOImp implements PracticasDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND para_despues = 'TRUE' ");
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND A.para_despues = TRUE ");
 			connectionManager.close();
-			
-			while(practicasResultSet.next()){
-				ActividadDTO acti = new ActividadDAOImp().obtenerInformacionDeActividad(practicasResultSet.getInt("id_actividad"));
 
-				listaActividades.add( new Practicas(practicasResultSet.getInt("id_practicas"),
-				         new AsignaturaDAOImp().obtenerInformacionAsignatura(acti.getId_asignatura()),
-					     acti.getTitulo(),
-						 acti.getDescripcion(),
-						 acti.getFechaFinalizacion(), 
-						 acti.getTiempoEstimado(),
-						 acti.getPorcentaje(),
-						 acti.getPrioridadUsuario(),
-						 acti.isFinalizada(),
-						 acti.isPara_despues(),
-						 practicasResultSet.getBoolean("grupal"),
-						 practicasResultSet.getBoolean("recuperable") ) );
+			while(practicasResultSet.next()){
+				Practicas practica = obtenerInformacionDePracticas(practicasResultSet.getInt("id_practicas"));
+				listaActividades.add( practica );
 			}
-			
+
 		}catch (Exception e){
 			System.err.println("\nError al recuperar las todas activdades-practicas -> "  + e.getLocalizedMessage());
 		}
-		return listaActividades;	}
+		return listaActividades;	
+	}
 
 }

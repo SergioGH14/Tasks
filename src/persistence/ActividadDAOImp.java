@@ -89,8 +89,15 @@ protected ConnectionManager connectionManager;
 
 	@Override
 	public void eliminarActividad(int id_actividad) {
-		// TODO Auto-generated method stub
-		
+		try{
+			connectionManager.connect();
+			String str = "DELETE FROM ACTIVIDAD WHERE id_actividad ='"+ id_actividad+"'" ;
+			connectionManager.updateDB(str);
+			connectionManager.close();
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al eliminar la actividad: "+e.getLocalizedMessage() );
+		}
+
 	}
 
 	@Override

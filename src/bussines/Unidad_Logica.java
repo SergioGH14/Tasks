@@ -4,19 +4,7 @@ package bussines;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import persistence.ActividadDAOImp;
-import persistence.AsignaturaDAOImp;
-import persistence.ClaseDAOImp;
-import persistence.CuatrimestreDAOImp;
 import persistence.DAL;
-import persistence.ExamenClaseDAOImp;
-import persistence.ExamenDAOImp;
-import persistence.ExamenPoliformatDAOImp;
-import persistence.ExamenPracticasDAOImp;
-import persistence.NotificacionDAOImp;
-import persistence.PracticasDAOImp;
-import persistence.UniversidadDAOImp;
 import persistence.dto.ActividadDTO;
 
 public class Unidad_Logica {
@@ -220,7 +208,7 @@ public class Unidad_Logica {
 	/*FIN EXAMENCLASE*/
 	
 	/*EXAMEN */
-	public Examen obtenerInformacionDeExamen(int id) {
+	public Actividad_Examen obtenerInformacionDeExamen(int id) {
 		return dal.obtenerInformacionDeExamen(id);
 	}
 
@@ -229,7 +217,7 @@ public class Unidad_Logica {
 		
 	}
 
-	public Actividad_Examen crearExamen(Examen examen) {
+	public Actividad_Examen crearExamen(Actividad_Examen examen) {
 	return dal.crearExamen(examen);
 	}
 
@@ -405,10 +393,47 @@ public class Unidad_Logica {
 	}
 	
 	//actividades de hoy de
-	public List<Actividad> practicasDeHoy(){
+	public List<Actividad> listaDePracticasDeHoy(){
 		return dal.obtenerPracticasHoy();
 	}
-	public List<Actividad> practicasDeAsignatura(Asignatura asignatura){
+	public List<Actividad> listaDeClasesDeHoy(){
+		return dal.obtenerClasesHoy();
+	}
+	public List<Actividad> listaDeExamenesDeHoy(){
+		return dal.obtenerExamenesHoy();
+	}
+	
+	//actividades por asignatura
+	public List<Actividad> listaDePracticasDeAsignatura(Asignatura asignatura){
 		return dal.obtenerPracticasDeAsignatura(asignatura);
 	}
+	public List<Actividad> listaDeClasesDeAsignatura(Asignatura asignatura){
+		return dal.obtenerClasesDeAsignatura(asignatura);
+	}
+	public List<Actividad> listaDeExamenesDeAsignatura(Asignatura asignatura){
+		return dal.obtenerExamenesDeAsignatura(asignatura);
+	}
+	
+	//obtener todas las actividades
+	public List<Actividad> listaDeTodasLasPracticas(){
+		return dal.obtenerTodasPracticas();
+	}
+	public List<Actividad> listaDeTodasLasClases(){
+		return dal.obtenerTodasClases();
+	}
+	public List<Actividad> listaDeTodosExamenes(){
+		return dal.obtenerTodosExamenes();
+	}
+	
+	//obtener activiades para despues
+	public List<Actividad> listaDePracticasParaDespues(){
+		return dal.obtenerPracticasParaDespues();
+	}
+	public List<Actividad> listaDeClasesParaDespues(){
+		return dal.obtenerPracticasParaDespues();
+	}
+	public List<Actividad> listaDeExamenesParaDespues(){
+		return dal.obtenerExamenesParaDespues();
+	}
+	
 }

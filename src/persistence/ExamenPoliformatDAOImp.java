@@ -1,6 +1,7 @@
 package persistence;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import Util.Constantes;
@@ -8,9 +9,11 @@ import bussines.Actividad;
 import bussines.Actividad_Examen;
 import bussines.Asignatura;
 import bussines.Examen;
+import bussines.Examen_Clase;
 import bussines.Examen_Poliformat;
 import bussines.Examen_Practicas;
 import persistence.dao.ExamenPoliformatDAO;
+import persistence.dto.ActividadDTO;
 
 public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 	protected ConnectionManager connectionManager;
@@ -30,7 +33,7 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 			connectionManager.connect();
 			ResultSet examen_practicas_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN_POLIFORMAT WHERE id_examen='"+ id_examen_concreto+"'");
 			connectionManager.close();
-			Examen examenaux = new ExamenDAOImp().obtenerInformacionDeExamen(id_examen_concreto);
+			Actividad_Examen examenaux = new ExamenDAOImp().obtenerInformacionDeExamenSinDecoracion(id_examen_concreto);
 			if(examen_practicas_resultset.next()){
 				examen_poli = new Examen_Poliformat(examen_practicas_resultset.getInt("ID_EXAMEN_POLIFORMAT"),
 						examenaux,
@@ -39,7 +42,9 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 				examen_poli.setId_actividad(examenaux.getId_actividad());
 				examen_poli.setId_examen(examenaux.getId_examen());
 				examen_poli.setPrioridadtotal(examenaux.getPrioridadtotal());
+
 			}
+			
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al buscar el examen_poliformat: "+e.getLocalizedMessage() );
 		}
@@ -47,9 +52,16 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 	}
 
 	@Override
-	public void eliminarExamenPoliformat(int id) {
-		// TODO Auto-generated method stub
-		
+	public void eliminarExamenPoliformat(int id_examen) {
+		try{
+			connectionManager.connect();
+			String str = "DELETE FROM EXAMEN_POLIFORMAT WHERE id_examen ='"+ id_examen+"'" ;
+			connectionManager.updateDB(str);
+			connectionManager.close();
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al eliminar el Examen-Poliformat: "+e.getLocalizedMessage() );
+		}
+
 	}
 
 	@Override
@@ -102,30 +114,5 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 		return -1;
 
 	}
-
-	@Override
-	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Actividad> obtenerTodasActividades() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Actividad> obtenerActividadesHoy() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Actividad> obtenerActividadesParaDespues() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

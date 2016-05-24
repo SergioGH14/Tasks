@@ -15,12 +15,4 @@ public interface ExamenClaseDAO {
 	public Examen_Clase crearExamen_Clase(Examen_Clase examenclase);
 	
 	public void editarExamen_Clase(Examen_Clase examenclase);
-	
-	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura);
-
-	public List<Actividad> obtenerTodasActividades();
-		
-	public List<Actividad> obtenerActividadesHoy();
-	
-	public List<Actividad> obtenerActividadesParaDespues();
 }

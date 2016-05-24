@@ -7,9 +7,9 @@ import bussines.Universidad;
 import persistence.dao.UniversidadDAO;
 
 public class UniversidadDAOImp implements UniversidadDAO{
-	
+
 	protected ConnectionManager connectionManager;
-	
+
 	public UniversidadDAOImp() {
 		try{
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
@@ -23,12 +23,12 @@ public class UniversidadDAOImp implements UniversidadDAO{
 
 	@Override
 	public Universidad obtenerInformacionDeUniversidad(int id_universidad) {
-		Universidad uni = null;	
+		Universidad uni = null;
 		try{
 			connectionManager.connect();
 			ResultSet universidad = connectionManager.queryDB("SELECT * from UNIVERSIDAD where id_universidad = '"+id_universidad+"'");
 			connectionManager.close();
-		
+
 			if (universidad.next()){
 				uni = new Universidad(
 						universidad.getInt("ID_UNIVERSIDAD"),
@@ -36,57 +36,57 @@ public class UniversidadDAOImp implements UniversidadDAO{
 						universidad.getString("LOGO"),
 						universidad.getString("DIRECCION") );
 			}else
-				return null;	
-			
+				return null;
+
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al buscar al la universidad: "+e.getLocalizedMessage() );
 		}
 		return uni;
 	}
-		
+
 	@Override
 	public Universidad crearUniversidad(Universidad universidad) {
 		Universidad uniAux = universidad;
 		try{
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.UNIVERSIDAD_SQ);
-				String str = "INSERT INTO UNIVERSIDAD (ID_UNIVERSIDAD, NOMBRE, LOGO, DIRECCION) " + 
+				String str = "INSERT INTO UNIVERSIDAD (ID_UNIVERSIDAD, NOMBRE, LOGO, DIRECCION) " +
 							 "VALUES ("+
 							 id+",'"+
 							 universidad.getNombre()+"','"+
 							 universidad.getLogo() +"','"+
 							 universidad.getDireccion() +"')";
-	
+
 				if(uniAux!=null){
 					uniAux.setId_universidad(id);
 				}
 				connectionManager.updateDB(str);
 				System.out.println("\nUniversidad creada con éxito: " + universidad);
-			
+
 			connectionManager.close();
 		}catch(	Exception e){
 			System.err.println("Ha ocurrido un error al crear la universidad: "+e.getLocalizedMessage() );
 		}
 		return uniAux;
 	}
-	
+
 
 	@Override
 	public void eliminarUniversidad(int id_universidad) {
 		try{
 			connectionManager.connect();
-			String str = "DELETE FROM UNIVERSIDAD WHERE id_universidad="+ id_universidad ;
+			String str = "DELETE FROM UNIVERSIDAD WHERE id_universidad='"+ id_universidad +"'";
 			connectionManager.updateDB(str);
-			
-		
+
+
 			System.out.println("\nUniversidad eliminada con éxito: ");
 			connectionManager.close();
-			
-			
+
+
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al eliminar el universidad: "+e.getLocalizedMessage() );
 		}
-		
+
 	}
 
 	@Override
@@ -107,9 +107,9 @@ public class UniversidadDAOImp implements UniversidadDAO{
 			System.err.println("Ha ocurrido un error al editar la universidad: "+e.getLocalizedMessage() );
 		}
 
-		
+
 	}
-	
+
 
 	private int crearSecuencia(String nombreSecuencia){
 		try{

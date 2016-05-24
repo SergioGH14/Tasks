@@ -127,26 +127,22 @@ public class DAL {
 
 			@Override
 			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
-				// TODO Auto-generated method stub
-				return null;
+				return new ClaseDAOImp().obtenerActividadesDeAsignatura(asignatura);
 			}
 
 			@Override
 			public List<Actividad> obtenerTodasActividades() {
-				// TODO Auto-generated method stub
-				return null;
+				return new ClaseDAOImp().obtenerTodasActividades();
 			}
 
 			@Override
 			public List<Actividad> obtenerActividadesHoy() {
-				// TODO Auto-generated method stub
-				return null;
+				return new ClaseDAOImp().obtenerActividadesHoy();
 			}
 
 			@Override
 			public List<Actividad> obtenerActividadesParaDespues() {
-				// TODO Auto-generated method stub
-				return null;
+				return new ClaseDAOImp().obtenerActividadesParaDespues();
 			}
 			
 		};
@@ -217,37 +213,12 @@ public class DAL {
 				new ExamenClaseDAOImp().editarExamen_Clase(examenclase);
 				
 			}
-
-			@Override
-			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerTodasActividades() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerActividadesHoy() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerActividadesParaDespues() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
 		};
 		
 		examenDAO = new ExamenDAO(){
 
 			@Override
-			public Examen obtenerInformacionDeExamen(int id) {
+			public Actividad_Examen obtenerInformacionDeExamen(int id) {
 				return new ExamenDAOImp().obtenerInformacionDeExamen(id);
 			}
 
@@ -270,26 +241,27 @@ public class DAL {
 
 			@Override
 			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
-				// TODO Auto-generated method stub
-				return null;
+				return new ExamenDAOImp().obtenerActividadesDeAsignatura(asignatura);
 			}
 
 			@Override
 			public List<Actividad> obtenerTodasActividades() {
-				// TODO Auto-generated method stub
-				return null;
+				return new ExamenDAOImp().obtenerTodasActividades();
 			}
 
 			@Override
 			public List<Actividad> obtenerActividadesHoy() {
-				// TODO Auto-generated method stub
-				return null;
+				return new ExamenDAOImp().obtenerActividadesHoy();
 			}
 
 			@Override
 			public List<Actividad> obtenerActividadesParaDespues() {
-				// TODO Auto-generated method stub
-				return null;
+				return new ExamenDAOImp().obtenerActividadesParaDespues();
+			}
+
+			@Override
+			public Actividad_Examen obtenerInformacionDeExamenSinDecoracion(int id_examen_concreto) {
+				return new ExamenDAOImp().obtenerInformacionDeExamen(id_examen_concreto);
 			}
 			
 		};
@@ -318,30 +290,6 @@ public class DAL {
 				
 			}
 
-			@Override
-			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerTodasActividades() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerActividadesHoy() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerActividadesParaDespues() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-			
 		};
 
 		examenPracticasDAO = new ExamenPracticasDAO() {
@@ -368,29 +316,6 @@ public class DAL {
 				return new ExamenPracticasDAOImp().crearExamen_Practicas(examenPracticas);
 			}
 
-			@Override
-			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerTodasActividades() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerActividadesHoy() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public List<Actividad> obtenerActividadesParaDespues() {
-				// TODO Auto-generated method stub
-				return null;
-			}
 		};
 		
 	    gradoDAO = new GradoDAO() {
@@ -631,6 +556,23 @@ public class DAL {
 		claseDAO.editarClase(clase);
 		
 	}
+	
+	public List<Actividad> obtenerClasesDeAsignatura(Asignatura asignatura) {
+		return claseDAO.obtenerActividadesDeAsignatura(asignatura);
+	}
+
+	public List<Actividad> obtenerTodasClases() {
+		return claseDAO.obtenerTodasActividades();
+	}
+
+	public List<Actividad> obtenerClasesHoy() {
+		return claseDAO.obtenerActividadesHoy();
+	}
+
+	public List<Actividad> obtenerClasesParaDespues() {
+		return claseDAO.obtenerActividadesParaDespues();
+	}
+	
 	/*FIN CLASE*/
 	
 	/* CUATRIMESTRE */
@@ -686,7 +628,7 @@ public class DAL {
 	/*FIN EXAMEN_CLASE*/
 	
 	/*EXAMEN*/
-	public Examen obtenerInformacionDeExamen(int id) {
+	public Actividad_Examen obtenerInformacionDeExamen(int id) {
 		return examenDAO.obtenerInformacionDeExamen(id);
 	}
 
@@ -701,7 +643,22 @@ public class DAL {
 
 	public void editarExamen(Examen examen) {
 		examenDAO.editarExamen(examen);
-		
+	}
+	
+	public List<Actividad> obtenerExamenesDeAsignatura(Asignatura asignatura) {
+		return examenDAO.obtenerActividadesDeAsignatura(asignatura);
+	}
+
+	public List<Actividad> obtenerTodosExamenes() {
+		return examenDAO.obtenerTodasActividades();
+	}
+
+	public List<Actividad> obtenerExamenesHoy() {
+		return examenDAO.obtenerActividadesHoy();
+	}
+
+	public List<Actividad> obtenerExamenesParaDespues() {
+		return examenDAO.obtenerActividadesParaDespues();
 	}
 	/*FIN EXAMEN*/
 	

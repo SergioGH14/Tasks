@@ -7,11 +7,11 @@ public class Clase extends Actividad{
 	private int id_clase;
 	private boolean puntuable;
 	
-	public Clase(int id_clase, Asignatura asignatura, String titulo, String descripcion,  LocalDateTime fechafinalizacion,
-	         int tiempoestimado, double porcentaje, int prioridadusuario,boolean finalizada, boolean para_despues, boolean puntuable) {
-	super(asignatura, titulo, descripcion, fechafinalizacion,
+	public Clase(int id_clase, int id_actividad, Asignatura asignatura, String titulo, String descripcion,  LocalDateTime fechafinalizacion,
+	         int tiempoestimado, double porcentaje, int prioridadusuario, int prioridadtotal, boolean finalizada, boolean para_despues, boolean puntuable) {
+	super(id_actividad, asignatura, titulo, descripcion, fechafinalizacion,
 			tiempoestimado, porcentaje, 
-			prioridadusuario, finalizada, para_despues);
+			prioridadusuario, prioridadtotal,finalizada, para_despues);
 	
 	this.setPuntuable(puntuable);
 	setPrioridadtotal(establecerPrioridadTotal());

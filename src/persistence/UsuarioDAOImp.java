@@ -48,7 +48,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 	public void eliminarUsuario(int id_usuario) {
 		try{
 			connectionManager.connect();
-			String str = "DELETE FROM USUARIO WHERE id_usuario="+ id_usuario ;
+			String str = "DELETE FROM USUARIO WHERE id_usuario='"+ id_usuario +"'";
 			connectionManager.updateDB(str);
 
 
@@ -82,7 +82,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 							 ")";
 				if(userRes!=null)
 					userRes.setId_usuario(id);
-				
+
 				connectionManager.updateDB(str);
 				System.out.println("\nUsuario creado con éxito: " + userRes);
 			}

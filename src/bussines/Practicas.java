@@ -8,10 +8,10 @@ public class Practicas extends Actividad {
 	private boolean grupal;
 	private boolean recuperable;
 	
-	public Practicas(int id,	Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
-			         int tiempoestimado, Double porcentaje, int prioridadusuario,boolean finalizada, boolean para_despues, boolean grupal, boolean recuperable ) {
+	public Practicas(int id, int id_actividad,	Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
+			         int tiempoestimado, Double porcentaje, int prioridadusuario,int prioridadtotal ,boolean finalizada, boolean para_despues, boolean grupal, boolean recuperable ) {
 		
-		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada, para_despues);
+		super(id_actividad,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, prioridadtotal, finalizada, para_despues);
 		this.grupal = grupal;
 		this.recuperable = recuperable;
 		 setPrioridadtotal(establecerPrioridadTotal());

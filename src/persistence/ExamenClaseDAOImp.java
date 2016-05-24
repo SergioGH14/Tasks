@@ -1,6 +1,7 @@
 package persistence;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import Util.Constantes;
@@ -30,7 +31,7 @@ public class ExamenClaseDAOImp implements ExamenClaseDAO {
 			connectionManager.connect();
 			ResultSet examen_clase_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN_CLASE WHERE id_examen='"+ id_examen_concreto+"'");
 			connectionManager.close();
-			Examen examenaux= new ExamenDAOImp().obtenerInformacionDeExamen(id_examen_concreto);
+			Actividad_Examen examenaux= new ExamenDAOImp().obtenerInformacionDeExamenSinDecoracion(id_examen_concreto);
 			System.err.println("Examen clase con id: " + examenaux.getId_examen() + " id_act: " + examenaux.getId_actividad());
 
 			if(examen_clase_resultset.next() && examenaux!=null){
@@ -41,6 +42,7 @@ public class ExamenClaseDAOImp implements ExamenClaseDAO {
 				examen_clase.setId_actividad(examenaux.getId_actividad());
 				examen_clase.setId_examen(examenaux.getId_examen());
 				examen_clase.setPrioridadTotal(examenaux.getPrioridadTotal());
+				
 			}
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al buscar el examen_clase: "+e.getLocalizedMessage() );
@@ -50,8 +52,15 @@ public class ExamenClaseDAOImp implements ExamenClaseDAO {
 	}
 
 	@Override
-	public void eliminarExamen_Clase(int id) {
-		// TODO Auto-generated method stub
+	public void eliminarExamen_Clase(int id_examen) {
+		try{
+			connectionManager.connect();
+			String str = "DELETE FROM EXAMEN_CLASE WHERE id_examen ='"+ id_examen+"'" ;
+			connectionManager.updateDB(str);
+			connectionManager.close();
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al eliminar el Examen-Practicas: "+e.getLocalizedMessage() );
+		}
 
 	}
 
@@ -106,25 +115,5 @@ public class ExamenClaseDAOImp implements ExamenClaseDAO {
 		}
 		return -1;
 
-	}
-	@Override
-	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<Actividad> obtenerTodasActividades() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<Actividad> obtenerActividadesHoy() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<Actividad> obtenerActividadesParaDespues() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

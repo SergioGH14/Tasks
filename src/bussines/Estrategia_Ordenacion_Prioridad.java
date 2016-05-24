@@ -8,9 +8,8 @@ public class Estrategia_Ordenacion_Prioridad implements Estrategia_Ordenacion_Ac
 	
 	public Estrategia_Ordenacion_Prioridad(Asignatura asignatura) {
 		this.listaActividades = new ArrayList<Actividad>();
-		this.listaActividades.addAll(Unidad_Logica.getInstance().practicasDeAsignatura(asignatura));
-		
-
+		this.listaActividades.addAll(Unidad_Logica.getInstance().listaDePracticasDeAsignatura(asignatura));
+		this.listaActividades.addAll(Unidad_Logica.getInstance().listaDeExamenesDeAsignatura(asignatura));
 	}
 
 	@Override
