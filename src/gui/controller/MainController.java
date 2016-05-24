@@ -266,25 +266,31 @@ public class MainController  extends Application {
 			return creadorcontrolador.getActividad();
 		} catch (IOException e){
 			// TODO Auto-generated catch block
-			System.err.println("Error al establecer la segunda pantalla Actividad Concreta " + e.getLocalizedMessage());
+			System.err.println("Error al establecer la segunda pantalla Actividad Concreta " + e.getLocalizedMessage()+e.getMessage()+e.getCause());
 		}
 		 return null;
 	}
 	public void crearActividadEspecifica(Stage secondaryStage, CrearActividadConcretaController contenedora,BorderPane contenedor, int indicador){
 		 try{
+			 FXMLLoader loader;
+			 BorderPane creaPractica;
+			 
 			 switch (indicador) {
 				
 			case 1: //Practica
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearPractica.fxml"));
+				loader = new FXMLLoader(getClass().getResource("/gui/view/CrearPractica.fxml"));
 				
-				BorderPane creaPractica = (BorderPane)loader.load();
-					
+				creaPractica = (BorderPane)loader.load();
+				CrearPracticaController creador1 = loader.<CrearPracticaController>getController();
+				creador1.initStage(secondaryStage,this,contenedora);
+				contenedor.setRight(creaPractica);
+				break;
+			case 2: //Clase
+				loader = new FXMLLoader(getClass().getResource("/gui/view/CrearClase.fxml"));
 				
-				
-				
-				
-					CrearPracticaController creador = loader.<CrearPracticaController>getController();
-				creador.initStage(secondaryStage,this,contenedora);
+				creaPractica = (BorderPane)loader.load();
+				CrearClaseController creador2 = loader.<CrearClaseController>getController();
+				creador2.initStage(secondaryStage,this,contenedora);
 				contenedor.setRight(creaPractica);
 				break;
 

@@ -149,7 +149,9 @@ public class MenuLateralController implements Initializable {
 					tvHoy.setFont(Basics.generateFontById(3, 14));
 					tvParaDespues.setFont(Basics.generateFontById(3, 14));
 					asignaturaAux = (Asignatura) listViewAsignaturas.getSelectionModel().getSelectedItem();
-					lanzarPantallaDeActividades(listaAsignaturas.get(listViewAsignaturas.getSelectionModel().getSelectedIndex()),0);
+					int index = listViewAsignaturas.getSelectionModel().getSelectedIndex();
+					if(index>-1 && index< loAsignaturas.size())
+						lanzarPantallaDeActividades(loAsignaturas.get(index),0);
 				}
 			}
 			
@@ -160,10 +162,12 @@ public class MenuLateralController implements Initializable {
 
 			@Override
 			public void handle(Event event) {
-				//ELIMINAR DESPUES DE ANYADIR EL BOTON DE CREAR ACTIVIDAD
-				//controladorPrincipal.crearActividad(asignaturaAux);
-				loAsignaturas.add(controladorPrincipal.crearAsignatura());
-				System.out.println("La lista tiene: "+loAsignaturas.size());
+					Asignatura asignatura = controladorPrincipal.crearAsignatura();
+					if(asignatura!=null){
+						loAsignaturas.add(asignatura);
+						System.out.println("Se ha añadido la asignatura : " +asignatura.getTitulo());
+						System.out.println("La lista tiene: "+loAsignaturas.size());
+					}
 				}
 		});
 	}

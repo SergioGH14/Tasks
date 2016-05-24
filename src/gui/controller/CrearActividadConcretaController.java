@@ -20,6 +20,7 @@ import javax.swing.text.StyledEditorKit.ForegroundAction;
 import bussines.Actividad;
 import bussines.Asignatura;
 import bussines.Fabrica_Actividad;
+import bussines.Unidad_Logica;
 import javafx.stage.Stage;
 import persistence.dto.ActividadDTO;
 
@@ -68,8 +69,8 @@ public class CrearActividadConcretaController implements Initializable{
 	private Actividad actividad;
 	
 	private ActividadDTO actividaddto;
-    
-    private Asignatura asignatura;
+	
+	private Asignatura asignatura;
     
     private BorderPane contenedor;
 	
@@ -88,12 +89,13 @@ public class CrearActividadConcretaController implements Initializable{
 		this.actividaddto = actividaddto;
 		this.instancia=this;
 		this.contenedor=contenedor;
+		asignatura = Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getId_asignatura());
 		lista = new ArrayList<Boolean>();
 		lista.add(false);
 		lista.add(false);
 		
-		
-		
+		rFondo.setFill(asignatura.getColor());
+		tTituloActividad.setText(actividaddto.getTitulo());
 		}
 	public List<Boolean> getLista() {
 		
@@ -114,6 +116,9 @@ public class CrearActividadConcretaController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		
+		
+		
 		pPractica.setOnMouseClicked(new EventHandler<Event>() {
 
 			
@@ -121,10 +126,32 @@ public class CrearActividadConcretaController implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
+				
+				pFondoExamen.setOpacity(0);
+				pFondoCLase.setOpacity(0);
+				pFondoPractica.setOpacity(1.0);
+				
+				
 				tipo = 1;
 				lista.set(0, false);
 				lista.set(1, false);
-				pFondoPractica.setOpacity(1.0);
+				controladorPrincipal.crearActividadEspecifica(primaryStage, instancia,contenedor, tipo);
+			}
+		});
+		pClase.setOnMouseClicked(new EventHandler<Event>() {
+
+			
+			
+			@Override
+			public void handle(Event event) {
+				
+				pFondoExamen.setOpacity(0);
+				pFondoCLase.setOpacity(1.0);
+				pFondoPractica.setOpacity(0);
+				
+				tipo = 2;
+				lista.set(0, false);
+				lista.set(1, false);
 				controladorPrincipal.crearActividadEspecifica(primaryStage, instancia,contenedor, tipo);
 			}
 		});
@@ -133,7 +160,7 @@ public class CrearActividadConcretaController implements Initializable{
 
 		@Override
 		public void handle(Event event) {
-			// TODO Auto-generated method stub
+			System.out.println("Asignatura que es nula "+actividaddto.getId_asignatura());
 			actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
 			System.out.println(actividad);
 			primaryStage.close();

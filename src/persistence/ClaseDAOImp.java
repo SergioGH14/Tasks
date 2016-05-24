@@ -141,7 +141,7 @@ public class ClaseDAOImp implements ClaseDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = C.id_actividad");
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = C.id_actividad  AND A.finalizada = FALSE  AND A.para_despues = FALSE");
 			connectionManager.close();
 
 			while(claseResultSet.next()){
@@ -161,7 +161,7 @@ public class ClaseDAOImp implements ClaseDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C where A.id_actividad = C.id_actividad");
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C where A.id_actividad = C.id_actividad  AND A.finalizada = FALSE  AND A.para_despues = FALSE");
 			connectionManager.close();
 
 			while(claseResultSet.next()){
@@ -181,7 +181,7 @@ public class ClaseDAOImp implements ClaseDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C WHERE A.id_actividad = C.id_actividad AND A.fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "'");
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C WHERE A.id_actividad = C.id_actividad AND A.fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "' AND A.finalizada = FALSE AND A.para_despues = FALSE");
 			connectionManager.close();
 
 			while(claseResultSet.next()){
@@ -200,7 +200,7 @@ public class ClaseDAOImp implements ClaseDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C WHERE A.id_actividad = C.id_actividad AND A.para_despues = TRUE ");
+			ResultSet claseResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, CLASE C WHERE A.id_actividad = C.id_actividad AND A.para_despues = TRUE AND A.finalizada = FALSE ");
 			connectionManager.close();
 
 			while(claseResultSet.next()){
