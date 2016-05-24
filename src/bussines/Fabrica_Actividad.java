@@ -68,9 +68,7 @@ public class Fabrica_Actividad {
 	}
 	
 	private Actividad crearClase(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
-		
-		
-		Clase clase = new Clase(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getTitulo()),
+		Clase clase = new Clase(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getId_asignatura()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
 				actividaddto.getFechaFinalizacion(), 

@@ -30,9 +30,15 @@ public class Clase extends Actividad{
 	}
 
 	private int establecerPrioridadTotal(){
-		int aux =getAsignatura().getDificultad()+getPrioridadusuario()+getTiempoestimado();
+		int aux = 0;
+		if(getAsignatura()!=null){
+		 aux =getAsignatura().getDificultad()
+				+getPrioridadusuario()
+				+getTiempoestimado();
 	
 		if(isPuntuable())aux = aux+10;
+		}
+		System.out.println("aux: " + aux + getAsignatura());
 		return aux;
 	}
 	

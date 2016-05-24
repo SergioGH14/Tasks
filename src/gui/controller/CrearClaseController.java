@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -16,22 +15,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
-
-
-public class CrearPracticaController implements Initializable{
-
-	@FXML
-    private ImageView ivRecuperable;
-
+public class CrearClaseController implements Initializable {
+	  
+	
+	  
     @FXML
-    private ImageView ivGrupal;
+    private ImageView ivPuntuable;
     
-  
-
-	private static CrearPracticaController instancia;
+	private static CrearClaseController instancia;
     
 	private Stage primaryStage;
     
@@ -44,12 +37,8 @@ public class CrearPracticaController implements Initializable{
 			this.controladorPrincipal = controladorPrincipal;
 			this.contenedora = contenedora;
 			}
-	public CrearPracticaController() {
+	public CrearClaseController() {
 		// TODO Auto-generated constructor stub
-	}
-	public static CrearPracticaController getInstancia() {
-		if(instancia == null)instancia = new CrearPracticaController()  ;
-		return instancia;
 	}
 	public Image cargarImagen(String ruta){
 		BufferedImage bufferedImage = null;
@@ -71,34 +60,16 @@ public class CrearPracticaController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
-		
-		ivRecuperable.setOnMouseClicked(new EventHandler<Event>() {
+		ivPuntuable.setOnMouseClicked(new EventHandler<Event>() {
 
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
-				if(contenedora.getLista().get(1)==false )ivRecuperable.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/checked_checkbox.png"));
-				else ivRecuperable.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/unchecked_box.png"));
+				if(contenedora.getLista().get(1)==false )ivPuntuable.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/checked_checkbox.png"));
+				else ivPuntuable.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/unchecked_box.png"));
 				contenedora.getLista().set(1, !contenedora.getLista().get(1));
 			}
 		});
-		ivGrupal.setOnMouseClicked(new EventHandler<Event>() {
-
-			@Override
-			public void handle(Event event) {
-				// TODO Auto-generated method stub
-				if(!contenedora.getLista().get(0))ivGrupal.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/checked_checkbox.png"));
-				else ivGrupal.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/unchecked_box.png"));
-				contenedora.getLista().set(0, !contenedora.getLista().get(0));
-			}
-		});
-}
-		
-		
-		
-		
-		
-}
 	
-	
-
+	}
+}
