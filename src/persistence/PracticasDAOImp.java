@@ -142,7 +142,7 @@ public class PracticasDAOImp implements PracticasDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = P.id_actividad");
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = P.id_actividad AND A.finalizada = FALSE  AND A.para_despues = FALSE");
 			connectionManager.close();
 
 			while(practicasResultSet.next()){
@@ -162,7 +162,7 @@ public class PracticasDAOImp implements PracticasDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad");
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND A.finalizada = FALSE  AND A.para_despues = FALSE");
 			connectionManager.close();
 
 			while(practicasResultSet.next()){
@@ -182,7 +182,7 @@ public class PracticasDAOImp implements PracticasDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND A.fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "'");
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND A.fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "' AND A.finalizada = FALSE  AND A.para_despues = FALSE");
 			connectionManager.close();
 
 			while(practicasResultSet.next()){
@@ -201,7 +201,7 @@ public class PracticasDAOImp implements PracticasDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND A.para_despues = TRUE ");
+			ResultSet practicasResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, PRACTICAS P WHERE A.id_actividad = P.id_actividad AND A.para_despues = TRUE  AND A.finalizada = FALSE  ");
 			connectionManager.close();
 
 			while(practicasResultSet.next()){
