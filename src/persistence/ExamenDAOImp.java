@@ -220,7 +220,7 @@ public class ExamenDAOImp implements ExamenDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet examenResultset = connectionManager.queryDB("SELECT * from ACTIVIDAD A, EXAMEN E where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = E.id_actividad AND A.finalizada = FALSE  AND A.para_despues = FALSE");
+			ResultSet examenResultset = connectionManager.queryDB("SELECT * from ACTIVIDAD A, EXAMEN E where A.id_asignatura = '"+asignatura.getId_asignatura()+"' AND A.id_actividad = E.id_actividad");
 			connectionManager.close();
 			
 			//examenes decorados
@@ -242,7 +242,7 @@ public class ExamenDAOImp implements ExamenDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet listExamenesResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, EXAMEN E WHERE A.id_actividad = E.id_actividad AND A.finalizada = FALSE  AND A.para_despues = FALSE");
+			ResultSet listExamenesResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, EXAMEN E WHERE A.id_actividad = E.id_actividad");
 			connectionManager.close();
 
 			while(listExamenesResultSet.next()){
@@ -262,7 +262,7 @@ public class ExamenDAOImp implements ExamenDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet listExamenesResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, EXAMEN E WHERE A.id_actividad = E.id_actividad AND A.fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "' AND A.finalizada = FALSE  AND A.para_despues = FALSE");
+			ResultSet listExamenesResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, EXAMEN E WHERE A.id_actividad = E.id_actividad AND A.fecha_finalizacion = '" + Date_solver.convertirLocalDateEnSQL(Date_solver.fechaDeHoy())+ "'");
 			connectionManager.close();
 
 			while(listExamenesResultSet.next()){
@@ -281,7 +281,7 @@ public class ExamenDAOImp implements ExamenDAO {
 		List<Actividad> listaActividades = new ArrayList<Actividad>();
 		try{
 			connectionManager.connect();
-			ResultSet listExamenesResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, EXAMEN E WHERE A.id_actividad = E.id_actividad AND A.para_despues = TRUE AND A.finalizada = FALSE  ");
+			ResultSet listExamenesResultSet = connectionManager.queryDB("SELECT * from ACTIVIDAD A, EXAMEN E WHERE A.id_actividad = E.id_actividad AND A.para_despues = TRUE ");
 			connectionManager.close();
 
 			while(listExamenesResultSet.next()){

@@ -6,15 +6,29 @@ import java.util.List;
 
 public class Estrategia_Ordenacion_ParaDespues implements Estrategia_Ordenacion_Actividades{
 
+	private List<Actividad> listaActividades;
 	@Override
 	public List<Actividad> ordenar() {
-		List<Actividad> lista = new ArrayList<Actividad>();
-		lista.addAll(Unidad_Logica.getInstance().listaDePracticasParaDespues());
-		lista.addAll(Unidad_Logica.getInstance().listaDeClasesParaDespues());
-		lista.addAll(Unidad_Logica.getInstance().listaDeExamenesParaDespues());
 		
-		//operaciones de ordenacion para esta lista de "para despues"
-		return lista;
+		 listaActividades = Unidad_Logica.getInstance().listaDeParaDespues();
+		 burbuja();
+		 return listaActividades;
 	}
-
+	
+	
+	public void burbuja(){ 
+		
+	int	n=listaActividades.size()-1; 
+	for	(int i=0; i<n; i++){
+		for(int j=n; j>i; j--){ 
+		 Actividad elementoX = listaActividades.get(j-1);
+		 Actividad elementoY = listaActividades.get(j);
+		
+		 if(elementoX.getFechaFinalizacion().isAfter(elementoY.getFechaFinalizacion())){
+		  listaActividades.set(j-1 ,elementoY);
+		  listaActividades.set(j,elementoX);
+		}
+	   }
+      }
+	}
 }
