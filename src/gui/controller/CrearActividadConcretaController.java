@@ -18,7 +18,9 @@ import java.util.ResourceBundle;
 import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import bussines.Actividad;
+import bussines.Actividad_Examen;
 import bussines.Asignatura;
+import bussines.Examen_Poliformat;
 import bussines.Fabrica_Actividad;
 import bussines.Unidad_Logica;
 import javafx.stage.Stage;
@@ -183,9 +185,10 @@ public class CrearActividadConcretaController implements Initializable{
 
 		@Override
 		public void handle(Event event) {
-			System.out.println("Asignatura que es nula "+actividaddto.getId_asignatura());
 			actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
-			System.out.println(actividad);
+			
+			actividad = new Examen_Poliformat((Actividad_Examen)actividad);
+			
 			primaryStage.close();
 			
 		}
