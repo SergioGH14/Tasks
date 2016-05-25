@@ -113,6 +113,13 @@ public class CrearActividadConcretaController implements Initializable{
 	public void setActividad(Actividad actividad) {
 		this.actividad = actividad;
 	}
+	
+	public Asignatura getAsignatura() {
+		return asignatura;
+	}
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -150,6 +157,22 @@ public class CrearActividadConcretaController implements Initializable{
 				pFondoPractica.setOpacity(0);
 				
 				tipo = 2;
+				lista.set(0, false);
+				lista.set(1, false);
+				controladorPrincipal.crearActividadEspecifica(primaryStage, instancia,contenedor, tipo);
+			}
+		});
+		
+		pExamen.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				
+				pFondoExamen.setOpacity(1.0);
+				pFondoCLase.setOpacity(0);
+				pFondoPractica.setOpacity(0);
+				
+				tipo = 3;
 				lista.set(0, false);
 				lista.set(1, false);
 				controladorPrincipal.crearActividadEspecifica(primaryStage, instancia,contenedor, tipo);

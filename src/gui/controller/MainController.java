@@ -319,6 +319,14 @@ public class MainController  extends Application {
 				creador2.initStage(secondaryStage,this,contenedora);
 				contenedor.setRight(creaPractica);
 				break;
+			case 3: //Examen
+				loader = new FXMLLoader(getClass().getResource("/gui/view/CrearExamen.fxml"));
+				
+				creaPractica = (BorderPane)loader.load();
+				CrearExamenController creador3 = loader.<CrearExamenController>getController();
+				creador3.initStage(secondaryStage,this,contenedora);
+				contenedor.setRight(creaPractica);
+				break;
 
 			default:
 				break;

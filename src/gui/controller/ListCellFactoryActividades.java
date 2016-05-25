@@ -8,6 +8,12 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 
 public class ListCellFactoryActividades extends ListCell<Actividad>{
+	private ListaActividadesController listaActividadesController;
+	
+	public ListCellFactoryActividades(ListaActividadesController listaActividadesController) {
+		this.listaActividadesController = listaActividadesController;
+	}
+	
 	@Override
 	protected void updateItem(Actividad actividad, boolean flag){
 		super.updateItem(actividad, flag);
@@ -20,7 +26,7 @@ public class ListCellFactoryActividades extends ListCell<Actividad>{
 				loader.setController(controllerItem);
 				HBox hboxItemsAsignaturas = (HBox)loader.load();
 
-				controllerItem.setInformacion(actividad);
+				controllerItem.setInformacion(actividad, listaActividadesController);
 				setGraphic(hboxItemsAsignaturas);
 			} catch (IOException e) {
 				e.printStackTrace();

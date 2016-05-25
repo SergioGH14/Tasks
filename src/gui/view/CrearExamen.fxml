@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="396.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CrearExamenController">
+   <center>
+      <AnchorPane>
+         <children>
+            <GridPane fx:id="gpMasDetalles" prefHeight="396.0" prefWidth="405.0" style="-fx-background-color: #f3f3f3;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="128.0" minHeight="6.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="258.0" minHeight="0.0" prefHeight="76.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="270.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="176.0" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="115.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Pane fx:id="pAnyadirDetallesAbierto" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d3d3d3;" GridPane.columnSpan="3">
+                     <children>
+                        <Text fill="WHITE" layoutX="142.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir más detalles" />
+                        <ImageView fitHeight="22.0" fitWidth="26.0" layoutX="191.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/anyadir_mas_abierto.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                     <children>
+                        <Pane maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                           <children>
+                              <ImageView fx:id="ivPoliformat" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/unchecked_box.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="ivPoliformatClicked" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <HBox.margin>
+                                    <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../../assets/checked_checkbox.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <Text fx:id="tvPoliformat" strokeType="OUTSIDE" strokeWidth="0.0" text="Poliformat" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets top="18.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Text>
+                        <Pane maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                           <children>
+                              <ImageView fx:id="ivClase" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/unchecked_box.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="ivClaseClicked" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../../../assets/checked_checkbox.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <Text fx:id="tvClase" strokeType="OUTSIDE" strokeWidth="0.0" text="Clase">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="18.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Pane maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                           <children>
+                              <ImageView fx:id="ivPracticas" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/unchecked_box.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="ivPracticasClicked" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../../../assets/checked_checkbox.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <Text fx:id="tvPracticas" strokeType="OUTSIDE" strokeWidth="0.0" text="Prácticas">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="18.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="3">
+                     <children>
+                        <Pane>
+                           <children>
+                              <VBox fx:id="vbPoliformat" alignment="CENTER" prefHeight="82.0" prefWidth="405.0" visible="false">
+                                 <children>
+                                    <Text fx:id="tvPoliformatTag" fill="#ababab" strokeType="OUTSIDE" strokeWidth="0.0" text="Poliformat" />
+                                    <HBox prefHeight="47.0" prefWidth="405.0">
+                                       <children>
+                                          <Region prefHeight="200.0" prefWidth="200.0" />
+                                          <Pane maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                                             <children>
+                                                <ImageView fx:id="ivPoliReintentable" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../assets/unchecked_box.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <ImageView fx:id="ivPoliReintentableClicked" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                   <image>
+                                                      <Image url="@../../../assets/checked_checkbox.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" left="12.0" right="6.0" top="6.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Text fx:id="tvPoliReintentable" strokeType="OUTSIDE" strokeWidth="0.0" text="Reintentable">
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" left="6.0" right="6.0" top="12.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Region prefHeight="200.0" prefWidth="200.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="vbPracticas" alignment="CENTER" layoutY="82.0" prefHeight="82.0" prefWidth="405.0" visible="false">
+                                 <children>
+                                    <Text fx:id="tvPracticasTag" fill="#ababab" strokeType="OUTSIDE" strokeWidth="0.0" text="Prácticas" />
+                                    <HBox prefHeight="47.0" prefWidth="405.0">
+                                       <children>
+                                          <Region prefHeight="200.0" prefWidth="200.0" />
+                                          <Pane maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                                             <children>
+                                                <ImageView fx:id="ivPractApuntes" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../assets/unchecked_box.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <ImageView fx:id="ivPractApuntesClicked" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                   <image>
+                                                      <Image url="@../../../assets/checked_checkbox.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" left="12.0" right="6.0" top="6.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Text fx:id="tvPracticasApuntes" strokeType="OUTSIDE" strokeWidth="0.0" text="Apuntes">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" left="6.0" right="6.0" top="12.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                          <Region prefHeight="200.0" prefWidth="200.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="vbClase" alignment="CENTER" layoutY="82.0" prefHeight="82.0" prefWidth="405.0" visible="false">
+                                 <children>
+                                    <Text fx:id="tvClaseTag" fill="#ababab" strokeType="OUTSIDE" strokeWidth="0.0" text="Clase" />
+                                    <HBox prefHeight="47.0" prefWidth="405.0">
+                                       <children>
+                                          <Region prefHeight="200.0" prefWidth="200.0" />
+                                          <Pane maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                                             <children>
+                                                <ImageView fx:id="ivClaseGrupal" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../assets/unchecked_box.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <ImageView fx:id="ivClaseGrupalClicked" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                   <image>
+                                                      <Image url="@../../../assets/checked_checkbox.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" left="12.0" right="6.0" top="6.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Text fx:id="tvClaseGrupal" strokeType="OUTSIDE" strokeWidth="0.0" text="Grupal">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" left="6.0" right="6.0" top="12.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                          <Pane maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                                             <children>
+                                                <ImageView fx:id="ivClaseApuntes" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../assets/unchecked_box.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <ImageView fx:id="ivClaseApuntesClicked" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                   <image>
+                                                      <Image url="@../../../assets/checked_checkbox.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="6.0" left="12.0" right="6.0" top="12.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" left="12.0" right="6.0" top="6.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Text fx:id="tvClaseApuntes" strokeType="OUTSIDE" strokeWidth="0.0" text="Apuntes">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" left="6.0" right="6.0" top="12.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                          <Region prefHeight="200.0" prefWidth="200.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+            <GridPane fx:id="gpExamen" prefHeight="396.0" prefWidth="405.0" style="-fx-background-color: #f3f3f3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="172.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="277.0" minHeight="10.0" prefHeight="161.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="tvText1" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Es el último examen?" textAlignment="CENTER" wrappingWidth="161.88671875" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="ivUltimoExamen" fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../../assets/unchecked_box.png" />
+                     </image>
+                  </ImageView>
+                  <Pane fx:id="pAnyadirDetalles" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d3d3d3;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                     <children>
+                        <Text fill="WHITE" layoutX="142.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir más detalles" />
+                        <ImageView fitHeight="22.0" fitWidth="26.0" layoutX="190.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/anyadir_mas.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Text fx:id="tvText2" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Este examen se puede recuperar?" textAlignment="CENTER" wrappingWidth="161.88671875" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="ivRecuperarExamen" fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../../assets/unchecked_box.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="ivUltimoExamenClicked" fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../../assets/checked_checkbox.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="ivRecuperarExamenClicked" fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../../assets/checked_checkbox.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

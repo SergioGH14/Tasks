@@ -32,8 +32,8 @@ public class ListCellFactoryItemActividades {
     
     @FXML
     private Label lbTipo;
-    
-    public void setInformacion(Actividad actividad){
+        
+    public void setInformacion(Actividad actividad, ListaActividadesController listaActividadesController){
  
     	lciTituloActividad.setSelected(actividad.isFinalizada());
     	lciTituloActividad.setText(actividad.getTitulo());
@@ -91,12 +91,12 @@ public class ListCellFactoryItemActividades {
 					lciTituloActividad.setStyle("-fx-underline: true;");
 					lciTituloActividad.setTextFill(Color.web("#dddddd"));
 					lciFechaActividad.setFill(Color.web("#dddddd"));
+					lbTipo.setTextFill(Color.web("#dddddd"));
+
 					actividad.setFinalizada(true);
-				}else{
-					lciTituloActividad.setStyle("-fx-underline: false;");
-					lciTituloActividad.setTextFill(Color.web("#262b33"));
-					lciFechaActividad.setFill(Color.web("#ff7843"));
-					actividad.setFinalizada(false);
+					if(listaActividadesController!=null)
+					listaActividadesController.marcarActividadFinalizada(actividad);
+					
 				}
 			}
 		});

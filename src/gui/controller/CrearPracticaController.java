@@ -29,10 +29,7 @@ public class CrearPracticaController implements Initializable{
     @FXML
     private ImageView ivGrupal;
     
-  
-
-	private static CrearPracticaController instancia;
-    
+      
 	private Stage primaryStage;
     
     private MainController controladorPrincipal;
@@ -47,10 +44,7 @@ public class CrearPracticaController implements Initializable{
 	public CrearPracticaController() {
 		// TODO Auto-generated constructor stub
 	}
-	public static CrearPracticaController getInstancia() {
-		if(instancia == null)instancia = new CrearPracticaController()  ;
-		return instancia;
-	}
+
 	public Image cargarImagen(String ruta){
 		BufferedImage bufferedImage = null;
 		try {

@@ -23,9 +23,7 @@ public class CrearClaseController implements Initializable {
 	  
     @FXML
     private ImageView ivPuntuable;
-    
-	private static CrearClaseController instancia;
-    
+        
 	private Stage primaryStage;
     
     private MainController controladorPrincipal;

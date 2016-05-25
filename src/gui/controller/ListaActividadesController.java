@@ -107,7 +107,7 @@ public class ListaActividadesController implements Initializable{
 		//estilo para las listas de actividades
 		lvActividades.getStylesheets().add(getClass().getResource("/gui/view/listaactividades.css").toExternalForm());
 		lvActividades.setItems(olActividades);
-		lvActividades.setCellFactory(c -> new ListCellFactoryActividades());
+		lvActividades.setCellFactory(c -> new ListCellFactoryActividades(this));
 		
 		actualizarListas();
 		
@@ -158,6 +158,16 @@ public class ListaActividadesController implements Initializable{
 			pnTodoHecho.setVisible(false);
 			lvActividades.setVisible(true);
 		}
+	}
+	
+	public void marcarActividadFinalizada(Actividad actividad){
+		System.out.println("MARCAR COMO FINALIZADA LA TAREA QUE HE RECIBIDO ID: " + actividad.getId_actividad());
+		for(int i = 0; i<olActividades.size(); i++){
+			if(olActividades.get(i).getId_actividad() == actividad.getId_actividad()){
+				olActividades.remove(i);
+			}
+		}
+		
 	}
 
 }
