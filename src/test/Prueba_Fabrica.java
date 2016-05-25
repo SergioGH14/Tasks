@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import Util.Date_solver;
 import bussines.*; 
 import javafx.scene.paint.Color;
 import persistence.ActividadDAOImp;
@@ -62,6 +63,7 @@ public class Prueba_Fabrica {
 			System.out.println(it.next().toString());
 		}
 		//System.out.println("Asignatura 2: " + DAL.getInstance().obtenerInformacionAsignatura("PRUEBA"));
+		
 	}
 
 }

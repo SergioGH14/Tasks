@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
 
 import Util.Date_solver;
+import Util.InputValid;
 import bussines.Unidad_Logica;
 import bussines.Universidad;
 import bussines.Usuario;
@@ -30,7 +31,7 @@ import javafx.stage.Window;
 
 public class InicioUsuarioController implements Initializable{
 	
-	 @FXML
+	    @FXML
 	    private Button btImagen;
 
 	    @FXML
@@ -78,6 +79,22 @@ public class InicioUsuarioController implements Initializable{
 		
 		}
 	
+	public String textoError(){
+		String res = "\n";
+		if(InputValid.estaRellenado(path)==false)
+			res = res+"No has puesto ninguna foto :( \n";
+		if(InputValid.estaRellenado(tfNombre.getText())==false)
+			res = res + "Queremos saber tu Nombre\n";
+		if(InputValid.estaRellenado(tfApellidos.getText())==false)
+			res = res + "Nos gustaria saber tus Apellidos\n";
+		if(InputValid.estaRellenado(tfEmail.getText())==false)
+			res = res + "No has puesto tu e-Mail\n";
+		if(InputValid.esFechaCumpleaños(dpFechanacimiento.getValue())==false)
+			res = res + "No es correcta la fecha de nacimiento";
+		System.out.println(InputValid.esFechaCumpleaños(dpFechanacimiento.getValue()));
+		return res;
+		
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -101,7 +118,8 @@ public class InicioUsuarioController implements Initializable{
 		        Window dialogStage = null;
 				// Obtener la imagen seleccionada
 		        File imgFile = fileChooser.showOpenDialog(dialogStage);
-		        String res = imgFile.getAbsolutePath();
+		        String res=null;
+		        if(imgFile!=null)res = imgFile.getAbsolutePath();
 		        if(res!=null){
 		        
 		       path = res;
@@ -124,9 +142,14 @@ public class InicioUsuarioController implements Initializable{
 
 			@Override
 			public void handle(Event event) {
-				// ¿Comprobamos que todos los parametros son validos?
-				
-				
+				// Comprobamos que todos los parametros son validos
+				if(InputValid.estaRellenado(path)&&
+						InputValid.estaRellenado(tfNombre.getText())&&
+						InputValid.estaRellenado(tfApellidos.getText())&&
+						InputValid.estaRellenado(tfEmail.getText())&&
+						InputValid.esFechaCumpleaños(dpFechanacimiento.getValue())
+						)
+				{
 				//Creamos la universidad
 				Universidad upv = new Universidad("/Tasks/assets/logo_upv[1].png","Universitat Politecnica de Valencia", "Camino de Vera");
 				//Mandamos a la persistencia la universidad
@@ -139,15 +162,13 @@ public class InicioUsuarioController implements Initializable{
 						dpFechanacimiento.getValue().atTime(0, 0),tfEmail.getText());
 				//Mandamos el Usuario a la  persistencia mediante fachada
 				user = 	Unidad_Logica.getInstance().crearUsuario(user);
-
-				
-				
-				
-				
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
 				controladorPrincipal.inicioUniversidadGrado(primaryStage,upv);
 			}
-		});
+				else controladorPrincipal.sacarError(textoError());
+			
+			
+			}});
 	}}
 
 

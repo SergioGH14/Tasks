@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import Util.Date_solver;
+import Util.InputValid;
 import bussines.Curso;
 import bussines.Grado;
 import bussines.Unidad_Logica;
@@ -49,6 +50,19 @@ public class InicioUniversidadGradoController  implements Initializable{
 		
 		}
 	
+	public String textoError(){
+		String res = "\n";
+		if(InputValid.esAnyo(tfAnyoGrado.getText())==false)
+			res = res+"No has un año correcto \n";
+		if(InputValid.estaRellenado(tfTituloGrado.getText())==false)
+			res = res + "El Titulo del grado no esta bien\n";
+		if(InputValid.esNumerico(tfCreditosTotales.getText())==false)
+			res = res + "¿Cuantos Creditos en total?\n";
+		if(InputValid.esNumerico(tfCreditosAprobados.getText())==false)
+			res = res + "¿Has aprobado algun crédito?\n";
+			return res;
+		
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -61,7 +75,11 @@ public class InicioUniversidadGradoController  implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// ¿Comprobamos que todos los parametros son validos?
-				System.out.println("Este es el año convertido supuestamente en una fecha -->"+Date_solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));
+				if(InputValid.esAnyo(tfAnyoGrado.getText())&&
+				   InputValid.estaRellenado(tfTituloGrado.getText())&&
+				   InputValid.esNumerico(tfCreditosTotales.getText())&&
+				   InputValid.esNumerico(tfCreditosAprobados.getText()))
+				{
 				
 				Grado grado = new Grado(upv, tfTituloGrado.getText(),Date_solver.setDateinLocaleDateTime(tfAnyoGrado.getText()));	
 				//Mandamos el Grado a persistencia mediante fachada
@@ -77,7 +95,8 @@ public class InicioUniversidadGradoController  implements Initializable{
 				//Una vez acabamos de crear los objetos y mandarlos al fachada cambiamos de pantalla
 				controladorPrincipal.inicioCuatrimestreAsignatura(primaryStage, actual);
 			}
-		});
+			else controladorPrincipal.sacarError(textoError());
+		}});
 	}
 
 }

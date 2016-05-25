@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Util.Basics;
+import Util.InputValid;
 import bussines.Asignatura;
 import bussines.Cuatrimestre;
 import bussines.Unidad_Logica;
@@ -106,7 +107,7 @@ public class CrearAsignaturaController implements Initializable{
 	    public void initStage(Stage stage, MainController controladorPrincipal){
 			this.primaryStage = stage;
 			this.controladorPrincipal = controladorPrincipal;
-			
+			dificultad = 0;
 			
 			}
 
@@ -242,12 +243,16 @@ public class CrearAsignaturaController implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// Hacer el input valid antes
+				if(Basics.RGBToHex(cpColorPicker.getValue())=="#ffffff"&&
+						InputValid.estaRellenado(tfNombre.getText())&&
+						dificultad == 0 &&cuatri==null){
 				asignatura = new Asignatura(cuatri,tfNombre.getText(),0,dificultad,false,cpColorPicker.getValue());
 			    asignatura = Unidad_Logica.getInstance().crearAsignatura(asignatura);
 				primaryStage.close();
-			}
+			}else
+				controladorPrincipal.sacarError("\nSelecciona un color en el circulo\n O revisa a ver si te dejas algo");;
 		
-		});
+			}});
 	}
 
 }

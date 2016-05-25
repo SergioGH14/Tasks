@@ -216,6 +216,32 @@ public class MainController  extends Application {
 		}
 		 return null;
 	}
+	
+	public void sacarError(String texto){
+		
+		 try{
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/Error.fxml"));
+				BorderPane creador = (BorderPane)loader.load();
+				
+				Stage secondaryStage = new Stage();
+				Scene scene = new Scene(creador);
+
+				secondaryStage.setScene(scene);
+				secondaryStage.setHeight(260.0);
+				secondaryStage.setWidth(408.0);
+				secondaryStage.setResizable(false);
+				secondaryStage.setTitle(Util.Constantes.ARDUM);
+				ErrorController creadorcontrolador = loader.<ErrorController>getController();
+				creadorcontrolador.initStage(secondaryStage, this,texto);
+				secondaryStage.showAndWait();
+			} catch (IOException e){
+				// TODO Auto-generated catch block
+				System.err.println("Error al establecer la pantalla de error " + e.getLocalizedMessage());
+			
+		}
+		
+	}
+	
 	public Actividad crearActividad(Asignatura asignatura){
 		 try{
 			System.err.println(asignatura.getColor());
