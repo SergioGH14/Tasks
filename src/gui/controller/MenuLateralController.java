@@ -114,7 +114,9 @@ public class MenuLateralController implements Initializable {
 		
 		//prueba para rellenar la lista de asignaturas y mostrarlas en pantalla
 		List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
-		listaAsignaturas.addAll(DAL.getInstance().obtenerAsignaturasPorCuatrimestre(2));
+		listaAsignaturas.addAll(DAL.getInstance().obtenerAsignaturasPorCuatrimestre(Basics.cuatrimestreActual()));
+		listaAsignaturas.addAll(DAL.getInstance().obtenerAsignaturasPorCuatrimestre(3));
+
 		
 		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
 		listViewAsignaturas.setItems(loAsignaturas);
@@ -164,7 +166,9 @@ public class MenuLateralController implements Initializable {
 			public void handle(Event event) {
 					Asignatura asignatura = controladorPrincipal.crearAsignatura();
 					if(asignatura!=null){
-						loAsignaturas.add(asignatura);
+						if(asignatura.getCuatrimestre().getCuatrimestre()==3 || asignatura.getCuatrimestre().getCuatrimestre()==Basics.cuatrimestreActual()){
+							loAsignaturas.add(asignatura);
+						}
 						System.out.println("Se ha añadido la asignatura : " +asignatura.getTitulo());
 						System.out.println("La lista tiene: "+loAsignaturas.size());
 					}

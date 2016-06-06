@@ -3,6 +3,7 @@ package Util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javafx.scene.paint.Color;
@@ -64,5 +65,16 @@ public class Basics {
 	public static String fechaByDate(Date date){
 		return new SimpleDateFormat("dd/MM/yyyy").format( date ); 
 
+	}
+	
+	public static int cuatrimestreActual(){
+		LocalDateTime fecha = LocalDateTime.now();
+		if((fecha.getMonthValue() > 8 && fecha.getMonthValue()<=12) || (fecha.getMonthValue()<2 && fecha.getMonthValue()>0) ){
+			return 1;
+		}
+		if((fecha.getMonthValue() >= 2 && fecha.getMonthValue()<7)){
+			return 2;
+		}
+		return 3;
 	}
 }
