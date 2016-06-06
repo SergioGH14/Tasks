@@ -12,8 +12,10 @@ public class Estrategia_Ordenacion_BandejaEntrada implements Estrategia_Ordenaci
 	public List<Actividad> ordenar() {
 	  
 	 listaActividades = Unidad_Logica.getInstance().listaDeTodasLasActividades();
+	 if(listaActividades.isEmpty()==false){
 	 quicksort(listaActividades,0,listaActividades.lastIndexOf(listaActividades)+1);	
 	 return listaActividades;
+	 }else return listaActividades;
 		
 	}
 

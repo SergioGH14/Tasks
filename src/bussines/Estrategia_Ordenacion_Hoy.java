@@ -10,8 +10,10 @@ public class Estrategia_Ordenacion_Hoy implements Estrategia_Ordenacion_Activida
 	public List<Actividad> ordenar() {
 		
 		listaActividades = Unidad_Logica.getInstance().listaDeHoy();
+		if(listaActividades.isEmpty()==false){
 		mergesort(listaActividades,0,listaActividades.lastIndexOf(listaActividades)+1);
 		return listaActividades;
+		}else return listaActividades;
 	}
 
 

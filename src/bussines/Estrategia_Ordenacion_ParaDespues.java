@@ -11,8 +11,10 @@ public class Estrategia_Ordenacion_ParaDespues implements Estrategia_Ordenacion_
 	public List<Actividad> ordenar() {
 		
 		 listaActividades = Unidad_Logica.getInstance().listaDeParaDespues();
+		 if(listaActividades.isEmpty()==false){
 		 burbuja();
 		 return listaActividades;
+		 }else return listaActividades;
 	}
 	
 	

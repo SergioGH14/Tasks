@@ -8,14 +8,15 @@ public class Estrategia_Ordenacion_Prioridad implements Estrategia_Ordenacion_Ac
 	
 	public Estrategia_Ordenacion_Prioridad(Asignatura asignatura) {
 		listaActividades = Unidad_Logica.getInstance().listaDeAsignatura(asignatura);
-		
+		ordenar();
 	}
 
 	@Override
 	public List<Actividad> ordenar() {
-		
+		 if(listaActividades.isEmpty()==false){
 		 quicksort(listaActividades,0,listaActividades.lastIndexOf(listaActividades)+1);
 		 return listaActividades;
+		 }else return listaActividades;
 	}
 
 	public void  quicksort(List<Actividad> listaActividades,int x , int y){
