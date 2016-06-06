@@ -12,9 +12,9 @@ public class InputValid {
 	public static boolean estaRellenado(String texto){
 		if(texto==null){System.out.println("isEmpty Soy nulo");return false;}
 		if(texto.length()>0){
-			System.out.println("isEmpty mido mas que 0");return true;
+		return true;
 		}else
-			System.out.println("isEmpty mido menos que 0");return false;
+		return false;
 		
 	}
 	
@@ -40,7 +40,7 @@ public class InputValid {
 			System.err.println(e.getMessage());
 			return false;
 		}
-		System.out.println("isNumeric Soy un numero");return true;
+		return true;
 	}
 	
 	public static boolean esAnyo(String texto){
@@ -48,10 +48,8 @@ public class InputValid {
 		if(esNumerico(texto) && texto.length()==4 && (texto.startsWith("199")|| texto.startsWith("2"))) 
 			System.out.println("isYear Cumplo todas Las primeras mierdas");
 			if(LocalDateTime.now().getYear() >= (Date_solver.setDateinLocaleDateTime(texto).getYear())){ 
-				System.out.println("isYear Lo soy");return true;}
-			
-			
-		System.out.println("isYear No lo soy");return false;	
+				return true;}
+		return false;	
 	}
 	
 	

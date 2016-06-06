@@ -177,7 +177,7 @@ public class CrearAsignaturaController implements Initializable{
 		// TODO Auto-generated method stub
 		
 		//Visual del texto del titulo
-		tTitulo.setFont(Basics.generateFontById(23, 75));
+		tTitulo.setFont(Basics.generateFontById(8, 75));
 		tfNombre.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
 		    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
@@ -243,7 +243,8 @@ public class CrearAsignaturaController implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// Hacer el input valid antes
-				if(Basics.RGBToHex(cpColorPicker.getValue())!="#ffffff"&&
+				
+				if(!Basics.RGBToHex(cpColorPicker.getValue()).equals("#FFFFFF")&&
 						InputValid.estaRellenado(tfNombre.getText())&&
 						dificultad != 0&&cuatri!=null ){
 				asignatura = new Asignatura(cuatri,tfNombre.getText(),0,dificultad,false,cpColorPicker.getValue());

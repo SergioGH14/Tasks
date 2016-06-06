@@ -249,6 +249,7 @@ public class CrearActividadController implements Initializable{
 				public void handle(Event event) {
 					// Hacer el input valid antes
 					
+					
 					System.out.println(dpFechaFin.getValue());
 					actividaddto = new ActividadDTO(asignatura.getTitulo(), 
 							tfTituloActividad.getText(), 
