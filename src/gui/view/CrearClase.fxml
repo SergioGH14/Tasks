@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
@@ -23,7 +24,8 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <ImageView fx:id="ivPuntuable" fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Rectangle fx:id="rPuntuable" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="49.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="52.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <ImageView fx:id="ivPuntuable" fitHeight="49.0" fitWidth="52.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
                   <Image url="@../../../assets/unchecked_box.png" />
                </image>

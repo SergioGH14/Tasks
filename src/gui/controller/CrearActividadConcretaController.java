@@ -185,15 +185,17 @@ public class CrearActividadConcretaController implements Initializable{
 
 		@Override
 		public void handle(Event event) {
-			try{actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
 			
+			if(tipo != 0){
+				actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
+				primaryStage.close();
+			}
+				else controladorPrincipal.sacarError("\nSelecciona un tipo de Actividad");
 			//actividad = new Examen_Poliformat((Actividad_Examen)actividad);
 			
-			primaryStage.close();}
 			
-			catch(Exception e) {
-				controladorPrincipal.sacarError("\nNo has seleccionado nigun tipo de actividad");
-			}
+			
+	
 			
 		}
 	});

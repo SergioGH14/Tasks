@@ -45,22 +45,6 @@ public class CrearPracticaController implements Initializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Image cargarImagen(String ruta){
-		BufferedImage bufferedImage = null;
-		try {
-			bufferedImage = ImageIO.read(new File(ruta));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally{
-			if(bufferedImage!=null){
-				Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-				return image;
-			}
-			return null;
-		}
-	}
-	
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -71,8 +55,8 @@ public class CrearPracticaController implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
-				if(contenedora.getLista().get(1)==false )ivRecuperable.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/checked_checkbox.png"));
-				else ivRecuperable.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/unchecked_box.png"));
+				if(contenedora.getLista().get(1)==false )ivRecuperable.setImage(new Image("file:assets/checked_checkbox.png"));
+				else ivRecuperable.setImage(new Image("file:assets/unchecked_box.png"));
 				contenedora.getLista().set(1, !contenedora.getLista().get(1));
 			}
 		});
@@ -81,8 +65,8 @@ public class CrearPracticaController implements Initializable{
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
-				if(!contenedora.getLista().get(0))ivGrupal.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/checked_checkbox.png"));
-				else ivGrupal.setImage(cargarImagen("C:/Users/Sergio/Documents/GitHub/Tasks/assets/unchecked_box.png"));
+				if(!contenedora.getLista().get(0))ivGrupal.setImage(new Image("file:assets/checked_checkbox.png"));
+				else ivGrupal.setImage(new Image("file:assets/unchecked_box.png"));
 				contenedora.getLista().set(0, !contenedora.getLista().get(0));
 			}
 		});
