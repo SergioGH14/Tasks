@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
 
 import Util.Basics;
 import Util.Date_solver;
+import Util.InputValid;
 import bussines.Asignatura;
 import bussines.Unidad_Logica;
 import javafx.fxml.Initializable;
@@ -110,6 +111,7 @@ public class CrearActividadController implements Initializable{
 	private int prioridad;
 	
 	private int tiempo;
+	
     private ActividadDTO actividaddto;
     
     private Asignatura asignatura;
@@ -151,6 +153,27 @@ public class CrearActividadController implements Initializable{
 		}
 		
 	}    
+	public boolean inputValid(){
+		String res = "\n";
+		boolean valid = true;
+		if(InputValid.estaRellenado(tfTituloActividad.getText())==false)
+			{res = res + "No hay titulo de la Actividad\n";
+			valid = false;}
+		if(InputValid.estaRellenado(taDescripcion.getText())==false)
+			taDescripcion.setText("");
+		if(prioridad == 0)
+			{res = res + "No has seleccionado prioridad\n";
+			valid = false;}
+		if(tiempo == 0)
+			{res = res + "No has seleccionado la duracion de la actividad\n";
+			valid = false;}
+		if(InputValid.esFechaFutura(dpFechaFin.getValue())==false)
+			{res = res + "No has seleccionado niguna fecha correcta\n";
+			valid = false;}
+			if(!valid)controladorPrincipal.sacarError(res);
+		return valid;
+		
+	}
 	public void indicadorTiempo(int valor){
 		lTiempoBajo.setOpacity(0);
 		lTiempoMedio.setOpacity(0);
@@ -249,8 +272,7 @@ public class CrearActividadController implements Initializable{
 				public void handle(Event event) {
 					// Hacer el input valid antes
 					
-					
-					System.out.println(dpFechaFin.getValue());
+					if(inputValid()){
 					actividaddto = new ActividadDTO(asignatura.getTitulo(), 
 							tfTituloActividad.getText(), 
 							taDescripcion.getText(), 
@@ -260,7 +282,7 @@ public class CrearActividadController implements Initializable{
 							prioridad, 
 							false);
 					primaryStage.close();
-				}
+				}}
 			
 			});
 	}
