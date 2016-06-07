@@ -99,14 +99,14 @@ public class UsuarioDAOImp implements UsuarioDAO{
 	public void editarUsuario(Usuario usuario) {
 		try{
 			connectionManager.connect();
-			String str = "UPDATE USUARIO "+
-						 "SET id_universidad= "+usuario.getUniversidad().getId_universidad()+", "+
-						 "SET nombre= '"+usuario.getNombre() +"', "+
-						 "SET apellidos= '"+usuario.getApellidos() +"', "+
-						 "SET avatar= '"+ usuario.getAvatar() +"', "+
-						 "SET fecha_nacimiento= '"+Date_solver.convertirLocalDateEnSQL(usuario.getFechanacimiento())+"', "+
-						 "SET email= '"+usuario.getEmail()+"' "+
-						 " WHERE id_usuario=" + usuario.getId_usuario() +")";
+			String str = "UPDATE USUARIO SET (id_universidad, nombre, apellidos, avatar, fecha_nacimiento, email)="
+					+ "("+usuario.getUniversidad().getId_universidad()+", "+
+					 "'"+usuario.getNombre() +"', "+
+					 "'"+usuario.getApellidos() +"', "+
+					 "'"+ usuario.getAvatar() +"', "+
+					 "'"+Date_solver.convertirLocalDateEnSQL(usuario.getFechanacimiento())+"', "+
+					 "'"+usuario.getEmail()+"' "+
+					 ") WHERE id_usuario = '" + usuario.getId_usuario() +"'";
 			connectionManager.updateDB(str);
 			System.out.println("\nUsuario editado con éxito: " + usuario);
 			connectionManager.close();

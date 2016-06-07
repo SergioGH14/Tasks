@@ -70,7 +70,6 @@ public class MenuLateralController implements Initializable {
 	//Etiquetas XML para identificar objetos en pantalla
 	//Barra TOP
 	@FXML private ImageView ivAvatar;
-    @FXML private Circle circleAvatar;
 	@FXML private Text tvNombreUsuario;
 	@FXML private Text logoArdum;
 	@FXML private ImageView ivNotificaciones;
@@ -193,7 +192,6 @@ public class MenuLateralController implements Initializable {
 				if(bufferedImage!=null){
 					Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 					ivAvatar.setImage(image);
-					circleAvatar.setFill(new ImagePattern(image));
 				}
 			}
 		}
@@ -272,6 +270,12 @@ public class MenuLateralController implements Initializable {
 			}
 		});
 
+		ivConfiguracion.setOnMouseClicked(new EventHandler<Event>() {
+			@Override
+			public void handle(Event event) {
+				controladorPrincipal.mostrarPantallaConfiguracionUsuario();
+			}
+		});
 	}
 	
 	public void lanzarPantallaDeActividades(Asignatura asignaturaSeleccionada, int tipoItemMenu){
@@ -280,6 +284,26 @@ public class MenuLateralController implements Initializable {
 	
 	public void lanzarPantallaDeNotificaciones(boolean mostrar){
 		controladorPrincipal.mostrarListaDeNotificaciones(primaryStage, mostrar);
+	}
+	
+	public void actualizarDatosConfiguracion(){
+		if(tvNombreUsuario!=null && TextTituloGrado!=null){
+			tvNombreUsuario.setText(fachada.getUsuario().getNombreCompleto());
+			TextTituloGrado.setText(fachada.getGrado().getTitulacion());
+			//establecer imagen del item seleccionado en la pantalla de descripcion
+			BufferedImage bufferedImage = null;
+			try {
+				System.out.println("Avatar: " + fachada.getUsuario().getAvatar());
+				bufferedImage = ImageIO.read(new File(fachada.getUsuario().getAvatar()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally{
+				if(bufferedImage!=null){
+					Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+					ivAvatar.setImage(image);
+				}
+			}
+		}
 	}
 
 }

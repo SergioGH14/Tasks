@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import persistence.dto.ActividadDTO;
 
@@ -29,6 +30,7 @@ import persistence.dto.ActividadDTO;
 public class MainController  extends Application {
 	private BorderPane root;
 	private BorderPane userRoot;
+	private MenuLateralController menuLateralController;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -47,8 +49,8 @@ public class MainController  extends Application {
 			
 			//acceso al controlador de la pantalla de activiades con menu lateral
 			//previo paso de datos antes de que se lanze la pantalla
-			MenuLateralController pantallaInicialActiviades = loader.<MenuLateralController>getController();
-			pantallaInicialActiviades.initStage(primaryStage, this);
+			menuLateralController = loader.<MenuLateralController>getController();
+			menuLateralController.initStage(primaryStage, this);
 			
 			abrirPantallaActividades(primaryStage, null, 1);
 			
@@ -361,6 +363,35 @@ public class MainController  extends Application {
 		}
 	}
 
+	public void mostrarPantallaConfiguracionUsuario(){
+		try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/ConfiguracionUsuario.fxml"));
+			VBox conf = (VBox)loader.load();
+			
+			Stage secondaryStage = new Stage();
+			Scene scene = new Scene(conf);
+			
+			ConfiguracionUsuarioController confController = loader.<ConfiguracionUsuarioController>getController();
+			confController.initStage(secondaryStage, this);
+		
+
+			secondaryStage.setScene(scene);
+			secondaryStage.setResizable(false);
+			secondaryStage.setTitle(Util.Constantes.ARDUM); 
+			
+			secondaryStage.showAndWait();
+
+			//Actualizacion de los nuevos datos
+			if(menuLateralController!=null){
+				menuLateralController.actualizarDatosConfiguracion();
+			}
+			
+			
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error sacar la pantalla de configuracion " + e.getLocalizedMessage());
+		}
+	}
 	
 	
 	

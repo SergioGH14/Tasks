@@ -136,7 +136,6 @@
                   <Image url="@../../../assets/conf_blanco.png" />
                </image>
             </ImageView>
-            <Circle fx:id="circleAvatar" fill="#ffffff00" layoutX="27.0" layoutY="23.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <ImageView fx:id="ivNotificacionTriangulo" fitHeight="13.0" fitWidth="24.0" layoutX="1073.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" translateY="1.0" visible="false">
                <image>
                   <Image url="@../../../assets/notificaciones_triangulo.png" />

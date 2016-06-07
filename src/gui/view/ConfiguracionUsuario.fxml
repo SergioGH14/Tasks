@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.ConfiguracionUsuarioController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Region prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane>
+               <children>
+                  <ImageView fx:id="ivAvatar" fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                     <image>
+                        <Image url="@../../../assets/usuario_black.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Region prefHeight="200.0" prefWidth="200.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </VBox.margin>
+      </HBox>
+      <TextField fx:id="tvNombre" alignment="TOP_LEFT" focusTraversable="false" promptText="Nombre">
+         <VBox.margin>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="tvApellidos" focusTraversable="false" promptText="Apellidos">
+         <VBox.margin>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="12.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox>
+         <children>
+            <DatePicker fx:id="tvFechaNacimiento" focusTraversable="false" promptText="fecha de nacimiento">
+               <VBox.margin>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </VBox.margin>
+               <HBox.margin>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="12.0" />
+               </HBox.margin>
+            </DatePicker>
+         </children>
+      </HBox>
+      <Label fx:id="tvInfoGradoTag" contentDisplay="CENTER" text="Información universitaria">
+         <VBox.margin>
+            <Insets top="16.0" />
+         </VBox.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tvNombreUniversidad" focusTraversable="false" promptText="Nombre de tu universidad">
+         <VBox.margin>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="tvNombreGrado" focusTraversable="false" promptText="Nombre del grado que cursas actualmente...">
+         <VBox.margin>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="12.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="ivCancelar" fitHeight="63.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/cancelar.png" />
+               </image>
+            </ImageView>
+            <Region prefHeight="100.0" prefWidth="132.0" />
+            <ImageView fx:id="ivGuardar" fitHeight="63.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/guardar.png" />
+               </image>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="12.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

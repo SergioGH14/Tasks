@@ -187,7 +187,7 @@ public class CrearActividadConcretaController implements Initializable{
 		public void handle(Event event) {
 			actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
 			
-			actividad = new Examen_Poliformat((Actividad_Examen)actividad);
+			//actividad = new Examen_Poliformat((Actividad_Examen)actividad);
 			
 			primaryStage.close();
 			

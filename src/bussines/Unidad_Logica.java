@@ -30,6 +30,13 @@ public class Unidad_Logica {
 		}
 		return instancia;
 	}
+	
+	private Unidad_Logica(){
+		this.usuario = dal.buscarUsuario(1);
+		this.universidad = dal.obtenerInformacionDeUniversidad(1);
+		this.grado = dal.obtenerInformacionGrado(1);
+	}
+	
 	//GETTERS Y SETTERS
 	public Usuario getUsuario() {
 		return usuario;
@@ -37,6 +44,7 @@ public class Unidad_Logica {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+		editarUsuario(usuario);
 	}
 
 	public Universidad getUniversidad() {
@@ -45,6 +53,7 @@ public class Unidad_Logica {
 
 	public void setUniversidad(Universidad universidad) {
 		this.universidad = universidad;
+		editarUniversiad(universidad);
 	}
 
 	public Grado getGrado() {
@@ -53,6 +62,7 @@ public class Unidad_Logica {
 
 	public void setGrado(Grado grado) {
 		this.grado = grado;
+		editarGrado(grado);
 	}
 
 	public Curso getCurso() {

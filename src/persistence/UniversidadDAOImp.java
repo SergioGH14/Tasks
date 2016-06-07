@@ -93,12 +93,13 @@ public class UniversidadDAOImp implements UniversidadDAO{
 	public void editarUniversiad(Universidad universidad) {
 		try{
 			connectionManager.connect();
-			String str = "UPDATE UNIVERSIDAD "+
-						 "SET id_universidad= "+universidad.getId_universidad()+", "+
-						 "SET nombre= '"+universidad.getNombre()+"', "+
-						 "SET logo= '"+universidad.getLogo()+"', "+
-						 "SET direccion= '"+ universidad.getDireccion() +"' "+
-						 " WHERE id_universidad=" + universidad.getId_universidad() +")";
+			String str = "UPDATE UNIVERSIDAD SET (ID_UNIVERSIDAD, NOMBRE, LOGO, DIRECCION)="
+					+ "("
+					  +universidad.getId_universidad()+", "
+					 +"'"+universidad.getNombre()+"', "
+					 +"'"+universidad.getLogo()+"', "
+					 +"'"+ universidad.getDireccion() +"' "
+					+ ") WHERE ID_UNIVERSIDAD = '" + universidad.getId_universidad() +  "'" ;
 			connectionManager.updateDB(str);
 			System.out.println("\nUniversidad editada con éxito: " + universidad);
 			connectionManager.close();

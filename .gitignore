@@ -1,3 +1,9 @@
 /bin/
 
 data/ardumBD.script
+
+*.class
+
+*.class
+
+*.log

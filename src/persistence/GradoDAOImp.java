@@ -91,12 +91,13 @@ public class GradoDAOImp implements GradoDAO{
 	public void editarGrado(Grado grado) {
 		try{
 			connectionManager.connect();
-			String str = "UPDATE GRADO "+
-						 "SET id_universidad= "+grado.getUniversidad().getId_universidad()+", "+
-						 "SET id_grado= '"+grado.getId_grado() +"', "+
-						 "SET titulacion= '"+grado.getTitulacion() +"', "+
-						 "SET anyo_inicio= '"+Date_solver.convertirLocalDateEnSQL(grado.getAnyoinicio())+"' "+
-						 " WHERE id_grado=" + grado.getId_grado() +")";
+			String str ="UPDATE GRADO SET (ID_UNIVERSIDAD, ID_GRADO, TITULACION, ANYO_INICIO) ="
+					+ "("
+					+grado.getUniversidad().getId_universidad()+", "
+					+grado.getId_grado() +", "
+					+"'"+grado.getTitulacion() +"', "
+					+"'"+Date_solver.convertirLocalDateEnSQL(grado.getAnyoinicio())+"' "
+					+ ") WHERE ID_GRADO = '" +grado.getId_grado() +"'";
 			connectionManager.updateDB(str);
 			System.out.println("\nGrado editado con éxito: " + grado);
 			connectionManager.close();
