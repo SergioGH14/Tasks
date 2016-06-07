@@ -63,6 +63,8 @@ public class ListCellFactoryItemActividades {
 					@Override
 					public void handle(ActionEvent event) {
 						System.out.println("Ha seleccionado borrar");
+						if(listaActividadesController!=null)
+						listaActividadesController.eliminarActividad(actividad);
 					}
 				});
 				
@@ -72,11 +74,31 @@ public class ListCellFactoryItemActividades {
 					@Override
 					public void handle(ActionEvent event) {
 						System.out.println("Ha seleccionado marcar como hecho");
+						actividad.setFinalizada(true);
+						if(listaActividadesController!=null)
+						listaActividadesController.marcarActividadFinalizada(actividad);
 					}
 				});
 
+				if(!actividad.isPara_despues()){
+					MenuItem marcarParaDespues = new MenuItem("Para después");
+					marcarParaDespues.setOnAction(new EventHandler<ActionEvent>() {
+	
+						@Override
+						public void handle(ActionEvent event) {
+							System.out.println("Ha seleccionado para despues");
+							actividad.setPara_despues(true);
+							if(listaActividadesController!=null)
+							listaActividadesController.marcarActividadParaDespues(actividad);
+						}
+					});
+					contextMenu.getItems().addAll(editar, borrar, marcar, marcarParaDespues);
+
+				}else{
+					contextMenu.getItems().addAll(editar, borrar, marcar);
+
+				}
 				
-				contextMenu.getItems().addAll(editar, borrar, marcar);
 				contextMenu.show(lciMenuContextual, event.getScreenX(), event.getScreenY());
 				
 			}

@@ -1,6 +1,7 @@
 package persistence;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,15 @@ import Util.Basics;
 import Util.Constantes;
 import Util.Date_solver;
 import bussines.Actividad;
+import bussines.Actividad_Examen;
 import bussines.Asignatura;
+import bussines.Clase;
 import bussines.Cuatrimestre;
+import bussines.Examen;
+import bussines.Examen_Clase;
+import bussines.Examen_Poliformat;
+import bussines.Examen_Practicas;
+import bussines.Practicas;
 import persistence.dao.ActividadDAO;
 import persistence.dto.ActividadDTO;
 
@@ -91,8 +99,26 @@ protected ConnectionManager connectionManager;
 	public void eliminarActividad(int id_actividad) {
 		try{
 			connectionManager.connect();
-			String str = "DELETE FROM ACTIVIDAD WHERE id_actividad ='"+ id_actividad+"'" ;
-			connectionManager.updateDB(str);
+			String act = "DELETE FROM ACTIVIDAD WHERE id_actividad ='"+ id_actividad+"'" ;
+			String clase = "DELETE FROM CLASE WHERE id_actividad ='"+ id_actividad+"'" ;
+			String pract = "DELETE FROM PRACTICAS WHERE id_actividad ='"+ id_actividad+"'" ;
+			String notf = "DELETE FROM NOTIFICACION WHERE id_actividad ='"+ id_actividad+"'" ;
+
+			connectionManager.updateDB(notf);
+			connectionManager.updateDB(pract);
+			connectionManager.updateDB(clase);
+			
+			//Capturar excepcion si es un examen para llamar a los delete del examen
+			try{
+				String ex = "DELETE FROM EXAMEN WHERE id_actividad = '" + id_actividad+"'";
+				connectionManager.updateDB(ex);
+			}catch(Exception ex){
+				System.err.println("Era un examen, se borrará");
+			}
+			
+			
+			connectionManager.updateDB(act);
+			
 			connectionManager.close();
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al eliminar la actividad: "+e.getLocalizedMessage() );
@@ -140,8 +166,18 @@ protected ConnectionManager connectionManager;
 
 	@Override
 	public void editarActividad(Actividad actividad) {
-		// TODO Auto-generated method stub
-		
+		try{
+			connectionManager.connect();
+			String str = "UPDATE ACTIVIDAD SET (finalizada)="
+					+ "("+true+
+					 ") WHERE id_actividad = '" + actividad.getId_actividad() +"'";
+			connectionManager.updateDB(str);
+			System.out.println("\nActividad editada con éxito: " + actividad.getId_actividad());
+			connectionManager.close();
+
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al editar la actividad: "+e.getLocalizedMessage() );
+		}
 	}
 	
 	private int crearSecuencia(String nombreSecuencia){
@@ -156,6 +192,38 @@ protected ConnectionManager connectionManager;
 		}
 		return -1;
 
+	}
+
+	@Override
+	public void marcarComoHecha(int id_actividad) {
+		try{
+			connectionManager.connect();
+			String str = "UPDATE ACTIVIDAD SET (finalizada)="
+					+ "("+true+
+					 ") WHERE id_actividad = '" + id_actividad +"'";
+			connectionManager.updateDB(str);
+			System.out.println("\nActividad finalizada con éxito: " + id_actividad);
+			connectionManager.close();
+
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al finalizar la actividad: "+e.getLocalizedMessage() );
+		}
+	}
+
+	@Override
+	public void marcarParaDespues(int id_actividad) {
+		try{
+			connectionManager.connect();
+			String str = "UPDATE ACTIVIDAD SET (para_despues)="
+					+ "("+true+
+					 ") WHERE id_actividad = '" + id_actividad +"'";
+			connectionManager.updateDB(str);
+			System.out.println("\nActividad marcada para despues con éxito: " + id_actividad);
+			connectionManager.close();
+
+		}catch(Exception e){
+			System.err.println("Ha ocurrido un error al marcar para despues la actividad: "+e.getLocalizedMessage() );
+		}
 	}
 
 }

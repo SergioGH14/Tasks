@@ -164,10 +164,33 @@ public class ListaActividadesController implements Initializable{
 		System.out.println("MARCAR COMO FINALIZADA LA TAREA QUE HE RECIBIDO ID: " + actividad.getId_actividad());
 		for(int i = 0; i<olActividades.size(); i++){
 			if(olActividades.get(i).getId_actividad() == actividad.getId_actividad()){
+				Unidad_Logica.getInstance().marcarActividadHecha(actividad.getId_actividad());
 				olActividades.remove(i);
+				actualizarListas();
 			}
 		}
-		
+	}
+	
+	public void marcarActividadParaDespues(Actividad actividad){
+		System.out.println("MARCAR COMO PARA_DESPUES LA TAREA QUE HE RECIBIDO ID: " + actividad.getId_actividad());
+		for(int i = 0; i<olActividades.size(); i++){
+			if(olActividades.get(i).getId_actividad() == actividad.getId_actividad()){
+				Unidad_Logica.getInstance().marcarActividadParaDespues(actividad.getId_actividad());
+				olActividades.remove(i);
+				actualizarListas();
+			}
+		}
+	}
+	
+	public void eliminarActividad(Actividad actividad){
+		System.out.println("MARCAR COMO BORRAR LA TAREA QUE HE RECIBIDO ID: " + actividad.getId_actividad());
+		for(int i = 0; i<olActividades.size(); i++){
+			if(olActividades.get(i).getId_actividad() == actividad.getId_actividad()){
+				Unidad_Logica.getInstance().eliminarActividad(actividad.getId_actividad());
+				olActividades.remove(i);
+				actualizarListas();
+			}
+		}
 	}
 
 }

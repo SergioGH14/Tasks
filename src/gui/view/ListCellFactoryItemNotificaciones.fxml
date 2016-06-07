@@ -17,7 +17,7 @@
       </Circle>
       <VBox minWidth="173.0">
          <children>
-            <Label fx:id="tvTituloAsignatura" text="Label" textFill="WHITE">
+            <Label fx:id="tvTituloAsignatura" text="Label" textFill="WHITE" wrapText="true">
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>

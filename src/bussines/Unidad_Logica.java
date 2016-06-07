@@ -113,6 +113,14 @@ public class Unidad_Logica {
 	public ActividadDTO obtenerInformacionDeActividad(int id_actividad) {
 		return dal.obtenerInformacionDeActividad(id_actividad);
 	}
+	
+	public void marcarActividadHecha(int id_actividad){
+		dal.marcarComoHecha(id_actividad);
+	}
+	
+	public void marcarActividadParaDespues(int id_actividad){
+		dal.marcarParaDespues(id_actividad);
+	}
 	/*FIN ACTIVIDAD*/
 	
 	/*ASIGNATURA*/
@@ -437,7 +445,7 @@ public class Unidad_Logica {
 	
 	public List<Actividad> listaDeParaDespues(){
 		List <Actividad> list = new ArrayList<Actividad>();
-		list.addAll(dal.obtenerPracticasParaDespues());
+		list.addAll(dal.obtenerClasesParaDespues());
 		list.addAll(dal.obtenerPracticasParaDespues());
 		list.addAll(dal.obtenerExamenesParaDespues());
 		return list;

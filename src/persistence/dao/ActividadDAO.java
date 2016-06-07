@@ -14,4 +14,8 @@ public interface ActividadDAO {
 	
 	public void editarActividad(Actividad actividad);
 	
+	public void marcarComoHecha(int id_actividad);
+	
+	public void marcarParaDespues(int id_actividad);
+	
 }

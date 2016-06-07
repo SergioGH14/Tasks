@@ -58,6 +58,16 @@ public class DAL {
 			public ActividadDTO obtenerInformacionDeActividadExamen(int id_actividad_examen) {
 				return new ActividadDAOImp().obtenerInformacionDeActividadExamen(id_actividad_examen);
 			}
+
+			@Override
+			public void marcarComoHecha(int id_actividad) {
+				new ActividadDAOImp().marcarComoHecha(id_actividad);
+			}
+
+			@Override
+			public void marcarParaDespues(int id_actividad) {
+				new ActividadDAOImp().marcarParaDespues(id_actividad);
+			}
 			
 		};
 		
@@ -504,6 +514,14 @@ public class DAL {
 	public void editarActividad(Actividad actividad) {
 		actividadDAO.editarActividad(actividad);
 		
+	}
+
+	public void marcarComoHecha(int id_actividad) {
+		new ActividadDAOImp().marcarComoHecha(id_actividad);
+	}
+
+	public void marcarParaDespues(int id_actividad) {
+		new ActividadDAOImp().marcarParaDespues(id_actividad);
 	}
 
 	 /*FIN ACTIVIDAD*/
