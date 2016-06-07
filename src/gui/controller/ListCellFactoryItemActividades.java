@@ -74,7 +74,7 @@ public class ListCellFactoryItemActividades {
 					@Override
 					public void handle(ActionEvent event) {
 						System.out.println("Ha seleccionado marcar como hecho");
-						actividad.setFinalizada(true);
+						((Actividad)actividad).setFinalizada(true);
 						if(listaActividadesController!=null)
 						listaActividadesController.marcarActividadFinalizada(actividad);
 					}
@@ -87,7 +87,7 @@ public class ListCellFactoryItemActividades {
 						@Override
 						public void handle(ActionEvent event) {
 							System.out.println("Ha seleccionado para despues");
-							actividad.setPara_despues(true);
+							((Actividad)actividad).setPara_despues(true);
 							if(listaActividadesController!=null)
 							listaActividadesController.marcarActividadParaDespues(actividad);
 						}
@@ -123,7 +123,5 @@ public class ListCellFactoryItemActividades {
 			}
 		});
     	
-    	
     }
-
 }

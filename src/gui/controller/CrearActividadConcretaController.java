@@ -9,18 +9,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
 import bussines.Actividad;
 import bussines.Actividad_Examen;
 import bussines.Asignatura;
+import bussines.Examen_Clase;
 import bussines.Examen_Poliformat;
+import bussines.Examen_Practicas;
 import bussines.Fabrica_Actividad;
 import bussines.Unidad_Logica;
 import javafx.stage.Stage;
@@ -67,6 +65,16 @@ public class CrearActividadConcretaController implements Initializable{
      */
     
     private List<Boolean> lista;
+    
+    private boolean ex_clase;
+    private boolean ex_clase_grupal;
+    private boolean ex_clase_apuntes;
+    
+    private boolean ex_poliformat;
+    private boolean ex_poliformat_reintentable;
+
+    private boolean ex_practicas;
+    private boolean ex_practicas_apuntes;
     
 	private Actividad actividad;
 	
@@ -122,6 +130,51 @@ public class CrearActividadConcretaController implements Initializable{
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
 	}
+	
+	public boolean isEx_clase() {
+		return ex_clase;
+	}
+	public void setEx_clase(boolean ex_clase) {
+		this.ex_clase = ex_clase;
+	}
+	public boolean isEx_poliformat() {
+		return ex_poliformat;
+	}
+	public void setEx_poliformat(boolean ex_poliformat) {
+		this.ex_poliformat = ex_poliformat;
+	}
+	public boolean isEx_practicas() {
+		return ex_practicas;
+	}
+	public void setEx_practicas(boolean ex_practicas) {
+		this.ex_practicas = ex_practicas;
+	}
+	public boolean isEx_clase_grupal() {
+		return ex_clase_grupal;
+	}
+	public void setEx_clase_grupal(boolean ex_clase_grupal) {
+		this.ex_clase_grupal = ex_clase_grupal;
+	}
+	public boolean isEx_clase_apuntes() {
+		return ex_clase_apuntes;
+	}
+	public void setEx_clase_apuntes(boolean ex_clase_apuntes) {
+		this.ex_clase_apuntes = ex_clase_apuntes;
+	}
+	public boolean isEx_poliformat_reintentable() {
+		return ex_poliformat_reintentable;
+	}
+	public void setEx_poliformat_reintentable(boolean ex_poliformat_reintentable) {
+		this.ex_poliformat_reintentable = ex_poliformat_reintentable;
+	}
+	public boolean isEx_practicas_apuntes() {
+		return ex_practicas_apuntes;
+	}
+	public void setEx_practicas_apuntes(boolean ex_practicas_apuntes) {
+		this.ex_practicas_apuntes = ex_practicas_apuntes;
+	}
+
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -188,17 +241,51 @@ public class CrearActividadConcretaController implements Initializable{
 			
 			if(tipo != 0){
 				actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
+				
+				if(tipo == 3){
+					Actividad_Examen examen = (Actividad_Examen)actividad;
+					if(ex_poliformat){
+						examen = new Examen_Poliformat(examen);
+						
+						Examen_Poliformat ex = (Examen_Poliformat)examen;
+						ex.setReintentable(ex_poliformat_reintentable);
+						
+						examen = ex;
+						
+					}
+					if(ex_clase){
+						examen = new Examen_Clase(examen);
+						
+						Examen_Clase ex = (Examen_Clase)examen;
+						ex.setGrupal(ex_clase_grupal);
+						ex.setApuntes(ex_clase_apuntes);
+						
+						examen = ex;
+					}
+					if(ex_practicas){
+						examen = new Examen_Practicas(examen);
+						
+						Examen_Practicas ex = (Examen_Practicas)examen;
+						ex.setApuntes(ex_practicas_apuntes);
+						
+						examen = ex;
+						
+					}
+					
+					actividad = Unidad_Logica.getInstance().crearExamen(examen);
+					
+					
+				}
+				
 				primaryStage.close();
+			} else {
+					controladorPrincipal.sacarError("\nSelecciona un tipo de Actividad");
 			}
-				else controladorPrincipal.sacarError("\nSelecciona un tipo de Actividad");
-			//actividad = new Examen_Poliformat((Actividad_Examen)actividad);
-			
-			
-			
-	
 			
 		}
 	});
+	
 	}
-
+	
+	
 }

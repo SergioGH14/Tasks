@@ -86,7 +86,7 @@ public class Fabrica_Actividad {
 	private Actividad crearExamen(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
 		
 		//EXAMEN CONCRETO
-		Actividad_Examen examen = new Examen(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getTitulo()),
+		Actividad_Examen examen = new Examen(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getId_asignatura()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
 				actividaddto.getFechaFinalizacion(), 
@@ -97,7 +97,6 @@ public class Fabrica_Actividad {
 				actividaddto.isPara_despues(),
 				especificaciones.get(0),
 				especificaciones.get(1));
-		examen = Unidad_Logica.getInstance().crearExamen(examen);
 		return examen;
 	}
 }

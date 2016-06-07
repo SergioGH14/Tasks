@@ -10,7 +10,7 @@
 
 <HBox fx:id="lciHbox" cacheShape="false" centerShape="false" prefHeight="40.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox>
+      <VBox prefHeight="50.0" prefWidth="595.0">
          <children>
             <CheckBox fx:id="lciTituloActividad" focusTraversable="false" mnemonicParsing="false" text="Hacer trabajo de DDS Patrones" textFill="#262b33">
                <VBox.margin>

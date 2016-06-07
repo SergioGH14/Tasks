@@ -1,15 +1,12 @@
 package gui.controller;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import Util.Basics;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -135,9 +132,7 @@ public class CrearExamenController implements Initializable {
     private MainController controladorPrincipal;
     
     private CrearActividadConcretaController contenedora;
-    
-    private boolean ultimo;
-	private boolean recuperable;
+
 
 	private boolean poliformat;
 	private boolean practicas;
@@ -169,6 +164,7 @@ public class CrearExamenController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				poliformat = true;
+				contenedora.setEx_poliformat(poliformat);
 				ivPoliformat.setVisible(!poliformat);
 				ivPoliformatClicked.setVisible(poliformat);
 				actualizarEstado();
@@ -181,6 +177,7 @@ public class CrearExamenController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				poliformat = false;
+				contenedora.setEx_poliformat(poliformat);
 				ivPoliformat.setVisible(!poliformat);
 				ivPoliformatClicked.setVisible(poliformat);
 				actualizarEstado();
@@ -194,7 +191,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 				ivPoliReintentableClicked.setVisible(poliformat);
 				ivPoliReintentable.setVisible(!poliformat);
-
+				contenedora.setEx_poliformat_reintentable(!contenedora.isEx_poliformat_reintentable());
 			}
 		});
 		
@@ -204,6 +201,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 				ivPoliReintentableClicked.setVisible(!poliformat);
 				ivPoliReintentable.setVisible(poliformat);
+				contenedora.setEx_poliformat_reintentable(!contenedora.isEx_poliformat_reintentable());
 
 			}
 		});
@@ -213,6 +211,7 @@ public class CrearExamenController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				clase = true;
+				contenedora.setEx_clase(clase);
 				ivClase.setVisible(!clase);
 				ivClaseClicked.setVisible(clase);
 				actualizarEstado();
@@ -225,6 +224,7 @@ public class CrearExamenController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				clase = false;
+				contenedora.setEx_clase(clase);
 				ivClase.setVisible(!clase);
 				ivClaseClicked.setVisible(clase);
 				actualizarEstado();
@@ -238,7 +238,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 				ivClaseApuntes.setVisible(!clase);
 				ivClaseApuntesClicked.setVisible(clase);
-
+				contenedora.setEx_clase_apuntes(!contenedora.isEx_clase_apuntes());
 			}
 		});
 		
@@ -248,7 +248,8 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 
 				ivClaseApuntes.setVisible(clase);
-				ivClaseApuntesClicked.setVisible(!clase);				
+				ivClaseApuntesClicked.setVisible(!clase);		
+				contenedora.setEx_clase_apuntes(!contenedora.isEx_clase_apuntes());
 			}
 		});
 		
@@ -258,7 +259,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 				ivClaseGrupal.setVisible(!clase);
 				ivClaseGrupalClicked.setVisible(clase);
-
+				contenedora.setEx_clase_grupal(!contenedora.isEx_clase_grupal());
 			}
 		});
 		
@@ -268,7 +269,9 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 
 				ivClaseGrupal.setVisible(clase);
-				ivClaseGrupalClicked.setVisible(!clase);				
+				ivClaseGrupalClicked.setVisible(!clase);
+				contenedora.setEx_clase_grupal(!contenedora.isEx_clase_grupal());
+				
 			}
 		});
 		
@@ -280,6 +283,7 @@ public class CrearExamenController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				practicas = true;
+				contenedora.setEx_practicas(practicas);
 				ivPracticas.setVisible(!practicas);
 				ivPracticasClicked.setVisible(practicas);
 				actualizarEstado();
@@ -292,6 +296,7 @@ public class CrearExamenController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				practicas= false;
+				contenedora.setEx_practicas(practicas);
 				ivPracticas.setVisible(!practicas);
 				ivPracticasClicked.setVisible(practicas);
 				actualizarEstado();
@@ -305,6 +310,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 				ivPractApuntes.setVisible(!practicas);
 				ivPractApuntesClicked.setVisible(practicas);
+				contenedora.setEx_practicas_apuntes(!contenedora.isEx_practicas_apuntes());
 			}
 		});
 		ivPractApuntesClicked.setOnMouseClicked(new EventHandler<Event>() {
@@ -313,6 +319,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 				ivPractApuntes.setVisible(practicas);
 				ivPractApuntesClicked.setVisible(!practicas);
+				contenedora.setEx_practicas_apuntes(!contenedora.isEx_practicas_apuntes());
 			}
 		});
 		
@@ -325,9 +332,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
  				 
 				ivUltimoExamen.setVisible(false);
-				ivUltimoExamenClicked.setVisible(true);
-				ultimo = true;
-			
+				ivUltimoExamenClicked.setVisible(true);			
 				contenedora.getLista().set(1, !contenedora.getLista().get(1));
 			}
 		});
@@ -339,8 +344,6 @@ public class CrearExamenController implements Initializable {
 				 
 				ivUltimoExamen.setVisible(true);
 				ivUltimoExamenClicked.setVisible(false);
-				ultimo = false;
-				
 				contenedora.getLista().set(1, !contenedora.getLista().get(1));
 			}
 		});
@@ -350,10 +353,8 @@ public class CrearExamenController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				ivRecuperarExamen.setVisible(false);
-				ivRecuperarExamenClicked.setVisible(true);
-				recuperable = true;
-			
-				contenedora.getLista().set(1, !contenedora.getLista().get(1));
+				ivRecuperarExamenClicked.setVisible(true);			
+				contenedora.getLista().set(0, !contenedora.getLista().get(0));
 			}
 		});
 		
@@ -363,9 +364,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 				 
 				ivRecuperarExamen.setVisible(true);
-				ivRecuperarExamenClicked.setVisible(false);
-				recuperable = false;
-				
+				ivRecuperarExamenClicked.setVisible(false);				
 				contenedora.getLista().set(0, !contenedora.getLista().get(0));
 			}
 		});

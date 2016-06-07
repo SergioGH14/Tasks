@@ -113,7 +113,7 @@ protected ConnectionManager connectionManager;
 				String ex = "DELETE FROM EXAMEN WHERE id_actividad = '" + id_actividad+"'";
 				connectionManager.updateDB(ex);
 			}catch(Exception ex){
-				System.err.println("Era un examen, se borrará");
+				System.err.println("Era un examen, se borrará en cascada...");
 			}
 			
 			

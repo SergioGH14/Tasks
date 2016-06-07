@@ -161,10 +161,11 @@ public class ListaActividadesController implements Initializable{
 	}
 	
 	public void marcarActividadFinalizada(Actividad actividad){
-		System.out.println("MARCAR COMO FINALIZADA LA TAREA QUE HE RECIBIDO ID: " + actividad.getId_actividad());
+		int id_actividad = ((Actividad)actividad).getId_actividad();
+		System.out.println("MARCAR COMO FINALIZADA LA TAREA QUE HE RECIBIDO ID: " +id_actividad);
 		for(int i = 0; i<olActividades.size(); i++){
-			if(olActividades.get(i).getId_actividad() == actividad.getId_actividad()){
-				Unidad_Logica.getInstance().marcarActividadHecha(actividad.getId_actividad());
+			if(olActividades.get(i).getId_actividad() == id_actividad){
+				Unidad_Logica.getInstance().marcarActividadHecha(id_actividad);
 				olActividades.remove(i);
 				actualizarListas();
 			}
@@ -172,10 +173,11 @@ public class ListaActividadesController implements Initializable{
 	}
 	
 	public void marcarActividadParaDespues(Actividad actividad){
-		System.out.println("MARCAR COMO PARA_DESPUES LA TAREA QUE HE RECIBIDO ID: " + actividad.getId_actividad());
+		int id_actividad = ((Actividad)actividad).getId_actividad();
+		System.out.println("MARCAR COMO PARA_DESPUES LA TAREA QUE HE RECIBIDO ID: " + id_actividad);
 		for(int i = 0; i<olActividades.size(); i++){
-			if(olActividades.get(i).getId_actividad() == actividad.getId_actividad()){
-				Unidad_Logica.getInstance().marcarActividadParaDespues(actividad.getId_actividad());
+			if(olActividades.get(i).getId_actividad() == id_actividad){
+				Unidad_Logica.getInstance().marcarActividadParaDespues(id_actividad);
 				olActividades.remove(i);
 				actualizarListas();
 			}
@@ -183,10 +185,11 @@ public class ListaActividadesController implements Initializable{
 	}
 	
 	public void eliminarActividad(Actividad actividad){
-		System.out.println("MARCAR COMO BORRAR LA TAREA QUE HE RECIBIDO ID: " + actividad.getId_actividad());
+		int id_actividad = ((Actividad)actividad).getId_actividad();
+		System.out.println("MARCAR COMO BORRAR LA TAREA QUE HE RECIBIDO ID: " + id_actividad);
 		for(int i = 0; i<olActividades.size(); i++){
-			if(olActividades.get(i).getId_actividad() == actividad.getId_actividad()){
-				Unidad_Logica.getInstance().eliminarActividad(actividad.getId_actividad());
+			if(olActividades.get(i).getId_actividad() == id_actividad){
+				Unidad_Logica.getInstance().eliminarActividad(id_actividad);
 				olActividades.remove(i);
 				actualizarListas();
 			}

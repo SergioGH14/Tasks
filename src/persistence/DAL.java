@@ -517,11 +517,11 @@ public class DAL {
 	}
 
 	public void marcarComoHecha(int id_actividad) {
-		new ActividadDAOImp().marcarComoHecha(id_actividad);
+		actividadDAO.marcarComoHecha(id_actividad);
 	}
 
 	public void marcarParaDespues(int id_actividad) {
-		new ActividadDAOImp().marcarParaDespues(id_actividad);
+		actividadDAO.marcarParaDespues(id_actividad);
 	}
 
 	 /*FIN ACTIVIDAD*/
