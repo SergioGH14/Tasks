@@ -102,6 +102,7 @@ public class MenuLateralController implements Initializable {
 		this.controladorPrincipal = controladorPrincipal;
 	}
 	
+	
 
 	@SuppressWarnings("unchecked")
 	@Override

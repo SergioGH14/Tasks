@@ -218,7 +218,30 @@ public class MainController  extends Application {
 		}
 		 return null;
 	}
-	
+	public Asignatura editarAsignatura(Asignatura asignatura){
+		 try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/EditarAsignatura.fxml"));
+			BorderPane creador = (BorderPane)loader.load();
+			
+			Stage secondaryStage = new Stage();
+			Scene scene = new Scene(creador);
+
+			secondaryStage.setScene(scene);
+			secondaryStage.setHeight(666.0);
+			secondaryStage.setWidth(535.0);
+			secondaryStage.setResizable(false);
+			secondaryStage.setTitle(Util.Constantes.ARDUM);
+			EditarAsignaturaController creadorcontrolador = loader.<EditarAsignaturaController>getController();
+			creadorcontrolador.initStage(secondaryStage, this,asignatura);
+			secondaryStage.showAndWait();
+			
+			return creadorcontrolador.getAsignatura();
+		} catch (IOException e){
+			// TODO Auto-generated catch block
+			System.err.println("Error al establecer la pantalla de editar Asignatura " + e.getLocalizedMessage()+e.initCause(e.getCause()));
+		}
+		 return null;
+	}
 	public void sacarError(String texto){
 		
 		 try{

@@ -193,7 +193,6 @@ protected ConnectionManager connectionManager;
 		return -1;
 
 	}
-
 	@Override
 	public void marcarComoHecha(int id_actividad) {
 		try{

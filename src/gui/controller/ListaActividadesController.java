@@ -47,7 +47,9 @@ public class ListaActividadesController implements Initializable{
 	@FXML Pane pnTodoHecho; //pantalla que se muestra cuando todo está hecho
 	@FXML Text tvMensajeTodoOk;
 	@FXML ImageView ivLogoTodoHecho;
-	
+	@FXML ImageView ivEditarAsignatura;
+	@FXML ImageView ivEditarAsignatura2;
+	@FXML Text tEditarAsignatura;
 	@FXML GridPane gpAnyadirActividad;
 	@FXML GridPane gpAnyadirActividadNO;
 	
@@ -66,6 +68,9 @@ public class ListaActividadesController implements Initializable{
 			gpAnyadirActividad.setVisible(true);
 			gpAnyadirActividadNO.setVisible(true);
 		}else{
+			tEditarAsignatura.setVisible(false);
+			ivEditarAsignatura2.setVisible(false);
+			ivEditarAsignatura.setVisible(false);
 			gpAnyadirActividad.setVisible(false);
 			gpAnyadirActividadNO.setVisible(false);
 		}
@@ -116,6 +121,24 @@ public class ListaActividadesController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		tEditarAsignatura.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				controladorPrincipal.editarAsignatura(asignatura);
+			}
+		});
+		ivEditarAsignatura.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				controladorPrincipal.editarAsignatura(asignatura);
+			}
+		});
+		
 		gpAnyadirActividad.setOnMouseClicked(new EventHandler<Event>() {
 
 			@Override

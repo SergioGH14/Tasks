@@ -42,6 +42,11 @@
                   </ImageView>
                </children>
             </GridPane>
+            <ImageView fx:id="ivEditarAsignatura" fitHeight="31.0" fitWidth="29.0" layoutX="635.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/Edit-64.png" />
+               </image>
+            </ImageView>
          </children>
          <padding>
             <Insets bottom="8.0" left="16.0" right="16.0" />
@@ -53,13 +58,18 @@
             <Insets bottom="8.0" left="16.0" right="16.0" />
          </GridPane.margin>
       </Pane>
-      <Pane fx:id="pnTodoHecho" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" visible="false">
+      <Pane fx:id="pnTodoHecho" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
          <children>
             <Text fx:id="tvMensajeTodoOk" fill="#e1e1e1" layoutX="170.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Está todo hecho! Disfruta del día">
                <font>
                   <Font size="23.0" />
                </font>
             </Text>
+            <ImageView fx:id="ivEditarAsignatura2" fitHeight="29.0" fitWidth="29.0" layoutX="397.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/Edit-64.png" />
+               </image>
+            </ImageView>
             <ImageView fx:id="ivLogoTodoHecho" fitHeight="231.0" fitWidth="299.0" layoutX="238.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/cerveza_fill.png" />
@@ -81,6 +91,11 @@
                   </ImageView>
                </children>
             </GridPane>
+            <Text fx:id="tEditarAsignatura" layoutX="268.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Asignatura" wrappingWidth="154.6796875">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>
