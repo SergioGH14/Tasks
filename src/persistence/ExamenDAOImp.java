@@ -148,31 +148,35 @@ public class ExamenDAOImp implements ExamenDAO {
 
 	@Override
 	public Actividad_Examen crearExamen(Actividad_Examen examen) {
+		System.err.println("\n\t###### crear examen ##### ");
 		Actividad_Examen act_examen = examen;
 		try{
 			
 			if(act_examen instanceof Examen){
+				System.err.println("Instancia de examen base");
 				connectionManager.connect();
 
 				Examen examenAux = (Examen)act_examen;
 				int id = crearSecuencia(Constantes.EXAMEN_SQ);
 				if(id>0){
+					int id_actividad = new ActividadDAOImp().crearActividad(examen).getId_actividad();
 					String str = "INSERT INTO EXAMEN (ID_EXAMEN, ID_ACTIVIDAD, ULTIMO, RECUPERABLE) " +
 								 "VALUES (" 
 								 +id+","
-								 +new ActividadDAOImp().crearActividad(examen).getId_actividad()+","
+								 +id_actividad+","
 								 +examenAux.isUltimo()+","
 								 +examenAux.isRecuperable()
 								 +")";
 					
 					if(examenAux!=null)
+						examenAux.setId_actividad(id_actividad);
 						examenAux.setId_examen(id);
 					
 					connectionManager.updateDB(str);
 					
 				}
 				connectionManager.close();
-				System.out.println("\nExamen creado con éxito: " + examenAux +"con id: " + examenAux.getId_examen()  );
+				System.out.println("\nExamen creado con éxito: " + examenAux +"con id: " + examenAux.getId_examen()  + " id_act: "+examenAux.getId_actividad());
 				return examenAux;
 			}
 			if(act_examen instanceof Examen_Poliformat){
@@ -191,7 +195,7 @@ public class ExamenDAOImp implements ExamenDAO {
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al crear la actividad_examen y se devuelve el mismo: "+e.getLocalizedMessage() );
 		}
-		System.out.println("Upps, devuelvo el objeto previo jeje.");
+		System.err.println("Upps, devuelvo el objeto previo jeje. Error al crear el examen");
 		return  act_examen;
 	}
 

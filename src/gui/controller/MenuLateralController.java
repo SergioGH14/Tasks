@@ -94,6 +94,7 @@ public class MenuLateralController implements Initializable {
 	
 	private Usuario usuario;
 	
+	private ObservableList<Asignatura> loAsignaturas;
 	
 	//prueba de asignatura auxiliar clickada
 	Asignatura asignaturaAux;
@@ -118,7 +119,7 @@ public class MenuLateralController implements Initializable {
 		listaAsignaturas.addAll(DAL.getInstance().obtenerAsignaturasPorCuatrimestre(3));
 
 		
-		ObservableList<Asignatura> loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
+	    loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
 		listViewAsignaturas.setItems(loAsignaturas);
 		
 		if(fachada.obtenerInformacionGrado(1)!=null){
@@ -288,7 +289,7 @@ public class MenuLateralController implements Initializable {
 	}
 	
 	public void actualizarDatosConfiguracion(){
-		if(tvNombreUsuario!=null && TextTituloGrado!=null){
+		if(tvNombreUsuario!=null && TextTituloGrado!=null && fachada.getUsuario()!=null){
 			tvNombreUsuario.setText(fachada.getUsuario().getNombreCompleto());
 			TextTituloGrado.setText(fachada.getGrado().getTitulacion());
 			//establecer imagen del item seleccionado en la pantalla de descripcion
@@ -303,6 +304,35 @@ public class MenuLateralController implements Initializable {
 					Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 					ivAvatar.setImage(image);
 				}
+			}
+		}else{
+			System.err.println("No se ha podido actualizar tu información de usuario");
+
+		}
+	}
+	
+	public void editarAsignatura(Asignatura asignatura){
+		if(asignatura!=null){
+			if(asignatura.getCuatrimestre().getCuatrimestre()==3 || asignatura.getCuatrimestre().getCuatrimestre()==Basics.cuatrimestreActual()){
+				for(int i = 0; i<loAsignaturas.size(); i++){
+					if(loAsignaturas.get(i).getId_asignatura() == asignatura.getId_asignatura()){
+						loAsignaturas.remove(i);
+						loAsignaturas.add(i, asignatura);
+						listViewAsignaturas.getSelectionModel().select(i);
+					}
+				}
+			}
+			System.out.println("Se ha editado la asignatura : " +asignatura.getTitulo());
+		}
+	}
+	
+	public void eliminarAsignatura(Asignatura asignatura){
+		int id_asignatura = asignatura.getId_asignatura();
+		System.out.println("BORRAR LA ASIGNATURA QUE HE RECIBIDO ID: " + asignatura.getTitulo());
+		for(int i = 0; i<loAsignaturas.size(); i++){
+			if(loAsignaturas.get(i).getId_asignatura() == id_asignatura){
+				Unidad_Logica.getInstance().eliminarAsignatura(id_asignatura);
+				loAsignaturas.remove(i);
 			}
 		}
 	}

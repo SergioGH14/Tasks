@@ -32,7 +32,7 @@ public class ExamenPracticasDAOImp implements ExamenPracticasDAO {
 			connectionManager.connect();
 			ResultSet examen_practicas_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN_PRACTICAS WHERE id_examen='"+ id_examen_concreto+"'");
 			connectionManager.close();
-			Actividad_Examen examenaux = new ExamenDAOImp().obtenerInformacionDeExamenSinDecoracion(id_examen_concreto);
+			Actividad_Examen examenaux = (Actividad_Examen)new ExamenDAOImp().obtenerInformacionDeExamenSinDecoracion(id_examen_concreto);
 			if(examen_practicas_resultset.next()){
 				examen_practicas = new Examen_Practicas(examen_practicas_resultset.getInt("ID_EXAMEN_PRACTICAS"),
 						examenaux,
@@ -70,7 +70,9 @@ public class ExamenPracticasDAOImp implements ExamenPracticasDAO {
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.EXAMEN_PRACTICA_SQ);
 			if(id>0){
-				int examen_id = new ExamenDAOImp().crearExamen((Actividad_Examen)examenPracticas.getExamen()).getId_examen();
+				Actividad_Examen examenBase =  (Actividad_Examen) new ExamenDAOImp().crearExamen((Actividad_Examen)examenPracticasAux.getExamen());
+				int id_actividad = examenBase.getId_actividad();
+				int examen_id = examenBase.getId_examen();
 				String str = "INSERT INTO EXAMEN_PRACTICAS (ID_EXAMEN_PRACTICAS, ID_EXAMEN, APUNTES) " +
 							 "VALUES (" 
 							 +id+","
@@ -79,6 +81,7 @@ public class ExamenPracticasDAOImp implements ExamenPracticasDAO {
 							 +")";
 				
 					if(examenPracticasAux!=null){
+						examenPracticasAux.setId_actividad(id_actividad);
 						examenPracticasAux.setId_examen_practicas(id);
 						examenPracticasAux.setId_examen(examen_id);
 					}

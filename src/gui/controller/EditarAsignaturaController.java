@@ -106,7 +106,8 @@ public class EditarAsignaturaController implements Initializable{
 	    
 	    private int dificultad;
 		
-	    private MainController controladorPrincipal;
+	    private MainController controladorPrincipal;	private MenuLateralController menuLateral;
+
 	    
 	    public void initStage(Stage stage, MainController controladorPrincipal,Asignatura asignatura){
 			this.primaryStage = stage;
@@ -300,11 +301,22 @@ public class EditarAsignaturaController implements Initializable{
 						dificultad != 0&&cuatri!=null ){
 						asignatura.setTitulo(tfNombre.getText());
 						Unidad_Logica.getInstance().editarAsignatura(asignatura);
+						if(menuLateral!=null){
+							menuLateral.editarAsignatura(asignatura);
+						}
 				primaryStage.close();
 			}else
 				controladorPrincipal.sacarError("\nSelecciona un color en el circulo\n O revisa a ver si te dejas algo");;
 		
 			}});
+	}
+
+	public MenuLateralController getMenuLateral() {
+		return menuLateral;
+	}
+
+	public void setMenuLateral(MenuLateralController menuLateral) {
+		this.menuLateral = menuLateral;
 	}
 
 }

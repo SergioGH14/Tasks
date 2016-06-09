@@ -233,6 +233,7 @@ public class MainController  extends Application {
 			secondaryStage.setTitle(Util.Constantes.ARDUM);
 			EditarAsignaturaController creadorcontrolador = loader.<EditarAsignaturaController>getController();
 			creadorcontrolador.initStage(secondaryStage, this,asignatura);
+			creadorcontrolador.setMenuLateral(menuLateralController);
 			secondaryStage.showAndWait();
 			
 			return creadorcontrolador.getAsignatura();

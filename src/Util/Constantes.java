@@ -8,6 +8,12 @@ public class Constantes {
 	//database name
 	public static final String DATABASE = "ardumBD";
 	
+	//generico
+	public static final String ACTIVIDADES_PARA = "Actividades por hacer para ";
+	public static final String BANDEJA = "Bandeja de entrada ";
+	public static final String BANDEJA_HOY = "Lo que tienes para hoy";
+	public static final String BANDEJA_PARA_DESPUES = "Ya lo harás después... ";
+
 	//fonts and id of fonts in switch
 	public static final String ROBOTOREGULAR ="src/resources/fonts/Roboto-Regular.ttf"; //1
 	public static final String ROBOTOBOLD ="src/resources/fonts/Roboto-Bold.ttf"; //2
@@ -60,9 +66,9 @@ public class Constantes {
 		String des = null;
 		int valor = (int) Math.round(Math.random()*2);
 		switch (valor) {
-		case 0: des = "Lo puedes hacer en la clase de practicas, vamo a calmarno..."; break;
+		case 0: des = "Lo puedes hacer antes de entrar, vamo a calmarno..."; break;
 		case 1: des = "Es que esto tampoco contaba mucho... No?"; break;
-		case 2:	des = "Bueno, es practicas... Ya lo haras jeje"; break;
+		case 2:	des = "Bueno... Ya lo haras jeje"; break;
 		}
 	return des;
 	}

@@ -22,7 +22,6 @@ public class Tipos {
 		try{
 			
 			Actividad_Examen actividadAuxiliar = (Actividad_Examen)actividad;
-			System.err.println("Paso por los tipos");
 			if(actividadAuxiliar instanceof Examen)
 				res = EXAMEN;
 			

@@ -32,7 +32,7 @@ public class NotificacionDAOImp implements NotificacionDAO {
 		Notificacion notificacion = null;
 		try{
 			connectionManager.connect();
-			ResultSet notificacion_resultSet = connectionManager.queryDB("SELECT * from NOTIFICACION where id_notificacion = '"+id_Notificacion+"'");
+			ResultSet notificacion_resultSet = connectionManager.queryDB("SELECT * from NOTIFICACION N, ACTIVIDAD A where A.id_actividad = N.id_actividad AND N.id_notificacion = '"+id_Notificacion+"' AND A.para_despues = FALSE AND A.finalizada = FALSE");
 			connectionManager.close();
 			
 			if (notificacion_resultSet.next()){
@@ -143,11 +143,11 @@ public class NotificacionDAOImp implements NotificacionDAO {
 
 	public List<Notificacion> obtenerNotificacionesDeHoy () {
 		List<Notificacion> listanotificaciones = new ArrayList<Notificacion>();
-		Date a =  Date_solver.convertirLocalDateEnSQL( Date_solver.restar(1, Date_solver.fechaDeHoy()));
+		Date a =  Date_solver.convertirLocalDateEnSQL( Date_solver.fechaDeHoy());
 		System.out.println(a.toString());
 		try{
 			connectionManager.connect();
-			ResultSet notificacionResultSet = connectionManager.queryDB("select * from NOTIFICACION where fecha_notificar  ='"+a+"'");
+			ResultSet notificacionResultSet = connectionManager.queryDB("select * from NOTIFICACION N, ACTIVIDAD A where A.id_actividad = N.id_actividad AND N.fecha_notificar  ='"+a+"' AND A.para_despues = FALSE AND A.finalizada = FALSE");
 			connectionManager.close();
 			System.out.println("consulta realizada con exito");
 			while(notificacionResultSet.next()){

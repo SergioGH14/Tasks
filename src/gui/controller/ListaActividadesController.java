@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import Util.Basics;
+import Util.Constantes;
 import bussines.Actividad;
 import bussines.Asignatura;
 import bussines.Estrategia_Ordenacion;
@@ -40,7 +41,6 @@ public class ListaActividadesController implements Initializable{
 	private Stage primaryStage;
 	private MainController controladorPrincipal;
 	private Asignatura asignatura;
-	
 	//Etiquetas XML para identificar objetos en pantalla
 	@FXML Text textNombreAsignatura;
 	
@@ -90,22 +90,22 @@ public class ListaActividadesController implements Initializable{
 				//rellenar la lista en pantalla con la que devuelve el patrón estrategia.
 				olActividades = FXCollections.observableArrayList(Unidad_Logica.getInstance().ordenar(new Estrategia_Ordenacion_Prioridad(asignatura)));
 			}
-			textNombreAsignatura.setText("Actividades por hacer para "+asignatura.getTitulo());
+			textNombreAsignatura.setText(Constantes.ACTIVIDADES_PARA+asignatura.getTitulo());
 			break;
 		case 1:
 			//metodo estrategia que devuelve actividades de bandeja de entrada
 			olActividades = FXCollections.observableArrayList(Unidad_Logica.getInstance().ordenar(new Estrategia_Ordenacion_BandejaEntrada()));
-			textNombreAsignatura.setText("Bandeja de Entrada");
+			textNombreAsignatura.setText(Constantes.BANDEJA);
 			break;
 		case 2:
 			//metodo estrategia que devuelve actividades de hoy
 			olActividades = FXCollections.observableArrayList(Unidad_Logica.getInstance().ordenar(new Estrategia_Ordenacion_Hoy()));
-			textNombreAsignatura.setText("Lo que tienes para hoy");
+			textNombreAsignatura.setText(Constantes.BANDEJA_HOY);
 			break;
 		case 3:
 			//metodo estrategia que devuelve actividades de para despues
 			olActividades = FXCollections.observableArrayList(Unidad_Logica.getInstance().ordenar(new Estrategia_Ordenacion_ParaDespues()));
-			textNombreAsignatura.setText("Ya lo harás después... ");
+			textNombreAsignatura.setText(Constantes.BANDEJA_PARA_DESPUES);
 			break;
 		}
 		
@@ -126,16 +126,16 @@ public class ListaActividadesController implements Initializable{
 
 			@Override
 			public void handle(Event event) {
-				// TODO Auto-generated method stub
-				controladorPrincipal.editarAsignatura(asignatura);
+				Asignatura aux = controladorPrincipal.editarAsignatura(asignatura);
+				textNombreAsignatura.setText(Constantes.ACTIVIDADES_PARA +aux.getTitulo());
 			}
 		});
 		ivEditarAsignatura.setOnMouseClicked(new EventHandler<Event>() {
 
 			@Override
 			public void handle(Event event) {
-				// TODO Auto-generated method stub
-				controladorPrincipal.editarAsignatura(asignatura);
+				Asignatura aux = controladorPrincipal.editarAsignatura(asignatura);
+				textNombreAsignatura.setText(Constantes.ACTIVIDADES_PARA +aux.getTitulo());
 			}
 		});
 		

@@ -31,7 +31,7 @@ public class ExamenClaseDAOImp implements ExamenClaseDAO {
 			connectionManager.connect();
 			ResultSet examen_clase_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN_CLASE WHERE id_examen='"+ id_examen_concreto+"'");
 			connectionManager.close();
-			Actividad_Examen examenaux= new ExamenDAOImp().obtenerInformacionDeExamenSinDecoracion(id_examen_concreto);
+			Actividad_Examen examenaux=  (Actividad_Examen)new ExamenDAOImp().obtenerInformacionDeExamenSinDecoracion(id_examen_concreto);
 			System.err.println("Examen clase con id: " + examenaux.getId_examen() + " id_act: " + examenaux.getId_actividad());
 
 			if(examen_clase_resultset.next() && examenaux!=null){
@@ -66,12 +66,15 @@ public class ExamenClaseDAOImp implements ExamenClaseDAO {
 
 	@Override
 	public Examen_Clase crearExamen_Clase(Examen_Clase examenclase) {
+		System.err.println("El examen ha llegado y su id act: " + examenclase.getId_actividad());
 		Examen_Clase examenClasesAux = examenclase;
 		try{
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.EXAMEN_CLASE_SQ);
 			if(id>0){
-				int examen_id = new ExamenDAOImp().crearExamen((Actividad_Examen)examenclase.getExamen()).getId_examen();
+				Actividad_Examen examenBase =   (Actividad_Examen) new ExamenDAOImp().crearExamen((Actividad_Examen)examenclase.getExamen());
+				int id_actividad= examenBase.getId_actividad();
+				int examen_id = examenBase.getId_examen();
 				String str = "INSERT INTO EXAMEN_CLASE (ID_EXAMEN_CLASE, ID_EXAMEN, GRUPAL, APUNTES) " +
 							 "VALUES (" 
 							 +id+","
@@ -81,6 +84,7 @@ public class ExamenClaseDAOImp implements ExamenClaseDAO {
 							 +")";
 				
 					if(examenClasesAux!=null){
+						examenClasesAux.setId_actividad(id_actividad);
 						examenClasesAux.setId_examen_clase(id);
 						examenClasesAux.setId_examen(examen_id);
 					}

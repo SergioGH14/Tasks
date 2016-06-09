@@ -218,7 +218,9 @@ public class Unidad_Logica {
 	}
 
 	public Examen_Clase crearExamen_Clase(Examen_Clase examenclase) {
-		return dal.crearExamen_Clase(examenclase) ;
+		Examen_Clase ex = dal.crearExamen_Clase(examenclase) ;
+		generarNotificacion(ex);
+		return ex;
 	}
 
 	public void editarExamen_Clase(Examen_Clase examenclase) {
@@ -238,7 +240,9 @@ public class Unidad_Logica {
 	}
 
 	public Actividad_Examen crearExamen(Actividad_Examen examen) {
-	return dal.crearExamen(examen);
+		Actividad_Examen aux = dal.crearExamen(examen);
+		generarNotificacion((Actividad)aux);
+		return aux;
 	}
 
 	public void editarExamen(Examen examen) {
@@ -258,7 +262,9 @@ public class Unidad_Logica {
 	}
 
 	public Examen_Poliformat crearExamenPoliformat(Examen_Poliformat ExamenPoliformat) {
-		return dal.crearExamenPoliformat(ExamenPoliformat);
+		Examen_Poliformat ex = dal.crearExamenPoliformat(ExamenPoliformat);
+		generarNotificacion(ex);
+		return ex;
 	}
 
 	public void editarExamenPoliformat(Examen_Poliformat ExamenPoliformat) {
@@ -283,7 +289,9 @@ public class Unidad_Logica {
 	}
 	
 	public Examen_Practicas crearExamen_Practicas(Examen_Practicas examenPracticas) {
-		return dal.crearExamen_Practicas(examenPracticas);
+		Examen_Practicas ex = dal.crearExamen_Practicas(examenPracticas);
+		generarNotificacion(ex);
+		return ex;
 	}
 	/*FIN EXAMENPRACTICAS*/
 	

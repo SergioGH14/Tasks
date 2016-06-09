@@ -33,7 +33,7 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 			connectionManager.connect();
 			ResultSet examen_practicas_resultset = connectionManager.queryDB("SELECT * FROM EXAMEN_POLIFORMAT WHERE id_examen='"+ id_examen_concreto+"'");
 			connectionManager.close();
-			Actividad_Examen examenaux = new ExamenDAOImp().obtenerInformacionDeExamenSinDecoracion(id_examen_concreto);
+			Actividad_Examen examenaux =  (Actividad_Examen)new ExamenDAOImp().obtenerInformacionDeExamenSinDecoracion(id_examen_concreto);
 			if(examen_practicas_resultset.next()){
 				examen_poli = new Examen_Poliformat(examen_practicas_resultset.getInt("ID_EXAMEN_POLIFORMAT"),
 						examenaux,
@@ -71,7 +71,9 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.EXAMEN_POLIFORMAT_SQ);
 			if(id>0){
-				int examen_id = new ExamenDAOImp().crearExamen((Actividad_Examen)examenPoliAux.getExamen()).getId_examen();
+				Actividad_Examen examenBase =  (Actividad_Examen) new ExamenDAOImp().crearExamen((Actividad_Examen)examenPoliAux.getExamen());
+				int id_actividad = examenBase.getId_actividad();
+				int examen_id = examenBase.getId_examen();
 				String str = "INSERT INTO EXAMEN_POLIFORMAT (ID_EXAMEN_POLIFORMAT, ID_EXAMEN, REINTENTABLE) " +
 							 "VALUES (" 
 							 +id+","
@@ -80,6 +82,7 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 							 +")";
 				
 					if(examenPoliAux!=null){
+						examenPoliAux.setId_actividad(id_actividad);
 						examenPoliAux.setId_examen_poliformat(id);
 						examenPoliAux.setId_examen(examen_id);
 					}
