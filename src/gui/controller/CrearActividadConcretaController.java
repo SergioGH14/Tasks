@@ -105,7 +105,11 @@ public class CrearActividadConcretaController implements Initializable{
 		lista.add(false);
 		
 		rFondo.setFill(asignatura.getColor());
-		tTituloActividad.setText(actividaddto.getTitulo());
+			if(actividaddto.getTitulo().length()<13){
+				tTituloActividad.setText(actividaddto.getTitulo());
+			}else{
+				tTituloActividad.setText(actividaddto.getTitulo().substring(0, 12)+"...");
+			}
 		}
 	public List<Boolean> getLista() {
 		

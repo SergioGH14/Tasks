@@ -181,10 +181,10 @@ public class CrearAsignaturaController implements Initializable{
 		tfNombre.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
 		    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
-		        if(newValue.length()<=17){
+		        if(newValue.length()<=10){
 		        	tTitulo.setText(newValue);
 		        }else{
-		        	tTitulo.setText(newValue.substring(0, 16));
+		        	tTitulo.setText(newValue.substring(0, 9)+"...");
 		        }
 		    	
 		    }
@@ -237,6 +237,14 @@ public class CrearAsignaturaController implements Initializable{
 				// TODO Auto-generated method stub
 				indicadorCuatrimestre(2);
 			}});
+		
+		ivCancelar.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				primaryStage.close();				
+			}
+		});
 		
 		ivAceptar.setOnMouseClicked(new EventHandler<Event>() {
 			

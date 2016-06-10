@@ -336,14 +336,15 @@ public class MenuLateralController implements Initializable {
 						loAsignaturas.add(i, asignatura);
 						listViewAsignaturas.getSelectionModel().select(i);
 						lanzarPantallaDeActividades(loAsignaturas.get(i),0);
-
 					}
 				}
 			}
 			System.out.println("Se ha editado la asignatura : " +asignatura.getTitulo());
 		}
 	}
-	
+
+
+
 	public void eliminarAsignatura(Asignatura asignatura){
 		int id_asignatura = asignatura.getId_asignatura();
 		System.out.println("BORRAR LA ASIGNATURA QUE HE RECIBIDO ID: " + asignatura.getTitulo());
@@ -352,10 +353,23 @@ public class MenuLateralController implements Initializable {
 				Unidad_Logica.getInstance().eliminarAsignatura(id_asignatura);
 				loAsignaturas.remove(i);
 				lanzarPantallaDeActividades(null,1);
+				listViewAsignaturas.getSelectionModel().select(null);
+				seleccionPorDefecto();
 
 			}
 		}
 		comprobarAsignaturas();
 	}
 
+
+	private void seleccionPorDefecto() {
+		if(tvBandeja!=null){
+			tvBandeja.setFont(Basics.generateFontById(1, 14));
+			hbBandeja.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+			hbHoy.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+			tvHoy.setFont(Basics.generateFontById(3, 14));
+			hbParaDespues.setBackground(new Background(new BackgroundFill(Color.web("#f3f3f3"), null, null)));
+			tvParaDespues.setFont(Basics.generateFontById(3, 14));	
+		}
+	}
 }

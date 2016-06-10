@@ -185,17 +185,38 @@ public class ListaActividadesController implements Initializable{
 	}
 	
 	public ActividadDTO editarActividad(Actividad actividad){
-		
-		Actividad actAux = (Actividad)actividad;
-		System.err.println("Obj a editar el objeto con id: " + actAux.getId_actividad() + " prioridad : "+ actAux.getPrioridadusuario()) ;
-
-		ActividadDTO actividadDTO = new ActividadDTO(actAux.getId_actividad(), actAux.getAsignatura().getTitulo(),
-				actAux.getTitulo(), actAux.getDescripcion(), actAux.getFechafinalizacion(), 
-				actAux.getTiempoEstimado(), actAux.getPorcentaje(), actAux.getPrioridadusuario(), 
-				actAux.getPrioridadTotal(), actAux.isFinalizada(), actAux.isPara_despues());
-		
-		actividadDTO = controladorPrincipal.editarActividad(asignatura, actividadDTO);
-		Unidad_Logica.getInstance().editarActividad(actividadDTO);
+		ActividadDTO actividadDTO=null;
+		if(actividad!=null){
+			Actividad actAux = (Actividad)actividad;
+			System.err.println("Obj a editar el objeto con id: " + actAux.getId_actividad() + " prioridad : "+ actAux.getPrioridadusuario()) ;
+	
+			actividadDTO = new ActividadDTO(actAux.getId_actividad(), actAux.getAsignatura().getTitulo(),
+					actAux.getTitulo(), actAux.getDescripcion(), actAux.getFechafinalizacion(), 
+					actAux.getTiempoEstimado(), actAux.getPorcentaje(), actAux.getPrioridadusuario(), 
+					actAux.getPrioridadTotal(), actAux.isFinalizada(), actAux.isPara_despues());
+			
+			actividadDTO = controladorPrincipal.editarActividad(asignatura, actividadDTO);
+			
+			if(actividadDTO!=null){
+				actAux.setTitulo(actividadDTO.getTitulo());
+				actAux.setDescripcion(actividadDTO.getDescripcion());
+				actAux.setFechaFinalizacion(actividadDTO.getFechaFinalizacion());
+				actAux.setTiempoEstimado(actividadDTO.getTiempoEstimado());
+				actAux.setPrioridadusuario(actividadDTO.getPrioridadUsuario());
+				actAux.setPrioridadTotal(actividadDTO.getPrioridadTotal());
+				
+				for(int i = 0; i<olActividades.size(); i++){
+					if(olActividades.get(i).getId_actividad() == actividadDTO.getId_actividad()){
+						olActividades.remove(i);
+						olActividades.add(i,actAux);
+						actualizarListas();
+					}
+				}
+				Unidad_Logica.getInstance().editarActividad(actividadDTO);
+			}else{
+				System.err.println("No se ha modificado la tarea");
+			}
+		}
 		//devuelto a la celda que edita la actividad
 		return actividadDTO;	
 	}

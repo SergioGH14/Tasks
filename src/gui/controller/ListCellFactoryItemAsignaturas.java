@@ -25,7 +25,11 @@ private boolean ctxmenu;
 	
 	public void setInformacion(Asignatura asignatura, MenuLateralController menulateral, MainController mainController){
 		lciColor.setFill(asignatura.getColor());
-		lciTitulo.setText(asignatura.getTitulo());
+		if(asignatura.getTitulo().length()<=8)
+			lciTitulo.setText(asignatura.getTitulo());
+		else
+			lciTitulo.setText(asignatura.getTitulo().substring(0, 7)+"...");
+		
 		lciTitulo.setFont(Basics.generateFontById(3, 16));
 		ctxmenu = false;
 		

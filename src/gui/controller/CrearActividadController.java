@@ -325,10 +325,10 @@ public class CrearActividadController implements Initializable{
 			tfTituloActividad.textProperty().addListener(new ChangeListener<String>() {
 			    @Override
 			    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
-			        if(newValue.length()<=17){
+			    	if(newValue.length()<=13){
 			        	tTituloActividad.setText(newValue);
 			        }else{
-			        	tTituloActividad.setText(newValue.substring(0, 16));
+			        	tTituloActividad.setText(newValue.substring(0, 12)+"...");
 			        }
 			    	
 			    }
