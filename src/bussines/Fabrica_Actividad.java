@@ -23,6 +23,7 @@ public class Fabrica_Actividad {
 			ActividadDTO actividaddto,
 			ArrayList<Boolean> especificaciones
 			){
+		System.err.println("La actividad DTO que llega a la fabrica:" + actividaddto);
 		switch(tipo){
 			
 		case 1:
@@ -51,7 +52,8 @@ public class Fabrica_Actividad {
 	}
 	
 	private Actividad crearPractica(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
-		
+		System.err.println("La actividad DTO que llega a la fabrica 1 :" + actividaddto);
+
 		Practicas practica = new Practicas(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getId_asignatura()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
@@ -68,6 +70,8 @@ public class Fabrica_Actividad {
 	}
 	
 	private Actividad crearClase(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
+		System.err.println("La actividad DTO que llega a la fabrica 2: "  + actividaddto);
+
 		Clase clase = new Clase(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getId_asignatura()),
 				actividaddto.getTitulo(), 
 				actividaddto.getDescripcion(), 
@@ -84,7 +88,8 @@ public class Fabrica_Actividad {
 	}
 
 	private Actividad crearExamen(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
-		
+		System.err.println("La actividad DTO que llega a la fabrica 3:" + actividaddto);
+
 		//EXAMEN CONCRETO
 		Actividad_Examen examen = new Examen(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getId_asignatura()),
 				actividaddto.getTitulo(), 

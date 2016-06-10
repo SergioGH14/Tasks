@@ -129,6 +129,8 @@ protected ConnectionManager connectionManager;
 	@Override
 	public Actividad crearActividad(Actividad actividad) {
 		Actividad actAux = actividad;
+		System.err.println("Prioridad total: " + actAux.getPrioridadTotal() + " prioridad usuario: " +actAux.getPrioridadusuario());
+
 		try{
 			connectionManager.connect();
 			int id = crearSecuencia(Constantes.ACTIVIDAD_SQ);

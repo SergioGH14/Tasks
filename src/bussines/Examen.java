@@ -24,8 +24,6 @@ public class Examen extends Actividad_Examen {
 			boolean recuperable, boolean ultimo) {
 		
 		 super(id_examen,id_actividad,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario,prioridadtotal, finalizada,para_despues);
-		 
-		 setPrioridadTotal(establecerPrioridadTotal());
 		 this.ultimo = ultimo;
 		 this.recuperable = recuperable;
 			
@@ -34,6 +32,7 @@ public class Examen extends Actividad_Examen {
 	private int establecerPrioridadTotal(){
 		int aux =getAsignatura().getDificultad()+getPrioridadUsuario()+getTiempoestimado()+10;
 	
+		System.err.println("ultimo : " + isUltimo());
 		if(isUltimo())aux = aux+10;
 		if(!isRecuperable())aux = aux+14;
 		//System.err.println("Prioridad de examen: " + aux);

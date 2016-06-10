@@ -19,6 +19,9 @@ public class Practicas extends Actividad {
 		System.err.println("AQUII ES DESPUES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");
 		this.id_practicas = id;	
 		
+		System.err.println("##### dificultades: " + getAsignatura().getDificultad() + " , " + prioridadusuario +" , " + tiempoestimado);
+
+		
 		}
 	public Practicas(	Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
 	         int tiempoestimado, Double porcentaje, int prioridadusuario,boolean finalizada, boolean para_despues, boolean grupal, boolean recuperable ) {
@@ -27,15 +30,15 @@ public class Practicas extends Actividad {
 		this.grupal = grupal;
 		this.recuperable = recuperable;
 		System.err.println("AQUII ES ANTES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");	
-		setPrioridadTotal(establecerPrioridadTotal());
 		System.err.println("AQUII ES DESPUES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");
 	
+		System.err.println("##### dificultades: " + getAsignatura().getDificultad() + " , " + prioridadusuario +" , " + tiempoestimado);
+
 	}
 		private int establecerPrioridadTotal(){
-			System.out.println("pasa x aqui: " + getAsignatura());
 			int aux =getAsignatura().getDificultad()+getPrioridadUsuario()+getTiempoEstimado()+5;
 			System.err.println("ESTE ES EL VALOR SIN AUMENTAR \n\n\n\n"+aux+"\n\n\n");
-			if(!isGrupal())aux = aux+10;
+			if(isGrupal())aux = aux-5;
 			if(!isRecuperable())aux = aux+14;
 			System.err.println("ESTE ES EL VALOR AUMENTADO\n\n\n\n"+aux+"\n\n\n");
 			return aux;

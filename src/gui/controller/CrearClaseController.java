@@ -48,9 +48,11 @@ public class CrearClaseController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
-				if(contenedora.getLista().get(1)==false )rPuntuable.setFill(new ImagePattern( new Image("file:assets/checked_checkbox.png")));
+				if(contenedora.getLista().get(0)==false )rPuntuable.setFill(new ImagePattern( new Image("file:assets/checked_checkbox.png")));
 				else rPuntuable.setFill(new ImagePattern( new Image("file:assets/unchecked_box.png")));
-				contenedora.getLista().set(1, !contenedora.getLista().get(1));
+				boolean aux = !contenedora.getLista().get(0);
+				System.err.println("CrearClaseController" + aux );
+				contenedora.getLista().set(0, aux);
 			}
 		});
 	

@@ -309,6 +309,7 @@ public class Unidad_Logica {
 	}
 	
 	public Grado crearGrado(Grado grado) {
+		this.grado = grado;
 		return dal.crearGrado(grado);
 	}
 	/*FIN GRADO*/
@@ -372,6 +373,7 @@ public class Unidad_Logica {
 	}
 	
 	public Universidad crearUniversidad(Universidad universidad) {
+		this.universidad = universidad;
 		return dal.crearUniversidad(universidad);
 		
 	}
@@ -380,6 +382,7 @@ public class Unidad_Logica {
 	/*USUARIO*/
 	public Usuario crearUsuario(Usuario usuario){
 		this.usuario = usuario;
+		System.err.println("\nusuario creado en fachada :   " + usuario);
 		return dal.crearUsuario(usuario);
 	}
 	
@@ -396,6 +399,7 @@ public class Unidad_Logica {
 	}
 	
 	public void editarUsuario(Usuario usuario){
+		this.usuario = usuario;
 		dal.editarUsuario(usuario);
 	}
 	

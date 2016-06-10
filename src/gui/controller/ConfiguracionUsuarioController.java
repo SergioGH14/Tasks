@@ -73,6 +73,7 @@ public class ConfiguracionUsuarioController implements Initializable{
 		this.controladorPrincipal = mainController;
 		this.fachada = Unidad_Logica.getInstance();
 		this.usuario = fachada.getUsuario();
+		System.err.println("usuario recogido : " + usuario);
 		this.universidad = fachada.getUniversidad();
 		this.grado = fachada.getGrado();
 		

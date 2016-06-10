@@ -19,9 +19,7 @@ public class Examen_Poliformat extends Decorador_Examen {
 	public Examen_Poliformat(Integer id_examen_poliformat,Actividad_Examen examen, boolean reintentable) {
 		super(examen);
 		this.id_examen_poliformat = id_examen_poliformat;
-		this.reintentable = reintentable;
-		super.setPrioridadTotal(establecerPrioridadTotal());
-		
+		this.reintentable = reintentable;		
 	}
 
 	public Actividad_Examen getExamen() {

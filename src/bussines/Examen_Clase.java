@@ -25,7 +25,6 @@ public class Examen_Clase extends Decorador_Examen {
 		this.id_examen_clase = id_examen_clase;
 		this.apuntes = apuntes;
 		this.grupal=grupal;
-		super.setPrioridadTotal(establecerPrioridadTotal());
 		
 	}
 	

@@ -20,7 +20,6 @@ public class Examen_Practicas extends Decorador_Examen {
 		super(examen);
 		this.id_examen_practicas = id_examen_practicas;
 		this.apuntes = apuntes;
-		super.setPrioridadTotal(establecerPrioridadTotal());
 	}
 
 	public Actividad_Examen getExamen() {

@@ -333,7 +333,7 @@ public class CrearExamenController implements Initializable {
  				 
 				ivUltimoExamen.setVisible(false);
 				ivUltimoExamenClicked.setVisible(true);			
-				contenedora.getLista().set(1, !contenedora.getLista().get(1));
+				contenedora.getLista().set(0,true);
 			}
 		});
 		
@@ -344,7 +344,7 @@ public class CrearExamenController implements Initializable {
 				 
 				ivUltimoExamen.setVisible(true);
 				ivUltimoExamenClicked.setVisible(false);
-				contenedora.getLista().set(1, !contenedora.getLista().get(1));
+				contenedora.getLista().set(0, false);
 			}
 		});
 	
@@ -354,7 +354,7 @@ public class CrearExamenController implements Initializable {
 			public void handle(Event event) {
 				ivRecuperarExamen.setVisible(false);
 				ivRecuperarExamenClicked.setVisible(true);			
-				contenedora.getLista().set(0, !contenedora.getLista().get(0));
+				contenedora.getLista().set(1, true);
 			}
 		});
 		
@@ -365,7 +365,7 @@ public class CrearExamenController implements Initializable {
 				 
 				ivRecuperarExamen.setVisible(true);
 				ivRecuperarExamenClicked.setVisible(false);				
-				contenedora.getLista().set(0, !contenedora.getLista().get(0));
+				contenedora.getLista().set(1, false);
 			}
 		});
 		

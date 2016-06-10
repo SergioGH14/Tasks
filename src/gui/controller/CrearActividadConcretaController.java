@@ -240,6 +240,7 @@ public class CrearActividadConcretaController implements Initializable{
 		public void handle(Event event) {
 			
 			if(tipo != 0){
+				System.err.println("Lista de booleanos : "+lista + " " +lista.get(0) + lista.get(1));
 				actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
 				
 				if(tipo == 3){
