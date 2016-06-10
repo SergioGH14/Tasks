@@ -220,6 +220,7 @@ public class MainController  extends Application {
 	}
 	public Asignatura editarAsignatura(Asignatura asignatura){
 		 try{
+			 System.err.println("\n\n\nMe llaman 2 veces");
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/EditarAsignatura.fxml"));
 			BorderPane creador = (BorderPane)loader.load();
 			

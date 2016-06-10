@@ -35,6 +35,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
@@ -66,6 +67,7 @@ public class MenuLateralController implements Initializable {
 	
 	//pantalla principal si no hay tareas
 	@FXML private Text tvMensajeTodoOk;
+	@FXML private Label lbNoAsignaturas;
 	
 	//Etiquetas XML para identificar objetos en pantalla
 	//Barra TOP
@@ -130,7 +132,7 @@ public class MenuLateralController implements Initializable {
 		
 		//lista de asignaturas chetada + estilo en css
 		listViewAsignaturas.getStylesheets().add(getClass().getResource("/gui/view/application.css").toExternalForm());
-		listViewAsignaturas.setCellFactory(c-> new ListCellFactoryAsignaturas());
+		listViewAsignaturas.setCellFactory(c-> new ListCellFactoryAsignaturas(this, controladorPrincipal));
 
 		//inicialmente presentamos la lista de bandeja de entrada y seleccionamos ese elemento
 		tvBandeja.setFont(Basics.generateFontById(1, 14));
@@ -170,14 +172,19 @@ public class MenuLateralController implements Initializable {
 						if(asignatura.getCuatrimestre().getCuatrimestre()==3 || asignatura.getCuatrimestre().getCuatrimestre()==Basics.cuatrimestreActual()){
 							loAsignaturas.add(asignatura);
 						}
+						comprobarAsignaturas();
 						System.out.println("Se ha añadido la asignatura : " +asignatura.getTitulo());
 						System.out.println("La lista tiene: "+loAsignaturas.size());
 					}
 				}
 		});
+		
+
+		comprobarAsignaturas();
 	}
 	public void inicializarContenidoVisual(){
 	    logoArdum.setFont(Basics.generateFontById(23, 35));
+		lbNoAsignaturas.setFont((Basics.generateFontById(3, 14)));
 
 		//nombre de usuario y fuente
 		if(usuario!=null){
@@ -288,6 +295,14 @@ public class MenuLateralController implements Initializable {
 		controladorPrincipal.mostrarListaDeNotificaciones(primaryStage, mostrar);
 	}
 	
+	public void comprobarAsignaturas(){
+		if(loAsignaturas!=null && !loAsignaturas.isEmpty()){
+			lbNoAsignaturas.setVisible(false);
+		}else{
+			lbNoAsignaturas.setVisible(true);
+		}
+	}
+	
 	public void actualizarDatosConfiguracion(){
 		if(tvNombreUsuario!=null && TextTituloGrado!=null && fachada.getUsuario()!=null){
 			tvNombreUsuario.setText(fachada.getUsuario().getNombreCompleto());
@@ -312,6 +327,7 @@ public class MenuLateralController implements Initializable {
 	}
 	
 	public void editarAsignatura(Asignatura asignatura){
+
 		if(asignatura!=null){
 			if(asignatura.getCuatrimestre().getCuatrimestre()==3 || asignatura.getCuatrimestre().getCuatrimestre()==Basics.cuatrimestreActual()){
 				for(int i = 0; i<loAsignaturas.size(); i++){
@@ -319,6 +335,8 @@ public class MenuLateralController implements Initializable {
 						loAsignaturas.remove(i);
 						loAsignaturas.add(i, asignatura);
 						listViewAsignaturas.getSelectionModel().select(i);
+						lanzarPantallaDeActividades(loAsignaturas.get(i),0);
+
 					}
 				}
 			}
@@ -333,8 +351,11 @@ public class MenuLateralController implements Initializable {
 			if(loAsignaturas.get(i).getId_asignatura() == id_asignatura){
 				Unidad_Logica.getInstance().eliminarAsignatura(id_asignatura);
 				loAsignaturas.remove(i);
+				lanzarPantallaDeActividades(null,1);
+
 			}
 		}
+		comprobarAsignaturas();
 	}
 
 }

@@ -23,7 +23,7 @@
       </Text>
       <TextField fx:id="tfApellidos" prefHeight="21.0" prefWidth="133.0" promptText="... y tus Apellidos??" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="20.0" left="35.0" right="20.0" />
+            <Insets bottom="20.0" left="35.0" right="20.0" top="5.0" />
          </GridPane.margin>
       </TextField>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" GridPane.valignment="BOTTOM">
@@ -47,14 +47,14 @@
             <Insets bottom="75.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfNombre" prefHeight="25.0" prefWidth="143.0" promptText="¿¿Como te llamabas...">
+      <TextField fx:id="tfNombre" prefHeight="25.0" prefWidth="143.0" promptText="¿Como te llamabas...">
          <GridPane.margin>
-            <Insets bottom="40.0" left="35.0" right="20.0" />
+            <Insets bottom="40.0" left="35.0" right="20.0" top="5.0" />
          </GridPane.margin>
       </TextField>
       <TextField fx:id="tfEmail" prefHeight="25.0" prefWidth="164.0" promptText="Blablabla@mail.moc" GridPane.columnIndex="2">
          <GridPane.margin>
-            <Insets bottom="40.0" left="20.0" right="35.0" />
+            <Insets bottom="40.0" left="20.0" right="35.0" top="5.0" />
          </GridPane.margin>
       </TextField>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" GridPane.valignment="TOP">
@@ -80,7 +80,7 @@
       </Text>
       <DatePicker fx:id="dpFechanacimiento" promptText="¿Cumpleaños?" GridPane.columnIndex="2" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="20.0" left="20.0" right="35.0" />
+            <Insets bottom="20.0" left="20.0" right="35.0" top="5.0" />
          </GridPane.margin>
       </DatePicker>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Nacimiento" GridPane.columnIndex="2" GridPane.valignment="BOTTOM">

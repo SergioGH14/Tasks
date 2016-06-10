@@ -41,8 +41,13 @@
    <left>
       <AnchorPane prefHeight="552.0" prefWidth="205.0" style="-fx-background-color: #f3f3f3;" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="TextTituloGrado" layoutX="7.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto grado" textAlignment="CENTER" wrappingWidth="185.09897708892822" />
-            <ListView fx:id="listViewAsignaturas" cacheShape="false" centerShape="false" focusTraversable="false" layoutY="207.0" prefHeight="322.0" prefWidth="202.0" style="-fx-background-color: #f3f3f3;" />
+            <Text fx:id="TextTituloGrado" layoutX="10.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="185.09897708892822" />
+            <Pane layoutY="207.0">
+               <children>
+                  <ListView fx:id="listViewAsignaturas" cacheShape="false" centerShape="false" focusTraversable="false" prefHeight="322.0" prefWidth="202.0" style="-fx-background-color: #f3f3f3;" />
+                  <Label fx:id="lbNoAsignaturas" layoutX="35.0" layoutY="153.0" text="No tienes asignaturas" wrapText="true" />
+               </children>
+            </Pane>
             <VBox prefHeight="139.0" prefWidth="205.0" AnchorPane.bottomAnchor="439.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="9.0">
                <children>
                   <HBox fx:id="hbBandeja" prefHeight="40.0" prefWidth="205.0">
