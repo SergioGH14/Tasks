@@ -13,7 +13,7 @@ public class Examen extends Actividad_Examen {
 		
 		 super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada, para_despues);
 		 
-		 setPrioridadtotal(establecerPrioridadTotal());
+		 setPrioridadTotal(establecerPrioridadTotal());
 		 this.ultimo = ultimo;
 		 this.recuperable = recuperable;
 			
@@ -25,14 +25,14 @@ public class Examen extends Actividad_Examen {
 		
 		 super(id_examen,id_actividad,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario,prioridadtotal, finalizada,para_despues);
 		 
-		 setPrioridadtotal(establecerPrioridadTotal());
+		 setPrioridadTotal(establecerPrioridadTotal());
 		 this.ultimo = ultimo;
 		 this.recuperable = recuperable;
 			
     }
 
 	private int establecerPrioridadTotal(){
-		int aux =getAsignatura().getDificultad()+getPrioridadusuario()+getTiempoestimado()+10;
+		int aux =getAsignatura().getDificultad()+getPrioridadUsuario()+getTiempoestimado()+10;
 	
 		if(isUltimo())aux = aux+10;
 		if(!isRecuperable())aux = aux+14;

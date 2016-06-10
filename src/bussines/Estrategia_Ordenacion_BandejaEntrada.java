@@ -13,12 +13,24 @@ public class Estrategia_Ordenacion_BandejaEntrada implements Estrategia_Ordenaci
 	  
 	 listaActividades = Unidad_Logica.getInstance().listaDeTodasLasActividades();
 	 if(listaActividades.isEmpty()==false){
+		 	System.out.println(prioridades()+"\n\n\n\n");
 	 quicksort(listaActividades,0,listaActividades.lastIndexOf(listaActividades)+1);	
+	 		System.out.println(prioridades()+"\n\n\n\n");
 	 return listaActividades;
 	 }else return listaActividades;
 		
 	}
 
+	public String prioridades(){
+		int i = 0;
+		String res = "";
+		while (i<listaActividades.size()) {
+			res = res + listaActividades.get(i).getPrioridadTotal()+"\n"; 
+			i++;
+		}
+		return res;
+		
+	}
 
 	public void  quicksort(List<Actividad> listaActividades,int x , int y){
 		

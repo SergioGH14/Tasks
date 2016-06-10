@@ -8,7 +8,7 @@ public class Examen_Clase extends Decorador_Examen {
 	
 	public Examen_Clase(Actividad_Examen examen) {
 		super(examen);
-		super.setPrioridadtotal(establecerPrioridadTotal());
+		super.setPrioridadTotal(establecerPrioridadTotal());
 		
 	}
 	
@@ -16,7 +16,7 @@ public class Examen_Clase extends Decorador_Examen {
 		super(examen);
 		this.apuntes = apuntes;
 		this.grupal=grupal;
-		super.setPrioridadtotal(establecerPrioridadTotal());
+		super.setPrioridadTotal(establecerPrioridadTotal());
 		
 	}
 	
@@ -25,7 +25,7 @@ public class Examen_Clase extends Decorador_Examen {
 		this.id_examen_clase = id_examen_clase;
 		this.apuntes = apuntes;
 		this.grupal=grupal;
-		super.setPrioridadtotal(establecerPrioridadTotal());
+		super.setPrioridadTotal(establecerPrioridadTotal());
 		
 	}
 	

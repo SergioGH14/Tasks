@@ -14,7 +14,7 @@ public class Clase extends Actividad{
 			prioridadusuario, prioridadtotal,finalizada, para_despues);
 	
 	this.setPuntuable(puntuable);
-	setPrioridadtotal(establecerPrioridadTotal());
+	setPrioridadTotal(establecerPrioridadTotal());
 	}
 	
 	public Clase(Asignatura asignatura, String titulo, String descripcion,  LocalDateTime fechafinalizacion,
@@ -24,7 +24,7 @@ public class Clase extends Actividad{
 				prioridadusuario, finalizada, para_despues);
 		
 		this.setPuntuable(puntuable);
-		setPrioridadtotal(establecerPrioridadTotal());
+		setPrioridadTotal(establecerPrioridadTotal());
 		
 		
 	}

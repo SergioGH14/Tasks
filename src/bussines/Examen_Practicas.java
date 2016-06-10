@@ -13,14 +13,14 @@ public class Examen_Practicas extends Decorador_Examen {
 	public Examen_Practicas(Actividad_Examen examen, boolean apuntes) {
 		super(examen);
 		this.apuntes = apuntes;
-		super.setPrioridadtotal(establecerPrioridadTotal());
+		super.setPrioridadTotal(establecerPrioridadTotal());
 	}
 	
 	public Examen_Practicas(Integer id_examen_practicas, Actividad_Examen examen, boolean apuntes) {
 		super(examen);
 		this.id_examen_practicas = id_examen_practicas;
 		this.apuntes = apuntes;
-		super.setPrioridadtotal(establecerPrioridadTotal());
+		super.setPrioridadTotal(establecerPrioridadTotal());
 	}
 
 	public Actividad_Examen getExamen() {

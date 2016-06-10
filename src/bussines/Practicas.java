@@ -14,9 +14,11 @@ public class Practicas extends Actividad {
 		super(id_actividad,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, prioridadtotal, finalizada, para_despues);
 		this.grupal = grupal;
 		this.recuperable = recuperable;
-		 setPrioridadtotal(establecerPrioridadTotal());
+		System.err.println("AQUII ES ANTES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");	
+		setPrioridadTotal(establecerPrioridadTotal());
+		System.err.println("AQUII ES DESPUES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");
 		this.id_practicas = id;	
-			
+		
 		}
 	public Practicas(	Asignatura asignatura, String titulo, String descripcion, LocalDateTime fechafinalizacion,
 	         int tiempoestimado, Double porcentaje, int prioridadusuario,boolean finalizada, boolean para_despues, boolean grupal, boolean recuperable ) {
@@ -24,15 +26,18 @@ public class Practicas extends Actividad {
 		super(asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, finalizada, para_despues);
 		this.grupal = grupal;
 		this.recuperable = recuperable;
-		setPrioridadtotal(establecerPrioridadTotal());
+		System.err.println("AQUII ES ANTES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");	
+		setPrioridadTotal(establecerPrioridadTotal());
+		System.err.println("AQUII ES DESPUES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");
 	
 	}
 		private int establecerPrioridadTotal(){
 			System.out.println("pasa x aqui: " + getAsignatura());
-			int aux =getAsignatura().getDificultad()+getPrioridadusuario()+getTiempoestimado()+5;
-		
-			if(isGrupal())aux = aux+10;
+			int aux =getAsignatura().getDificultad()+getPrioridadUsuario()+getTiempoEstimado()+5;
+			System.err.println("ESTE ES EL VALOR SIN AUMENTAR \n\n\n\n"+aux+"\n\n\n");
+			if(!isGrupal())aux = aux+10;
 			if(!isRecuperable())aux = aux+14;
+			System.err.println("ESTE ES EL VALOR AUMENTADO\n\n\n\n"+aux+"\n\n\n");
 			return aux;
 		}
 		
