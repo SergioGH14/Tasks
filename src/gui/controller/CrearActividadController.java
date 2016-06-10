@@ -120,6 +120,12 @@ public class CrearActividadController implements Initializable{
     
     private MainController controladorPrincipal;
     
+    private ActividadDTO actividadEdicion;
+    
+    @FXML private ImageView ivAceptar;
+
+    @FXML private ImageView ivCancelar;
+    
     public void initStage(Stage stage, MainController controladorPrincipal, Asignatura asignatura){
 		this.primaryStage = stage;
 		this.controladorPrincipal = controladorPrincipal;
@@ -127,10 +133,77 @@ public class CrearActividadController implements Initializable{
 		rFondo.setFill(asignatura.getColor());
 		
 		}
-	public CrearActividadController() {
-		// TODO Auto-generated constructor stub
-	}
+    
+    public void editarStage(Stage stage, MainController controladorPrincipal, Asignatura asignatura, ActividadDTO actividad){
+		this.primaryStage = stage;
+		this.controladorPrincipal = controladorPrincipal;
+		this.asignatura = asignatura;
+		this.actividadEdicion = actividad;
+		
+		if(asignatura!=null)
+			rFondo.setFill(asignatura.getColor());
+		else{
+			this.asignatura = Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividad.getId_asignatura());
+			if(this.asignatura!=null)
+			rFondo.setFill(this.asignatura.getColor());
+
+		}
+		
+		inicializarDatos(actividadEdicion);
+		
+    }
 	
+	private void inicializarDatos(ActividadDTO actividad) {
+		//precarga de datos de actividad a editar
+		ivSiguiente.setVisible(false);
+		ivAceptar.setVisible(true);
+		ivCancelar.setVisible(true);
+		
+		tfTituloActividad.setText(actividad.getTitulo());
+		taDescripcion.setText(actividad.getDescripcion());
+		dpFechaFin.setValue(actividad.getFechaFinalizacion().toLocalDate());  
+		indicadorPrioridadEdicion(actividad.getPrioridadUsuario()); 
+		inidicadorTiempoEdicion(actividad.getTiempoEstimado());		
+		prioridad = actividad.getPrioridadUsuario();
+		System.err.println("Prioridad recogida: " + prioridad);
+		tiempo = actividad.getTiempoEstimado();
+		
+	
+		
+		ivAceptar.setOnMouseClicked(new EventHandler<Event>() {
+			
+			@Override
+			public void handle(Event event) {
+				// Hacer el input valid antes
+				
+				if(inputValid()){
+				actividadEdicion.setTitulo(tfTituloActividad.getText());
+				actividadEdicion.setDescripcion(taDescripcion.getText());
+				actividadEdicion.setFechaFinalizacion(dpFechaFin.getValue().atTime(0,0));
+				actividadEdicion.setTiempoEstimado(tiempo);
+				actividadEdicion.setPrioridadUsuario(prioridad);
+				
+				System.err.println("Antes de cerrar la pantalla: " + inputValid() );
+				primaryStage.close();
+				}
+			}
+		
+		});
+		
+		ivCancelar.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				actividadEdicion = null;
+				System.err.println("Antes de cerrar la pantalla: " + inputValid() );
+				primaryStage.close();
+			}
+		});
+		
+		
+
+	}
+
 	public void indicadorPrioridad(int valor){
 		lPrioridadBaja.setOpacity(0);
 		lPrioridadMedia.setOpacity(0);
@@ -152,7 +225,28 @@ public class CrearActividadController implements Initializable{
 			break;
 		}
 		
-	}    
+	}   
+	public void indicadorPrioridadEdicion(int valor){
+		lPrioridadBaja.setOpacity(0);
+		lPrioridadMedia.setOpacity(0);
+		lPrioridadAlta.setOpacity(0);
+		
+		switch (valor) {
+		case 10:
+			lPrioridadBaja.setOpacity(1);
+			prioridad=10;
+			break;
+		case 20:
+			lPrioridadMedia.setOpacity(1);
+			prioridad=20;
+			break;
+		case 30:
+			lPrioridadAlta.setOpacity(1);
+			prioridad=30;
+		default:
+			break;
+		}
+	}
 	public boolean inputValid(){
 		String res = "\n";
 		boolean valid = true;
@@ -196,6 +290,26 @@ public class CrearActividadController implements Initializable{
 			break;
 		}}
 	
+	public void inidicadorTiempoEdicion(int valor){
+		lTiempoBajo.setOpacity(0);
+		lTiempoMedio.setOpacity(0);
+		lTiempoAlto.setOpacity(0);
+		
+		
+		switch (valor) {
+		case 5:
+			lTiempoBajo.setOpacity(1);
+			break;
+		case 10:
+			lTiempoMedio.setOpacity(1);
+			break;
+		case 15:
+			lTiempoAlto.setOpacity(1);
+		default:
+			break;
+		}
+	}
+	
 	public ActividadDTO getActividad() {
 		return actividaddto;
 	}
@@ -206,9 +320,7 @@ public class CrearActividadController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
-		
+		//si la actividadDTO no es nula es una edicion, de lo contrario, crear.
 		 tTituloActividad.setFont(Basics.generateFontById(5, 50));
 			tfTituloActividad.textProperty().addListener(new ChangeListener<String>() {
 			    @Override
@@ -281,13 +393,23 @@ public class CrearActividadController implements Initializable{
 							0, 
 							prioridad, 
 							false);
+					System.err.println("Prioridad al meter: " + prioridad);
 					primaryStage.close();
 				}}
 			
 			});
+		
+	}
+
+	public ActividadDTO getActividadEdicion() {
+		return actividadEdicion;
+	}
+
+	public void setActividadEdicion(ActividadDTO actividadEdicion) {
+		this.actividadEdicion = actividadEdicion;
 	}
 	
-	}
+}
 	
 
 

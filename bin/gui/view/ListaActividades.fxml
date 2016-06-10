@@ -91,7 +91,7 @@
                   </ImageView>
                </children>
             </GridPane>
-            <Text fx:id="tEditarAsignatura" layoutX="268.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Asignatura" wrappingWidth="154.6796875">
+            <Text fx:id="tEditarAsignatura" fill="#333333" layoutX="268.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Asignatura" wrappingWidth="154.6796875">
                <font>
                   <Font size="16.0" />
                </font>

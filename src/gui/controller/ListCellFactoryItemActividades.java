@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import persistence.dto.ActividadDTO;
 
 public class ListCellFactoryItemActividades {
 	@FXML
@@ -54,6 +55,13 @@ public class ListCellFactoryItemActividades {
 					@Override
 					public void handle(ActionEvent event) {
 						System.out.println("Ha seleccionado editar");
+						if(listaActividadesController!=null){
+							ActividadDTO actividadDTO = listaActividadesController.editarActividad(actividad);
+							if(actividadDTO!=null){
+								lciTituloActividad.setText(actividadDTO.getTitulo());
+								lciFechaActividad.setText( Date_solver.obtenerFechaParaActividades(actividadDTO.getFechaFinalizacion()));
+							}
+						}
 					}
 				});
 				

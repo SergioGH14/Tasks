@@ -35,6 +35,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import persistence.dto.ActividadDTO;
 
 public class ListaActividadesController implements Initializable{
 	//Objetos básicos de paso entre pantallas: Stage y Controlador principal
@@ -183,6 +184,22 @@ public class ListaActividadesController implements Initializable{
 		}
 	}
 	
+	public ActividadDTO editarActividad(Actividad actividad){
+		
+		Actividad actAux = (Actividad)actividad;
+		System.err.println("Obj a editar el objeto con id: " + actAux.getId_actividad() + " prioridad : "+ actAux.getPrioridadusuario()) ;
+
+		ActividadDTO actividadDTO = new ActividadDTO(actAux.getId_actividad(), actAux.getAsignatura().getTitulo(),
+				actAux.getTitulo(), actAux.getDescripcion(), actAux.getFechafinalizacion(), 
+				actAux.getTiempoEstimado(), actAux.getPorcentaje(), actAux.getPrioridadusuario(), 
+				actAux.getPrioridadTotal(), actAux.isFinalizada(), actAux.isPara_despues());
+		
+		actividadDTO = controladorPrincipal.editarActividad(asignatura, actividadDTO);
+		Unidad_Logica.getInstance().editarActividad(actividadDTO);
+		//devuelto a la celda que edita la actividad
+		return actividadDTO;	
+	}
+	
 	public void marcarActividadFinalizada(Actividad actividad){
 		int id_actividad = ((Actividad)actividad).getId_actividad();
 		System.out.println("MARCAR COMO FINALIZADA LA TAREA QUE HE RECIBIDO ID: " +id_actividad);
@@ -219,4 +236,24 @@ public class ListaActividadesController implements Initializable{
 		}
 	}
 
+
+	public MainController getControladorPrincipal() {
+		return controladorPrincipal;
+	}
+
+
+	public void setControladorPrincipal(MainController controladorPrincipal) {
+		this.controladorPrincipal = controladorPrincipal;
+	}
+
+
+	public Asignatura getAsignatura() {
+		return asignatura;
+	}
+
+
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
+	}
+	
 }

@@ -162,6 +162,16 @@
             <RadioButton fx:id="rbTiempoMedio" mnemonicParsing="false" opacity="0.0" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <RadioButton fx:id="rbTiempoBajo" mnemonicParsing="false" opacity="0.0" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <RadioButton fx:id="rbTiempoAlto" mnemonicParsing="false" opacity="0.0" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <ImageView fx:id="ivAceptar" fitHeight="52.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../../assets/guardar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ivCancelar" fitHeight="52.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../../assets/cancelar.png" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
    </center>

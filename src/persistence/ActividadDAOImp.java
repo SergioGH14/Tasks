@@ -165,16 +165,24 @@ protected ConnectionManager connectionManager;
 	}
 
 	@Override
-	public void editarActividad(Actividad actividad) {
+	public void editarActividad(ActividadDTO actividad) {
 		try{
+			System.err.println("La actividad en cuestion: "+actividad);
 			connectionManager.connect();
-			String str = "UPDATE ACTIVIDAD SET (finalizada)="
-					+ "("+true+
-					 ") WHERE id_actividad = '" + actividad.getId_actividad() +"'";
+			String str = "UPDATE ACTIVIDAD SET (titulo, descripcion, fecha_finalizacion, tiempo_estimado, porcentaje, prioridad_u, prioridad_t)="
+					+ "("
+					+"'"+actividad.getTitulo() +"',"
+					+"'"+actividad.getDescripcion() +"',"
+					+"'"+Date_solver.convertirLocalDateEnSQL(actividad.getFechaFinalizacion())+"',"
+					+"'"+actividad.getTiempoEstimado()+"',"
+					+"'"+actividad.getPorcentaje()+"',"
+					+"'"+actividad.getPrioridadUsuario()+"',"
+					+"'"+actividad.getPrioridadTotal()+"'"+
+					 ") WHERE id_actividad =" + actividad.getId_actividad();
 			connectionManager.updateDB(str);
-			System.out.println("\nActividad editada con éxito: " + actividad.getId_actividad());
+			
+			System.err.println("\nActividad editada con éxito: " + actividad.getId_actividad());
 			connectionManager.close();
-
 		}catch(Exception e){
 			System.err.println("Ha ocurrido un error al editar la actividad: "+e.getLocalizedMessage() );
 		}

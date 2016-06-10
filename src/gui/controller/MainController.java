@@ -271,7 +271,6 @@ public class MainController  extends Application {
 	
 	public Actividad crearActividad(Asignatura asignatura){
 		 try{
-			System.err.println(asignatura.getColor());
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearActividad.fxml"));
 			BorderPane creador = (BorderPane)loader.load();
 			
@@ -301,6 +300,35 @@ public class MainController  extends Application {
 		 return null;
 	}
 	
+	public ActividadDTO editarActividad(Asignatura asignatura, ActividadDTO actividad) {
+		try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearActividad.fxml"));
+			BorderPane creador = (BorderPane)loader.load();
+			
+			Stage secondaryStage = new Stage();
+			Scene scene = new Scene(creador);
+
+			secondaryStage.setScene(scene);
+			secondaryStage.setHeight(531.0);
+			secondaryStage.setWidth(495.0);
+			secondaryStage.setResizable(false);
+			secondaryStage.setTitle(Util.Constantes.EDIT + " " + actividad.getTitulo());
+			CrearActividadController edicionController = loader.<CrearActividadController>getController();
+			edicionController.editarStage(secondaryStage, this, asignatura, actividad);
+			
+			secondaryStage.showAndWait();
+			
+			if(edicionController.getActividadEdicion() != null)
+			return edicionController.getActividadEdicion();
+			else return null;
+		
+		 
+		 } catch (IOException e){
+			System.err.println("Error al establecer la pantalla de edicion de la actividad " + e.getLocalizedMessage());
+		}
+		return null;
+	}
+		
 	public Actividad crearActividadConcreta(Stage secondaryStage, ActividadDTO actividaddto){
 		 try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CrearActividadConcreta.fxml"));
@@ -417,6 +445,8 @@ public class MainController  extends Application {
 			System.err.println("Error sacar la pantalla de configuracion " + e.getLocalizedMessage());
 		}
 	}
+
+	
 	
 	
 	

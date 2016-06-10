@@ -132,15 +132,6 @@ public class AsignaturaDAOImp implements AsignaturaDAO{
 								+"'"+asignatura.getDificultad()+"', "
 								+"'"+asignatura.isAnual()+"', "
 								+"'"+Basics.RGBToHex(asignatura.getColor())+"') WHERE id_asignatura = '" + asignatura.getId_asignatura() +"'";
-			String str = "UPDATE ASIGNATURA "+
-						 "SET id_asignatura= "+asignatura.getId_asignatura()+", "+
-						 "SET id_cuatrimestre= "+asignatura.getCuatrimestre().getId_cuatrimestre()+", "+
-						 "SET titulo= '"+asignatura.getTitulo() +"', "+
-						 "SET creditos= "+asignatura.getCreditos() + ", " +
-						 "SET dificultad= "+asignatura.getDificultad() + ", " +
-						 "SET anual= "+asignatura.isAnual() + ", " +
-						 "SET color= '"+Basics.RGBToHex(asignatura.getColor()) +"'"+
-						 " WHERE id_cuatrimestre=" + asignatura.getId_asignatura() +")";
 			
 			connectionManager.updateDB(stri);
 			System.out.println("\nAsignatura editada con éxito: " + asignatura);
@@ -181,7 +172,7 @@ public class AsignaturaDAOImp implements AsignaturaDAO{
 			connectionManager.updateDB(str);
 
 
-			System.out.println("\nAsignatura eliminada con éxito: ");
+			System.out.println("\nAsignatura eliminada con éxito");
 			connectionManager.close();
 
 

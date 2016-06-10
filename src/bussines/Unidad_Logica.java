@@ -105,7 +105,7 @@ public class Unidad_Logica {
 		
 	}
 
-	public void editarActividad(Actividad actividad) {
+	public void editarActividad(ActividadDTO actividad) {
 		dal.editarActividad(actividad);
 		
 	}

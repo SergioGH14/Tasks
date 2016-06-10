@@ -91,7 +91,7 @@ public class ConfiguracionUsuarioController implements Initializable{
 			try {
 				bufferedImage = ImageIO.read(new File(usuario.getAvatar()));
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.err.println("No se ha podido encontrar la imagen");
 			}finally{
 				if(bufferedImage!=null){
 					Image image = SwingFXUtils.toFXImage(bufferedImage, null);

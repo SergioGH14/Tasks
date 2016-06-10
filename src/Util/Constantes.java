@@ -8,6 +8,8 @@ public class Constantes {
 	//database name
 	public static final String DATABASE = "ardumBD";
 	
+	public static final String EDIT = "Editar";
+	
 	//generico
 	public static final String ACTIVIDADES_PARA = "Actividades por hacer para ";
 	public static final String BANDEJA = "Bandeja de entrada ";

@@ -44,7 +44,7 @@ public class DAL {
 			}
 
 			@Override
-			public void editarActividad(Actividad actividad) {
+			public void editarActividad(ActividadDTO actividad) {
 				new ActividadDAOImp().editarActividad(actividad);
 				
 			}
@@ -511,7 +511,7 @@ public class DAL {
 		return  actividadDAO.crearActividad(actividad);
 	}
 
-	public void editarActividad(Actividad actividad) {
+	public void editarActividad(ActividadDTO actividad) {
 		actividadDAO.editarActividad(actividad);
 		
 	}
