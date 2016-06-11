@@ -26,7 +26,7 @@ public class InputValid {
 		else return true;
 		}
 	
-	public static boolean esFechaCumpleaÃ±os(LocalDate fecha){
+	public static boolean esFechaCumpleaños(LocalDate fecha){
 		if(fecha==null)return false;
 		if(esFechaFutura(fecha)==false)return true;
 		return false;

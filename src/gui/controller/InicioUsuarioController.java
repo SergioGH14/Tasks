@@ -89,9 +89,9 @@ public class InicioUsuarioController implements Initializable{
 			res = res + "Nos gustaria saber tus Apellidos\n";
 		if(InputValid.estaRellenado(tfEmail.getText())==false)
 			res = res + "No has puesto tu e-Mail\n";
-		if(InputValid.esFechaCumpleaÃ±os(dpFechanacimiento.getValue())==false)
+		if(InputValid.esFechaCumpleaños(dpFechanacimiento.getValue())==false)
 			res = res + "No es correcta la fecha de nacimiento";
-		System.out.println(InputValid.esFechaCumpleaÃ±os(dpFechanacimiento.getValue()));
+		System.out.println(InputValid.esFechaCumpleaños(dpFechanacimiento.getValue()));
 		return res;
 		
 	}
@@ -147,7 +147,7 @@ public class InicioUsuarioController implements Initializable{
 						InputValid.estaRellenado(tfNombre.getText())&&
 						InputValid.estaRellenado(tfApellidos.getText())&&
 						InputValid.estaRellenado(tfEmail.getText())&&
-						InputValid.esFechaCumpleaÃ±os(dpFechanacimiento.getValue())
+						InputValid.esFechaCumpleaños(dpFechanacimiento.getValue())
 						)
 				{
 				//Creamos la universidad

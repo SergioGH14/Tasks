@@ -14,39 +14,48 @@ public class Estrategia_Ordenacion_Prioridad implements Estrategia_Ordenacion_Ac
 	@Override
 	public List<Actividad> ordenar() {
 		 if(listaActividades.isEmpty()==false){
-		 quicksort(listaActividades,0,listaActividades.lastIndexOf(listaActividades)+1);
+		 System.out.println(prioridades());
+	     quicksort(listaActividades,0,listaActividades.size()-1);
+	     System.out.println(prioridades());
 		 return listaActividades;
 		 }else return listaActividades;
 	}
 
-	public void  quicksort(List<Actividad> listaActividades,int x , int y){
+public void  quicksort(List<Actividad> listaActividades,int izq , int der ){
 		
-		int posizq = x;
-		int posder = y;
-		Actividad pivote = listaActividades.get(x);
+		int i = izq;
+		int j = der;
+		Actividad pivote = listaActividades.get(izq);
 		Actividad aux;
-	
 		
-		while (posizq < posder){
-			while(listaActividades.get(posizq).getPrioridadTotal()<= pivote.getPrioridadTotal() && posizq < posder){posizq++;}
-			while(listaActividades.get(posder).getPrioridadTotal() > pivote.getPrioridadTotal()){posder --;}
-			if(posizq<posder){
-				aux = listaActividades.get(posizq);
-				listaActividades.set(posizq, listaActividades.get(posder));
-				listaActividades.set(posder, aux);
+		while (i < j){
+			while(listaActividades.get(i).getPrioridadTotal()<= pivote.getPrioridadTotal() && i < j){i++;}
+			while(listaActividades.get(j).getPrioridadTotal() > pivote.getPrioridadTotal()){j --;}
+			if(i<j){
+				aux = listaActividades.get(i);
+				listaActividades.set(i, listaActividades.get(j));
+				listaActividades.set(j, aux);
 				
 			}
 			
 		}	
-		listaActividades.set(x, listaActividades.get(posder));
-		listaActividades.set(posder, pivote);
-		
-		 if(x<posder-1)
-		      quicksort(listaActividades,posizq,posder-1); 
-		   if(posizq+1 <y)
-		      quicksort(listaActividades,posizq+1,posder);		
+		listaActividades.set(izq, listaActividades.get(j));
+		listaActividades.set(j, pivote);
+		 if(izq<j-1)
+		      quicksort(listaActividades,izq,j-1); 
+		   if(j+1 <der)
+		      quicksort(listaActividades,j+1,der);		
 		
 		
 	}
+public String prioridades(){
+	int i = 0;
+	String res = "";
+	while (i<listaActividades.size()) {
+		res = res + listaActividades.get(i).getPrioridadTotal()+"\n"; 
+		i++;
+	}
+	return res;
 	
+}
 }

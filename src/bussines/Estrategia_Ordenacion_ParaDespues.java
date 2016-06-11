@@ -1,6 +1,6 @@
 package bussines;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -12,11 +12,22 @@ public class Estrategia_Ordenacion_ParaDespues implements Estrategia_Ordenacion_
 		
 		 listaActividades = Unidad_Logica.getInstance().listaDeParaDespues();
 		 if(listaActividades.isEmpty()==false){
-		 burbuja();
+		 System.out.println(prioridades());
+	     burbuja();
+		 System.out.println(prioridades());
 		 return listaActividades;
 		 }else return listaActividades;
 	}
-	
+	public String prioridades(){
+		int i = 0;
+		String res = "";
+		while (i<listaActividades.size()) {
+			res = res + listaActividades.get(i).getFechafinalizacion()+"\n"; 
+			i++;
+		}
+		return res;
+		
+	}
 	
 	public void burbuja(){ 
 		
