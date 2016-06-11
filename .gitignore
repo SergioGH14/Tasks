@@ -11,3 +11,5 @@ data/ardumBD.script
 *.class
 
 *.class
+
+bin/bussines/Examen.class

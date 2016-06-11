@@ -2,54 +2,31 @@ package gui.controller;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import javax.imageio.ImageIO;
-
-import org.controlsfx.control.PopOver;
-
-import javafx.collections.ListChangeListener;
-
 import Util.Basics;
-import bussines.Actividad;
 import bussines.Asignatura;
-import bussines.Clase;
 import bussines.Unidad_Logica;
 import bussines.Usuario;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
-import javafx.css.PseudoClass;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import persistence.DAL;
 
 
 /*
@@ -117,9 +94,10 @@ public class MenuLateralController implements Initializable {
 		
 		//prueba para rellenar la lista de asignaturas y mostrarlas en pantalla
 		List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
-		listaAsignaturas.addAll(DAL.getInstance().obtenerAsignaturasPorCuatrimestre(Basics.cuatrimestreActual()));
-		listaAsignaturas.addAll(DAL.getInstance().obtenerAsignaturasPorCuatrimestre(3));
+		listaAsignaturas.addAll(fachada.obtenerAsignaturasPorCuatrimestre(Basics.cuatrimestreActual()));
+		listaAsignaturas.addAll(fachada.obtenerAsignaturasPorCuatrimestre(3));
 
+		
 		
 	    loAsignaturas = FXCollections.observableArrayList(listaAsignaturas);
 		listViewAsignaturas.setItems(loAsignaturas);

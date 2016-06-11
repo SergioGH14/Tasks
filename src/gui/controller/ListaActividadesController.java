@@ -172,12 +172,6 @@ public class ListaActividadesController implements Initializable{
 			pnTodoHecho.setVisible(true);
 			lvActividades.setVisible(false);
 			tvMensajeTodoOk.setFont(Basics.generateFontById(9, 23));
-			
-			/*
-			 * Aqui podriamos generar mensajes con logos aleatorios para que sea gracioso
-			 * 
-			 */
-
 		}else{
 			pnTodoHecho.setVisible(false);
 			lvActividades.setVisible(true);

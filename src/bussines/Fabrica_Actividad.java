@@ -88,7 +88,7 @@ public class Fabrica_Actividad {
 	}
 
 	private Actividad crearExamen(ActividadDTO actividaddto,ArrayList<Boolean> especificaciones){
-		System.err.println("La actividad DTO que llega a la fabrica 3:" + actividaddto);
+		System.err.println("La actividad DTO que llega a la fabrica 3:" + actividaddto );
 
 		//EXAMEN CONCRETO
 		Actividad_Examen examen = new Examen(Unidad_Logica.getInstance().obtenerInformacionAsignatura(actividaddto.getId_asignatura()),
@@ -100,8 +100,9 @@ public class Fabrica_Actividad {
 				actividaddto.getPrioridadUsuario(), 
 				actividaddto.isFinalizada(),
 				actividaddto.isPara_despues(),
-				especificaciones.get(0),
-				especificaciones.get(1));
+				especificaciones.get(1),
+				especificaciones.get(0));
+		System.err.println("especificaciones en fabrica: " + especificaciones);
 		return examen;
 	}
 }

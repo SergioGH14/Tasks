@@ -12,12 +12,12 @@ public class Practicas extends Actividad {
 			         int tiempoestimado, Double porcentaje, int prioridadusuario,int prioridadtotal ,boolean finalizada, boolean para_despues, boolean grupal, boolean recuperable ) {
 		
 		super(id_actividad,asignatura, titulo, descripcion, fechafinalizacion, tiempoestimado, porcentaje, prioridadusuario, prioridadtotal, finalizada, para_despues);
+		this.id_practicas = id;	
 		this.grupal = grupal;
 		this.recuperable = recuperable;
 		System.err.println("AQUII ES ANTES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");	
 		setPrioridadTotal(establecerPrioridadTotal());
 		System.err.println("AQUII ES DESPUES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");
-		this.id_practicas = id;	
 		
 		System.err.println("##### dificultades: " + getAsignatura().getDificultad() + " , " + prioridadusuario +" , " + tiempoestimado);
 
