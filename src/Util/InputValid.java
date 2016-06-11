@@ -21,12 +21,11 @@ public class InputValid {
 	
 	public static boolean esFechaFutura(LocalDate fecha){
 		if(fecha==null)return false;
-		
 		if(fecha.isBefore(LocalDate.now()))return false;
 		else return true;
 		}
 	
-	public static boolean esFechaCumpleaños(LocalDate fecha){
+	public static boolean esFechaCumpleanyos(LocalDate fecha){
 		if(fecha==null)return false;
 		if(esFechaFutura(fecha)==false)return true;
 		return false;

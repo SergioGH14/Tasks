@@ -35,7 +35,6 @@ public class Examen extends Actividad_Examen {
 		System.err.println("ultimo : " + isUltimo());
 		if(isUltimo())aux = aux+10;
 		if(!isRecuperable())aux = aux+14;
-		//System.err.println("Prioridad de examen: " + aux);
 		return aux;
     }
 
