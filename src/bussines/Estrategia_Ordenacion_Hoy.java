@@ -25,7 +25,7 @@ public class Estrategia_Ordenacion_Hoy implements Estrategia_Ordenacion_Activida
 		 for (int j = 0; j < listaB.length; j++) {
 	            System.out.println("array"+j+listaB[j].getId_actividad());
 	        }
-		if(listaActividades.isEmpty()==false){
+		if(listaActividades!=null && !listaActividades.isEmpty()){
 	    sort(listaB);
 		B = ArrayAList(listaB);
 		Collections.reverse(B);

@@ -183,6 +183,25 @@ protected ConnectionManager connectionManager;
 					 ") WHERE id_actividad =" + actividad.getId_actividad();
 			connectionManager.updateDB(str);
 			
+			//actualizar notifiaciones asociadas
+			String strnotiManana = "UPDATE NOTIFICACION SET (FECHA_NOTIFICAR, TITULO)=('"
+			+Date_solver.convertirLocalDateEnSQL(Date_solver.restar(1,actividad.getFechaFinalizacion()))+"', '"+actividad.getTitulo()+ " mañana"+ "') "
+			+ "WHERE id_actividad = "+actividad.getId_actividad()
+			+ " AND TITULO LIKE '%mañana%' ";
+			connectionManager.updateDB(strnotiManana);
+			
+			String str7dias = "UPDATE NOTIFICACION SET (FECHA_NOTIFICAR, TITULO)=('"
+					+Date_solver.convertirLocalDateEnSQL(Date_solver.restar(7,actividad.getFechaFinalizacion()))+"', '"+actividad.getTitulo()+ " en 7 días"+ "') "
+					+ "WHERE id_actividad = "+actividad.getId_actividad()
+					+ " AND TITULO LIKE '%en 7%' ";
+			connectionManager.updateDB(str7dias);
+					
+			String str14dias = "UPDATE NOTIFICACION SET (FECHA_NOTIFICAR, TITULO)=('"
+					+Date_solver.convertirLocalDateEnSQL(Date_solver.restar(14,actividad.getFechaFinalizacion()))+"', '"+actividad.getTitulo()+ " en 14 días"+ "') "
+					+ "WHERE id_actividad = "+actividad.getId_actividad()
+					+ " AND TITULO LIKE '%en 14%' ";
+			connectionManager.updateDB(str14dias);
+			
 			System.err.println("\nActividad editada con éxito: " + actividad.getId_actividad());
 			connectionManager.close();
 		}catch(Exception e){

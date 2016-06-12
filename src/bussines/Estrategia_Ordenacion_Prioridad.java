@@ -13,7 +13,7 @@ public class Estrategia_Ordenacion_Prioridad implements Estrategia_Ordenacion_Ac
 
 	@Override
 	public List<Actividad> ordenar() {
-		 if(listaActividades.isEmpty()==false){
+		 if(listaActividades!=null && !listaActividades.isEmpty()){
 		 System.out.println(prioridades());
 	     quicksort(listaActividades,0,listaActividades.size()-1);
 	     System.out.println(prioridades());

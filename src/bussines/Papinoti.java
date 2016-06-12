@@ -20,12 +20,12 @@ public class Papinoti {
 		
 		System.err.println("Tipo actividad: " + tipoActividad);
 		
-		Notificacion a = new Notificacion(id_actividad,tituloAct+" en 14 dias",
+		Notificacion a = new Notificacion(id_actividad,tituloAct+" en 14 días",
 										  Basics.RGBToHex(actividad.getAsignatura().getColor()),
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-20,
 										  Date_solver.restar(14, fechaAct));
-		Notificacion b = new Notificacion(id_actividad,tituloAct+" en 7 dias",
+		Notificacion b = new Notificacion(id_actividad,tituloAct+" en 7 días",
 										Basics.RGBToHex(actividad.getAsignatura().getColor()),
 										  descripcionActividad(tipoActividad),
 										  prioridadAct-10,

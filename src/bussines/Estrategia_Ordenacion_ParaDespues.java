@@ -11,7 +11,7 @@ public class Estrategia_Ordenacion_ParaDespues implements Estrategia_Ordenacion_
 	public List<Actividad> ordenar() {
 		
 		 listaActividades = Unidad_Logica.getInstance().listaDeParaDespues();
-		 if(listaActividades.isEmpty()==false){
+		 if(listaActividades!=null && !listaActividades.isEmpty()){
 		 System.out.println(prioridades());
 	     burbuja();
 		 System.out.println(prioridades());
