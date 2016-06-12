@@ -15,6 +15,7 @@ public class AsignaturaDAOImp implements AsignaturaDAO{
 	
 	public AsignaturaDAOImp(){
 		try{
+			System.out.println("\n\t######## AsignaturaDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, AsignaturaDAO: "+e.getLocalizedMessage());

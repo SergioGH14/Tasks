@@ -16,9 +16,7 @@ public interface ExamenDAO {
 	public void eliminarExamen(int id);
 	
 	public Actividad_Examen crearExamen(Actividad_Examen examen);
-	
-	public void editarExamen(Examen examen);
-	
+		
 	public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura);
 
 	public List<Actividad> obtenerTodasActividades();

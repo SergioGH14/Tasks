@@ -18,6 +18,7 @@ public class NotificacionDAOImp implements NotificacionDAO {
 	
 	public NotificacionDAOImp(){
 		try{
+			System.out.println("\n\t######## NotificacionDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 
 		}catch(Exception e){

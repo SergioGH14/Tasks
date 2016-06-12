@@ -12,6 +12,7 @@ public class GradoDAOImp implements GradoDAO{
 	
 	public GradoDAOImp(){
 		try{
+			System.out.println("\n\t######## GradoDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, GradoDAOImp: "+e.getLocalizedMessage());

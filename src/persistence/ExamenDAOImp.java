@@ -22,6 +22,7 @@ public class ExamenDAOImp implements ExamenDAO {
 
 	public ExamenDAOImp(){
 		try{
+			System.out.println("\n\t######## ExamenDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, ExamenDAOImp: "+e.getLocalizedMessage());
@@ -199,11 +200,6 @@ public class ExamenDAOImp implements ExamenDAO {
 		return  act_examen;
 	}
 
-	@Override
-	public void editarExamen(Examen examen) {
-		// TODO Auto-generated method stub
-
-	}
 	
 	private int crearSecuencia(String nombreSecuencia){
 		try{
@@ -275,7 +271,7 @@ public class ExamenDAOImp implements ExamenDAO {
 			}
 
 		}catch (Exception e){
-			System.err.println("\nError al recuperar las todas activdades-examen -> "  + e.getLocalizedMessage());
+			System.err.println("\nError al recuperar las todas activdades-examen hoy -> "  + e.getLocalizedMessage());
 		}
 		return listaActividades;
 	}
@@ -294,7 +290,7 @@ public class ExamenDAOImp implements ExamenDAO {
 			}
 
 		}catch (Exception e){
-			System.err.println("\nError al recuperar las todas activdades-examen -> "  + e.getLocalizedMessage());
+			System.err.println("\nError al recuperar las todas activdades-examen para despues -> "  + e.getLocalizedMessage());
 		}
 		return listaActividades;	
 	}

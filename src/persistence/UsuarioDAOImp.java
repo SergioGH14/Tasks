@@ -13,6 +13,7 @@ public class UsuarioDAOImp implements UsuarioDAO{
 
 	public UsuarioDAOImp (){
 		try{
+			System.out.println("\n\t######## UsuarioDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, UsuarioDAOImp: "+e.getLocalizedMessage());

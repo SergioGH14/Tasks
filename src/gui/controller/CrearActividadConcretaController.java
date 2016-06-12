@@ -13,6 +13,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import Util.Basics;
 import bussines.Actividad;
 import bussines.Actividad_Examen;
 import bussines.Asignatura;
@@ -104,6 +106,7 @@ public class CrearActividadConcretaController implements Initializable{
 		lista.add(false);
 		lista.add(false);
 		
+		tTituloActividad.setFont(Basics.generateFontById(9, 45));
 		rFondo.setFill(asignatura.getColor());
 			if(actividaddto.getTitulo().length()<13){
 				tTituloActividad.setText(actividaddto.getTitulo());
@@ -244,7 +247,6 @@ public class CrearActividadConcretaController implements Initializable{
 		public void handle(Event event) {
 			
 			if(tipo != 0){
-				System.err.println("Lista de booleanos : "+lista + " " +lista.get(0) + lista.get(1));
 				actividad = Fabrica_Actividad.getInstance().crearActividad(tipo, actividaddto, (ArrayList<Boolean>) lista);
 				
 				if(tipo == 3){
@@ -276,10 +278,7 @@ public class CrearActividadConcretaController implements Initializable{
 						examen = ex;
 						
 					}
-					
 					actividad = Unidad_Logica.getInstance().crearExamen(examen);
-					
-					
 				}
 				
 				primaryStage.close();

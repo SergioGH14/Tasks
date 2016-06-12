@@ -321,7 +321,7 @@ public class CrearActividadController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//si la actividadDTO no es nula es una edicion, de lo contrario, crear.
-		 tTituloActividad.setFont(Basics.generateFontById(5, 50));
+		 tTituloActividad.setFont(Basics.generateFontById(9, 45));
 			tfTituloActividad.textProperty().addListener(new ChangeListener<String>() {
 			    @Override
 			    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
@@ -393,7 +393,6 @@ public class CrearActividadController implements Initializable{
 							0, 
 							prioridad, 
 							false);
-					System.err.println("Prioridad al meter: " + prioridad);
 					primaryStage.close();
 				}}
 			

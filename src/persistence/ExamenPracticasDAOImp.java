@@ -18,6 +18,7 @@ public class ExamenPracticasDAOImp implements ExamenPracticasDAO {
 
 	public ExamenPracticasDAOImp(){
 		try{
+			System.out.println("\n\t######## ExamenPracticasDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, ExamenPracticasDAOImp: "+e.getLocalizedMessage());

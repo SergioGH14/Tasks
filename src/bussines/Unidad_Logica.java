@@ -227,7 +227,7 @@ public class Unidad_Logica {
 		dal.editarExamen_Clase(examenclase);
 		
 	}
-	/*FIN EXAMENCLASE*/
+    
 	
 	/*EXAMEN */
 	public Actividad_Examen obtenerInformacionDeExamen(int id) {
@@ -245,14 +245,11 @@ public class Unidad_Logica {
 		return aux;
 	}
 
-	public void editarExamen(Examen examen) {
-		dal.editarExamen(examen);
-		
-	}
 	/*FIN EXAMEN*/
 	
-	/*EXAMENPOLIFORMAT*/
-	public Examen_Poliformat obtenerInformacionDeExamenPoliformat(int id) {
+
+    
+    public Examen_Poliformat obtenerInformacionDeExamenPoliformat(int id) {
 		return dal.obtenerInformacionDeExamenPoliformat(id);
 	}
 

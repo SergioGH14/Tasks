@@ -18,6 +18,7 @@ public class ClaseDAOImp implements ClaseDAO {
 
 	public ClaseDAOImp(){
 		try{
+			System.out.println("\n\t######## ClaseDAOImp ########  ");
 			connectionManager = new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, ClaseDAOImp: "+e.getLocalizedMessage());

@@ -108,7 +108,7 @@ public class MenuLateralController implements Initializable {
 		}
 		
 		
-		//lista de asignaturas chetada + estilo en css
+		//lista de asignaturas + estilo en css
 		listViewAsignaturas.getStylesheets().add(getClass().getResource("/gui/view/application.css").toExternalForm());
 		listViewAsignaturas.setCellFactory(c-> new ListCellFactoryAsignaturas(this, controladorPrincipal));
 
@@ -174,7 +174,7 @@ public class MenuLateralController implements Initializable {
 			try {
 				bufferedImage = ImageIO.read(new File(usuario.getAvatar()));
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.err.println("No hay fotografía del usuario");
 			}finally{
 				if(bufferedImage!=null){
 					Image image = SwingFXUtils.toFXImage(bufferedImage, null);

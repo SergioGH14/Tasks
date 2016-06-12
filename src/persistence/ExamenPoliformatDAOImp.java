@@ -20,6 +20,7 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 
 	public ExamenPoliformatDAOImp(){
 		try{
+			System.out.println("\n\t######## ExamenPoliformatDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, ExamenPoliformatDAOImp: "+e.getLocalizedMessage());

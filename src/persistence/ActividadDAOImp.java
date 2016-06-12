@@ -28,6 +28,8 @@ protected ConnectionManager connectionManager;
 	
 	public ActividadDAOImp(){
 		try{
+			System.out.println("\n\t######## ActividadDAOImp ########  ");
+
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, ActividadDAOImp: "+e.getLocalizedMessage());

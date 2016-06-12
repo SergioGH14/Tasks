@@ -244,12 +244,6 @@ public class DAL {
 			}
 
 			@Override
-			public void editarExamen(Examen examen) {
-				new ExamenDAOImp().editarExamen(examen);
-				
-			}
-
-			@Override
 			public List<Actividad> obtenerActividadesDeAsignatura(Asignatura asignatura) {
 				return new ExamenDAOImp().obtenerActividadesDeAsignatura(asignatura);
 			}
@@ -657,10 +651,6 @@ public class DAL {
 
 	public Actividad_Examen crearExamen(Actividad_Examen examen) {
 	return examenDAO.crearExamen(examen);
-	}
-
-	public void editarExamen(Examen examen) {
-		examenDAO.editarExamen(examen);
 	}
 	
 	public List<Actividad> obtenerExamenesDeAsignatura(Asignatura asignatura) {

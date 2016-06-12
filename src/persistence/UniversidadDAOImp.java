@@ -12,6 +12,7 @@ public class UniversidadDAOImp implements UniversidadDAO{
 
 	public UniversidadDAOImp() {
 		try{
+			System.out.println("\n\t######## UniversidadDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 
 		}catch(Exception e){
@@ -39,8 +40,10 @@ public class UniversidadDAOImp implements UniversidadDAO{
 				return null;
 
 		}catch(Exception e){
-			System.err.println("Ha ocurrido un error al buscar al la universidad: "+e.getLocalizedMessage() );
+			System.err.println("\nHa ocurrido un error al buscar al la universidad: "+e.getLocalizedMessage() );
 		}
+		
+		System.out.println("\nUniversidad obtenida con exito.");
 		return uni;
 	}
 
@@ -65,7 +68,7 @@ public class UniversidadDAOImp implements UniversidadDAO{
 
 			connectionManager.close();
 		}catch(	Exception e){
-			System.err.println("Ha ocurrido un error al crear la universidad: "+e.getLocalizedMessage() );
+			System.err.println("\nHa ocurrido un error al crear la universidad: "+e.getLocalizedMessage() );
 		}
 		return uniAux;
 	}
@@ -84,7 +87,7 @@ public class UniversidadDAOImp implements UniversidadDAO{
 
 
 		}catch(Exception e){
-			System.err.println("Ha ocurrido un error al eliminar el universidad: "+e.getLocalizedMessage() );
+			System.err.println("\nHa ocurrido un error al eliminar el universidad: "+e.getLocalizedMessage() );
 		}
 
 	}
