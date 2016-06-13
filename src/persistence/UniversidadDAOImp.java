@@ -12,7 +12,6 @@ public class UniversidadDAOImp implements UniversidadDAO{
 
 	public UniversidadDAOImp() {
 		try{
-			System.out.println("\n\t######## UniversidadDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 
 		}catch(Exception e){
@@ -43,7 +42,6 @@ public class UniversidadDAOImp implements UniversidadDAO{
 			System.err.println("\nHa ocurrido un error al buscar al la universidad: "+e.getLocalizedMessage() );
 		}
 		
-		System.out.println("\nUniversidad obtenida con exito.");
 		return uni;
 	}
 

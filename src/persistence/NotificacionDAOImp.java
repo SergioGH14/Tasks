@@ -145,12 +145,10 @@ public class NotificacionDAOImp implements NotificacionDAO {
 	public List<Notificacion> obtenerNotificacionesDeHoy () {
 		List<Notificacion> listanotificaciones = new ArrayList<Notificacion>();
 		Date a =  Date_solver.convertirLocalDateEnSQL( Date_solver.fechaDeHoy());
-		System.out.println(a.toString());
 		try{
 			connectionManager.connect();
 			ResultSet notificacionResultSet = connectionManager.queryDB("select * from NOTIFICACION N, ACTIVIDAD A where A.id_actividad = N.id_actividad AND N.fecha_notificar  ='"+a+"' AND A.para_despues = FALSE AND A.finalizada = FALSE");
 			connectionManager.close();
-			System.out.println("consulta realizada con exito");
 			while(notificacionResultSet.next()){
 				listanotificaciones.add(new Notificacion(notificacionResultSet.getInt("ID_NOTIFICACION"),
 														 notificacionResultSet.getInt("ID_ACTIVIDAD"),
@@ -160,6 +158,7 @@ public class NotificacionDAOImp implements NotificacionDAO {
 													     notificacionResultSet.getInt("PRIORIDAD"),
 													     Date_solver.convertirDateSQLEnLocalDateTime(notificacionResultSet.getDate("FECHA_NOTIFICAR"))));
 			}
+			System.out.println("Se han cargado las notificaciones de hoy");
 			
 		}catch (Exception e){
 			System.err.println("\nError al recuperar las notificaciones de hoy: " + e.getLocalizedMessage());

@@ -11,7 +11,6 @@ public class CuatrimestreDAOImp implements CuatrimestreDAO{
 	
 	public CuatrimestreDAOImp(){
 		try{
-			System.out.println("\n\t######## CuatrimestreDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 		}catch(Exception e){
 			System.err.println("Error en persistencia, CautrimestreDAO: "+e.getLocalizedMessage());

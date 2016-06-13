@@ -16,12 +16,12 @@ public class Papinoti {
 	
 	public static int[] diasArestar ={1,7,14};
 
-	public static String[] titulo = {" ma�ana"," en 7 dias"," en 14 dias"};
+	public static String[] titulo = {" mañana"," en 7 días"," en 14 días"};
 	public static int[] prioridad = {0,10,20};
-	static List <Notificacion> noti = new ArrayList<Notificacion>();
 	
 	public static List<Notificacion> crearNotificaciones(Actividad actividad){
-		
+	 List <Notificacion> noti = new ArrayList<Notificacion>();
+
 		LocalDateTime fechaAct = actividad.getFechaFinalizacion();
 		int prioridadAct =  actividad.getPrioridadTotal();
 		String tituloAct =  actividad.getTitulo();

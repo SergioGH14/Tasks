@@ -36,7 +36,6 @@ public class Clase extends Actividad{
 	
 		if(isPuntuable())aux = aux+10;
 		}
-		System.err.println("Puntuable" + isPuntuable());
 		return aux;
 	}
 	

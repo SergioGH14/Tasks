@@ -256,7 +256,7 @@ public class MainController  extends Application {
 				secondaryStage.setScene(scene);
 				secondaryStage.setHeight(260.0);
 				secondaryStage.setWidth(408.0);
-				secondaryStage.setResizable(false);
+				secondaryStage.setResizable(true);
 				secondaryStage.setTitle(Util.Constantes.ARDUM);
 				ErrorController creadorcontrolador = loader.<ErrorController>getController();
 				creadorcontrolador.initStage(secondaryStage, this,texto);

@@ -14,7 +14,6 @@ public class CursoDAOImp implements CursoDAO{
 	
 	public CursoDAOImp() {
 		try{			
-			System.out.println("\n\t######## CursoDAOImp ########  ");
 			connectionManager= new ConnectionManager(Constantes.DATABASE);
 
 		}catch(Exception e){
