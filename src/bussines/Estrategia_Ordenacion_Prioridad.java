@@ -1,6 +1,7 @@
 package bussines;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Estrategia_Ordenacion_Prioridad implements Estrategia_Ordenacion_Actividades{
@@ -13,15 +14,27 @@ public class Estrategia_Ordenacion_Prioridad implements Estrategia_Ordenacion_Ac
 
 	@Override
 	public List<Actividad> ordenar() {
+
+		 if(listaActividades.isEmpty()==false){
 		 if(listaActividades!=null && !listaActividades.isEmpty()){
-		 System.out.println(prioridades());
 	     quicksort(listaActividades,0,listaActividades.size()-1);
-	     System.out.println(prioridades());
+	     Collections.reverse(listaActividades);
 		 return listaActividades;
 		 }else return listaActividades;
 	}
+		return listaActividades;
+	}
+	public List<Actividad> ordenar(List<Actividad> listaPruebas) {
+			listaActividades = listaPruebas;
+		 if(listaActividades.isEmpty()==false){
+		     quicksort(listaActividades,0,listaActividades.size()-1);
+		     Collections.reverse(listaActividades);
+			 return listaActividades;
+			 }else return listaActividades;
+		
+	}
 
-public void  quicksort(List<Actividad> listaActividades,int izq , int der ){
+	public void  quicksort(List<Actividad> listaActividades,int izq , int der ){
 		
 		int i = izq;
 		int j = der;
@@ -58,4 +71,6 @@ public String prioridades(){
 	return res;
 	
 }
+
+
 }

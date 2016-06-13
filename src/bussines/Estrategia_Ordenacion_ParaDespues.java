@@ -1,6 +1,7 @@
 package bussines;
 
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -11,13 +12,27 @@ public class Estrategia_Ordenacion_ParaDespues implements Estrategia_Ordenacion_
 	public List<Actividad> ordenar() {
 		
 		 listaActividades = Unidad_Logica.getInstance().listaDeParaDespues();
+
+		 if(listaActividades.isEmpty()==false){
+
 		 if(listaActividades!=null && !listaActividades.isEmpty()){
-		 System.out.println(prioridades());
+		
+
 	     burbuja();
-		 System.out.println(prioridades());
+		 return listaActividades;
+		 }else return listaActividades;}
+		return listaActividades;
+	}
+	
+	public List<Actividad> ordenar(List<Actividad> listaPruebas) {
+		 listaActividades = listaPruebas;
+		 if(listaActividades.isEmpty()==false){
+	     burbuja();
 		 return listaActividades;
 		 }else return listaActividades;
+		
 	}
+	
 	public String prioridades(){
 		int i = 0;
 		String res = "";
@@ -44,4 +59,5 @@ public class Estrategia_Ordenacion_ParaDespues implements Estrategia_Ordenacion_
 	   }
       }
 	}
+
 }

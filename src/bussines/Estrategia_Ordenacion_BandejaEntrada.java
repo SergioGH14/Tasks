@@ -14,15 +14,22 @@ public class Estrategia_Ordenacion_BandejaEntrada implements Estrategia_Ordenaci
 	  
 	 listaActividades = Unidad_Logica.getInstance().listaDeTodasLasActividades();
 	 if(listaActividades!=null && !listaActividades.isEmpty()){
-	//System.out.println(prioridades());
 	 quicksort(listaActividades,0,listaActividades.size()-1);
-	//System.out.println(prioridades());
 	 Collections.reverse(listaActividades);
 	 return listaActividades;
 	 }else return listaActividades;
 		
 	}
-
+	
+	public List<Actividad> ordenar(List<Actividad> listaPruebas) {
+		 listaActividades = listaPruebas;
+		 if(listaActividades!=null && !listaActividades.isEmpty()){
+		 quicksort(listaActividades,0,listaActividades.size()-1);
+		 Collections.reverse(listaActividades);
+		 return listaActividades;
+		 }else return listaActividades;
+			
+	}
 	public String prioridades(){
 		int i = 0;
 		String res = "";
@@ -61,5 +68,7 @@ public class Estrategia_Ordenacion_BandejaEntrada implements Estrategia_Ordenaci
 		
 		
 	}
+
+
 
 }
