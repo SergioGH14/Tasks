@@ -45,7 +45,7 @@ public class Examen_Poliformat extends Decorador_Examen {
 		this.id_examen_poliformat = id_examen_poliformat;
 	}
 	private int establecerPrioridadTotal(){
-		int aux = examen.getPrioridadtotal()-10;
+		int aux = examen.getPrioridadTotal()-10;
 		if(isReintentable()) aux = aux-5;
 		//System.err.println("Prioridad de Examen_Poliformat " + aux);
 		return aux;

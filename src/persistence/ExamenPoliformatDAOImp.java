@@ -42,7 +42,7 @@ public class ExamenPoliformatDAOImp implements ExamenPoliformatDAO {
 				
 				examen_poli.setId_actividad(examenaux.getId_actividad());
 				examen_poli.setId_examen(examenaux.getId_examen());
-				examen_poli.setPrioridadtotal(examenaux.getPrioridadtotal());
+				examen_poli.setPrioridadTotal(examenaux.getPrioridadTotal());
 
 			}
 			

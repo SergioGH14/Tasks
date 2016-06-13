@@ -67,7 +67,7 @@ private void mergeParts(int lowerIndex, int middle, int higherIndex) {
         int k = lowerIndex;
         while (i <= middle && j <= higherIndex) {
         	
-            if (tempMergArr[i].getPrioridadtotal() <= tempMergArr[j].getPrioridadtotal()) {
+            if (tempMergArr[i].getPrioridadTotal() <= tempMergArr[j].getPrioridadTotal()) {
                 array[k] = tempMergArr[i];
                 i++;
             } else {

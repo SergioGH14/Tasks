@@ -182,11 +182,11 @@ public class ListaActividadesController implements Initializable{
 		ActividadDTO actividadDTO=null;
 		if(actividad!=null){
 			Actividad actAux = (Actividad)actividad;
-			System.err.println("Obj a editar el objeto con id: " + actAux.getId_actividad() + " prioridad : "+ actAux.getPrioridadusuario()) ;
+			System.err.println("Obj a editar el objeto con id: " + actAux.getId_actividad() + " prioridad : "+ actAux.getPrioridadUsuario()) ;
 	
 			actividadDTO = new ActividadDTO(actAux.getId_actividad(), actAux.getAsignatura().getTitulo(),
-					actAux.getTitulo(), actAux.getDescripcion(), actAux.getFechafinalizacion(), 
-					actAux.getTiempoEstimado(), actAux.getPorcentaje(), actAux.getPrioridadusuario(), 
+					actAux.getTitulo(), actAux.getDescripcion(), actAux.getFechaFinalizacion(), 
+					actAux.getTiempoEstimado(), actAux.getPorcentaje(), actAux.getPrioridadUsuario(), 
 					actAux.getPrioridadTotal(), actAux.isFinalizada(), actAux.isPara_despues());
 			
 			actividadDTO = controladorPrincipal.editarActividad(asignatura, actividadDTO);
@@ -196,7 +196,7 @@ public class ListaActividadesController implements Initializable{
 				actAux.setDescripcion(actividadDTO.getDescripcion());
 				actAux.setFechaFinalizacion(actividadDTO.getFechaFinalizacion());
 				actAux.setTiempoEstimado(actividadDTO.getTiempoEstimado());
-				actAux.setPrioridadusuario(actividadDTO.getPrioridadUsuario());
+				actAux.setPrioridadUsuario(actividadDTO.getPrioridadUsuario());
 				actAux.setPrioridadTotal(actividadDTO.getPrioridadTotal());
 				
 				for(int i = 0; i<olActividades.size(); i++){

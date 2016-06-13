@@ -30,7 +30,7 @@ public class Examen extends Actividad_Examen {
     }
 
 	private int establecerPrioridadTotal(){
-		int aux =getAsignatura().getDificultad()+getPrioridadUsuario()+getTiempoestimado()+10;
+		int aux =getAsignatura().getDificultad()+getPrioridadUsuario()+getTiempoEstimado()+10;
 		if(ultimo)aux = aux+10;
 		if(!isRecuperable())aux = aux+14;
 		return aux;

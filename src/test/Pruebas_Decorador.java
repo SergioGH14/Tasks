@@ -1,105 +1,156 @@
 package test;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
-
 import org.junit.Test;
-
 import bussines.*;
 import persistence.DAL;
-import persistence.ExamenClaseDAOImp;
-import persistence.ExamenPoliformatDAOImp;
-import persistence.ExamenPracticasDAOImp;
 
 public class Pruebas_Decorador {
-	private static Scanner teclado;
-
+	private Actividad_Examen examenBase;
+	private LocalDateTime l = LocalDateTime.now();
+	
 	@Test
-	public static void main(String[] args) {
-		teclado = new Scanner(System.in);	
-		LocalDateTime l = LocalDateTime.now();
-		
-		System.err.println("\n\t##### PRUEBAS DEL PATRON DECORADOR ##### ");
-		
-		System.out.println("Vamos a crear la actividad de examen: ");
+	public void crearExamenBase(){
+		System.err.println("\n\n\n\t##### PRUEBAS DEL PATRON DECORADOR ##### ");
 		Asignatura asignatura = DAL.getInstance().obtenerInformacionAsignatura("ETC");
-		System.out.println("Asignatura: " + asignatura);
+		Actividad_Examen examen = new Examen(asignatura, 
+				"Examen SOLO CLASE de ETC para decorar de poliformat y de practicas a la vez",
+				"Descripcion de examen de dsm",
+				l, 
+				15,
+				0.0,
+				30,
+				false,
+				false,
+				false,
+				true);
 		
-		Actividad examen = new Examen(asignatura, " Examen SOLO CLASE de ETC para decorar de poliformat y de practicas a la vez ", "Descripcion de examen de dsm", l, 0, 22.0, 10, false, true, false, false);
-		System.err.println("Examen : "  + examen.getPrioridadtotal());
-		
-		Examen examen2 = (Examen) examen;
+		examen = DAL.getInstance().crearExamen(examen);
+		System.err.println("Examen id: "+examen.getId_examen()+" prioridad de examen : "  + examen.getPrioridadTotal());
+		this.examenBase = examen;
+	}
+	
+	@Test 
+	public void crearExamenDecorado(){
+		System.err.print("\n\n\n### VOLVEMOS A CREAR UN EXAMEN BASE PARA DECORACION SIMPLE ##");
+		crearExamenBase();
+		Actividad_Examen examen = examenBase;
 
 		if(examen instanceof Actividad_Examen){
 			
-			Actividad_Examen examen_pr= new Examen_Practicas(examen2);
+			//Decoracion de poliformat
+			System.err.println("\n\n\t ################## PRUEBA UNITARIA DE EXAMEN POLIFORMAT ##################");
+			Actividad_Examen ex_poli = new Examen_Poliformat(examen);
+			((Examen_Poliformat)ex_poli).setReintentable(true);
+			ex_poli = DAL.getInstance().crearExamen(ex_poli);
 			
-			System.err.println("Examen decorado el mismo con solo poliformat: " + new Examen_Poliformat(examen2).getPrioridadtotal());
+			System.err.println("Examen decorado con solo poliformat: " + ((Examen_Poliformat)ex_poli)  );
 			
-			System.err.println("Examen decorado con solo Practicas: " +examen_pr.getPrioridadtotal() );
+			Actividad examen_act = (Actividad)ex_poli;
+			if(examen_act instanceof Examen_Poliformat){
+				System.out.println("Informacion base:\n" + examen_act.getDescripcion());
+			}
 			
-			System.err.println("Examen decorado tambien con Poliformat - Practicas: " + new Examen_Poliformat(examen_pr).getPrioridadtotal());
+			//Decoracion Practicas
+			System.err.println("\n\n\t ################## PRUEBA UNITARIA DE EXAMEN PRACTICAS ##################");
+			Actividad_Examen ex_practi = new Examen_Practicas(examen);
+			((Examen_Practicas)ex_practi).setApuntes(true);
 			
-			System.out.println("Voy a descastear el examen... " );
-			Actividad examenasdasd = (Actividad)examen_pr;
-			if(examenasdasd instanceof Examen_Practicas){
-				System.out.println("Ha sido todo un exito, mis dieses");
+			ex_practi = DAL.getInstance().crearExamen(ex_practi);
+			
+			System.err.println("Examen decorado con solo practica: " + ((Examen_Practicas)ex_practi)  );
+			
+			Actividad examen_act_practica = (Actividad)ex_practi;
+			if(examen_act_practica instanceof Examen_Practicas){
+				System.out.println("Informacion base:\n" + examen_act_practica.getDescripcion());
+			}
+			
+			//Decoracion Practicas
+			System.err.println("\n\n\t ################## PRUEBA UNITARIA DE EXAMEN CLASE ##################");
+			Actividad_Examen ex_clase = new Examen_Clase(examen);
+			((Examen_Clase)ex_clase).setApuntes(true);
+			((Examen_Clase)ex_clase).setGrupal(true);
+
+			
+			ex_clase = DAL.getInstance().crearExamen(ex_clase);
+			
+			System.err.println("Examen decorado con solo clase: " + ((Examen_Clase)ex_clase)  );
+			
+			Actividad examen_act_cls = (Actividad)ex_clase;
+			if(examen_act_cls instanceof Examen_Clase){
+				System.out.println("Informacion base:\n" + examen_act_cls.getDescripcion());
 			}
 		}
-		
-	
-		
-		System.out.println("##### VAMOS A PERSISTENCIA ####### " );
-		System.out.println("Vamos a escribir el examen sin decorar en bbdd");
-		//examen2 = DAL.getInstance().crearExamen(examen2);
-		System.err.println("Examen creado en persistencia: " + examen2);
-		
-		
-
-		System.out.println("\nVamos a decorar el examen en examen_clase ");
-		Examen_Practicas examen_practiacs_poli= new Examen_Practicas(examen2);
-		Examen_Practicas examen_clase= new Examen_Practicas(examen2);
-
-		System.out.println("\nVamos a decorar el examen en examen_poliformat-clase ");
-		Examen_Poliformat examen_pol= new Examen_Poliformat(examen_clase);
-		
-		examen_pol = DAL.getInstance().crearExamenPoliformat(examen_pol);
-		
-
-		System.err.println("Examen creado en persistencia: " + examen_pol);
-
-
-		
-		System.out.println("##### VAMOS A PERSISTENCIA A BUSCAR LOS DECORADOS ####### " );
-		Actividad_Examen exa = new Examen_Clase(examen2);
-		exa = Unidad_Logica.getInstance().crearExamen(exa);
-		System.err.println("CREADO: " + exa.getId_examen());
-		Asignatura asignaturaPruebaConActividades = Unidad_Logica.getInstance().obtenerInformacionAsignatura("ALG");
-		Actividad actPrueba1 = new Clase(asignaturaPruebaConActividades, "Prueba de ordnacion Para despues", "Descripcion de prueba pendiente", LocalDateTime.now(), 0, 0, 0, true,true, true);
-		actPrueba1 = Unidad_Logica.getInstance().crearClase((Clase)actPrueba1);
-
-		System.out.println("Creada: " + actPrueba1);
-		//Siempre se busca con el id_examen no el del examen que decora
-		Examen_Practicas exa2 = new ExamenPracticasDAOImp().obtenerInformacionDeExamen_Practicas(3);
-
-		Examen_Clase exa_clase = new ExamenClaseDAOImp().obtenerInformacionDeExamen_Clase(2);
-
-		System.out.println("Examen practicas encontrado: " + exa.getId_actividad() + "\ny con mas detalle: " + exa2.getExamen() + "\n" + exa.getTitulo());
-
-		System.out.println("Examen clase encontrado: " + exa_clase.getId_actividad() + "\ny con mas detalle: " + exa_clase.getExamen() + "\n" + exa_clase.getTitulo());
-		
-		
-		System.out.println("Buscamos examen poliformat..... ");
-		Examen_Poliformat a= new ExamenPoliformatDAOImp().obtenerInformacionDeExamenPoliformat(4);
-		Actividad_Examen b = Unidad_Logica.getInstance().obtenerInformacionDeExamen(4);
-
-		System.err.println("Examen poliformat encontrado" + a.getDescripcion()+"," + a.getId_actividad() +","+ a.getId_examen());
-		
-		
-		System.out.println("Vamos a borrar desde persistencia un examen-poliformat-practica");
-
-		DAL.getInstance().eliminarExamen(3);
-		System.out.println("Eliminado!");
 	}
 	
+	@Test
+	public void crearExamenDecoradoCompuestoClasePoli(){
+		System.err.print("\n\n\n### VOLVEMOS A CREAR UN EXAMEN BASE PARA DECORACION COMPUESTA CLASE-POLIFORMAT ##");
+		crearExamenBase();
+		Actividad_Examen examen = examenBase;
+		//Decoracion de poliformat
+		System.err.println("\n\n\t ################## PRUEBA UNITARIA DE EXAMEN POLIFORMAT COMPUESTO ->POLIFORMAT<- ##################");
+		Actividad_Examen ex_poli = new Examen_Poliformat(examen);
+		((Examen_Poliformat)ex_poli).setReintentable(true);
+		ex_poli = DAL.getInstance().crearExamen(ex_poli);
+		
+		System.err.println("Examen base del compuesto con solo poliformat: " + ((Examen_Poliformat)ex_poli)  );
+		
+		//Decorcion examen poliformat-clase
+		//Decoracion Practicas
+		System.err.println("\n\n\t ################## PRUEBA UNITARIA DE EXAMEN CLASE COMPUESTO -> CLASE-POLIFORMAT <- ##################");
+		Actividad_Examen ex_clase = new Examen_Clase(ex_poli);
+		((Examen_Clase)ex_clase).setApuntes(true);
+		((Examen_Clase)ex_clase).setGrupal(true);
+
+		ex_clase = DAL.getInstance().crearExamen(ex_clase);
+		
+		System.err.println("Examen decorado compuesto clase-poliformat: " + ((Examen_Clase)ex_clase)  );
+		
+		Actividad examen_act_cls = (Actividad)ex_clase;
+		if(examen_act_cls instanceof Examen_Clase){
+			System.err.println("### Informacion del examen decorado compuesto ###");
+			System.out.println("Examen de clase: " + ex_clase);
+			Examen_Poliformat ePoli = (Examen_Poliformat)((Examen_Clase)ex_clase).getExamen();
+			System.out.println("Examen poliformat de clase: " + ePoli);
+			Examen  ex= (Examen)ePoli.getExamen(); 
+			System.out.println("Examen base de poliformat de clase: " + ex);
+
+		}
+	}
+	
+	@Test
+	public void crearExamenDecoradoCompuestoPractPoli(){
+		System.err.print("\n\n\n### VOLVEMOS A CREAR UN EXAMEN BASE PARA DECORACION COMPUESTA PRACTICA-POLIFORMAT ###");
+		crearExamenBase();
+		Actividad_Examen examen = examenBase;
+		//Decoracion de poliformat
+		System.err.println("\n\n\t ################## PRUEBA UNITARIA DE EXAMEN POLIFORMAT COMPUESTO ->POLIFORMAT<- ##################");
+		Actividad_Examen ex_poli = new Examen_Poliformat(examen);
+		((Examen_Poliformat)ex_poli).setReintentable(true);
+		ex_poli = DAL.getInstance().crearExamen(ex_poli);
+		
+		System.err.println("Examen base del compuesto con solo poliformat: " + ((Examen_Poliformat)ex_poli)  );
+		
+		//Decorcion examen poliformat-clase
+		//Decoracion Practicas
+		System.err.println("\n\n\t ################## PRUEBA UNITARIA DE EXAMEN CLASE COMPUESTO ->PRACTICA-POLIFORMAT<- ##################");
+		Actividad_Examen ex_practi = new Examen_Practicas(examen);
+		((Examen_Practicas)ex_practi).setApuntes(true);
+		
+		ex_practi = DAL.getInstance().crearExamen(ex_practi);
+		
+		System.err.println("Examen decorado compuesto PRACTICA-poliformat: " + ((Examen_Practicas)ex_practi)  );
+		
+		Actividad examen_act_cls = (Actividad)ex_practi;
+		if(examen_act_cls instanceof Examen_Clase){
+			System.err.println("### Informacion del examen decorado compuesto ###");
+			System.out.println("Examen de practicas: " + ex_practi);
+			Examen_Poliformat ePoli = (Examen_Poliformat)((Examen_Clase)ex_practi).getExamen();
+			System.out.println("Examen poliformat de practicas: " + ePoli);
+			Examen  ex= (Examen)ePoli.getExamen(); 
+			System.out.println("Examen base de poliformat de practicas: " + ex);
+
+		}
+	}
 }

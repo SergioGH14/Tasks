@@ -61,7 +61,7 @@ public class Examen_Clase extends Decorador_Examen {
 	}
 
 	private int establecerPrioridadTotal(){
-		int aux = examen.getPrioridadtotal()-10;
+		int aux = examen.getPrioridadTotal()-10;
 		if(isApuntes()) aux = aux-5;
 		if(isGrupal()) aux = aux-10;
 		System.err.println("Prioridad de Examen_Clase: " + aux);

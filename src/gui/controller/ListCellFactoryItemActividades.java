@@ -38,7 +38,7 @@ public class ListCellFactoryItemActividades {
  
     	lciTituloActividad.setSelected(actividad.isFinalizada());
     	lciTituloActividad.setText(actividad.getTitulo());
-    	lciFechaActividad.setText( Date_solver.obtenerFechaParaActividades(actividad.getFechafinalizacion()) );
+    	lciFechaActividad.setText( Date_solver.obtenerFechaParaActividades(actividad.getFechaFinalizacion()) );
     	lbTipo.setText(Tipos.obtainString(actividad));
     	lbTipo.setTextFill(actividad.getAsignatura().getColor());
     	

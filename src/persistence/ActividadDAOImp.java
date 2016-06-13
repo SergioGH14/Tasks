@@ -131,7 +131,7 @@ protected ConnectionManager connectionManager;
 	@Override
 	public Actividad crearActividad(Actividad actividad) {
 		Actividad actAux = actividad;
-		System.err.println("Prioridad total: " + actAux.getPrioridadTotal() + " prioridad usuario: " +actAux.getPrioridadusuario());
+		System.err.println("Prioridad total: " + actAux.getPrioridadTotal() + " prioridad usuario: " +actAux.getPrioridadUsuario());
 
 		try{
 			connectionManager.connect();
@@ -146,12 +146,12 @@ protected ConnectionManager connectionManager;
 						+actividad.getAsignatura().getId_asignatura()+",'"
 					    +actividad.getTitulo()+"','"
 					    +actividad.getDescripcion()+"','"
-						+Date_solver.convertirLocalDateEnSQL(actividad.getFechafinalizacion())+"',"
+						+Date_solver.convertirLocalDateEnSQL(actividad.getFechaFinalizacion())+"',"
 						+actividad.isFinalizada()+","
-						+actividad.getTiempoestimado()+","
+						+actividad.getTiempoEstimado()+","
 						+actividad.getPorcentaje()+","
-						+actividad.getPrioridadusuario()+","
-						+actividad.getPrioridadtotal()+","
+						+actividad.getPrioridadUsuario()+","
+						+actividad.getPrioridadTotal()+","
 						+actividad.isPara_despues()
 						+")";
 						

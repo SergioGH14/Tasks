@@ -6,7 +6,7 @@ public class Examen_Practicas extends Decorador_Examen {
 	
 	public Examen_Practicas(Actividad_Examen examen) {
 		super(examen);
-		super.setPrioridadtotal(establecerPrioridadTotal());
+		super.setPrioridadTotal(establecerPrioridadTotal());
 		
 	}
 	
@@ -39,7 +39,7 @@ public class Examen_Practicas extends Decorador_Examen {
 	}
 
 	private int establecerPrioridadTotal(){
-		int aux = examen.getPrioridadtotal()-5;
+		int aux = examen.getPrioridadTotal()-5;
 		if(isApuntes()) aux = aux-5;
 		//System.err.println("Prioridad de Examen_Practicas: " + aux);
 		return aux;

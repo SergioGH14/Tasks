@@ -15,14 +15,14 @@ import Util.Date_solver;
 public class Papinoti {
 	
 	public static int[] diasArestar ={1,7,14};
-	public static String[] titulo = {" mañana"," en 7 dias"," en 14 dias"};
+	public static String[] titulo = {" maï¿½ana"," en 7 dias"," en 14 dias"};
 	public static int[] prioridad = {0,-10,-20};
 	static List <Notificacion> noti = new ArrayList<Notificacion>();
 	
 	public static List<Notificacion> crearNotificaciones(Actividad actividad){
 		
-		LocalDateTime fechaAct = actividad.getFechafinalizacion();
-		int prioridadAct =  actividad.getPrioridadtotal();
+		LocalDateTime fechaAct = actividad.getFechaFinalizacion();
+		int prioridadAct =  actividad.getPrioridadTotal();
 		String tituloAct =  actividad.getTitulo();
 		int tipoActividad = tipoActividad(actividad);
 		int id_actividad = ((Actividad)actividad).getId_actividad();

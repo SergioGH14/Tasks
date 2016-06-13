@@ -41,7 +41,7 @@ public class ExamenPracticasDAOImp implements ExamenPracticasDAO {
 				
 				examen_practicas.setId_actividad(examenaux.getId_actividad());
 				examen_practicas.setId_examen(examenaux.getId_examen());
-				examen_practicas.setPrioridadTotal(examenaux.getPrioridadtotal());
+				examen_practicas.setPrioridadTotal(examenaux.getPrioridadTotal());
 
 			}
 		}catch(Exception e){

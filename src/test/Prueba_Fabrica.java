@@ -57,7 +57,7 @@ public class Prueba_Fabrica {
 		//actividad = new ActividadDAOImp().crearActividad(actividad);
 		System.out.println("Actividad CON id: " + actividad);
 
-		System.out.println("Has creado con exito una actividad de nombre "+actividad.getTitulo()+"\nCuya descripcion es la siguiente: "+actividad.getDescripcion()+"\ny mas importante, su prioridad total es "+actividad.getPrioridadtotal()+"");
+		System.out.println("Has creado con exito una actividad de nombre "+actividad.getTitulo()+"\nCuya descripcion es la siguiente: "+actividad.getDescripcion()+"\ny mas importante, su prioridad total es "+actividad.getPrioridadTotal()+"");
 		Iterator<Notificacion> it = Unidad_Logica.getInstance().notificacionesDeHoy().iterator();
 		while(it.hasNext()){
 			System.out.println(it.next().toString());

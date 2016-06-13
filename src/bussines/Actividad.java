@@ -52,6 +52,7 @@ public abstract class Actividad {
 		return -1;
 	}
 
+
 	public int getId_actividad() {
 		return id_actividad;
 	}
@@ -84,55 +85,6 @@ public abstract class Actividad {
 		this.descripcion = descripcion;
 	}
 
-	public LocalDateTime getFechafinalizacion() {
-		return fechaFinalizacion;
-	}
-
-	public void setFechafinalizacion(LocalDateTime fechafinalizacion) {
-		this.fechaFinalizacion = fechafinalizacion;
-	}
-
-	public int getTiempoestimado() {
-		return tiempoEstimado;
-	}
-
-	public void setTiempoestimado(int tiempoestimado) {
-		this.tiempoEstimado = tiempoestimado;
-	}
-
-	public Double getPorcentaje() {
-		return porcentaje;
-	}
-
-	public void setPorcentaje(Double porcentaje) {
-		this.porcentaje = porcentaje;
-	}
-
-	public int getPrioridadusuario() {
-		return prioridadUsuario;
-	}
-
-	public void setPrioridadusuario(int prioridadusuario) {
-		this.prioridadUsuario = prioridadusuario;
-	}
-
-	public int getPrioridadtotal() {
-		return prioridadTotal;
-	}
-
-	public void setPrioridadtotal(int prioridadtotal) {
-		this.prioridadTotal = prioridadtotal;
-	}
-
-	public boolean isFinalizada() {
-		return finalizada;
-	}
-
-	public void setFinalizada(boolean finalizada) {
-		this.finalizada = finalizada;
-	}
-	
-
 	public LocalDateTime getFechaFinalizacion() {
 		return fechaFinalizacion;
 	}
@@ -147,6 +99,14 @@ public abstract class Actividad {
 
 	public void setTiempoEstimado(int tiempoEstimado) {
 		this.tiempoEstimado = tiempoEstimado;
+	}
+
+	public double getPorcentaje() {
+		return porcentaje;
+	}
+
+	public void setPorcentaje(double porcentaje) {
+		this.porcentaje = porcentaje;
 	}
 
 	public int getPrioridadUsuario() {
@@ -165,16 +125,20 @@ public abstract class Actividad {
 		this.prioridadTotal = prioridadTotal;
 	}
 
+	public boolean isFinalizada() {
+		return finalizada;
+	}
+
+	public void setFinalizada(boolean finalizada) {
+		this.finalizada = finalizada;
+	}
+
 	public boolean isPara_despues() {
 		return para_despues;
 	}
 
 	public void setPara_despues(boolean para_despues) {
 		this.para_despues = para_despues;
-	}
-
-	public void setPorcentaje(double porcentaje) {
-		this.porcentaje = porcentaje;
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class Estrategia_Ordenacion_ParaDespues implements Estrategia_Ordenacion_
 		int i = 0;
 		String res = "";
 		while (i<listaActividades.size()) {
-			res = res + listaActividades.get(i).getFechafinalizacion()+"\n"; 
+			res = res + listaActividades.get(i).getFechaFinalizacion()+"\n"; 
 			i++;
 		}
 		return res;

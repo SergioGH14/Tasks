@@ -31,8 +31,8 @@ public class Clase extends Actividad{
 		int aux = 0;
 		if(getAsignatura()!=null){
 		 aux =getAsignatura().getDificultad()
-				+getPrioridadusuario()
-				+getTiempoestimado();
+				+getPrioridadUsuario()
+				+getTiempoEstimado();
 	
 		if(isPuntuable())aux = aux+10;
 		}
