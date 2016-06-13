@@ -16,7 +16,7 @@ public class Practicas extends Actividad {
 		this.grupal = grupal;
 		this.recuperable = recuperable;
 		System.err.println("AQUII ES ANTES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");	
-		setPrioridadTotal(establecerPrioridadTotal());
+		
 		System.err.println("AQUII ES DESPUES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");
 		
 		System.err.println("##### dificultades: " + getAsignatura().getDificultad() + " , " + prioridadusuario +" , " + tiempoestimado);
@@ -31,7 +31,7 @@ public class Practicas extends Actividad {
 		this.recuperable = recuperable;
 		System.err.println("AQUII ES ANTES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");	
 		System.err.println("AQUII ES DESPUES DE AUMENTARLE LA PRIORIDAD\n\n\n\n"+getPrioridadTotal()+"\n\n\n");
-	
+		setPrioridadTotal(this.establecerPrioridadTotal());
 		System.err.println("##### dificultades: " + getAsignatura().getDificultad() + " , " + prioridadusuario +" , " + tiempoestimado);
 
 	}
